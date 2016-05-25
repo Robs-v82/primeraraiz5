@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+	before_action :valid_property, only: [:create]
+
 	def create
 		auth = request.env["omniauth.auth"]
 		session[:omniauth] = auth.except('extra')
