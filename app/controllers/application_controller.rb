@@ -32,10 +32,12 @@ class ApplicationController < ActionController::Base
 			redirect_to "/users/#{session[:user_id]}"
 		else
 			userLastProperty = user.properties.last
+			session[:property_id] = userLastProperty.id
 			unless userLastProperty.appointments.any?
 				redirect_to "/users/#{session[:user_id]}"
 			end 
 		end
+
 	end
 
 

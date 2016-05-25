@@ -7,7 +7,6 @@ class PropertiesController < ApplicationController
 		new_property = Property.new(property_info)
 		if new_property.valid?
 			new_property.save
-			puts 'XXxx'*100, Property.last[:id]
 			session[:property_id] = Property.last[:id]
 			owner_name = [Property.last[:owner_first_name], Property.last[:owner_last_name], Property.last[:owner_second_last_name]].join(' ')
 			render json: {
