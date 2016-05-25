@@ -1,0 +1,297 @@
+<div style="background: url(/assets/interior3.jpg) no-repeat; width: 100%; height: 800px">
+	<div class="dark-screen" style="height: 800px">		
+		<nav class="transparent z-depth-0" role="navigation">
+			<div class="b-container">
+				<div class="nav-wrapper">
+					<a href="#" class="brand-logo valign-wrapper">
+						<img src="/assets/white_logo">
+						primeraRaíz <span class="hide-on-small-only">| </span><span id="cdmx" class="hide-on-small-only">CDMX</span>
+					</a>
+					<ul class="right hide-on-med-and-down">
+						<li><a href="#steps">CÓMO FUNCIONA</a></li>
+						<li><a href="#profile">NOSOTROS</a></li>
+						<% if current_user %>
+							<li>
+								<form id="logout" action="/sign_out" method="post">
+									<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+									<input type="hidden" name="_method" value="delete">
+									<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
+								</form>
+							</li>
+						<% else %>
+							<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
+						<% end %>
+					</ul>
+					<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
+						<li><a href="#steps">CÓMO FUNCIONA</a></li>
+						<li><a href="#profile">NOSOTROS</a></li>
+						<% if current_user %>
+							<li>
+								<form id="logout" action="/sign_out" method="post">
+									<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+									<input type="hidden" name="_method" value="delete">
+									<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
+								</form>
+							</li>
+						<% else %>
+							<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
+						<% end %>
+					</ul>
+					<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+				</div>
+			</div>
+		</nav>
+		<div id="main" class="section">
+			<div class="b-container">
+				<div class="row title-wrapper valign-wrapper" style="width: 100%">
+					<div id="banner" class="col s12 m12 l12">
+						<div class="row">
+							<h1 id="b-title" class="center-align white-text">Vendemos tu depa</h1>
+							<h3 id="b-subtitle" class="center-align white-text">Comisión del 2%</h3>
+						</div>
+						<br>
+						<div class="row center-align">
+							<a class="login-modal-trigger" href="#login">
+								<div class="b-link b-button-container">
+									<i class="material-icons left">today</i>AGENDA UNA CITA
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="steps" class="dark-screen">
+	<div class="b-container">
+		<div class="section">
+			<div class="b-section-title row">
+				<h3 class="b-section-title center-align white-text">Profesional, fácil, seguro</h3>
+			</div>
+			<div class="row">
+				<div class="col s12 m6 l4">
+					<div class="card z-depth-0">
+						<div class="card-content white-text">
+							<div id="icon-row" class="row">
+								<div class="b-card-header valign-wrapper">
+								<i class="step-icon material-icons large">today</i>
+								</div>
+							</div>
+							<div class="card-title">
+								<span class="card-title">Agenda una cita</span>
+							</div>
+							<div class="b-card-body">
+								<p class="card-text">En tu departamento, sin compromiso. Si decides contratarnos, el agente realizará un estudio fotográfico, elaborará planos, y te asesorará para definir el precio y la estrategia de venta que se ajusten a tus prioridades.</p>
+							</div>
+						</div>
+						<div class="card-action">
+							<div class="card-button-container center-align">AGENDA UNA CITA</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l4">
+					<div class="card z-depth-0">
+						<div class="card-content white-text">
+							<div id="icon-row" class="row">
+								<div class="b-card-header valign-wrapper">
+								<i class="material-icons large">business</i>
+								</div>
+							</div>
+							<div class="card-title">
+								<span class="card-title bold">Conseguimos comprador</span>
+							</div>
+							<div class="b-card-body">
+								<p class="card-text">Te asesoramos en todos los aspectos legales y financieros de la compraventa. Publicamos anuncios claros y detallados, la mejor forma de atraer compradores serios, y lograr un mejor precio y tiempo de venta.</p>
+							</div>
+						</div>
+						<div class="card-action">
+							<div class="card-button-container center-align">VER ANUNCIO MUESTRA</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l4">
+					<div class="card z-depth-0">
+						<div class="card-content white-text">
+							<div id="icon-row" class="row">
+								<div class="b-card-header valign-wrapper">
+								<i class="material-icons large">thumb_up</i>
+								</div>
+							</div>
+							<div class="card-title">
+								<span class="card-title">Colaboramos contigo</span>
+							</div>
+							<div class="b-card-body">
+								<p class="card-text">Siempre tendrás la opción de vender por cuenta propia. Si encuentras comprador durante la vigencia de nuestro contrato, te seguiremos proporcionando todos los demás servicios y sólo cobraremos la mitad de la comisión.</p>
+							</div>
+						</div>
+						<div class="card-action">
+							<div class="card-button-container center-align">PREGUNTAS FRECUENTES</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="transition" style="background: url(/assets/interior4.jpg)">
+	<div class="b-container">
+			<div id="transition-row" class="row">
+				<div class="col s12 m5 offset-m7" style="height:500px">
+					<div id="picture-shadow" class="dark-screen valign-wrapper" style="height:100%">
+						<p class="goal flow-text white-text right-align">
+							Nos comprometemos a publicar las evaluaciones —buenas o malas— de todos nuestros clientes.<br><br>
+							<i class="material-icons">grade</i>
+							<i class="material-icons">grade</i>
+							<i class="material-icons">grade</i>
+							<i class="material-icons">grade</i>
+							<i class="material-icons">grade</i>
+						</p>
+
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+<div id="profile" class="dark-screen">
+	<div class="b-container">
+		<div class="section">
+			<div class="row">
+				<div class="col s12 m6 white-text">
+					<div>
+						<p class="flow-text">
+							<span class="keyword">Primera Raíz</span> es un nuevo servicio. Queremos transformar la forma de vender departamentos en la Ciudad de México, ofrecer atención de excelencia y cobrar menos que las agencias de bienes raíces tradicionales.
+						</p>
+					</div>
+					<blockquote>
+				     	<h5>La competencia cobra entre 4% y 6%;<br>nuestra comisión es la más baja del mercado.</h5>
+				    </blockquote>
+					<div>
+						<p class="flow-text">
+							Aprovechamos al máximo la tecnología y perfeccionamos cada proceso para lograr los mejores precios y tiempos de venta.
+						</p>
+					</div>
+				</div>
+				<div class="col s12 m6 l5 offset-l1">
+					<p class="flow-text title white-text right">Zonas donde trabajamos:</p>
+					<div>
+						<ul class="tabs">
+							<li class="tab col s3">
+								<a class="tab-link" href="#benito_juarez" onclick="Materialize.showStaggeredList('#staggered-benito_juarez')">
+									<span class="hide-on-large-only">B. Juárez</span>
+									<span class="hide-on-med-and-down">Benito Juárez</span>
+								</a>
+							</li>
+							<li class="tab col s3">
+								<a class="tab-link" href="#cuauhtemoc" onclick="Materialize.showStaggeredList('#staggered-cuauhtemoc')">
+									<span class="hide-on-large-only">Cuauhtémoc</span>
+									<span class="hide-on-med-and-down">Cuauhtémoc</span>
+								</a>
+							</li>
+							<li class="tab col s3">
+								<a class="tab-link" href="#miguel_hidalgo" onclick="Materialize.showStaggeredList('#staggered-miguel_hidalgo')">
+									<span class="hide-on-large-only">M. Hidalgo</span>
+									<span class="hide-on-med-and-down">Miguel Hidalgo</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div id="benito_juarez" class="col s12">
+						<ul id="staggered-benito_juarez" class="right flow-text">
+							<% @benito_juarez_zones.each do |zone| %>
+								<li class="white-text right-align"><%= zone %></li>
+							<% end %>
+						</ul>
+					</div>
+					<div id="cuauhtemoc" class="col s12">
+						<ul id="staggered-cuauhtemoc" class="right flow-text">
+							<% @cuauhtemoc_zones.each do |zone| %>
+								<li class="staggered-item white-text right-align"><%= zone %></li>
+							<% end %>
+						</ul>
+					</div>
+					<div id="miguel_hidalgo" class="col s12">
+						<ul id="staggered-miguel_hidalgo" class="right flow-text">
+							<% @miguel_hidalgo_zones.each do |zone| %>
+								<li class="staggered-item white-text right-align"><%= zone %></li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="login" class="modal col s12 grey-text text-darken-3">
+	<div class="modal-content">
+		<div class="row"> 
+			<div class="col s12">
+				<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+				<p class="primera">primera<span class="raiz">Raíz</span></p>
+				<h6 id="step_one" class="inline-title right" style="display:none">Paso 1/3</h6>
+			</div>
+		</div>
+		<div class="row no-margin-bottom">
+			<div class="col s12">
+			<ul id="registration-nav" class="tabs">
+				<li class="tab col s3"><a id="registration-button" class="login-tab-link" href="#registration-tab">Regístrate</a></li>
+				<li class="tab col s3"><a id="login-button" class="login-tab-link" href="#login-tab">Inicia sesión</a></li>
+			</ul>
+			</div>
+			<div class="main-modal-section" style="display:none">
+				<div id="login-tab" class="col s12">
+					<div class="row">
+						<form id="login-form" class="col s12">
+							<div id="login-errors"></div>
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="name" type="text" name="user[email]" class="validate">
+									<label for="name">Correo</label>
+								</div>
+								<div class="input-field col s10">
+									<input id="name" type="password" name="user[password]" class="validate">
+									<label for="name">Contraseña</label>
+								</div>
+								<div class="input-field col s2">
+									<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right" type="submit"><i class="material-icons">send</i></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="registration-tab" class="col s12">
+					<div class="row no-margin-bottom">
+						<form id="registration-form" class="col s12">
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="name" type="text" name="user[email]" class="validate">
+									<label for="name">Correo</label>
+								</div>
+								<div class="input-field col s10">
+									<input id="name" type="password" name="user[password]" class="validate">
+									<label for="name">Contraseña</label>
+								</div>
+								<div class="input-field col s10">
+									<input id="name" type="password" name"user[password_confirmation]" class="validate">
+									<label for="name">Confirma constraseña</label>
+								</div>
+								<div class="input-field col s2">
+									<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right" type="submit"><i class="material-icons">send</i></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row right"> 
+			<div class="col s12 valign-wrapper">
+				<h6 class="inline-title">O ingresa con Facebook:</h6>
+				<div class="social-icon-container">
+					<a href="auth/facebook" class="btn-flat b-box-margin"><img class="circle z-depth-1" src="/assets/facebook.png" width="37px"></a>			
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>

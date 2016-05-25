@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Primera Raíz</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+	<%= csrf_meta_tags %>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script type="text/javascript">
+		var ready
+		ready = function() {
+			$(document).ready(function() {
+				//Bobsled commands:
+				$('#contact-button').click(function() {
+					$('footer').toggleClass('high-footer')
+				})
+
+				$('#registration-nav').click(function() {
+					$('.main-modal-section').slideDown()
+				})
+				$('#registration-button').click(function() {
+					$('#step_one').slideDown()				
+				})
+				$('#login-button').click(function() {
+					$('#step_one').slideUp()				
+				})
+				$('.b-link').hover(function() {
+					$(this).toggleClass('active-button')
+				})
+
+				$('.card-button-container').hover(function() {
+					$(this).toggleClass('card-active-button')
+				})
+
+				$('#option2').click(function() {
+					$('#disabled_user_name').removeAttr("disabled", true)
+					$('#owner-name-text').css("color", "#e0e0e0")
+				})
+
+				$('#option1').click(function() {
+					$('#disabled_user_name').attr("disabled", true)
+					$('#owner-name-text').css("color", "#424242")
+				})
+
+				$('#land-line').click(function() {
+					$('#mobile_phone').attr("disabled", true)
+					$('#other_phone').removeAttr("disabled")
+					$('#message-contact-radio').attr("disabled", true)
+					$('#whatsapp-contact-radio').attr("disabled", true)
+				})
+
+				$('#mobile').click(function() {
+					$('#mobile_phone').removeAttr("disabled")
+					$('#other_phone').attr("disabled", true)
+					$('#message-contact-radio').removeAttr("disabled")
+					$('#whatsapp-contact-radio').removeAttr("disabled")
+				})
+
+				$('#other-email-radio').click(function() {
+					$('#registered-email-input').css("color", "#e0e0e0")
+					$('#other-email-input').removeAttr("disabled", true)
+				})
+
+				$('#registered-email-radio').click(function() {
+					$('#registered-email-input').css("color", "#424242")
+					$('#other-email-input').attr("disabled", true)	
+				})
+
+				//User regisration:
+				$('#registration-form').submit(function() {
+					$.post(
+						'/users',
+						$(this).serialize(),
+						function(data) {
+							if ("user_id" in data) {
+								var user_id = data['user_id'];
+								url = "/users/"+user_id;
+								$(location).attr("href", url);
+							}
+							else {
+								var array = data.errors;
+								var newHTML = [];
+								for (var i = 0; i < array.length; i++) {
+								    newHTML.push('<li class="red-text">' + array[i] + '</li>');
+								}
+								$("#registration_errors").html("<div class='row'><ul>"+newHTML.join("")+"</ul></div>");
+							}
+						},
+						"json"
+					)
+					return false;
+				})
+
+				$('#login-form').submit(function() {
+					$.post(
+						'/users/login',
+						$(this).serialize(),
+						function(data) {
+							if ("property_id" in data) {
+								var user_id = data['user_id']
+								url = "/users/"+user_id+"/properties"
+								$( location ).attr("href", url)
+							}
+							else if ("user_id" in data) {
+								var user_id = data['user_id']
+								url = "/users/"+user_id
+								$( location ).attr("href", url)
+							}
+
+							else {
+								$("#login-errors").html("<div class='row'><ul><li class='red-text'>" + data.error_message + "</li></ul></div>")
+							}
+						},
+						"json"
+					)
+					return false;
+				})
+
+
+				//Property form
+
+				$('ul.tabs').tabs();
+				$('.button-collapse').sideNav()
+				$('.login-modal-trigger').leanModal()
+				$('.datepicker').pickadate({
+					min: true + 2,
+					max: 60,
+					monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+					weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+					weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+					today: false,
+					clear: false,
+					close: "Seleccionar",
+					selected: false,
+					closeOnSelect: true,
+				})
+
+			})
+		}
+
+			
+
+			
+		$(document).ready(ready)
+		$(document).on('page:load', ready)
+
+	</script>
+</head>
+	<%= yield %>
+		<footer class="page-footer transparent">
+			<div class="b-container">
+				<div class="row contact-row">
+					<div class="col s7 offset-s5 m6 offset-m6 l2 offset-l10">
+						<a id="contact-button" class="b-link btn contact z-depth-0">Contacto</a>
+					</div>
+				</div>
+			</div>
+			<div class="row contact-info contact valign-wrapper">
+				<div class="b-container">
+					<div class="col l7 hide-on-med-and-down">
+						<p id="location" class="grey-text text-lighten-3">
+							<div class="row zero-margin">
+								<i class="material-icons white-text left">location_on</i>
+							</div>
+							<div class="row zero-margin">
+								<span class="white-text">Río Niágara 38-202, Colonia Cuauhtémoc, Ciudad de México, C.P. 06500.</span>
+							</div>
+						</p>
+					</div>
+					<div class="col s4 m4 l2">
+						<p class="grey-text text-lighten-3">
+							<div class="row zero-margin">
+								<i class="material-icons white-text left">phone</i>
+							</div>
+							<div class="row zero-margin">
+								<a class="grey-text text-lighten-3 left" href="tel:5544545312">5544545312</a>
+							</div>
+						</p>
+					</div>
+					<div class="col s8 m8 l3">
+						<p class="grey-text text-lighten-3">
+							<div class="row zero-margin">
+								<i class="material-icons white-text left">email</i>
+							</div>
+							<div class="row zero-margin">
+								<a class="grey-text text-lighten-3 left" href="mailto:roberto.valladarespiedras@gmail.com">contacto@primeraraiz.com</a>
+							</div>
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

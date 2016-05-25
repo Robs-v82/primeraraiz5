@@ -1,0 +1,309 @@
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import 'materialize';
+@import "materialize/extras/nouislider";
+
+blockquote{
+  border-left: 5px solid #b2ff59;
+}
+
+
+#zones > * {
+	background-color: transparent;
+}
+
+#zone-collection {
+	background-color: transparent;
+}
+
+.dark-screen {
+	background-color: rgba(0,0,0, 0.35)
+}
+
+.light-dark-screen {
+	background-color: rgba(0,0,0, 0.35)
+}
+
+.card {
+	background-color: transparent;
+}
+
+.card-action {
+	background-color: transparent;	
+}
+
+.b-container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.title-wrapper {
+	margin-top: 100px;
+}
+
+.b-card-header {
+	min-height: 100px;
+}
+
+.b-card-body {
+	min-height: 100px;
+}
+
+
+
+#b-title {
+	font-size: 5em;
+	margin-bottom: 0;
+}
+
+#b-subtitle {
+	font-weight: 500;
+}
+
+.b-section-title {
+	margin-bottom: 0;
+}
+
+#steps {
+}
+
+#icon-row {
+	margin-bottom: 0;
+}
+
+.card-title {
+	font-weight: 600 !important;
+}
+
+.card-button-container {
+	width: 100%;
+	padding: 6px;
+	color: #b2ff59;
+	border: 2px solid #b2ff59 ;
+}
+
+.active-button {
+	color: #616161 !important;
+	background-color: #b2ff59 !important; 	
+}
+
+.card-active-button {
+	color: #616161 !important;
+	background-color: #b2ff59; 	
+}
+.card-text {
+	font-size: 1.2em;
+}
+
+.step-icon {
+	color: white;
+}
+
+.b-button-container {
+	margin: 0 auto;
+	padding: 6px;
+	width: 190px;
+	color: #b2ff59;
+	border: 2px solid #b2ff59;
+}
+
+#transition-banner {
+	margin: 0 auto;
+}
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height: 55px;
+   width:100%;
+   background:#999;
+}
+
+#picture-shadow {
+	padding: 0 20px;
+}
+
+.tab-link {
+	color: white !important;
+	font-size: 0.9em !important;
+}
+
+.tabs {
+	background-color: transparent;
+}
+
+.tabs .indicator {
+    background-color: #b2ff59;
+}
+
+#transition-row {
+	margin-bottom: 0;
+}
+
+.staggered-item {
+	opacity: 0;
+}
+
+#login {
+	max-width: 400px;
+	background-color: rgba(255,255,255, 0.95)
+}
+
+.login-tab-link {
+	color: #424242 !important;
+	border-bottom: 5px;
+}
+
+#login .tabs .indicator {
+    background-color: #64dd17;
+}
+
+.input-field {
+	line-height: 75%;
+}
+ 
+ #user-image {
+ 	border: 1px solid #424242;
+ }
+
+
+
+
+ .main-modal-section {
+ 	margin-top: 10px;
+ }
+
+.no-margin-bottom {
+	margin-bottom: 0px;
+}
+
+.inline-title {
+	display: inline-block;
+}
+
+.social-icon-container {
+	margin-left: 10px;
+}
+
+.primera {
+	margin: 0;
+	font-weight: 500;
+	font-size: 1.5em;
+	display: inline-block;
+	color: #9e9e9e; 
+}
+
+.raiz {
+	color: #64dd17;
+}
+
+.btn-flat {
+	padding: 0;
+}
+.b-box-margin {
+	margin-right: 22px;
+}
+
+.input-text {
+	line-height: 20px !important;
+}
+
+.info-card{
+	margin-top: 30px;
+	background-color: rgba(255,255,255, 0.95);
+}
+
+.card-subtitle {
+	font-weight: 600;
+	margin-left: 10px;
+	margin-bottom: 0;
+}
+
+.like-input-text {
+	font-size: 14px;
+	margin-bottom: 10px !important;
+}
+
+#owner_name {
+	vertical-align: bottom !important;
+	margin-top: 20px !important;
+}
+
+#owner-name-text {
+	margin-top: 10px !important;
+}
+
+[type="radio"].with-gap:checked + label:before {
+border-radius: 50%;
+border: 2px solid #64dd17; }
+
+[type="radio"].with-gap:checked + label:after {
+border-radius: 50%;
+border: 2px solid #64dd17;
+background-color: #64dd17;
+z-index: 0;
+-webkit-transform: scale(.5);
+-moz-transform: scale(.5);
+-ms-transform: scale(.5);
+-o-transform: scale(.5);
+transform: scale(.5); }
+
+#registered-email-input {
+	vertical-align: bottom !important;
+	margin-top: 20px !important;
+}
+
+.contact {
+	background-color: rgba(0,0,0, 0.75)	
+}
+
+
+
+.contact-row {
+	margin-bottom: 0;
+}
+
+#contact-button {
+	border-radius: 0;
+}
+
+.contact-info {
+	height: 70px;
+}
+
+.high-footer {
+	height: 125px;
+}
+
+.top-section {
+	padding-top: 30px;
+}
+
+#property-collection {
+	max-height: 200px;
+}
+
+#primera-listing {
+	margin-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+#cdmx {
+	font-size: 0.8em;
+	font-weight: 600;
+}
+
+.bottom-button {
+	margin-top: 35px;
+}
+
+.zero-margin {
+	margin: 0;
+}
+
+#location {
+	vertical-align: bottom;
+}
+

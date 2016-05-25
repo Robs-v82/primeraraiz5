@@ -1,0 +1,126 @@
+<nav class="light-green accent-2 z-depth-0" role="navigation">
+	<div class="b-container">
+		<div class="nav-wrapper grey-text text-darken-3">
+			<a href="#" class="brand-logo valign-wrapper grey-text text-darken-3">
+				<img src="/assets/logo_dark_grey.png">
+				primeraRaíz <span class="hide-on-small-only">| </span><span id="cdmx" class="hide-on-small-only">CDMX</span>
+			</a>
+			<ul class="right hide-on-med-and-down">
+				<% if current_user.name %>
+					<li class="grey-text text-darken-3 valign-wrapper" style="padding:0 10px;"><%=greeting%> <%= @user_first_name %>
+					</li>
+				<% end %>
+				<li class="valign-wrapper">
+					<form id="logout" action="/sign_out" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input type="hidden" name="_method" value="delete">
+						<a class="grey-text text-darken-3 valign-wrapper" action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">Cerrar sesión
+					<% if @auth%>
+					<img id="user-image" src="<%= @auth['info']['image']%>" class="circle social-icon-container" width="40px"></a>
+					<% end %>
+					</form>
+				</li>
+			</ul>
+			<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
+				<li><a href="#steps">CÓMO FUNCIONA</a></li>
+				<li><a href="#profile">NOSOTROS</a></li>
+				<% if current_user %>
+					<li>
+						<form id="logout" action="/sign_out" method="post">
+							<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+							<input type="hidden" name="_method" value="delete">
+							<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
+						</form>
+					</li>
+				<% else %>
+					<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
+				<% end %>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+	</div>
+</nav>
+<div class="dark-screen" style="height: 800px">
+	<div class="b-container">
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<div class="row">
+					<div class="top-section section-title-container">
+						<h5 class="section-title title light-green-text text-accent-2">Tu departamento en venta</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="card info-card">
+						<div class="card-content grey-text text-darken-3">
+							<div class="row">
+								<span class="card-title"><%=@property.street%> <%=@property.number%> <%=@property.unit%></span>
+							</div>
+							<div class="row">
+								<span class="card-title">Citas</span>
+							</div>
+							<div class="row">
+								<ul>
+									<% @property_appointments.each do |appointment| %>
+									<div class="row">
+										<div class="col s8">
+											<p><%= appointment.date.strftime('%d de %B de %Y')%> a las <%= appointment.time.strftime('%l:%M %p')%></p> 
+										</div>
+										<div class="col s4">
+											<p><%= appointment.status%></p>
+										</div>
+									</div>
+									<% end %>
+								</ul>
+							</div>
+							<div class="row">
+								<span class="card-title">Anuncios</span>								
+							</div>
+							<div class="row">
+								<div id="primera-listing" class="z-depth-1 col s8 m7 l5 center-align grey lighten-3">
+									<img src="/assets/logo_original.png" width="24px" height="24px">
+									<p class="primera">primera<span class="raiz">Raíz</span></p>
+								</div>
+							</div>
+							<div class="row">
+								<% @listings.each do |listing| %>
+									<% if listing[:status] == "active" %>
+										<div class="col s2">
+											<a href="<%= listing[:url]%>"><img src="/assets/<%=listing[:file]%>" alt="" class="z-depth-1 circle small responsive-img"></a>
+										</div>
+									<% else %>
+										<div class="col s2">
+											<img src="/assets/<%=listing[:file]%>" alt="" class="z-depth-1 circle small responsive-img">
+										</div>
+									<% end %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l4 offset-l2">
+				<div class="row">
+					<div class="top-section section-title-container">
+						<h5 class="section-title title light-green-text text-accent-2 right-align">Tu agente</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="card white">
+						<div id="agent-card-content" class="card-content">
+							<div class="row">
+								<div class="col s3">
+									<img src="/assets/Valladares.png" class="circle small responsive-img">
+								</div>		
+								<div class="col s9">
+						      		<span class="title bold"><%=@agent.name%> <%= @agent.last_name%></span>
+									<p><i class="tiny material-icons">email</i> <a href="#"><%=@agent.email%></a></p>
+									<p><i class="tiny material-icons">phone</i> <a href="#"><%=@agent.mobile_phone%></a></p>
+					      		</div>
+							</div>
+				      	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

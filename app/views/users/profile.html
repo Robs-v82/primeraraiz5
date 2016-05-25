@@ -1,0 +1,292 @@
+<script>
+	$(document).ready(function() {
+		$('#property_form').submit(function() {
+			$.post(
+				'/properties',
+				$(this).serialize(),
+				function(data) {
+					if ("property_id" in data) {
+						
+						$("#owner_name").html('<p id="owner-name-text" class="like-input-text">'+data.owner_name+'</p>')
+						$("#property-card").slideUp()
+						$("#appointment-card").delay(500).slideDown()
+					}
+					else {
+						var array = data.errors
+						var newHTML = []
+						for (var i = 0; i < array.length; i++) {
+						    newHTML.push('<li class="red-text">' + array[i] + '</li>')
+						}
+						$("#property_errors").html("<div class='row'><ul>"+newHTML.join("")+"</ul></div>")
+					}
+				},
+				"json"
+			)
+			return false
+		})
+
+		$('#appointment_form').submit(function() {
+			$.post(
+				'/appointments',
+				$(this).serialize(),
+				function(data) {
+					if ("appointment_id" in data) {
+						var user_id = data['user_id']
+						url = "/users/"+user_id+"/show"
+						$(location).attr("href", url)
+					}
+					else {
+						var array = data.errors
+						var newHTML = []
+						for (var i = 0; i < array.length; i++) {
+						    newHTML.push('<li class="red-text">' + array[i] + '</li>')
+							}
+						$("#appointment_errors").html("<div class='row'><ul>"+newHTML.join("")+"</ul></div>");
+						}
+				},"json"
+			)
+			return false
+		})	
+	})
+</script>
+
+<nav class="light-green accent-2 z-depth-0" role="navigation">
+	<div class="b-container">
+		<div class="nav-wrapper grey-text text-darken-3">
+			<a href="#" class="brand-logo valign-wrapper grey-text text-darken-3">
+				<img src="/assets/logo_dark_grey.png">
+				primeraRaíz <span class="hide-on-small-only">| </span><span id="cdmx" class="hide-on-small-only">CDMX</span>
+			</a>
+			<ul class="right hide-on-med-and-down">
+				<% if current_user.name %>
+					<li class="grey-text text-darken-3 valign-wrapper" style="padding:0 10px;"><%=greeting%> <%= @user_first_name %>
+					</li>
+				<% end %>
+				<li class="valign-wrapper">
+					<form id="logout" action="/sign_out" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input type="hidden" name="_method" value="delete">
+						<a class="grey-text text-darken-3 valign-wrapper" action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">Cerrar sesión
+					<% if @auth%>
+					<img id="user-image" src="<%= @auth['info']['image']%>" class="circle social-icon-container" width="40px"></a>
+					<% end %>
+					</form>
+				</li>
+			</ul>
+			<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
+				<li><a href="#steps">CÓMO FUNCIONA</a></li>
+				<li><a href="#profile">NOSOTROS</a></li>
+				<% if current_user %>
+					<li>
+						<form id="logout" action="/sign_out" method="post">
+							<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+							<input type="hidden" name="_method" value="delete">
+							<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
+						</form>
+					</li>
+				<% else %>
+					<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
+				<% end %>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+	</div>
+</nav>
+<div class="dark-screen" style="height: 800px">
+	<div class="b-container">
+		<div class="row">
+			<div id="property-card" class="card info-card col s12 m9 l6">
+				<div class="card-content">
+					<span class="card-title">Información de la propiedad</span>
+					<h6 class="inline-title right">Paso 2/3</h6>
+					<div id="property_errors"></div>
+					<form id="property_form" action="/properties" method="post">
+						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+						<div cass="row">
+							<h6 class="card-subtitle">Propietario</h6>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m4 l4">
+								<input id="owner_first_name" type="text" class="validate" name="property[owner_first_name]">
+								<label for="owner_first_name">Nombre(s)</label>
+							</div>
+							<div class="input-field col s6 m4 l4">
+								<input id="owner_last_name" type="text" class="validate" name="property[owner_last_name]">
+								<label for="owner_last_name">Apellido paterno</label>
+							</div>
+							<div class="input-field col s6 m4 l4">
+								<input id="owner_second_last_name" type="text" class="validate" name="property[owner_second_last_name]">
+								<label for="owner_second_last_name">Apellido materno</label>
+							</div>
+						</div>
+						<div cass="row">
+							<h6 class="card-subtitle">Dirección</h6>
+						</div>
+						<div class="input-field col s12 m12 l6">
+							<input id="street" type="text" class="validate" name="property[street]">
+							<label for="street">Calle</label>
+						</div>
+						<div class="input-field col s6 m6 l3">
+							<input id="number" type="text" class="validate" name="property[number]">
+							<label for="number">Núm. exterior</label>
+						</div>
+						<div class="input-field col s6 m6 l3">
+							<input id="unit" type="text" class="validate" name="property[unit]">
+							<label for="unit">Núm. interior</label>
+						</div>
+						<div class="bottom-row row">
+							<div class="input-field col s9 m8 l6">
+								<p class="like-input-text">Colonia</p>
+								<select name="property[neighborhood_id]" class="browser-default">
+									<option value="" disabled selected>Selecciona una colonia</option>
+									<% @neighborhoods.each do |neighborhood| %>
+										<option value="<%= neighborhood.id %>"><%= neighborhood.name%></option>
+									<% end %>
+								</select>
+							</div>
+							<div class="col s3 m2 right">
+								<button class="bottom-button light-green accent-4 btn-floating btn-small waves-effect waves-light right" type="submit"><i class="material-icons">send</i></button>
+							</div>
+						</div>
+						<div class="card-action valign-wrapper">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div id="appointment-card" class="card info-card col s12 m10 l8" style="display:none">
+				<div class="card-content">
+					<span class="card-title">Cita</span>
+					<h6 class="inline-title right">Paso 3/3</h6>
+					<div id="appointment_errors"></div>
+					<form id="property_form" action="/appointments" method="post">
+						<div class="row">
+							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+							<div class="input-field col s6 m6 l6">
+								<p class="like-input-text">Fecha</p>
+								<input type="date" name="appointment[date]" class="datepicker">
+							</div>
+							<div class="input-field col s6 m6 l6">
+								<p class="like-input-text">Hora</p>
+								<select name="appointment[time]" class="browser-default">
+									<option value="" disabled selected>Seleccione la hora</option>
+									<% @working_hours.each do |hour| %>
+										<option value="<%= hour %>"><%=  hour %></option>
+									<% end %>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<span class="card-title">Información de contacto</span>
+						</div>
+						<div class="row">
+							<div class="col l6">
+								<% unless @current_user.name %>
+									<div class="input-field">
+										<div class="row valign-wrapper">
+											<div class="col s5 m4 l5">
+												<p class="like-input-text">Nombre</p>
+												<input class="with-gap" name="name_choice" value="Owner" type="radio" id="option1" checked="checked"/>
+												<label for="option1">Propietario</label>
+											</div>
+											<div  class="input-field col s7 m8 l7">
+												<div id="owner_name" ></div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col s5 m4 l5">
+												<input class="with-gap" name="name_choice" value="Other" type="radio" id="option2" />
+												<label for="option2">Otro</label>
+											</div>
+											<div class="input-field col s7 m8 l7">
+												<input id="disabled_user_name" type="text" name="user[name]" disabled>
+												<label for="disabled_user_name">Nombre</label>
+											</div>
+										</div>
+									</div>
+								<% end %>
+							</div>
+							<div class="col l6">
+								<div class="row">
+									<div class="input-field col s12 m12 l12">
+										<p class="like-input-text">Teléfono</p>
+									</div>
+									<div class="input-field col s5 m5 l5">
+										<input class="with-gap" name="phone-type" value="mobile" type="radio" id="mobile" checked="checked">
+										<label for="mobile">Celular</label>
+									</div>
+									<div class="input-field col s7 m7 l7">
+										<input id="mobile_phone" name="user[mobile_phone]" type="text">
+										<label for="mobile_phone">Número (10 dígitos)</label>
+									</div>
+									<div class="input-field col s5 m7 l5">
+										<input class="with-gap" name="phone-type" value="land_line" type="radio" id="land-line">
+										<label for="land-line">Fijo</label>
+									</div>
+									<div class="input-field col s7 m7 l7">
+										<input id="other_phone" name="user[other_phone]" type="text" disabled>
+										<label for="other_phone">Número (10 dígitos)</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m12 l12">
+								<p class="like-input-text">Correo electrónico</p>
+							</div>
+							<% if @email %>
+								<div class="input-field col s5 m4 l4">
+									<input id="registered-email-radio" class="with-gap" name="email_choice" value="registered-email" type="radio" checked="checked">
+									<label for="registered-email-radio">Registrado</label>
+								</div>
+								<div class="input-field col s7 m8 l8">
+									<p id="registered-email-input" class="like-input-text"><%=@email%></p>
+								</div>
+								<div class="input-field col s5 m4 l4">
+									<input id="other-email-radio" class="with-gap" name="email_choice" value="other-email" type="radio">
+									<label for="other-email-radio">Otro</label>
+								</div>
+								<div class="input-field col s7 m8 l8">
+									<input id="other-email-input" type="text" name="user[email]" disabled>
+									<label for="other-email-input">Ingrese correo</label>
+								</div>
+							<% else %>
+								<div class="input-field col l12">
+									<input id="email" name="user[email]" type="text">
+									<label for="email">Correo electrónico</label>
+								</div>
+							<% end %>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m12 l12">
+								<p class="like-input-text">¿Cómo prefieres que te contactemos?</p>
+							</div>
+							<div class="input-field col s6 m6 l3">
+								<input id="email-contact-radio" type="radio" name="user[contact]" class="with-gap" value="email">
+								<label for="email-contact-radio">Correo</label>
+							</div>
+							<div class="input-field col s6 m6 l3">
+								<input id="phone-contact-radio" type="radio" name="user[contact]" class="with-gap" value="phone">
+								<label for="phone-contact-radio">Teléfono</label>
+							</div>
+							<div class="input-field col s6 m6 l3">
+								<input id="whatsapp-contact-radio" type="radio" name="user[contact]" class="with-gap" value="whatsapp">
+								<label for="whatsapp-contact-radio">WhatsApp</label>
+							</div>
+							<div class="input-field col s6 m6 l3">
+								<input id="message-contact-radio" type="radio" name="user[contact]" class="with-gap" value="message">
+								<label for="message-contact-radio">Mensaje SMS</label>
+							</div>
+						</div>
+						<div class="col s12">
+							<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right" type="submit"><i class="material-icons">send</i></button>
+						</div>
+
+						<div class="card-action valign-wrapper">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
