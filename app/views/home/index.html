@@ -1,11 +1,15 @@
-<div class="b-background-image" style="background: url(/assets/interior3.jpg) no-repeat; width: 100%; height: 800px">
+<div style="background: url(/assets/interior3.jpg) no-repeat; background-position: center center; width: 100%; height: 800px">
 	<div class="dark-screen" style="height: 800px">		
 		<nav class="transparent z-depth-0" role="navigation">
 			<div class="b-container">
 				<div class="nav-wrapper">
-					<a href="#" class="brand-logo valign-wrapper">
+					<a href="#" class="brand-logo valign-wrapper hide-on-small-only">
 						<img src="/assets/white_logo">
-						primeraRaíz <span class="hide-on-small-only">| </span><span id="cdmx" class="hide-on-small-only">CDMX</span>
+						primeraRaíz | <span id="cdmx">CDMX</span>
+					</a>
+					<a href="#" class="brand-logo valign-wrapper hide-on-med-and-up right">
+						<img src="/assets/white_logo">
+						primeraRaíz
 					</a>
 					<ul class="right hide-on-med-and-down">
 						<li><a href="#steps">CÓMO FUNCIONA</a></li>
@@ -69,7 +73,7 @@
 	<div class="b-container">
 		<div class="section">
 			<div class="b-section-title row">
-				<h3 class="b-section-title center-align white-text">Profesional, fácil, seguro</h3>
+				<h4 class="b-section-title center-align white-text">Profesional, fácil, seguro</h4>
 			</div>
 			<div class="row">
 				<div class="col s12 m6 l4">
@@ -87,7 +91,7 @@
 								<p class="card-text">En tu departamento, sin compromiso. Si decides contratarnos, el agente realizará un estudio fotográfico, elaborará planos, y te asesorará para definir el precio y la estrategia de venta que se ajusten a tus prioridades.</p>
 							</div>
 						</div>
-						<div class="card-action">
+						<div class="card-action action-no-padding">
 							<a class="login-modal-trigger" href="#login">
 								<div class="card-button-container center-align">AGENDA UNA CITA</div>
 							</a>
@@ -103,7 +107,7 @@
 								</div>
 							</div>
 							<div class="card-title">
-								<span class="card-title bold">Conseguimos comprador</span>
+								<span class="card-title bold">Vendemos</span>
 							</div>
 							<div class="b-card-body">
 								<p class="card-text">Te asesoramos en todos los aspectos legales y financieros de la compraventa. Publicamos anuncios claros y detallados, la mejor forma de atraer compradores serios, y lograr un mejor precio y tiempo de venta.</p>
@@ -138,7 +142,7 @@
 		</div>
 	</div>
 </div>
-<div class="b-background-image" id="transition" style="background: url(/assets/interior4.jpg)">
+<div id="transition" style="background: url(/assets/interior4.jpg)">
 	<div class="b-container">
 			<div id="transition-row" class="row">
 				<div class="col s12 m5 offset-m7" style="height:500px">
@@ -266,6 +270,7 @@
 				<div id="registration-tab" class="col s12">
 					<div class="row no-margin-bottom">
 						<form id="registration-form" class="col s12">
+							<div id="registration-errors"></div>
 							<div class="row">
 								<div class="input-field col s12">
 									<input id="name" type="text" name="user[email]" class="validate">

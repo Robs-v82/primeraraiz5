@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 	end
 
 	def profile
-		@neighborhoods = Neighborhood.all
+		@neighborhoods = Neighborhood.all.order(:name)
 		@working_hours = []
 		(8..20).each {|x| @working_hours << "#{x}:00"}
 		if current_user.name

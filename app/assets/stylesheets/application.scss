@@ -82,7 +82,8 @@ blockquote{
 }
 
 .card-title {
-	font-weight: 600 !important;
+	font-weight: 500 !important;
+	font-size: 1em;
 }
 
 .card-button-container {
@@ -317,7 +318,8 @@ transform: scale(.5); }
 	vertical-align: bottom;
 }
 
-.b-background-image {
-	background-position: center center;
+.action-no-padding {
+	padding: 0px !important;
 }
+
 
