@@ -17,11 +17,10 @@ class UserMailer < ActionMailer::Base
 		end	
 	end
 
-	def welcome_email(user, date)
+	def welcome_email(user)
 		@user = user
 		@greeting = greeting
-		@dateString = I18n.l date 
-		mail(to: @user.email, subject: 'Tu cita ha quedado agendada para el ' + @dateString)
+		mail(to: @user.email, subject: 'Tu cita ha quedado agendada')
 	end
 
 end
