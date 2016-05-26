@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 	
-	default from: "roberto.valladarespiedras@gmail.com"
+	default from: "primeraraiz@gmail.com"
 
 	def greeting
 		current_time = Time.now.to_i
@@ -17,10 +17,11 @@ class UserMailer < ActionMailer::Base
 		end	
 	end
 
-	def welcome_email(user)
+	def welcome_email(user, date)
 		@user = user
 		@greeting = greeting
-		mail(to: @user.email, subject: 'Tu cita ha quedado agendada')
+		@dateString = I18n.l date 
+		mail(to: @user.email, subject: 'Tu cita ha quedado agendada para el ' + @dateString)
 	end
 
 end

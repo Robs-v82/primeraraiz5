@@ -15,7 +15,7 @@ class AppointmentsController < ApplicationController
 			end
 			if User.update(session[:user_id], user_update_info)
 				new_appointment.save
-				UserMailer.welcome_email(current_user).deliver
+				UserMailer.welcome_email(current_user, new_appointment.date).deliver
 				redirect_to "/users/#{session[:user_id]}/properties"
 			else
 				errors = User.update(session[:user_id], user_update_params).errors.full_messages
