@@ -1,5 +1,23 @@
 es:
   activerecord:
+    attributes:
+      property:
+        street: "La calle"
+        number: "El número exterior"
+        unit: "El número interior"
+        owner_first_name: "El nombre del propietario"
+        owner_last_name: "El apellido paterno del propietario"
+        owner_second_last_name: "El apellido materno del propietario"
+        neighborhood_id: "La colonia"
+      user:
+        email: "El correo electrónico"
+        password: "La contraseña"
+        password_confirmation: "La confirmación de la contraseña"
+        mobile_phone: "El número telefónico"
+        other_phone: "El número telefónico"
+      appointment:
+        date: "La fecha"
+        time: "La hora"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

@@ -1,7 +1,34 @@
 <script>
+
+
 	$(document).ready(function() {
-
-
+		
+		var appointment_form = $('#appointment_form')
+		$('#appointment_form').submit(function(e) {
+			e.preventDefault()
+			$.ajax({
+					type: "POST",
+					url: "/appointments",
+					data: appointment_form.serialize(),
+					dataType: "json",
+					success: function(data) {
+						var user_id = data['user_id']
+						url = "/users/"+user_id+"/properties"
+						$(location).attr("href", url)
+					},
+					error: function(data) {
+						console.log(data)
+						debugger
+						var array = data["responseJSON"].errors
+						console.log(array)
+						var newHTML = []
+						for (var i = 0; i < array.length; i++) {
+						    newHTML.push('<li class="red-text">' + array[i] + '</li>')
+						}
+						$("#appointment_errors").html("<div class='row'><ul>"+newHTML.join("")+"</ul></div>")
+					}
+				})		
+		})
 
 		$('#property_form').submit(function() {
 			$.post(
@@ -31,34 +58,35 @@
 	})
 
 
-	$(document).on(function() {
+	// $(document).on(function() {
 
-		$('#appointment_form').submit(function() {
-			$.post(
-				'/appointments',
-				$(this).serialize(),
-				function(data) {
-					if ("user_id" in data) {
-						var user_id = data['user_id']
-						url = "/users/"+user_id+"/properties"
-						$(location).attr("href", url)
-					}
-					else {
-						var array = data.errors
-						console.log(array)
-						var newHTML = []
-						for (var i = 0; i < array.length; i++) {
-						    newHTML.push('<li class="red-text">' + array[i] + '</li>')
-						}
-						$("#appointment_errors").html("<div class='row'><ul>"+newHTML.join("")+"</ul></div>")
-					}
-				},
-				"json"
-			)
-			return false
-		})	
+		// $('#appointment_form').submit(function() {
+		// 	console.log("hello")
+		// 	$.post(
+		// 		'/appointments',
+		// 		$(this).serialize(),
+		// 		function(data) {
+		// 			if ("user_id" in data) {
+		// 				var user_id = data['user_id']
+		// 				url = "/users/"+user_id+"/properties"
+		// 				$(location).attr("href", url)
+		// 			}
+		// 			else {
+		// 				var array = data.errors
+		// 				console.log(array)
+		// 				var newHTML = []
+		// 				for (var i = 0; i < array.length; i++) {
+		// 				    newHTML.push('<li class="red-text">' + array[i] + '</li>')
+		// 				}
+		// 				$("#appointment_errors").html("<div class='row'><ul>"+newHTML.join("")+"</ul></div>")
+		// 			}
+		// 		},
+		// 		"json"
+		// 	)
+		// 	return false
+		// })	
 		
-	})
+	// })
 
 </script>
 
@@ -119,32 +147,26 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m4 l4">
-								<input id="owner_first_name" type="text" class="validate" name="property[owner_first_name]">
-								<label for="owner_first_name">Nombre(s)</label>
+								<input id="owner_first_name" type="text" class="validate" name="property[owner_first_name]" placeholder="Nombres">
 							</div>
 							<div class="input-field col s6 m4 l4">
-								<input id="owner_last_name" type="text" class="validate" name="property[owner_last_name]">
-								<label for="owner_last_name">Apellido paterno</label>
+								<input id="owner_last_name" type="text" class="validate" name="property[owner_last_name]" placeholder="Apellido Paterno">
 							</div>
 							<div class="input-field col s6 m4 l4">
-								<input id="owner_second_last_name" type="text" class="validate" name="property[owner_second_last_name]">
-								<label for="owner_second_last_name">Apellido materno</label>
+								<input id="owner_second_last_name" type="text" class="validate" name="property[owner_second_last_name]" placeholder ="Apellido materno">
 							</div>
 						</div>
 						<div cass="row">
 							<h6 class="card-subtitle">Dirección</h6>
 						</div>
 						<div class="input-field col s12 m12 l6">
-							<input id="street" type="text" class="validate" name="property[street]">
-							<label for="street">Calle</label>
+							<input id="street" type="text" class="validate" name="property[street]" placeholder="Calle">
 						</div>
 						<div class="input-field col s6 m6 l3">
-							<input id="number" type="text" class="validate" name="property[number]">
-							<label for="number">Núm. exterior</label>
+							<input id="number" type="text" class="validate" name="property[number]" placeholder="Núm. exterior">
 						</div>
 						<div class="input-field col s6 m6 l3">
-							<input id="unit" type="text" class="validate" name="property[unit]">
-							<label for="unit">Núm. interior</label>
+							<input id="unit" type="text" class="validate" name="property[unit]" placeholder="Núm. interior">
 						</div>
 						<div class="bottom-row row">
 							<div class="input-field col s9 m8 l6">
@@ -170,7 +192,7 @@
 					<span class="card-title">Cita</span>
 					<h6 class="inline-title right">Paso 3/3</h6>
 					<div id="appointment_errors"></div>
-					<form id="property_form" action="/appointments" method="post">
+					<form id="appointment_form" action="/appointments" method="post">
 						<div class="row">
 							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 							<div class="input-field col s6 m6 l6">
@@ -210,8 +232,7 @@
 												<label for="option2">Otro</label>
 											</div>
 											<div class="input-field col s7 m8 l7">
-												<input id="disabled_user_name" type="text" name="user[name]" disabled>
-												<label for="disabled_user_name">Nombre</label>
+												<input id="disabled_user_name" type="text" name="user[name]" disabled placeholder="Nombre">
 											</div>
 										</div>
 									</div>
@@ -227,16 +248,14 @@
 										<label for="mobile">Celular</label>
 									</div>
 									<div class="input-field col s7 m7 l7">
-										<input id="mobile_phone" name="user[mobile_phone]" type="text">
-										<label for="mobile_phone">Número (10 dígitos)</label>
+										<input id="mobile_phone" name="user[mobile_phone]" type="text" placeholder="Número (10 dígitos)">
 									</div>
 									<div class="input-field col s5 m7 l5">
 										<input class="with-gap" name="phone-type" value="land_line" type="radio" id="land-line">
 										<label for="land-line">Fijo</label>
 									</div>
 									<div class="input-field col s7 m7 l7">
-										<input id="other_phone" name="user[other_phone]" type="text" disabled>
-										<label for="other_phone">Número (10 dígitos)</label>
+										<input id="other_phone" name="user[other_phone]" type="text" disabled placeholder="Número (10 dígitos)">
 									</div>
 								</div>
 							</div>
@@ -258,13 +277,11 @@
 									<label for="other-email-radio">Otro</label>
 								</div>
 								<div class="input-field col s7 m8 l8">
-									<input id="other-email-input" type="text" name="user[email]" disabled>
-									<label for="other-email-input">Ingrese correo</label>
+									<input id="other-email-input" type="text" name="user[email]" disabled placeholder="Correo">
 								</div>
 							<% else %>
 								<div class="input-field col l12">
-									<input id="email" name="user[email]" type="text">
-									<label for="email">Correo electrónico</label>
+									<input id="email" name="user[email]" type="text" placeholder="Correo">
 								</div>
 							<% end %>
 						</div>

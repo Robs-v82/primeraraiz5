@@ -3,9 +3,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 	has_many :properties
 	has_many :appointments, through: :properties
-
 	VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-
+	validates :password, length: { minimum: 7 , message: "debe tener una extensión mínima de 7 caracteres"}
 	validates :email, uniqueness:  {case_sensitive: false }
 	validates :email, format:  {with: VALID_EMAIL_REGEX }
 	validates :mobile_phone, length: { is: 10 }, numericality: true, allow_nil: true

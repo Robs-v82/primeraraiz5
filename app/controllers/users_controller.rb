@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
 
 	def create
+		puts "XXxx", user_params[:password_confirmation] ,"Xxxx"
 		new_user = User.new(user_params)
 		respond_to do |format|
 			if new_user.valid?

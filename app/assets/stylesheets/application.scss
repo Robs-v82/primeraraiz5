@@ -87,7 +87,7 @@ blockquote{
 }
 
 .card-button-container {
-	width: 100%;
+	width: 220px;
 	padding: 6px;
 	color: #b2ff59;
 	border: 2px solid #b2ff59 ;
@@ -172,6 +172,15 @@ footer {
 
 .input-field {
 	line-height: 75%;
+}
+
+input:not([type]), input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px;
+    height: 2.2em;
+    box-sizing: border-box;
+    border: 1px solid #bdbdbd !important;
+    background-color: white !important;
 }
  
  #user-image {

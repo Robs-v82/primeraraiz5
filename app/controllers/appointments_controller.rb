@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
 
 	def create
+		puts 'XXxx', appointment_params, "XXxx"
 		appointment_info = appointment_params
 		appointment_info.store("property_id", "#{session[:property_id]}")
 		appointment_info.store("status", "Agendada")
@@ -18,18 +19,17 @@ class AppointmentsController < ApplicationController
 					session[:appointment_id] = Appointment.last[:id]
 					UserMailer.welcome_email(current_user, new_appointment.date).deliver
 					# render json: {user_id:"#{session[:user_id]}"} 
-					redirect_to "/users/#{session[:user_id]}/properties"
+					render json: {user_id: "#{session[:user_id]}"}
 				else
 					errors = User.update(session[:user_id], user_update_params).errors.full_messages
-					render json: {errors: errors}
+					render json: {errors: errors}, :status => 422
 				end
 			else
 				errors = new_appointment.errors.full_messages
 				User.update(session[:user_id], user_update_params).errors.full_messages.each do |error|
 					errors << error
 				end
-
-				render json: {errors: errors} 
+				render json: {errors: errors}, :status => 422
 			end
 
 	end
