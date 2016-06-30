@@ -15,6 +15,7 @@ es:
         password_confirmation: "La confirmación de la contraseña"
         mobile_phone: "El número telefónico"
         other_phone: "El número telefónico"
+        name: "El nombre"
       appointment:
         date: "La fecha"
         time: "La hora"

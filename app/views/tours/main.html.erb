@@ -1,0 +1,94 @@
+<script>
+  $(function(){
+      $("#b-subtitle-tour, #c-subtitle-tour").typed({
+        strings: ["Inmuebles en venta", "Departamento muestra", "Rentas vacacionales", "Bares y restaurantes", "Instalaciones deportivas", "Espacios culturales", "Desde $4,640 pesos^1000<br> <span id='parenthesis'>(gratis al vender tu depa con nosotros)^4000<span>"],
+        typeSpeed: 0,
+        backDelay: 1000,
+        showCursor: false,
+        loop: true,
+      });
+  });
+</script>
+<video autoplay id="bgvid" loop>
+	<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
+</video>
+<div class="dark-screen" style="height: 800px">		
+	<nav class="transparent z-depth-0" role="navigation">
+		<div class="b-container">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo valign-wrapper hide-on-small-only">
+					<img src="/assets/white_logo">
+					primeraRaíz | <span id="cdmx">CDMX</span>
+				</a>
+				<a href="#" class="brand-logo valign-wrapper hide-on-med-and-up right">
+					<img src="/assets/white_logo">
+					primeraRaíz
+				</a>
+				<ul class="right hide-on-med-and-down">
+					<% if current_user %>
+						<li>
+							<form id="logout" action="/sign_out" method="post">
+								<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+								<input type="hidden" name="_method" value="delete">
+								<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
+							</form>
+						</li>
+					<% else %>
+						<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
+					<% end %>
+					<li><a href="#steps">CÓMO FUNCIONA</a></li>
+					<li><a href="#profile">NOSOTROS</a></li>
+					 <li><a class="dropdown-button" href="#!" data-activates="dropdown1">TOUR VIRTUAL<i class="material-icons right dropdown-icon">arrow_drop_down</i></a></li>
+				</ul>
+				<ul id="dropdown1" class="dropdown-content">
+					<li><a id="vt-link" href="/virtualtour">DESCRIPCIÓN</a></li>
+					<li><a id="vt-link" href="https://matterport.com/try-it/" target="blank">DEMO</a></li>
+					<li><a id="vt-link" href="/virtualtour/new">CONTRATA</a></li>
+				</ul>
+				<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
+					<li><a href="#steps">CÓMO FUNCIONA</a></li>
+					<li><a href="#profile">NOSOTROS</a></li>
+					<% if current_user %>
+						<li>
+							<form id="logout" action="/sign_out" method="post">
+								<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+								<input type="hidden" name="_method" value="delete">
+								<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
+							</form>
+						</li>
+					<% else %>
+						<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
+					<% end %>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</div>
+	</nav>
+	<div id="main" class="section">
+		<div class="b-container">
+			<div class="row title-wrapper valign-wrapper" style="width: 100%">
+				<div id="banner" class="col s12 m12 l12">
+					<div class="row">
+						<h1 id="b-title" class="hide-on-small-only center-align white-text">El tour vitual más realista</h1>
+						<div id="b-subtitle-container" class="hide-on-small-only center-align white-text">
+							<h3 id="b-subtitle-tour"></h3>
+						</div>		
+						<h1 id="c-title" class="hide-on-med-and-up center-align white-text">El tour vitual más realista</h1>
+						<div id="c-subtitle-container" class="hide-on-med-and-up center-align white-text">
+							<h3 id="c-subtitle-tour"></h3>
+						</div>
+					</div>
+					<br>
+					<div class="row center-align">
+						<a class="login-modal-trigger" href="#login">	
+							<div class="b-link tour-button-container">DEMO</div>
+							<div class="b-link tour-button-container">CONTRATA</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -40,6 +40,10 @@ gem "paperclip", "~> 4.2"
 
 gem 'figaro'
 
+gem 'pickadate-rails', '~> 3.5', '>= 3.5.6.0'
+
+gem "typedjs-rails", "~> 1.0.3"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

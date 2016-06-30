@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
  
  	protect_from_forgery with: :exception
-	helper_method :current_user, :greeting, :set_auth
+	helper_method :current_user, :greeting, :set_auth, :set_date
 	def greeting
 		current_time = Time.now.to_i
 		midnight = Time.now.beginning_of_day.to_i
@@ -38,6 +38,36 @@ class ApplicationController < ActionController::Base
 			end 
 		end
 
+	end
+
+	def set_date(myString)
+		words = myString.split(' ')
+		if words[3] == "enero"
+			month = "01"
+		elsif words[3] == "febrero"
+			month = "02"
+		elsif words[3] == "marzo"
+			month = "03"
+		elsif words[3] == "abril"
+			month = "04"
+		elsif words[3] == "mayo"
+			month = "05"
+		elsif words[3] == "junio"
+			month = "06"
+		elsif words[3] == "julio"
+			month = "07"
+		elsif words[3] == "agosto"
+			month = "08"
+		elsif words[3] == "septiembre"
+			month = "09"
+		elsif words[3] == "octubre"
+			month = "10"
+		elsif words[3] == "noviembre"
+			month = "11"
+		elsif words[3] == "diciembre"
+			month = "12"
+		end
+		return date = words[5] + "-" + month + "-" + words[1]
 	end
 
 

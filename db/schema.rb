@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524232127) do
+ActiveRecord::Schema.define(version: 20160623223958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20160524232127) do
     t.datetime "updated_at"
     t.date     "date"
     t.time     "time"
+    t.string   "kind",        default: "sale"
+    t.integer  "hours",       default: 3
   end
 
   add_index "appointments", ["property_id"], name: "index_appointments_on_property_id", using: :btree

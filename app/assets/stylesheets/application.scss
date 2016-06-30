@@ -57,7 +57,23 @@ blockquote{
 }
 
 #b-subtitle {
+	display: inline;
 	font-weight: 500;
+}
+
+#b-subtitle-tour {
+	display: inline;
+	font-weight: 500;
+}
+
+#b-subtitle-container {
+	margin-top: 20px;
+	height: 130px;
+}
+
+#parenthesis {
+	font-size: 0.8em;
+	font-weight: 300;
 }
 
 #c-title {
@@ -68,6 +84,15 @@ blockquote{
 #c-subtitle {
 	font-size: 1.8em;
 	font-weight: 500;
+}
+
+#c-subtitle-tour {
+	font-size: 1.8em;
+	font-weight: 500;
+}
+
+#c-subtitle-container {
+	height: 100px;
 }
 
 .b-section-title {
@@ -114,6 +139,15 @@ blockquote{
 	margin: 0 auto;
 	padding: 6px;
 	width: 190px;
+	color: #b2ff59;
+	border: 2px solid #b2ff59;
+}
+
+.tour-button-container {
+	display: inline-block;
+	margin: 10px;
+	padding: 6px;
+	width: 120px;
 	color: #b2ff59;
 	border: 2px solid #b2ff59;
 }
@@ -331,4 +365,34 @@ transform: scale(.5); }
 	padding: 0px !important;
 }
 
+.dropdown-content li > a, {
+	color: white;	
+}
+
+ul#dropdown1.dropdown-content {
+	background-color: rgba(0,0,0, 0.75);
+}
+
+.dropdown-content li > a:hover, {
+	color: #424242;
+	background-color: #b2ff59;	
+}
+
+.dropdown-icon {
+	margin: 0 !important;
+}
+
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+  	background-size: cover;
+  	transition: 1s opacity;
+}
 

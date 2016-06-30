@@ -1,6 +1,4 @@
 <script>
-
-
 	$(document).ready(function() {
 		
 		var appointment_form = $('#appointment_form')
@@ -18,7 +16,6 @@
 					},
 					error: function(data) {
 						console.log(data)
-						debugger
 						var array = data["responseJSON"].errors
 						console.log(array)
 						var newHTML = []
@@ -35,8 +32,7 @@
 				'/properties',
 				$(this).serialize(),
 				function(data) {
-					if ("property_id" in data) {
-						
+					if ("property_id" in data) {	
 						$("#owner_name").html('<p id="owner-name-text" class="like-input-text">'+data.owner_name+'</p>')
 						$("#property-card").slideUp()
 						$("#appointment-card").delay(500).slideDown()
@@ -55,39 +51,37 @@
 			)
 			return false
 		})
+
+
+		var setTime = function(hours) {
+			console.log('Setting time')
+			$('.timepicker').pickatime({
+				min: [8,0],
+				max: [17,0],
+				interval: 180,
+				disable: hours.hours,
+				clear: "Cerrar",
+			})
+		}
+
+		$('#date_selector').change(function() {
+			$('#time_selector').replaceWith('<input id="time_selector" disabled name="appointment[time]" class="timepicker">')
+			$.post(
+				'/getTime',
+				$(this).serialize(),
+				function(data) {
+					console.log(data)
+					setTime(data)
+					$('#time_selector').prop('disabled', false)
+				}
+			)
+			return false
+		})
+
+
+
+
 	})
-
-
-	// $(document).on(function() {
-
-		// $('#appointment_form').submit(function() {
-		// 	console.log("hello")
-		// 	$.post(
-		// 		'/appointments',
-		// 		$(this).serialize(),
-		// 		function(data) {
-		// 			if ("user_id" in data) {
-		// 				var user_id = data['user_id']
-		// 				url = "/users/"+user_id+"/properties"
-		// 				$(location).attr("href", url)
-		// 			}
-		// 			else {
-		// 				var array = data.errors
-		// 				console.log(array)
-		// 				var newHTML = []
-		// 				for (var i = 0; i < array.length; i++) {
-		// 				    newHTML.push('<li class="red-text">' + array[i] + '</li>')
-		// 				}
-		// 				$("#appointment_errors").html("<div class='row'><ul>"+newHTML.join("")+"</ul></div>")
-		// 			}
-		// 		},
-		// 		"json"
-		// 	)
-		// 	return false
-		// })	
-		
-	// })
-
 </script>
 
 <nav class="light-green accent-2 z-depth-0" role="navigation">
@@ -197,16 +191,11 @@
 							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 							<div class="input-field col s6 m6 l6">
 								<p class="like-input-text">Fecha</p>
-								<input type="date" name="appointment[date]" class="datepicker">
+								<input id="date_selector" type="text" name="appointment[date]" class="datepicker">
 							</div>
 							<div class="input-field col s6 m6 l6">
 								<p class="like-input-text">Hora</p>
-								<select name="appointment[time]" class="browser-default">
-									<option value="" disabled selected>Seleccione la hora</option>
-									<% @working_hours.each do |hour| %>
-										<option value="<%= hour %>"><%=  hour %></option>
-									<% end %>
-								</select>
+								<input id="time_selector" disabled name="appointment[time]" class="timepicker">
 							</div>
 						</div>
 						<div class="row">
@@ -244,14 +233,14 @@
 										<p class="like-input-text">Teléfono</p>
 									</div>
 									<div class="input-field col s5 m5 l5">
-										<input class="with-gap" name="phone-type" value="mobile" type="radio" id="mobile" checked="checked">
+										<input class="with-gap" name="phone_type" value="mobile" type="radio" id="mobile" checked="checked">
 										<label for="mobile">Celular</label>
 									</div>
 									<div class="input-field col s7 m7 l7">
 										<input id="mobile_phone" name="user[mobile_phone]" type="text" placeholder="Número (10 dígitos)">
 									</div>
 									<div class="input-field col s5 m7 l5">
-										<input class="with-gap" name="phone-type" value="land_line" type="radio" id="land-line">
+										<input class="with-gap" name="phone_type" value="land_line" type="radio" id="land-line">
 										<label for="land-line">Fijo</label>
 									</div>
 									<div class="input-field col s7 m7 l7">

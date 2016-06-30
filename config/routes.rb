@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'tours/demo'
+
+  get 'tours/new'
+
   root 'home#index'
   post 'users/login' => 'users#login'
   post 'users' => 'users#create'
@@ -9,6 +13,9 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#profile', as: 'profile'
   get 'auth/:provider/callback', to: 'sessions#create' 
   delete 'sign_out' => 'sessions#destroy'
+  get 'virtualtour' => 'tours#main'
+  get 'virtualtour/new' => 'tours#new'
+  post 'getTime' => 'appointments#getTime'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
