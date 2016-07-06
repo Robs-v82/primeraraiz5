@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Primera Raíz</title>
+	<meta name="google-site-verification" content="xWrWEWauf0crJRezjK3ggaV-xIyRrNvHhs4DDqRHl9o" />
 	<meta name="description" content="Vendemos tu depa en la Ciudad de México. Comisión del 2%, la más baja del mercado.">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -85,6 +86,11 @@
 				$('#registered-email-radio').click(function() {
 					$('#registered-email-input').css("color", "#424242")
 					$('#other-email-input').attr("disabled", true)	
+				})
+
+				$('#description_trigger').click(function() {
+					$('#banner').slideUp()
+					$('#new_banner').slideDown()
 				})
 
 				//User regisration:
