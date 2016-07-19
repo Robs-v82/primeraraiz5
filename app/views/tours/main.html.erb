@@ -1,12 +1,141 @@
 <script>
   $(function(){
       $("#b-subtitle-tour, #c-subtitle-tour").typed({
-        strings: ["Inmuebles en venta", "Departamento muestra", "Rentas vacacionales", "Bares y restaurantes", "Instalaciones deportivas", "Espacios culturales", "Desde $4,640 pesos^1000<br> <span id='parenthesis'>(gratis al vender tu depa con nosotros)^4000<span>"],
+        strings: ["^1200Inmuebles en venta", "^1200Departamento muestra", "^1200Hoteles, bares y restaurantes", "^1200Espacios culturales", "^1200Desde $4,640 pesos^1000<br> <span id='parenthesis'>(gratis al vender tu depa con nosotros)^4000<span>"],
         typeSpeed: 0,
         backDelay: 1000,
-        showCursor: false,
         loop: true,
       });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.tour-modal-trigger').leanModal();
+
+    var setTime = function(hours) {
+			console.log('Setting time')
+			$('.timepicker').pickatime({
+				min: [8,0],
+				max: [17,0],
+				interval: 180,
+				disable: hours.hours,
+				clear: "Cerrar",
+			})
+		}
+
+		$('#date_selector').change(function() {
+			$('#tour-time-selector').replaceWith('<input id="tour-time-selector" disabled name="appointment[time]" class="timepicker">')
+			$.post(
+				'/getTime',
+				$(this).serialize(),
+				function(data) {
+					console.log(data)
+					setTime(data)
+					$('#tour-time-selector').prop('disabled', false)
+					$('#tour-appointment-button').prop('disabled', true)
+				}
+			)
+			return false
+		})
+
+		$('#time-wrapper').on('change', function() {
+			console.log('Working')
+			$('#tour-appointment-button').removeAttr('disabled', true)	
+		})
+
+		$('#tour-appointment-form').submit(function() {
+			$.post(
+				'/appointments/tourAppointment',
+				$(this).serialize(),
+				function(data) {
+					console.log(data)
+					if ("result" in data) {
+						$('#tour-third-b').hide()
+						$('#tour-fourth-b').show()
+					}
+				}
+			)
+			return false
+		})
+
+		$('#tour-district-selector').change(function() {
+			$('#tour-neighborhood-selector').html('')
+			$.post(
+				'/virtualtour/getNeighborhoods',
+				$(this).serialize(),
+				function(data) {
+					var neighboodOptions = "<option value='' disabled selected>Colonia</option>"
+					for(i=0; i<data.neighborhoods.length; i++) {
+						neighboodOptions += "<option value='"+data.neighborhoods[i].id+"'>"+data.neighborhoods[i].name+"</option>"
+					}
+					$('#tour-neighborhood-selector').append(neighboodOptions)
+				}
+			)
+			return false
+		})
+
+		$('#tour-neighborhood-selector').change(function() {
+			$('#tour-address-button').removeAttr('disabled', true)
+		})
+
+		$('#tour-address-form').submit(function() {
+			$.post(
+				'/locations',
+				$(this).serialize(),
+				function(data) {
+					console.log(data)
+					if ("success" in data) {
+						$('#tour-first-b').hide()
+						$('#tour-second-b').show()
+					}
+					else {
+						console.log('Wrong!')
+					}
+				}
+			)
+			return false
+		})
+
+
+		$('#tour-land-line').click(function() {
+			$('#tour-mobile_phone').attr("disabled", true)
+			$('#tour-other_phone').removeAttr("disabled")
+			$('#tour-message-contact-radio').attr("disabled", true)
+			$('#tour-whatsapp-contact-radio').attr("disabled", true)
+		})
+
+
+		$('#tour-mobile').click(function() {
+			$('#tour-mobile_phone').removeAttr("disabled")
+			$('#tour-other_phone').attr("disabled", true)
+			$('#tour-message-contact-radio').removeAttr("disabled")
+			$('#tour-whatsapp-contact-radio').removeAttr("disabled")
+		})
+
+		$('#client-form').submit(function() {
+			$.post(
+				'/clients',
+				$(this).serialize(),
+				function(data) {
+					console.log(data)
+					if ("result" in data) {
+						$('#tour-zero-b').hide()
+						$('#tour-first-b').show()
+					}
+					else {
+						console.log('Wrong!')
+					}
+				}
+			)
+			return false
+		})
+
+		$('.client-contact').change(function() {
+			$('#client-button').removeAttr("disabled", true)
+		})
+
+
   });
 </script>
 <video autoplay id="bgvid" loop>
@@ -43,7 +172,7 @@
 				<ul id="dropdown1" class="dropdown-content">
 					<li><a id="vt-link" href="/virtualtour">DESCRIPCIÓN</a></li>
 					<li><a id="vt-link" href="https://matterport.com/try-it/" target="blank">DEMO</a></li>
-					<li><a id="vt-link" href="/virtualtour/new">CONTRATA</a></li>
+					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
 				</ul>
 				<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
 					<li><a href="#steps">CÓMO FUNCIONA</a></li>
@@ -80,13 +209,280 @@
 					</div>
 					<br>
 					<div class="row center-align">
-						<a class="login-modal-trigger" href="#login">	
-							<a href="" class="b-link tour-button-container">PRECIOS</a>
-							<a href="" class="b-link tour-button-container">DEMO</a>
-							<a href="/virtualtour/new" class="b-link tour-button-container">CONTRATA</a>
+							<a href="https://matterport.com/try-it/" target="blank" class="b-link tour-button-container">DEMO</a>
+							<a href="#tour-modal" class="tour-modal-trigger b-link tour-button-container">CONTRATA</a>
 						</a>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>s
+</div>
+<div id="tour-modal" class="modal">
+	<div id="tour-header" class="modal-content">
+		<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+		<p class="primera">primera<span class="raiz">Raíz</span></p>
+	</div>
+	<div id="tour-first">
+		<div class="modal-content">
+			<div class="row"> 
+				<div class="col s12">
+					<h5>Características del tour virtual</h5>
+					<ul>
+						<li>Recomendado para espacios interiores de hasta 1,000 m2.</li>
+						<li>Consulta en la dirección proporcionada por Primera Raíz, o fácil integración en tu página web.</li>
+						<li>Controles de navegación en inglés.</li>
+						<li>Servicio disponible en la Zona Metropolitana del Valle de México.</li>
+					</ul>
+				</div>
+			</div>	
+			<div class="b-container">
+				<form id="legal_form" class="valign-wrapper" style="width:100%">
+					<input type="checkbox" id="legal" class="valign">
+					<label class="terms_label valign" for="#legal">Acepto los <a href="">terminos y condiciones</a></label>
+					<button id="legal-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="tour-second" style="display:none">
+		<div class="modal-content">
+			<div class="row">
+				<div id="tour-zero-b" class="col l6 m6 s12 tour-left-column">
+					<h5>Datos de contacto</h5>
+					<form id="client-form" action="/clients" method="post">
+						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+						<div class="row">
+							<div class="input-field col s12">
+								<input type="text" name="client[name]" placeholder="Nombre">
+							</div>
+							<div class="input-field col s12">
+								<input type="text" name="client[email]" placeholder="Correo electrónico">
+							</div>
+							<div class="input-field col s5">
+								<input class="with-gap" name="phone_type" value="mobile" type="radio" id="tour-mobile" checked="checked">
+								<label for="tour-mobile">Celular</label>
+							</div>
+							<div class="input-field col s7">
+								<input type="text" name="client[mobile_phone]" placeholder="Número (10 dígitos)">
+							</div>
+							<div class="input-field col s5">
+								<input class="with-gap" name="phone_type" value="land_line" type="radio" id="tour-land-line">
+								<label for="tour-land-line">Fijo</label>
+							</div>
+							<div class="input-field col s7">
+								<input type="text" name="client[other_phone]" placeholder="Número (10 dígitos)">
+							</div>
+							<p>¿Cómo prefieres que te contactemos?</p>
+							<div class="input-field col s6">
+								<input id="tour-email-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="email">
+								<label for="tour-email-contact-radio" class="valign">Correo</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="tour-phone-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="phone">
+								<label for="tour-phone-contact-radio">Teléfono</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="tour-whatsapp-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="whatsapp">
+								<label for="tour-whatsapp-contact-radio">WhatsApp</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="tour-message-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="message">
+								<label for="tour-message-contact-radio">Mensaje SMS</label>
+							</div>
+						</div>
+						<p class="valign-wrapper right">
+							<span class="button-label">Siguiente</span>
+							<button id="client-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+						</p>
+					</form>
+				</div>
+				<div id="tour-first-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+					<h5>Dirección</h5>
+					<p class="header-note">Ingresa la dirección del inmueble en el que realizaremos el tour virtual.</p>
+					<form id="tour-address-form" action="/locations" method="post">
+						<div class="row">
+							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+							<div class="input-field col s12">
+								<input type="text" name="location[street]" placeholder="Calle">
+							</div>
+							<div class="input-field col s6">
+								<input type="text" name="location[number]" placeholder="Núm. exterior">
+							</div>
+							<div class="input-field col s6">
+								<input type="text" name="location[unit]" placeholder="Núm. interior">
+							</div>
+							<div class="input-field col s12">
+								<select id="tour-district-selector" name="tour[district]" class="browser-default">
+									<option value="" disabled selected>Delegación/Municipio</option>
+									<% @areas.each do |area| %>
+										<option><%=area%></option>
+									<% end %>
+								</select>
+							</div>
+							<div class="input-field col s12">
+								<select id="tour-neighborhood-selector" name="location[area_id]" class="browser-default">
+									<option value="" disabled selected>Colonia</option>
+								</select>
+							</div>
+						</div>
+						<p class="valign-wrapper right">
+							<span class="button-label">Siguiente</span>
+							<button id="tour-address-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+						</p>
+					</form>
+				</div>
+				<div id="tour-second-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+					<form id="tour-price-form" action="/virtualtour/setPrice" method="post">
+						<table class="striped">
+							<thead>
+								<tr>
+									<th data-field="shoots" class="center-align">Dimensiones del inmueble</th>
+									<th data-field="price" class="center-align">Costo (IVA incluido)*</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input name="tour[price]" value="4640" class="with-gap" type="radio" id="tour150" />
+										<label for="tour150">&#60 150m2</label>
+									</td>
+									<td class="right">$4,640 MXN</td>
+								</tr>
+								<tr>
+									<td>
+										<input name="tour[price]" value="5800" class="with-gap" type="radio" id="tour300" />
+										<label for="tour300">150 – 300m2</label>
+									</td>
+									<td class="right">$5,800 MXN</td>
+								</tr>
+								<tr>
+									<td>
+										<input name="tour[price]" value="6960" class="with-gap" type="radio" id="tour450" />
+										<label for="tour450">300 – 450m2</label>
+									</td>
+									<td class="right">$6,960 MXN</td>
+								</tr>
+								<tr>
+									<td>
+										<input name="tour[price]" value="8120" class="with-gap" type="radio" id="tour600" />
+										<label for="tour600">450 – 600m2</label>
+									</td>
+									<td class="right">$8,120 MXN</td>
+								</tr>
+								<tr>
+									<td>
+										<input name="tour[price]" value="9280" class="with-gap" type="radio" id="tour750" />
+										<label for="tour750">600 – 750m2</label>
+									</td>
+									<td class="right">$9,280 MXN</td>
+								</tr>
+								<tr>
+									<td>
+										<input name="tour[price]" value="10440" class="with-gap" type="radio" id="tour1000" />
+										<label for="tour1000">750 – 1000m2</label>
+									</td>
+									<td class="right">$10,440 MXN</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="table-note right-align">*Incluye la generación de tour virtual y el acceso al modelo en línea por un año.</p>
+						<p class="valign-wrapper right">
+							<span class="button-label">Siguiente</span>
+							<button id="price-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+						</p>
+					</form>
+				</div>
+				<div id="tour-third-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+					<h5>Selecciona fecha y hora</h5>
+					<p class="header-note">Se necesitan de una a dos horas para fotografiar el inmueble, se recomienda evitar el paso de personas.</p>
+					<form id="tour-appointment-form" action="/appointments/tourAppointment" method="post">
+						<div class="row">
+							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+							<div class="input-field col s12">
+								<input id="date_selector" type="text" name="appointment[date]" class="datepicker" placeholder="Fecha">
+							</div>
+							<div id="time-wrapper" class="input-field col s12">
+								<input id="tour-time-selector" disabled name="appointment[time]" class="timepicker" placeholder="Hora">
+							</div>
+						</div>
+						<p class="valign-wrapper right">
+							<span class="button-label">Siguiente</span>
+							<button id="tour-appointment-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+						</p>
+					</form>
+				</div>
+				<div id="tour-fourth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+					<h5>Pago con tarjeta de crédito</h5>
+					<%= form_tag('/charges/create', id: 'card-form') do %>
+					  	<span class="card-errors"></span>
+						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					  	<div class="form-row">
+					    	<label>
+					      		<span>Nombre del tarjetahabiente</span>
+					      		<input type="text" size="20" data-conekta="card[name]"/>
+					    	</label>
+					  	</div>
+					  	<div class="form-row">
+					    	<label>
+					      		<span>Número de tarjeta de crédito</span>
+					      		<input type="text" size="20" data-conekta="card[number]"/>
+					    	</label>
+					  	</div>
+					  	<div class="form-row">
+					    	<label>
+					      		<span>CVC</span>
+					      		<input type="text" size="4" data-conekta="card[cvc]"/>
+					    	</label>
+					  	</div>
+					  	<div class="form-row">
+					    	<label>
+					      		<span>Fecha de expiración (MM/AAAA)</span>
+					      		<input type="text" size="2" data-conekta="card[exp_month]"/>
+					    	</label>
+					    	<span>/</span>
+					    	<input type="text" size="4" data-conekta="card[exp_year]"/>
+					  	</div>
+					<!-- Información recomendada para sistema antifraude -->
+					  <div class="form-row">
+					    <label>
+					      <span>Calle</span>
+					      <input type="text" size="25" data-conekta="card[address][street1]"/>
+					    </label>
+					  </div>
+					<div class="form-row">
+					    <label>
+					      <span>Colonia</span>
+					      <input type="text" size="25" data-conekta="card[address][street2]"/>
+					    </label>
+					  </div>
+					<div class="form-row">
+					    <label>
+					      <span>Ciudad</span>
+					      <input type="text" size="25" data-conekta="card[address][city]"/>
+					    </label>
+					  </div>
+					<div class="form-row">
+					    <label>
+					      <span>Estado</span>
+					      <input type="text" size="25" data-conekta="card[address][state]"/>
+					    </label>
+					  </div>
+					<div class="form-row">
+					    <label>
+					      <span>CP</span>
+					      <input type="text" size="5" data-conekta="card[address][zip]"/>
+					    </label>
+					  </div>
+					<div class="form-row">
+					    <label>
+					      <span>País</span>
+					      <input type="text" size="25" data-conekta="card[address][country]"/>
+					    </label>
+					  </div>
+					  <button type="submit">¡Pagar ahora!</button>
+					<% end %>
+				</div>		
 			</div>
 		</div>
 	</div>

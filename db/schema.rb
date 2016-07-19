@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623223958) do
+ActiveRecord::Schema.define(version: 20160714162759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,25 @@ ActiveRecord::Schema.define(version: 20160623223958) do
 
   add_index "appointments", ["property_id"], name: "index_appointments_on_property_id", using: :btree
 
+  create_table "areas", force: true do |t|
+    t.string   "name"
+    t.string   "zip"
+    t.string   "zone"
+    t.string   "district"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clients", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "mobile_phone"
+    t.string   "other_phone"
+    t.string   "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "listings", force: true do |t|
     t.string   "website"
     t.string   "url"
@@ -63,6 +82,20 @@ ActiveRecord::Schema.define(version: 20160623223958) do
   end
 
   add_index "listings", ["property_id"], name: "index_listings_on_property_id", using: :btree
+
+  create_table "locations", force: true do |t|
+    t.string   "street"
+    t.string   "number"
+    t.string   "unit"
+    t.integer  "area_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "client_id"
+  end
+
+  add_index "locations", ["area_id"], name: "index_locations_on_area_id", using: :btree
+  add_index "locations", ["client_id"], name: "index_locations_on_client_id", using: :btree
 
   create_table "neighborhoods", force: true do |t|
     t.string   "name"

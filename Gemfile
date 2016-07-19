@@ -44,6 +44,8 @@ gem 'pickadate-rails', '~> 3.5', '>= 3.5.6.0'
 
 gem "typedjs-rails", "~> 1.0.3"
 
+gem 'conekta'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

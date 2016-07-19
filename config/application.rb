@@ -7,6 +7,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
+require "conekta"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -19,8 +20,9 @@ module Primeraraiz5
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    Conekta.api_key = Rails.application.secrets.conekta_private
 
-    config.action_mailer.asset_host = "http://52.39.23.168/"
+    config.action_mailer.asset_host = "primeraraiz.com"
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'

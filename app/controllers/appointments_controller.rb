@@ -103,6 +103,25 @@ class AppointmentsController < ApplicationController
 		render json: {hours: off_hours}
 	end
 
+	def tourAppointment
+		session[:tourDate] = appointment_params[:date]
+		session[:tourTime] = appointment_params[:time]
+		appointment_info = appointment_params
+		long_date = appointment_params[:date]
+		target_date = set_date(long_date)
+		appointment_info = appointment_params
+		appointment_info.store("status", "Agendada")
+		appointment_info.delete("date")
+		appointment_info.store("date",target_date)
+		tourAppointment = Appointment.new(appointment_info)
+		if tourAppointment.valid?
+			render json: {result: "success"}
+		else
+			render json: {error: tourAppointment.errors.full_messages}
+			puts 'XXxx'*100, tourAppointment.errors.full_messages
+		end
+	end
+
 	private
 
 	def appointment_params
@@ -116,7 +135,5 @@ class AppointmentsController < ApplicationController
 	def getTime_params
 		params.require(:appointment).permit(:date)
 	end
-
-
 
 end

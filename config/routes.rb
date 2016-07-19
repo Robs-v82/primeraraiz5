@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   
+  post 'charges/create' => 'charges#create'
   get 'tours/demo'
-
   get 'tours/new'
-
   root 'home#index'
   post 'users/login' => 'users#login'
   post 'users' => 'users#create'
   post 'properties' => 'properties#create'
+  post 'appointments/tourAppointment' => 'appointments#tourAppointment'
   post 'appointments' => 'appointments#create'
   get 'users/:id/properties' => 'users#show'
   get 'users/:id' => 'users#profile', as: 'profile'
@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get 'virtualtour' => 'tours#main'
   get 'virtualtour/new' => 'tours#new'
   post 'getTime' => 'appointments#getTime'
+  post 'virtualtour/setPrice' => 'tours#setPrice'
+  post 'virtualtour/getNeighborhoods' => 'tours#getNeighborhoods'
+  post 'locations' => 'locations#create'
+  post 'clients' => 'clients#create'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

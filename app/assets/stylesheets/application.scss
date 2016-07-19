@@ -59,12 +59,27 @@ blockquote{
 #b-subtitle {
 	display: inline;
 	font-weight: 500;
+	line-height: 150%;
+}
+
+#c-subtitle {
+	display: inline;
+	font-weight: 500;
+	line-height: 150%;
 }
 
 #b-subtitle-tour {
 	display: inline;
 	font-weight: 500;
+	line-height: 150%;
 }
+
+#c-subtitle-tour {
+	display: inline;
+	font-weight: 500;
+	line-height: 150%;
+}
+
 
 #b-subtitle-container {
 	margin-top: 20px;
@@ -72,8 +87,39 @@ blockquote{
 }
 
 #parenthesis {
-	font-size: 0.8em;
 	font-weight: 300;
+}
+
+#b-subtitle-container .typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+    font-size: 2.92rem;
+}
+
+#c-subtitle-container .typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+    font-size: 1.8em;
+}
+
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
 }
 
 #c-title {
@@ -289,19 +335,28 @@ input:not([type]), input[type=text], input[type=password] {
 }
 
 [type="radio"].with-gap:checked + label:before {
-border-radius: 50%;
-border: 2px solid #64dd17; }
+	border-radius: 50%;
+	border: 2px solid #64dd17; 
+}
 
 [type="radio"].with-gap:checked + label:after {
-border-radius: 50%;
-border: 2px solid #64dd17;
-background-color: #64dd17;
-z-index: 0;
--webkit-transform: scale(.5);
--moz-transform: scale(.5);
--ms-transform: scale(.5);
--o-transform: scale(.5);
-transform: scale(.5); }
+	border-radius: 50%;
+	border: 2px solid #64dd17;
+	background-color: #64dd17;
+	z-index: 0;
+	-webkit-transform: scale(.5);
+	-moz-transform: scale(.5);
+	-ms-transform: scale(.5);
+	-o-transform: scale(.5);
+	transform: scale(.5); 
+}
+
+#legal_form label {
+	display: inline-block;
+	width: 280px;
+	margin: 6px 0px 0px 0px !important;
+	vertical-align: middle;
+}
 
 #registered-email-input {
 	vertical-align: bottom !important;
@@ -309,7 +364,7 @@ transform: scale(.5); }
 }
 
 .contact {
-	background-color: rgba(0,0,0, 0.75)	
+	background-color: rgba(0,0,0, 0.90)	
 }
 
 
@@ -370,7 +425,7 @@ transform: scale(.5); }
 }
 
 ul#dropdown1.dropdown-content {
-	background-color: rgba(0,0,0, 0.75);
+	background-color: rgba(0,0,0, 0.90);
 }
 
 .dropdown-content li > a:hover, {
@@ -403,6 +458,126 @@ video {
 #new_banner {
 	width: 70%;
 	margin: 0 auto;
-	background-color: rgba(0,0,0, 0.75) !important;
+	background-color: rgba(0,0,0, 0.90) !important;
+}
+
+.modal-content p {
+	font-size: 1.4em;
+}
+
+.modal-content br {
+	line-height: 200%;
+}
+
+p.legal-warning {
+	display: inline-block;
+	font-size: 1.2em !important;
+}
+
+[type="checkbox"]:checked + label:before {
+	border-right: 4px solid #64dd17;
+    border-bottom: 4px solid #64dd17;
+}
+
+#terms_label {
+	display: inline-block;
+}
+
+#legal_form {
+	display: inline-block;
+}
+
+#tour-header {
+	padding-bottom: 0 !important;
+}
+
+#tour-price-form td {
+	padding: 5px;
+	color: #424242;
+}
+
+#tour-price-form label {
+	color: #424242;
+}
+
+.table-note {
+	margin-top: 0px;
+	padding-left: 30px;
+	font-size: 1rem !important;
+}
+
+#tour-modal .modal-content {
+	padding-top: 12px; 
+}
+
+#tour-modal p.flow-text {
+	margin: 0;
+}
+
+.button-label {
+	font-size: 1rem;
+	padding-right: 10px;
+}
+
+.header-note {
+	font-size: 1rem !important;	
+}
+
+select.browser-default {
+	background-color: white;
+	padding: 5px 10px;
+	height: 2.2em;
+	margin-bottom: 15px;
+	border: 1px solid #bdbdbd !important;
+	border-radius: 10px !important;
+}
+
+.side-nav {
+	background-color: rgba(0,0,0, 0.90);
+	color: white;	
+}
+
+.side-nav a {
+	color: white;	
+}
+
+.side-nav a:hover, {
+	color: #424242;
+	background-color: #b2ff59;	
+}
+
+#sidenav-overlay {
+	background-color: rgba(255,255,255, 0.25);
+}
+
+.tour-left-column .input-field{
+	padding: 0;
+	margin-top: 0;
+}
+
+.tour-left-column p {
+	font-size: 14px;
+}
+
+.tour-left-column .row {
+	margin-bottom: 0px;
+}
+
+.tour-left-column h5 {
+	font-size: 18px;
+}
+
+.input-field.col label {
+	left: 0;
+}
+
+.input-field label {
+	top: 0;
+}
+
+#tour-first li {
+	list-style-type: square;
+	list-style-position: inside;
+	margin-bottom: 12px;
 }
 
