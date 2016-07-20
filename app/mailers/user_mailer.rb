@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 	
-	default from: "primeraraiz@gmail.com"
+	default from: "roberto@primeraraiz.com"
 
 	def greeting
 		current_time = Time.now.to_i
