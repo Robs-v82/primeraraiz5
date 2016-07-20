@@ -113,6 +113,10 @@
 			$('#tour-whatsapp-contact-radio').removeAttr("disabled")
 		})
 
+		$('#tour-land-line-number').mask("(99) 9999-9999")
+		$('#tour-mobile-number').mask("(99) 9999-9999")
+		$('#tour-card').mask("9999-9999-9999-9999")
+
 		$('#client-form').submit(function() {
 			$.post(
 				'/clients',
@@ -138,7 +142,7 @@
 
   });
 </script>
-<video autoplay id="bgvid" loop>
+<video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg">
 	<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
 </video>
 <div class="dark-screen" style="height: 800px">		
@@ -149,9 +153,9 @@
 					<img src="/assets/white_logo">
 					primeraRaíz | <span id="cdmx">CDMX</span>
 				</a>
-				<a href="#" class="brand-logo valign-wrapper hide-on-med-and-up right">
-					<img src="/assets/white_logo">
-					primeraRaíz
+				<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
+					<img src="/assets/white_logo" style="width:24px;height:24px;">
+						primeraRaíz
 				</a>
 				<ul class="right hide-on-med-and-down">
 					<% if current_user %>
@@ -232,15 +236,21 @@
 						<li>Recomendado para espacios interiores de hasta 1,000 m2.</li>
 						<li>Consulta en la dirección proporcionada por Primera Raíz, o fácil integración en tu página web.</li>
 						<li>Controles de navegación en inglés.</li>
+						<li>Contratación con anticipo no reembolsable del 30%; pago del 70% restante contra publicación del tour vitual.</li>
 						<li>Servicio disponible en la Zona Metropolitana del Valle de México.</li>
 					</ul>
 				</div>
 			</div>	
 			<div class="b-container">
-				<form id="legal_form" class="valign-wrapper" style="width:100%">
-					<input type="checkbox" id="legal" class="valign">
-					<label class="terms_label valign" for="#legal">Acepto los <a href="">terminos y condiciones</a></label>
-					<button id="legal-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				<form id="legal_form" class="row 
+				valign-wrapper" style="width:100%">
+					<div class="col s8">
+						<input type="checkbox" id="legal" class="valign">
+						<label class="terms_label valign" for="#legal">Acepto los <a href="">terminos y condiciones</a></label>
+					</div>
+					<div class="col s4">
+						<button id="legal-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -264,14 +274,14 @@
 								<label for="tour-mobile">Celular</label>
 							</div>
 							<div class="input-field col s7">
-								<input type="text" name="client[mobile_phone]" placeholder="Número (10 dígitos)">
+								<input id="tour-mobile-number" type="text" name="client[mobile_phone]" placeholder="Número (10 dígitos)">
 							</div>
 							<div class="input-field col s5">
 								<input class="with-gap" name="phone_type" value="land_line" type="radio" id="tour-land-line">
 								<label for="tour-land-line">Fijo</label>
 							</div>
 							<div class="input-field col s7">
-								<input type="text" name="client[other_phone]" placeholder="Número (10 dígitos)">
+								<input id="tour-land-line-number" type="text" name="client[other_phone]" placeholder="Número (10 dígitos)">
 							</div>
 							<p>¿Cómo prefieres que te contactemos?</p>
 							<div class="input-field col s6">
@@ -413,75 +423,99 @@
 					</form>
 				</div>
 				<div id="tour-fourth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
-					<h5>Pago con tarjeta de crédito</h5>
-					<%= form_tag('/charges/create', id: 'card-form') do %>
-					  	<span class="card-errors"></span>
-						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-					  	<div class="form-row">
-					    	<label>
-					      		<span>Nombre del tarjetahabiente</span>
-					      		<input type="text" size="20" data-conekta="card[name]"/>
-					    	</label>
-					  	</div>
-					  	<div class="form-row">
-					    	<label>
-					      		<span>Número de tarjeta de crédito</span>
-					      		<input type="text" size="20" data-conekta="card[number]"/>
-					    	</label>
-					  	</div>
-					  	<div class="form-row">
-					    	<label>
-					      		<span>CVC</span>
-					      		<input type="text" size="4" data-conekta="card[cvc]"/>
-					    	</label>
-					  	</div>
-					  	<div class="form-row">
-					    	<label>
-					      		<span>Fecha de expiración (MM/AAAA)</span>
-					      		<input type="text" size="2" data-conekta="card[exp_month]"/>
-					    	</label>
-					    	<span>/</span>
-					    	<input type="text" size="4" data-conekta="card[exp_year]"/>
-					  	</div>
-					<!-- Información recomendada para sistema antifraude -->
-					  <div class="form-row">
-					    <label>
-					      <span>Calle</span>
-					      <input type="text" size="25" data-conekta="card[address][street1]"/>
-					    </label>
-					  </div>
-					<div class="form-row">
-					    <label>
-					      <span>Colonia</span>
-					      <input type="text" size="25" data-conekta="card[address][street2]"/>
-					    </label>
-					  </div>
-					<div class="form-row">
-					    <label>
-					      <span>Ciudad</span>
-					      <input type="text" size="25" data-conekta="card[address][city]"/>
-					    </label>
-					  </div>
-					<div class="form-row">
-					    <label>
-					      <span>Estado</span>
-					      <input type="text" size="25" data-conekta="card[address][state]"/>
-					    </label>
-					  </div>
-					<div class="form-row">
-					    <label>
-					      <span>CP</span>
-					      <input type="text" size="5" data-conekta="card[address][zip]"/>
-					    </label>
-					  </div>
-					<div class="form-row">
-					    <label>
-					      <span>País</span>
-					      <input type="text" size="25" data-conekta="card[address][country]"/>
-					    </label>
-					  </div>
-					  <button type="submit">¡Pagar ahora!</button>
-					<% end %>
+					<h5>Pago de anticipo</h5>
+					<div class="row">
+						<div class="col s12">
+							<ul class="tabs">
+								<li class="tab col s6"><a class="payment-tab-link active" href="#card-tab">Tarjeta</a></li>
+								<li class="tab col s6"><a class="payment-tab-link" href="#wire-tab">Transferencia</a></li>
+							</ul>
+						</div>
+						<div id="card-tab" class="col s12">
+							<div id="credit-card-row" class="row">
+								<p>Crédito:
+									<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
+									<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
+								</p>
+								<p>Débito:
+									<span>Banamex HSBC Inbursa Santander</span>
+								</p>
+							</div>
+							<%= form_tag('/charges/create', id: 'card-form') do %>
+							  	<span class="card-errors"></span>
+								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+							  	<div class="col s12">
+							    	<label>
+							      		<span>Nombre del tarjetahabiente</span>
+							      		<input type="text" size="20" data-conekta="card[name]"/>
+							    	</label>
+							  	</div>
+							  	<div class="col s8">
+							    	<label>
+							      		<span>Número de tarjeta de crédito</span>
+							      		<input id="tour-card" type="text" size="20" data-conekta="card[number]"/>
+							    	</label>
+							  	</div>
+							  	<div class="col s3 offset-s1">
+							    	<label>
+							      		<span>CVC</span>
+							      		<input type="text" size="4" data-conekta="card[cvc]"/>
+							    	</label>
+							  	</div>
+							  	<div class="form-row">
+							    	<label>
+							      		<span>Fecha de expiración (MM/AAAA)</span>
+							      		<div class="col s5">
+							      			<input type="text" size="2" placeholder="MM" data-conekta="card[exp_month]"/>
+							      		</div>
+							      		<div class="col s6 offset-s1">
+							      			<input type="text" size="4" placeholder="AAAA" data-conekta="card[exp_year]"/>
+							      		</div>	
+							    	</label>
+							  	</div>
+							<!-- Información recomendada para sistema antifraude -->
+							  <div class="form-row">
+							    <label>
+							      <span>Calle</span>
+							      <input type="text" size="25" data-conekta="card[address][street1]"/>
+							    </label>
+							  </div>
+							<div class="form-row">
+							    <label>
+							      <span>Colonia</span>
+							      <input type="text" size="25" data-conekta="card[address][street2]"/>
+							    </label>
+							  </div>
+							<div class="form-row">
+							    <label>
+							      <span>Ciudad</span>
+							      <input type="text" size="25" data-conekta="card[address][city]"/>
+							    </label>
+							  </div>
+							<div class="form-row">
+							    <label>
+							      <span>Estado</span>
+							      <input type="text" size="25" data-conekta="card[address][state]"/>
+							    </label>
+							  </div>
+							<div class="form-row">
+							    <label>
+							      <span>CP</span>
+							      <input type="text" size="5" data-conekta="card[address][zip]"/>
+							    </label>
+							  </div>
+							<div class="form-row">
+							    <label>
+							      <span>País</span>
+							      <input type="text" size="25" data-conekta="card[address][country]"/>
+							    </label>
+							  </div>
+							  <button type="submit">¡Pagar ahora!</button>
+							<% end %>
+						</div>
+						<div id="wire-tab" class="col s12">
+						</div>
+					</div>
 				</div>		
 			</div>
 		</div>
