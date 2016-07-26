@@ -509,7 +509,9 @@
 				</div>
 				<div id="tour-fourth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
 					<h5 class="hide-on-med-and-up">Pago</h5>
-					<p>Para contratar es necesario pagar un anticipo no reembolsable por $<%= session[:tourPrice]*0.30%> pesos. Los $<%= session[:tourPrice]*0.70%>) pesos restantes se deberán liquidar contra la publicación del tour. Por favor, selecciona una opción de pago.</p>
+					<% if session[:tourPrice] %>
+						<p>Para contratar es necesario pagar un anticipo no reembolsable por $<%= session[:tourPrice]*0.30%> pesos. Los $<%= session[:tourPrice]*0.70%>) pesos restantes se deberán liquidar contra la publicación del tour. Por favor, selecciona una opción de pago.</p>
+					<% end %>
 					<div class="row">
 						<div class="col s12">
 							<ul class="tabs">
