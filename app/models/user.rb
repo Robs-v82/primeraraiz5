@@ -30,6 +30,16 @@ class User < ActiveRecord::Base
 		)
 	end
 
+	def user_remainer
+		tomorrow = Date.tomorrow
+		target_appointments = Appointment.where("date = 'tomorrow'")
+		target_appointments.each do |appointment|
+			target_property = appointment.property
+			target_user = target_property.user
+			UserMailer.user_remainderl(target_user, target_property, appointment).deliver
+		end
+	end
+
 	private
 
 end

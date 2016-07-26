@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 	
-	default from: "roberto@primeraraiz.com"
+	default from: "Roberto Valladares Piedras <roberto@primeraraiz.com>"
 
 	def greeting
 		current_time = Time.now.to_i
@@ -17,11 +17,36 @@ class UserMailer < ActionMailer::Base
 		end	
 	end
 
-	def welcome_email(user, date)
+	def welcome_email(user, property, appointment)
 		@user = user
+		@name = user.name.partition(" ").first
+		@property = property
+		@appointment = appointment
 		@greeting = greeting
-		@dateString = I18n.l date 
-		mail(to: @user.email, subject: 'Tu cita ha quedado agendada para el ' + @dateString)
+		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
+		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
+		mail(to: user.email, subject: 'Cita agendada para el ' + @dateString + ' a las ' + @timeString)
+	end
+
+	def tour_email(client, location, appointment, charge)
+		@client = client
+		puts 'XXxx', @client.mobile_phone
+		@greeting = greeting
+		@appointment = appointment
+		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
+		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
+		mail(to: @client.email, subject: 'Tour virtual agendado para el ' + @dateString)
+	end
+
+	def user_remainder(user, property, appointment)
+		@user = user
+		@name = user.name.partition(" ").first
+		@property = property
+		@appointment = appointment
+		@greeting = greeting
+		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
+		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
+		mail(to: user.email, subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
 	end
 
 end

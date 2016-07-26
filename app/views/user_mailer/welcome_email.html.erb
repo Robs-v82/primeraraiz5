@@ -2,18 +2,45 @@
 <html>
 <head>
 	<title></title>
+	<style type="text/css">
+		.brand {
+			color: #9e9e9e;
+		}
+		.keyword-green {
+			color: #64dd17;
+		}
+		.brand {
+			display: inline-block;
+		}
+		* {
+			font-size: 14px;
+		}
+	</style>
 </head>
 <body>
 	<div class="logo">
-		<img src="/assets/logo.png" class="z-depth-1" width="32" height="32">
+		<%= image_tag 'logo.png', :width => '32', :height => '32' %>
 		<h5 class="brand">primera<span class="keyword-green">Raíz</span></h5>
 	</div>
 	<div>
-		<h5><%= @greeting%> <%= @user.name%></h5>
+		<h5><%= @greeting %> <%= @name %></h5>
 	</div>
-	<br>
 	<p>
-		Primera Raíz es un nuevo servicio. Queremos transformar la forma de vender departamentos en la Ciudad de México, ofrecer atención de excelencia y cobrar menos que las agencias de bienes raíces tradicionales.
+		Gracias por tu interés en vender tu departamento con Primera Raíz. Tu cita quedó agendada para el próximo <%= @dateString %> a las <%= I18n.l(@appointment.time, :format => "%I:%M %p") %> en <%= @property.street + " " + @property.number + " interior " + @property.unit %>. 
+	</p>
+	<p>
+		Un aspecto central para la promoción del departamento serán el tour virtual y las fotografías que tomaremos durante tu cita. Para presentar la mejor imagen posible te recomendamos que el espacio esté recogido, y que guardes utencilios y artículos personales.
+	</p>
+	<p>
+		Es indispensable que el dueño del departamento esté presente, o que deje firmado el contrato que mandamos adjunto a este correo. Asimismo te pedimos que tengas a la mano los siguientes documentos: 
+	</p>
+	<ul>
+	</ul>
+	<p>
+		Puedes administrar tus citas y consultar toda la información relativa a tus propiedades en venta <a href="primeraraiz.com/users/<%=@user.id%>/properties">aquí</a> (es necesario que primero inicies sesión en cada dispositivo). Por favor, si tienes cualquier duda o aclaración contáctanos por este medio o al <a href="tel:5544545312">(044) 55-4454-5312</a>. 
+	</p>
+	<p>
+		Aprovecho la ocasión para enviarte un cordial saludo.
 	</p>
 </body>
 </html>

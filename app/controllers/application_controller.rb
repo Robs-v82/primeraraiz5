@@ -70,6 +70,12 @@ class ApplicationController < ActionController::Base
 		return date = words[5] + "-" + month + "-" + words[1]
 	end
 
+	def remove_success_message
+		if session[:charge]
+			session[:charge] = nil
+		end
+	end
+
 
 	private
 

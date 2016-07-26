@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.brand {
+			color: #9e9e9e;
+		}
+		.keyword-green {
+			color: #64dd17;
+		}
+		.brand {
+			display: inline-block;
+		}
+		* {
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="logo">
+		<%= image_tag 'logo.png', :width => '32', :height => '32' %>
+		<h5 class="brand">primera<span class="keyword-green">Raíz</span></h5>
+	</div>
+	<div>
+		<h5><%= @greeting %> <%= @name %></h5>
+	</div>
+	<p>
+		Te recordamos que mañana <%= @dateString %> a las <%= I18n.l(@appointment.time, :format => "%I:%M %p") %> te visitaremos para en <%= @property.street + " " + @property.number + " interior " + @property.unit %>. 
+	</p>
+	<p>
+		Recuerda que puedes administrar tus citas y consultar toda la información relativa a tus propiedades en venta <a href="/users/<%=@user.id%>/properties">aquí</a> (es necesario que primero inicies sesión en cada dispositivo). Por favor, si tienes cualquier duda o aclaración contáctanos por este medio o al <a href="tel:5544545312">(044) 55-4454-5312</a>. 
+	</p>
+	<p>
+		Aprovecho la ocasión para enviarte un cordial saludo.
+	</p>
+</body>
+</html>

@@ -1,4 +1,9 @@
 <script>
+
+	$(window).load(function() {
+		Materialize.toast('Versión de prueba<br>¡Iniciamos operaciones próximamente!', 4000)
+	})
+
   $(function(){
       $("#b-subtitle-tour, #c-subtitle-tour").typed({
         strings: ["^1200Inmuebles en venta", "^1200Departamento muestra", "^1200Hoteles, bares y restaurantes", "^1200Espacios culturales", "^1200Desde $4,640 pesos^1000<br> <span id='parenthesis'>(gratis al vender tu depa con nosotros)^4000<span>"],
@@ -11,7 +16,12 @@
 <script>
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.tour-modal-trigger').leanModal();
+    $('.tour-modal-trigger').leanModal()
+    if($('#success-modal').length) {
+    	$('#success-modal').openModal()
+    	$.get()
+    }
+
 
     var setTime = function(hours) {
 			console.log('Setting time')
@@ -41,7 +51,7 @@
 
 		$('#time-wrapper').on('change', function() {
 			console.log('Working')
-			$('#tour-appointment-button').removeAttr('disabled', true)	
+			$('#tour-appointment-button').removeAttr('disabled', true).addClass("animated pulse")	
 		})
 
 		$('#tour-appointment-form').submit(function() {
@@ -53,6 +63,8 @@
 					if ("result" in data) {
 						$('#tour-third-b').hide()
 						$('#tour-fourth-b').show()
+						$('#tour-third-b-scrollspy').removeClass('active')
+						$('#tour-fourth-b-scrollspy').addClass('active animated pulse')
 					}
 				}
 			)
@@ -76,7 +88,7 @@
 		})
 
 		$('#tour-neighborhood-selector').change(function() {
-			$('#tour-address-button').removeAttr('disabled', true)
+			$('#tour-address-button').removeAttr('disabled', true).addClass("animated pulse")
 		})
 
 		$('#tour-address-form').submit(function() {
@@ -88,6 +100,9 @@
 					if ("success" in data) {
 						$('#tour-first-b').hide()
 						$('#tour-second-b').show()
+						$('#tour-first-b-scrollspy').removeClass('active')
+						$('#tour-second-b-scrollspy').addClass('active animated pulse')
+
 					}
 					else {
 						console.log('Wrong!')
@@ -99,16 +114,16 @@
 
 
 		$('#tour-land-line').click(function() {
-			$('#tour-mobile_phone').attr("disabled", true)
-			$('#tour-other_phone').removeAttr("disabled")
+			$('#tour-mobile-number').attr("disabled", true)
+			$('#tour-land-line-number').removeAttr("disabled")
 			$('#tour-message-contact-radio').attr("disabled", true)
 			$('#tour-whatsapp-contact-radio').attr("disabled", true)
 		})
 
 
 		$('#tour-mobile').click(function() {
-			$('#tour-mobile_phone').removeAttr("disabled")
-			$('#tour-other_phone').attr("disabled", true)
+			$('#tour-mobile-number').removeAttr("disabled")
+			$('#tour-land-line-number').attr("disabled", true)
 			$('#tour-message-contact-radio').removeAttr("disabled")
 			$('#tour-whatsapp-contact-radio').removeAttr("disabled")
 		})
@@ -117,30 +132,79 @@
 		$('#tour-mobile-number').mask("(99) 9999-9999")
 		$('#tour-card').mask("9999-9999-9999-9999")
 
-		$('#client-form').submit(function() {
-			$.post(
-				'/clients',
-				$(this).serialize(),
-				function(data) {
-					console.log(data)
-					if ("result" in data) {
+		$('#client-form').submit(function(e) {
+			$('#tour-zero-b-scrollspy').removeClass('animated shake')
+			e.preventDefault()
+			var client_form = $('#client-form')
+			$.ajax({
+					type: "POST",
+					url: "/clients",
+					data: client_form.serialize(),
+					dataType: "json",
+					success: function(data) {
+						$('#error-message-board').hide()
+						$('#error-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
 						$('#tour-zero-b').hide()
 						$('#tour-first-b').show()
+						$('#tour-zero-b-scrollspy').removeClass('active')
+						$('#tour-first-b-scrollspy').addClass('active animated pulse')
+					},
+					error: function(data) {
+						console.log(data)
+						var array = data["responseJSON"].errors
+						console.log(array)
+						var newHTML = []
+						for (var i = 0; i < array.length; i++) {
+						    newHTML.push('<li class="red-text" style="opacity:0;">' + array[i] + '</li>')
+						}
+						$('#error-board').addClass('animated fadeOutRight').delay(4000).hide()
+						$("#error-message-board").html("<div class='row'><ul class='stacked_errors'>"+newHTML.join("")+"</ul></div>")
+						$('#tour-zero-b-scrollspy').addClass('animated shake')
+						Materialize.showStaggeredList('.stacked_errors')
 					}
-					else {
-						console.log('Wrong!')
-					}
-				}
-			)
-			return false
-		})
+				})
+			})	
+
 
 		$('.client-contact').change(function() {
-			$('#client-button').removeAttr("disabled", true)
+			$('#client-button').removeAttr("disabled", true).addClass("animated pulse")
 		})
+  	})
+</script>
+<script>
+	
+	var conektaSuccessResponseHandler = function(token) {
+		var $form = $("#card-form")
 
+		/* Inserta el token_id en la forma para que se envíe al servidor */
+		$form.append($("<input type='hidden' name='conektaTokenId'>").val(token.id))
 
-  });
+		/* and submit */
+		$form.get(0).submit()
+	}
+
+	var conektaErrorResponseHandler = function(response) {
+		var $form = $("#card-form")
+
+		/* Muestra los errores en la forma */
+		$form.find(".card-errors").text(response.message_to_purchaser)
+		$form.find("button").prop("disabled", false)
+	}
+
+	$(function () {
+		$("#card-form").submit(function(event) {
+			var $form = $(this)
+
+			// Previene hacer submit más de una vez
+			$form.find("button").prop("disabled", true)
+			Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler)
+			//Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler) //v5+
+
+			// Previene que la información de la forma sea enviada al servidor
+			return false
+		})
+	})
+
 </script>
 <video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg">
 	<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
@@ -149,14 +213,18 @@
 	<nav class="transparent z-depth-0" role="navigation">
 		<div class="b-container">
 			<div class="nav-wrapper">
-				<a href="#" class="brand-logo valign-wrapper hide-on-small-only">
-					<img src="/assets/white_logo">
-					primeraRaíz | <span id="cdmx">CDMX</span>
-				</a>
-				<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
-					<img src="/assets/white_logo" style="width:24px;height:24px;">
+				<div data-no-turbolink>
+					<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
+						<img src="/assets/white_logo">
+						primeraRaíz | <span id="cdmx">CDMX</span>
+					</a>
+				</div>
+				<div data-no-turbolink>
+					<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
+						<img src="/assets/white_logo" style="width:24px;height:24px;">
 						primeraRaíz
-				</a>
+					</a>
+				</div>
 				<ul class="right hide-on-med-and-down">
 					<% if current_user %>
 						<li>
@@ -258,8 +326,23 @@
 	<div id="tour-second" style="display:none">
 		<div class="modal-content">
 			<div class="row">
+				<div id="tour-scroller" class="col l6 m6 s12 tour-right-column hide-on-small-only">
+					<ul class="section table-of-contents">
+						<li><a id="tour-zero-b-scrollspy" class="scrollspy-li" href="#tour-zero-b">Datos de contacto</a></li>
+						<li><a id="tour-first-b-scrollspy" class="scrollspy-li" href="#tour-first-b">Dirección del inmueble</a></li>
+						<li><a id="tour-second-b-scrollspy" class="scrollspy-li" href="#tour-second-b">Dimensiones</a></li>
+						<li><a id="tour-third-b-scrollspy" class="scrollspy-li" href="#tour-third-b">Fecha y hora</a></li>
+						<li><a id="tour-fourth-b-scrollspy" class="scrollspy-li" href="#tour-fourth-b">Pago</a></li>
+					</ul>
+					<div class="b-container">
+						<div id="error-board" class="valign-wrapper">
+							<h4 class="white-text valign center-align">El tour virtual más realista</h4>
+						</div>
+						<div id="error-message-board"></div>
+					</div>
+				</div>	
 				<div id="tour-zero-b" class="col l6 m6 s12 tour-left-column">
-					<h5>Datos de contacto</h5>
+					<h5 class="hide-on-med-and-up">Datos de contacto</h5>
 					<form id="client-form" action="/clients" method="post">
 						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 						<div class="row">
@@ -281,7 +364,7 @@
 								<label for="tour-land-line">Fijo</label>
 							</div>
 							<div class="input-field col s7">
-								<input id="tour-land-line-number" type="text" name="client[other_phone]" placeholder="Número (10 dígitos)">
+								<input id="tour-land-line-number" type="text" name="client[other_phone]" placeholder="Número (10 dígitos)" disabled>
 							</div>
 							<p>¿Cómo prefieres que te contactemos?</p>
 							<div class="input-field col s6">
@@ -308,7 +391,7 @@
 					</form>
 				</div>
 				<div id="tour-first-b" class="col l6 m6 s12 tour-left-column" style="display:none">
-					<h5>Dirección</h5>
+					<h5 class="hide-on-med-and-up">Dirección del inmueble</h5>
 					<p class="header-note">Ingresa la dirección del inmueble en el que realizaremos el tour virtual.</p>
 					<form id="tour-address-form" action="/locations" method="post">
 						<div class="row">
@@ -343,6 +426,8 @@
 					</form>
 				</div>
 				<div id="tour-second-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+					<h5 class="hide-on-med-and-up">Dimensiones</h5>
+					<p class="header-note">Selecciona una opción de acuerdo a las dimensiones del inmueble.</p>
 					<form id="tour-price-form" action="/virtualtour/setPrice" method="post">
 						<table class="striped">
 							<thead>
@@ -404,8 +489,8 @@
 					</form>
 				</div>
 				<div id="tour-third-b" class="col l6 m6 s12 tour-left-column" style="display:none">
-					<h5>Selecciona fecha y hora</h5>
-					<p class="header-note">Se necesitan de una a dos horas para fotografiar el inmueble, se recomienda evitar el paso de personas.</p>
+					<h5 class="hide-on-med-and-up">Fecha y hora</h5>
+					<p class="header-note">Considera que se necesitan de una a dos horas para fotografiar el inmueble y se recomienda evitar el paso de personas.</p>
 					<form id="tour-appointment-form" action="/appointments/tourAppointment" method="post">
 						<div class="row">
 							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
@@ -423,25 +508,36 @@
 					</form>
 				</div>
 				<div id="tour-fourth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
-					<h5>Pago de anticipo</h5>
+					<h5 class="hide-on-med-and-up">Pago</h5>
+					<p>Para contratar es necesario pagar un anticipo no reembolsable por $<%= session[:tourPrice]*0.30%> pesos. Los $<%= session[:tourPrice]*0.70%>) pesos restantes se deberán liquidar contra la publicación del tour. Por favor, selecciona una opción de pago.</p>
 					<div class="row">
 						<div class="col s12">
 							<ul class="tabs">
-								<li class="tab col s6"><a class="payment-tab-link active" href="#card-tab">Tarjeta</a></li>
+								<li class="tab col s6"><a class="payment-tab-link" href="#card-tab">Tarjeta</a></li>
 								<li class="tab col s6"><a class="payment-tab-link" href="#wire-tab">Transferencia</a></li>
 							</ul>
 						</div>
 						<div id="card-tab" class="col s12">
 							<div id="credit-card-row" class="row">
-								<p>Crédito:
-									<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
-									<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
+								<p>
+									<div class="payment-type col s3">
+										Crédito:
+									</div>
+									<div class="payment-type col s9">
+										<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
+										<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
+									</div>
 								</p>
-								<p>Débito:
-									<span>Banamex HSBC Inbursa Santander</span>
+								<p>
+									<div class="payment-type col s3">
+										Débito:
+									</div>
+									<div class="col s9">
+										<span id="bank_names">Banamex HSBC Inbursa Santander</span>
+									</div>
 								</p>
 							</div>
-							<%= form_tag('/charges/create', id: 'card-form') do %>
+							<%= form_tag('/charges/create', id: 'card-form', :remote => true) do %>
 							  	<span class="card-errors"></span>
 								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 							  	<div class="col s12">
@@ -464,7 +560,7 @@
 							  	</div>
 							  	<div class="form-row">
 							    	<label>
-							      		<span>Fecha de expiración (MM/AAAA)</span>
+							      		<span>Fecha de expiración</span>
 							      		<div class="col s5">
 							      			<input type="text" size="2" placeholder="MM" data-conekta="card[exp_month]"/>
 							      		</div>
@@ -474,40 +570,40 @@
 							    	</label>
 							  	</div>
 							<!-- Información recomendada para sistema antifraude -->
-							  <div class="form-row">
+							  <div class="col s12">
 							    <label>
-							      <span>Calle</span>
+							      <span>Dirección (calle y núm.)</span>
 							      <input type="text" size="25" data-conekta="card[address][street1]"/>
 							    </label>
 							  </div>
-							<div class="form-row">
+							<div class="col s12">
 							    <label>
-							      <span>Colonia</span>
+							      <span>Dirección (colonia)</span>
 							      <input type="text" size="25" data-conekta="card[address][street2]"/>
 							    </label>
-							  </div>
-							<div class="form-row">
+							</div>
+							<div class="col s5">
 							    <label>
-							      <span>Ciudad</span>
-							      <input type="text" size="25" data-conekta="card[address][city]"/>
+							      <span>País</span>
+							      <input type="text" size="25" data-conekta="card[address][country]"/>
 							    </label>
-							  </div>
-							<div class="form-row">
+							</div>
+							<div class="col s6 offset-s1">
 							    <label>
 							      <span>Estado</span>
 							      <input type="text" size="25" data-conekta="card[address][state]"/>
 							    </label>
-							  </div>
-							<div class="form-row">
+							</div>
+							<div class="col s5">
+							    <label>
+							      <span>Ciudad</span>
+							      <input type="text" size="25" data-conekta="card[address][city]"/>
+							    </label>
+							</div>
+							<div class="col s6 offset-s1">
 							    <label>
 							      <span>CP</span>
 							      <input type="text" size="5" data-conekta="card[address][zip]"/>
-							    </label>
-							  </div>
-							<div class="form-row">
-							    <label>
-							      <span>País</span>
-							      <input type="text" size="25" data-conekta="card[address][country]"/>
 							    </label>
 							  </div>
 							  <button type="submit">¡Pagar ahora!</button>
@@ -516,10 +612,20 @@
 						<div id="wire-tab" class="col s12">
 						</div>
 					</div>
-				</div>		
+				</div>	
 			</div>
 		</div>
 	</div>
 </div>
-
+<% if session[:charge] %>
+	<div id="success-modal" class="modal">
+		<div id="tour-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<p class="flow-text">Transacción exitosa. Enviamos un mensaje con información importante a <%= session[:client_email] %></p>
+		</div>
+	</div>
+<% end %>
 

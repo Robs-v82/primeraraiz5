@@ -1,4 +1,9 @@
 <script>
+	//test version alert. DELETE BEFORE RELEASE!!!!
+	$(window).load(function() {
+		Materialize.toast('Versión de prueba<br>¡Iniciamos operaciones próximamente!', 8000)
+	})
+
   $(function(){
       $("#b-subtitle, #c-subtitle").typed({
         strings: ["^1200Comisión del 2%^1000<br> <span id='parenthesis'>(la más baja del mercado)<span>", "^1200Anunciamos en los mejores portales", "^1200Fotografía profesional y tour virtual"],
@@ -13,14 +18,18 @@
 		<nav class="transparent z-deptbh-0" role="navigation">
 			<div class="b-container">
 				<div class="nav-wrapper">
-					<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
-						<img src="/assets/white_logo">
-						primeraRaíz | <span id="cdmx">CDMX</span>
-					</a>
-					<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
-						<img src="/assets/white_logo" style="width:24px;height:24px;">
-						primeraRaíz
-					</a>
+					<div data-no-turbolink>
+						<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
+							<img src="/assets/white_logo">
+							primeraRaíz | <span id="cdmx">CDMX</span>
+						</a>
+					</div>
+					<div data-no-turbolink>
+						<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
+							<img src="/assets/white_logo" style="width:24px;height:24px;">
+							primeraRaíz
+						</a>
+					</div>
 					<ul class="right hide-on-med-and-down">
 						<% if current_user %>
 							<li>
@@ -69,11 +78,11 @@
 				<div class="row title-wrapper valign-wrapper" style="width: 100%">
 					<div id="banner" class="col s12 m12 l12">
 						<div class="row">
-							<h1 id="b-title" class="hide-on-small-only center-align white-text">Vendemos tu depa</h1>
+							<h1 id="b-title" class="main-title hide-on-small-only center-align white-text">Vendemos tu depa</h1>
 							<div id="b-subtitle-container" class="hide-on-small-only center-align white-text">
 								<h3 id="b-subtitle"></h3>
 							</div>		
-							<h1 id="c-title" class="hide-on-med-and-up center-align white-text">Vendemos tu depa</h1>
+							<h1 id="c-title" class="main-title hide-on-med-and-up center-align white-text">Vendemos tu depa</h1>
 							<div id="c-subtitle-container" class="hide-on-med-and-up center-align white-text">
 								<h3 id="c-subtitle"></h3>
 							</div>

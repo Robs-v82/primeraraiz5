@@ -19,6 +19,11 @@ es:
       appointment:
         date: "La fecha"
         time: "La hora"
+      client:
+        email: "El correo electrónico"
+        mobile_phone: "El número telefónico"
+        other_phone: "El número telefónico"
+        name: "El nombre"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

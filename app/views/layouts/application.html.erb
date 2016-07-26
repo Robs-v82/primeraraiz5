@@ -31,6 +31,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 	<link rel="manifest" href="/manifest.json">
+	<link rel="stylesheet" href="/assets/animate.css">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
@@ -39,6 +40,9 @@
 		ready = function() {
 			$(document).ready(function() {
 				//Bobsled commands:
+
+				$('.brand-logo').addClass('animated pulse')
+
 				$('#contact-button').click(function() {
 					$('footer').toggleClass('high-footer')
 				})
@@ -153,6 +157,7 @@
 
 				//Property form
 
+				$('.scrollspy').scrollSpy()
 				$('ul.tabs').tabs();
 				$('.button-collapse').sideNav()
 				$('.login-modal-trigger').leanModal()
@@ -172,17 +177,18 @@
 
 				$('.terms_label').click(function() {
 				    $('#legal').attr('checked', 'checked')
-				    $('#legal-button').removeAttr('disabled', true)
+				    $('#legal-button').removeAttr('disabled', true).addClass("animated pulse")
 				})
 
 				$('#legal_form').submit(function() {
 					$('#tour-first').hide()
 					$('#tour-second').show()
+					$('#tour-zero-b-scrollspy').addClass('active animated pulse')
 					return false
 				})
 
 				$("#tour-price-form input:radio").click(function() {
-					$('#price-button').removeAttr('disabled', true)
+					$('#price-button').removeAttr('disabled', true).addClass("animated pulse")
 				})
 
 				$('#tour-price-form').submit(function() {
@@ -193,6 +199,8 @@
 							console.log(data)
 							$('#tour-second-b').hide()
 							$('#tour-third-b').show()
+							$('#tour-second-b-scrollspy').removeClass('active')
+							$('#tour-third-b-scrollspy').addClass('active animated pulse')
 						},
 						"json"
 					)

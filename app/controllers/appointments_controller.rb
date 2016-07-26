@@ -1,12 +1,12 @@
 class AppointmentsController < ApplicationController
 
 	def create
-		puts 'XXxx', params
 		errors = []
 		long_date = appointment_params[:date]
 		target_date = set_date(long_date)
 		appointment_info = appointment_params
-		appointment_info.store("property_id", "#{session[:property_id]}")
+		appointment_info.store("appointable_id", "#{session[:property_id]}")
+		appointment_info.store("appointable_type", "Property")
 		appointment_info.store("status", "Agendada")
 		appointment_info.delete("date")
 		appointment_info.store("date",target_date)
@@ -22,9 +22,11 @@ class AppointmentsController < ApplicationController
 			if params[:phone_type] == "mobile"  
 				if user_update_info[:mobile_phone].length == 10 && user_update_info[:mobile_phone] =~ /\A\d+\z/ ? true : false
 					User.update(session[:user_id], user_update_info)
+					target_user = User.find(session[:user_id])
+					target_property = Property.find(session[:property_id])
 					new_appointment.save
 					session[:appointment_id] = Appointment.last[:id]
-					UserMailer.welcome_email(current_user, new_appointment.date).deliver
+					UserMailer.welcome_email(target_user, target_property, new_appointment).deliver
 					render json: {user_id: "#{session[:user_id]}"}
 				else
 					user_errors = User.update(session[:user_id], user_update_params).errors.full_messages
@@ -113,8 +115,14 @@ class AppointmentsController < ApplicationController
 		appointment_info.store("status", "Agendada")
 		appointment_info.delete("date")
 		appointment_info.store("date",target_date)
+		appointment_info.store("appointable_id", session[:location_id])
+		appointment_info.store("appointable_type", "Location")
 		tourAppointment = Appointment.new(appointment_info)
 		if tourAppointment.valid?
+			tourAppointment.save
+			puts 'XXxx'*100, Location.last.appointment.date
+			session[:appointment_id] = tourAppointment.id
+			puts session[:appointment_id]
 			render json: {result: "success"}
 		else
 			render json: {error: tourAppointment.errors.full_messages}

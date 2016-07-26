@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
 		newLocation = Location.new(location_params)
 		if newLocation.valid?
 			newLocation.save
+			session[:location_id] = newLocation.id
 			session[:reference_id] = 'VT' + Location.last[:id].to_s
 			session[:street] = location_params[:street] 
 			session[:number] = location_params[:number]

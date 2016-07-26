@@ -1,4 +1,8 @@
 class ToursController < ApplicationController
+	
+	after_action :remove_success_message, only: [:main]
+
+
 	def main
 		areas_order = Area.all.order(:district)
 		areas_wrong = areas_order.uniq.pluck(:district)

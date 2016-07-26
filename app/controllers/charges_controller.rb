@@ -43,6 +43,17 @@ class ChargesController < ApplicationController
 		      }
 		    }
 		  })
+
+			if @charge.status == "paid"
+				session[:charge] = @charge
+				puts "xxXX"*100, "working!"
+				target_client = Client.find(session[:client_id])
+				target_location = Location.find(session[:location_id])
+				target_appointment = Appointment.find(session[:appointment_id])
+				UserMailer.tour_email(target_client, target_location, target_appointment, @charge).deliver
+				redirect_to '/virtualtour'
+			end
+
 		rescue Conekta::ParameterValidationError => e
 		  puts e.message_to_purchaser 
 		  #alguno de los parámetros fueron inválidos
@@ -55,7 +66,7 @@ class ChargesController < ApplicationController
 		  puts e.message_to_purchaser 
 		  #un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
 
-end
+	end
 
 	end
 
