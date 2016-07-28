@@ -534,13 +534,20 @@ p.legal-warning {
 	font-size: 1rem !important;	
 }
 
+.anti-default {
+	border-radius: 0px !important;
+}
+
 select.browser-default {
 	background-color: white;
 	padding: 5px 10px;
 	height: 2.2em;
 	margin-bottom: 15px;
 	border: 1px solid #bdbdbd !important;
-	border-radius: 10px !important;
+}
+
+select:focus {
+	outline: none;
 }
 
 .side-nav {
@@ -677,4 +684,136 @@ ul.section.table-of-contents {
 
 #tour-modal.modal-content {
 	color: #424242;
+}
+
+#tour-fourth-b .col {
+	padding: 0;
+}
+
+.green-header {
+	margin-top: 6px !important;
+}
+
+.black-header {
+	background-color: rgba(0,0,0, 0.90);
+	font-size: 10px;
+	padding: 3px 6px;
+}
+
+.green-cell {
+	padding: 3px 6px;
+	color: #424242;
+	background-color: #b2ff59;
+}
+
+.brand-logo {
+    -webkit-animation-delay: 1s; 
+    animation-delay: 1s;	
+}
+
+#confirm-table {
+    -webkit-animation-delay: 0.5s; 
+    animation-delay: 0.5s;	
+}
+
+.modal-content h5 {
+	margin: 0;
+	color: #424242;
+}
+
+#tour-header {
+	padding: 24px 34.5px 0px 34.5px !important;
+}
+
+#tour-features {
+	font-size: 16px;
+}
+
+.modal {
+	border-radius: 0;
+}
+
+.modal-content .row {
+	margin-bottom: 0;
+}
+
+.terms_label {
+	font-weight: 600;
+}
+
+.terms_label a {
+	text-decoration: underline;
+    }
+
+#legal_form label {
+	max-width: 100%;
+}
+
+#tour-features li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+#tour-second-b th {
+	padding: 5px;
+}
+
+#tour-second-b td {
+	padding: 0px 5px;
+}
+
+.super-index {
+	font-size: 7px;
+	vertical-align:super;
+}
+
+input[type=text] {
+	color: #424242;
+}
+
+.radio-wrapper {
+	height: 30.8px;
+}
+
+.input-field label {
+	color: #424242;
+}
+
+.button-label {
+	color: #424242;
+}
+
+.button-label-inactive {
+	color: rgba(0,0,0,0.25);
+	padding-right: 10px;
+}
+
+#tour-second p {
+	color: #424242;
+}
+
+.td-right {
+	text-align: right;
+	width: 100%;
+}
+
+#tour-second table {
+	font-size: 13px;
+}
+
+.table-left-column {
+	min-width: 138px; 
+}
+
+.currency-font {
+	font-size: 11px;
+}
+
+#tour-second-b [type="radio"]:not(:checked) + label, #tour-second-b [type="radio"]:checked + label{
+	font-size: 13px;
+}
+
+.green-table-row {
+	background-color: rgba(100,221,23,0.25) !important;
+	font-weight: 500;
 }

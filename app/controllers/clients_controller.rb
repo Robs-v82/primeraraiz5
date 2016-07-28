@@ -24,10 +24,17 @@ class ClientsController < ApplicationController
 			session[:client_id] = new_client.id
 			session[:client_email] = client_info[:email]
 			session[:client_name] = client_info[:name]
+			session[:client_phone_number] = raw_number
 			render json: {result: "success"}
 		else
 			render json: {errors: new_client.errors.full_messages}, :status => 422
 		end
+	end
+
+	def destroy
+		targetClient = Client.find(session[:client_id])
+		targetClient.destroy
+		render json: {result: "success"}
 	end
 
 	private

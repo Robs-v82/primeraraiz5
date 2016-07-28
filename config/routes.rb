@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post 'virtualtour/getNeighborhoods' => 'tours#getNeighborhoods'
   post 'locations' => 'locations#create'
   post 'clients' => 'clients#create'
+  get 'destroyclient' => 'clients#destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

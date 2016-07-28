@@ -187,10 +187,6 @@
 					return false
 				})
 
-				$("#tour-price-form input:radio").click(function() {
-					$('#price-button').removeAttr('disabled', true).addClass("animated pulse")
-				})
-
 				$('#tour-price-form').submit(function() {
 					$.post(
 						'/virtualtour/setPrice',

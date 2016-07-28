@@ -43,6 +43,7 @@
 					console.log(data)
 					setTime(data)
 					$('#tour-time-selector').prop('disabled', false)
+					$('#tour-appointment-button-label').removeClass('button-label-inactive').addClass('button-label')
 					$('#tour-appointment-button').prop('disabled', true)
 				}
 			)
@@ -54,6 +55,14 @@
 			$('#tour-appointment-button').removeAttr('disabled', true).addClass("animated pulse")	
 		})
 
+
+		$("#tour-price-form input:radio").click(function() {
+			$('#price-table tr').removeClass('green-table-row')
+			$(this).parents("tr").addClass('green-table-row').delay(300).addClass('animated pulse')
+			$('#price-button-label').removeClass('button-label-inactive').addClass('button-label')
+			$('#price-button').removeAttr('disabled', true).addClass("animated pulse")
+		})
+
 		$('#tour-appointment-form').submit(function() {
 			$.post(
 				'/appointments/tourAppointment',
@@ -61,7 +70,13 @@
 				function(data) {
 					console.log(data)
 					if ("result" in data) {
+						var tourDate = data.tourDate
+						var tourTime = data.tourTime
+						var short_address = data.short_address
+						var client_phone_number = data.client_phone_number
+						var client_email = data.client_email
 						$('#tour-third-b').hide()
+						$('#confirm-table').html('<div class="row"><div class="col s8"><div class="row black-header white-text">FECHA</div><div class="row green-cell">'+tourDate+'</div></div><div class="col s4"><div class="row black-header white-text">HORA</div><div class="row green-cell">'+tourTime+'</div></div></div><div class="row"><div class="col s12"><div class="row black-header white-text">DIRECCIÓN DEL INMUEBLE</div><div class="row green-cell">'+short_address+'</div></div></div><div class="row"><div class="col s6"><div class="row black-header white-text">DIMENSIONES</div><div class="row green-cell">De 150 a 300 m<span class="super-index">2</span></div></div><div class="col s6"><div class="row black-header white-text">TELÉFONO</div><div class="row green-cell">'+client_phone_number+'</div></div></div><div class="row"><div class="s12"><div class="row black-header white-text">CORREO ELECTRÓNICO</div><div class="row green-cell">'+client_email+'</div></div></div>')
 						$('#tour-fourth-b').show()
 						$('#tour-third-b-scrollspy').removeClass('active')
 						$('#tour-fourth-b-scrollspy').addClass('active animated pulse')
@@ -69,6 +84,21 @@
 				}
 			)
 			return false
+		})
+
+		$('#tour-confirmation-button').click(function() {
+			$('#tour-fourth-b').hide()
+			$('#tour-fifth-b').show()
+			$('#tour-fourth-b-scrollspy').removeClass('active')
+			$('#tour-fifth-b-scrollspy').addClass('active animated pulse')	
+		})
+
+
+		$('#tour-edit-button').click(function() {
+			$('#tour-fourth-b').hide()
+			$('#tour-zero-b').show()
+			$('#tour-fourth-b-scrollspy').removeClass('active')
+			$('#tour-zero-b-scrollspy').addClass('active animated pulse')	
 		})
 
 		$('#tour-district-selector').change(function() {
@@ -88,6 +118,7 @@
 		})
 
 		$('#tour-neighborhood-selector').change(function() {
+			$('#tour-address-button-label').removeClass('button-label-inactive').addClass('button-label')
 			$('#tour-address-button').removeAttr('disabled', true).addClass("animated pulse")
 		})
 
@@ -167,9 +198,15 @@
 
 
 		$('.client-contact').change(function() {
+			$('#client-button-label').removeClass('button-label-inactive').addClass('button-label')
 			$('#client-button').removeAttr("disabled", true).addClass("animated pulse")
+
+
+		$('.payment-tab-link').click(function() {
+			$('#card-wrapper').show()
 		})
   	})
+	})
 </script>
 <script>
 	
@@ -298,29 +335,27 @@
 	<div id="tour-first">
 		<div class="modal-content">
 			<div class="row"> 
-				<div class="col s12">
+				<div class="col s12 grey-text text-darken-3">
 					<h5>Características del tour virtual</h5>
-					<ul>
-						<li>Recomendado para espacios interiores de hasta 1,000 m2.</li>
+					<ul id="tour-features">
+						<li>Recomendado para espacios interiores de hasta 1,000 m<span class="super-index">2</span>.</li>
 						<li>Consulta en la dirección proporcionada por Primera Raíz, o fácil integración en tu página web.</li>
+						<li>Incluye la generación de tour virtual y el acceso al modelo en línea por un año.</li>
 						<li>Controles de navegación en inglés.</li>
-						<li>Contratación con anticipo no reembolsable del 30%; pago del 70% restante contra publicación del tour vitual.</li>
 						<li>Servicio disponible en la Zona Metropolitana del Valle de México.</li>
 					</ul>
 				</div>
 			</div>	
-			<div class="b-container">
-				<form id="legal_form" class="row 
-				valign-wrapper" style="width:100%">
-					<div class="col s8">
-						<input type="checkbox" id="legal" class="valign">
-						<label class="terms_label valign" for="#legal">Acepto los <a href="">terminos y condiciones</a></label>
-					</div>
-					<div class="col s4">
-						<button id="legal-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
-					</div>
-				</form>
-			</div>
+			<form id="legal_form" class="row 
+			valign-wrapper" style="width:100%">
+				<div class="col s8">
+					<input type="checkbox" id="legal" class="valign">
+					<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <a class="grey-text text-darken-3" href="">terminos y condiciones</a>.</label>
+				</div>
+				<div class="col s4">
+					<button id="legal-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</div>
+			</form>
 		</div>
 	</div>
 	<div id="tour-second" style="display:none">
@@ -332,7 +367,8 @@
 						<li><a id="tour-first-b-scrollspy" class="scrollspy-li" href="#tour-first-b">Dirección del inmueble</a></li>
 						<li><a id="tour-second-b-scrollspy" class="scrollspy-li" href="#tour-second-b">Dimensiones</a></li>
 						<li><a id="tour-third-b-scrollspy" class="scrollspy-li" href="#tour-third-b">Fecha y hora</a></li>
-						<li><a id="tour-fourth-b-scrollspy" class="scrollspy-li" href="#tour-fourth-b">Pago</a></li>
+						<li><a id="tour-fourth-b-scrollspy" class="scrollspy-li" href="#tour-fourth-b">Confirmación</a></li>
+						<li><a id="tour-fifth-b-scrollspy" class="scrollspy-li" href="#tour-fifth-b">Pago</a></li>
 					</ul>
 					<div class="b-container">
 						<div id="error-board" class="valign-wrapper">
@@ -352,16 +388,16 @@
 							<div class="input-field col s12">
 								<input type="text" name="client[email]" placeholder="Correo electrónico">
 							</div>
-							<div class="input-field col s5">
-								<input class="with-gap" name="phone_type" value="mobile" type="radio" id="tour-mobile" checked="checked">
-								<label for="tour-mobile">Celular</label>
+							<div class="input-field col s5 radio-wrapper valign-wrapper">
+								<input class="with-gap valign" name="phone_type" value="mobile" type="radio" id="tour-mobile" checked="checked">
+								<label for="tour-mobile" class="valign">Celular</label>
 							</div>
 							<div class="input-field col s7">
 								<input id="tour-mobile-number" type="text" name="client[mobile_phone]" placeholder="Número (10 dígitos)">
 							</div>
-							<div class="input-field col s5">
-								<input class="with-gap" name="phone_type" value="land_line" type="radio" id="tour-land-line">
-								<label for="tour-land-line">Fijo</label>
+							<div class="input-field col s5 valign-wrapper radio-wrapper">
+								<input class="with-gap valign" name="phone_type" value="land_line" type="radio" id="tour-land-line">
+								<label for="tour-land-line" class="valign">Fijo</label>
 							</div>
 							<div class="input-field col s7">
 								<input id="tour-land-line-number" type="text" name="client[other_phone]" placeholder="Número (10 dígitos)" disabled>
@@ -385,7 +421,7 @@
 							</div>
 						</div>
 						<p class="valign-wrapper right">
-							<span class="button-label">Siguiente</span>
+							<span id="client-button-label" class="button-label-inactive">Siguiente</span>
 							<button id="client-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 						</p>
 					</form>
@@ -399,14 +435,14 @@
 							<div class="input-field col s12">
 								<input type="text" name="location[street]" placeholder="Calle">
 							</div>
-							<div class="input-field col s6">
+							<div class="input-field col s5">
 								<input type="text" name="location[number]" placeholder="Núm. exterior">
 							</div>
-							<div class="input-field col s6">
+							<div class="input-field col s5 offset-s2">
 								<input type="text" name="location[unit]" placeholder="Núm. interior">
 							</div>
 							<div class="input-field col s12">
-								<select id="tour-district-selector" name="tour[district]" class="browser-default">
+								<select id="tour-district-selector" name="tour[district]" class="anti-default browser-default">
 									<option value="" disabled selected>Delegación/Municipio</option>
 									<% @areas.each do |area| %>
 										<option><%=area%></option>
@@ -414,13 +450,13 @@
 								</select>
 							</div>
 							<div class="input-field col s12">
-								<select id="tour-neighborhood-selector" name="location[area_id]" class="browser-default">
+								<select id="tour-neighborhood-selector" name="location[area_id]" class="anti-default browser-default">
 									<option value="" disabled selected>Colonia</option>
 								</select>
 							</div>
 						</div>
 						<p class="valign-wrapper right">
-							<span class="button-label">Siguiente</span>
+							<span id="tour-address-button-label" class="button-label-inactive">Siguiente</span>
 							<button id="tour-address-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 						</p>
 					</form>
@@ -429,61 +465,60 @@
 					<h5 class="hide-on-med-and-up">Dimensiones</h5>
 					<p class="header-note">Selecciona una opción de acuerdo a las dimensiones del inmueble.</p>
 					<form id="tour-price-form" action="/virtualtour/setPrice" method="post">
-						<table class="striped">
+						<table id="price-table" class="striped z-depth-1">
 							<thead>
-								<tr>
+								<tr class="valign-wrapper">
 									<th data-field="shoots" class="center-align">Dimensiones del inmueble</th>
-									<th data-field="price" class="center-align">Costo (IVA incluido)*</th>
+									<th data-field="price" class="center-align">Costo (IVA incluido)</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>
+								<tr class="valign-wrapper">
+									<td class="table-left-column valign">
 										<input name="tour[price]" value="4640" class="with-gap" type="radio" id="tour150" />
-										<label for="tour150">&#60 150m2</label>
+										<label for="tour150">&#60 150m<span class="super-index">2</span></label>
 									</td>
-									<td class="right">$4,640 MXN</td>
+									<td class="right td-right valign">$4,640 <span class="currency-font">MXN</span></td>
 								</tr>
-								<tr>
-									<td>
+								<tr class="valign-wrapper">
+									<td class="table-left-column valign">
 										<input name="tour[price]" value="5800" class="with-gap" type="radio" id="tour300" />
-										<label for="tour300">150 – 300m2</label>
+										<label for="tour300">150 – 300m<span class="super-index">2</span></label>
 									</td>
-									<td class="right">$5,800 MXN</td>
+									<td class="right td-right valign">$5,800 <span class="currency-font">MXN</span></td>
 								</tr>
-								<tr>
-									<td>
+								<tr class="valign-wrapper">
+									<td class="table-left-column valign">
 										<input name="tour[price]" value="6960" class="with-gap" type="radio" id="tour450" />
-										<label for="tour450">300 – 450m2</label>
+										<label for="tour450">300 – 450m<span class="super-index">2</span></label>
 									</td>
-									<td class="right">$6,960 MXN</td>
+									<td class="right td-right valign">$6,960 <span class="currency-font">MXN</span></td>
 								</tr>
-								<tr>
-									<td>
+								<tr class="valign-wrapper">
+									<td class="table-left-column valign">
 										<input name="tour[price]" value="8120" class="with-gap" type="radio" id="tour600" />
-										<label for="tour600">450 – 600m2</label>
+										<label for="tour600">450 – 600m<span class="super-index">2</span></label>
 									</td>
-									<td class="right">$8,120 MXN</td>
+									<td class="right td-right valign">$8,120 <span class="currency-font">MXN</span></td>
 								</tr>
-								<tr>
-									<td>
+								<tr class="valign-wrapper">
+									<td class="table-left-column valign">
 										<input name="tour[price]" value="9280" class="with-gap" type="radio" id="tour750" />
-										<label for="tour750">600 – 750m2</label>
+										<label for="tour750">600 – 750m<span class="super-index">2</span></label>
 									</td>
-									<td class="right">$9,280 MXN</td>
+									<td class="right td-right valign">$9,280 <span class="currency-font">MXN</span></td>
 								</tr>
-								<tr>
-									<td>
+								<tr class="valign-wrapper">
+									<td class="table-left-column valign">
 										<input name="tour[price]" value="10440" class="with-gap" type="radio" id="tour1000" />
-										<label for="tour1000">750 – 1000m2</label>
+										<label for="tour1000">750 – 1,000m<span class="super-index">2</span></label>
 									</td>
-									<td class="right">$10,440 MXN</td>
+									<td class="right td-right valign">$10,440 <span class="currency-font">MXN</span></td>
 								</tr>
 							</tbody>
 						</table>
-						<p class="table-note right-align">*Incluye la generación de tour virtual y el acceso al modelo en línea por un año.</p>
 						<p class="valign-wrapper right">
-							<span class="button-label">Siguiente</span>
+							<span id="price-button-label" class="button-label-inactive">Siguiente</span>
 							<button id="price-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 						</p>
 					</form>
@@ -502,16 +537,32 @@
 							</div>
 						</div>
 						<p class="valign-wrapper right">
-							<span class="button-label">Siguiente</span>
+							<span id="tour-appointment-button-label" class="button-label-inactive">Siguiente</span>
 							<button id="tour-appointment-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 						</p>
 					</form>
 				</div>
 				<div id="tour-fourth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
 					<h5 class="hide-on-med-and-up">Pago</h5>
-					<% if session[:tourPrice] %>
-						<p>Para contratar es necesario pagar un anticipo no reembolsable por $<%= session[:tourPrice]*0.30%> pesos. Los $<%= session[:tourPrice]*0.70%>) pesos restantes se deberán liquidar contra la publicación del tour. Por favor, selecciona una opción de pago.</p>
-					<% end %>
+					<div>
+						<p>Por favor, revisa que la información para la contratación del tour virtual sea correcta</p>
+						<div id="confirm-table" class="z-depth-1 animated pulse">
+						</div>
+					</div>
+					<p class="col s6 valign-wrapper left">
+						<span class="button-label">Editar</span>
+						<a id="tour-edit-button" href="/destroyclient" data-remote=true>
+							<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">fast_rewind</i></button>
+						</a>
+					</p>
+					<p class="col s6 valign-wrapper right">
+						<span class="button-label">Siguiente</span>
+						<button id="tour-confirmation-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">done</i></button>
+					</p>
+				</div>
+				<div id="tour-fifth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+					<h5 class="hide-on-med-and-up">Pago</h5>
+					<p>Por favor, selecciona una opción para el pago del anticipo:</p>
 					<div class="row">
 						<div class="col s12">
 							<ul class="tabs">
@@ -519,99 +570,101 @@
 								<li class="tab col s6"><a class="payment-tab-link" href="#wire-tab">Transferencia</a></li>
 							</ul>
 						</div>
-						<div id="card-tab" class="col s12">
-							<div id="credit-card-row" class="row">
-								<p>
-									<div class="payment-type col s3">
-										Crédito:
-									</div>
-									<div class="payment-type col s9">
-										<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
-										<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
-									</div>
-								</p>
-								<p>
-									<div class="payment-type col s3">
-										Débito:
-									</div>
-									<div class="col s9">
-										<span id="bank_names">Banamex HSBC Inbursa Santander</span>
-									</div>
-								</p>
+						<div id="card-wrapper" style="display:none">
+							<div id="card-tab" class="col s12">
+								<div id="credit-card-row" class="row">
+									<p>
+										<div class="payment-type col s3">
+											Crédito:
+										</div>
+										<div class="payment-type col s9">
+											<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
+											<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
+										</div>
+									</p>
+									<p>
+										<div class="payment-type col s3">
+											Débito:
+										</div>
+										<div class="col s9">
+											<span id="bank_names">Banamex HSBC Inbursa Santander</span>
+										</div>
+									</p>
+								</div>
+								<%= form_tag('/charges/create', id: 'card-form', :remote => true) do %>
+								  	<span class="card-errors"></span>
+									<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+								  	<div class="col s12">
+								    	<label>
+								      		<span>Nombre del tarjetahabiente</span>
+								      		<input type="text" size="20" data-conekta="card[name]"/>
+								    	</label>
+								  	</div>
+								  	<div class="col s8">
+								    	<label>
+								      		<span>Número de tarjeta</span>
+								      		<input id="tour-card" type="text" size="20" data-conekta="card[number]"/>
+								    	</label>
+								  	</div>
+								  	<div class="col s3 offset-s1">
+								    	<label>
+								      		<span>CVC</span>
+								      		<input type="text" size="4" data-conekta="card[cvc]"/>
+								    	</label>
+								  	</div>
+								  	<div class="form-row">
+								    	<label>
+								      		<span>Fecha de expiración</span>
+								      		<div class="col s5">
+								      			<input type="text" size="2" placeholder="MM" data-conekta="card[exp_month]"/>
+								      		</div>
+								      		<div class="col s6 offset-s1">
+								      			<input type="text" size="4" placeholder="AAAA" data-conekta="card[exp_year]"/>
+								      		</div>	
+								    	</label>
+								  	</div>
+								<!-- Información recomendada para sistema antifraude -->
+								  <div class="col s12">
+								    <label>
+								      <span>Dirección (calle y núm.)</span>
+								      <input type="text" size="25" data-conekta="card[address][street1]"/>
+								    </label>
+								  </div>
+								<div class="col s12">
+								    <label>
+								      <span>Dirección (colonia)</span>
+								      <input type="text" size="25" data-conekta="card[address][street2]"/>
+								    </label>
+								</div>
+								<div class="col s5">
+								    <label>
+								      <span>País</span>
+								      <input type="text" size="25" data-conekta="card[address][country]"/>
+								    </label>
+								</div>
+								<div class="col s6 offset-s1">
+								    <label>
+								      <span>Estado</span>
+								      <input type="text" size="25" data-conekta="card[address][state]"/>
+								    </label>
+								</div>
+								<div class="col s5">
+								    <label>
+								      <span>Ciudad</span>
+								      <input type="text" size="25" data-conekta="card[address][city]"/>
+								    </label>
+								</div>
+								<div class="col s6 offset-s1">
+								    <label>
+								      <span>CP</span>
+								      <input type="text" size="5" data-conekta="card[address][zip]"/>
+								    </label>
+								  </div>
+								  <button type="submit">¡Pagar ahora!</button>
+								<% end %>
 							</div>
-							<%= form_tag('/charges/create', id: 'card-form', :remote => true) do %>
-							  	<span class="card-errors"></span>
-								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-							  	<div class="col s12">
-							    	<label>
-							      		<span>Nombre del tarjetahabiente</span>
-							      		<input type="text" size="20" data-conekta="card[name]"/>
-							    	</label>
-							  	</div>
-							  	<div class="col s8">
-							    	<label>
-							      		<span>Número de tarjeta de crédito</span>
-							      		<input id="tour-card" type="text" size="20" data-conekta="card[number]"/>
-							    	</label>
-							  	</div>
-							  	<div class="col s3 offset-s1">
-							    	<label>
-							      		<span>CVC</span>
-							      		<input type="text" size="4" data-conekta="card[cvc]"/>
-							    	</label>
-							  	</div>
-							  	<div class="form-row">
-							    	<label>
-							      		<span>Fecha de expiración</span>
-							      		<div class="col s5">
-							      			<input type="text" size="2" placeholder="MM" data-conekta="card[exp_month]"/>
-							      		</div>
-							      		<div class="col s6 offset-s1">
-							      			<input type="text" size="4" placeholder="AAAA" data-conekta="card[exp_year]"/>
-							      		</div>	
-							    	</label>
-							  	</div>
-							<!-- Información recomendada para sistema antifraude -->
-							  <div class="col s12">
-							    <label>
-							      <span>Dirección (calle y núm.)</span>
-							      <input type="text" size="25" data-conekta="card[address][street1]"/>
-							    </label>
-							  </div>
-							<div class="col s12">
-							    <label>
-							      <span>Dirección (colonia)</span>
-							      <input type="text" size="25" data-conekta="card[address][street2]"/>
-							    </label>
+							<div id="wire-tab" class="col s12">
 							</div>
-							<div class="col s5">
-							    <label>
-							      <span>País</span>
-							      <input type="text" size="25" data-conekta="card[address][country]"/>
-							    </label>
-							</div>
-							<div class="col s6 offset-s1">
-							    <label>
-							      <span>Estado</span>
-							      <input type="text" size="25" data-conekta="card[address][state]"/>
-							    </label>
-							</div>
-							<div class="col s5">
-							    <label>
-							      <span>Ciudad</span>
-							      <input type="text" size="25" data-conekta="card[address][city]"/>
-							    </label>
-							</div>
-							<div class="col s6 offset-s1">
-							    <label>
-							      <span>CP</span>
-							      <input type="text" size="5" data-conekta="card[address][zip]"/>
-							    </label>
-							  </div>
-							  <button type="submit">¡Pagar ahora!</button>
-							<% end %>
-						</div>
-						<div id="wire-tab" class="col s12">
 						</div>
 					</div>
 				</div>	

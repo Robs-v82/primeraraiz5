@@ -120,13 +120,20 @@ class AppointmentsController < ApplicationController
 		tourAppointment = Appointment.new(appointment_info)
 		if tourAppointment.valid?
 			tourAppointment.save
-			puts 'XXxx'*100, Location.last.appointment.date
 			session[:appointment_id] = tourAppointment.id
-			puts session[:appointment_id]
-			render json: {result: "success"}
+			dateString = I18n.l(tourAppointment.date, :format => "%A %e de %B") 
+			session[:tourDate] = dateString.slice(0,1).capitalize + dateString.slice(1..-1) 
+			session[:tourTime] = I18n.l(tourAppointment.time, :format => "%-I:%M %p")
+			render json: {
+				result: "success",
+				tourDate: session[:tourDate],
+				tourTime: session[:tourTime],
+				short_address: session[:short_address],
+				client_phone_number: session[:client_phone_number],
+				client_email: session[:client_email]
+			}
 		else
 			render json: {error: tourAppointment.errors.full_messages}
-			puts 'XXxx'*100, tourAppointment.errors.full_messages
 		end
 	end
 
