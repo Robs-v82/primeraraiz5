@@ -3,7 +3,7 @@
 <head>
 	<title>Primera Raíz</title>
 	<meta name="google-site-verification" content="xWrWEWauf0crJRezjK3ggaV-xIyRrNvHhs4DDqRHl9o" />
-	<meta name="description" content="Vendemos tu depa en la Ciudad de México. Comisión del 2%, la más baja del mercado.">
+	<meta name="description" content="El tour virtual más realista. Desde $4,640 pesos.">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -158,7 +158,7 @@
 				//Property form
 
 				$('.scrollspy').scrollSpy()
-				$('ul.tabs').tabs();
+				$('ul.tabs').tabs()
 				$('.button-collapse').sideNav()
 				$('.login-modal-trigger').leanModal()
 				$('.datepicker').pickadate({
@@ -169,40 +169,11 @@
 					weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
 					today: false,
 					clear: false,
-					close: "Seleccionar",
+					close: "Cerrar",
 					selected: false,
 					closeOnSelect: true,
 					format: 'dddd dd !de mmmm !de yyyy',
 				})
-
-				$('.terms_label').click(function() {
-				    $('#legal').attr('checked', 'checked')
-				    $('#legal-button').removeAttr('disabled', true).addClass("animated pulse")
-				})
-
-				$('#legal_form').submit(function() {
-					$('#tour-first').hide()
-					$('#tour-second').show()
-					$('#tour-zero-b-scrollspy').addClass('active animated pulse')
-					return false
-				})
-
-				$('#tour-price-form').submit(function() {
-					$.post(
-						'/virtualtour/setPrice',
-						$(this).serialize(),
-						function(data) {
-							console.log(data)
-							$('#tour-second-b').hide()
-							$('#tour-third-b').show()
-							$('#tour-second-b-scrollspy').removeClass('active')
-							$('#tour-third-b-scrollspy').addClass('active animated pulse')
-						},
-						"json"
-					)
-					return false	
-				})
-
 
 			})
 		}

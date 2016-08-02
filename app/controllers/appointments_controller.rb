@@ -72,6 +72,14 @@ class AppointmentsController < ApplicationController
 		off_hours = []
 		long_date = getTime_params[:date]
 		target_date = set_date(long_date)
+		appointmentDate = DateTime.parse(target_date) 
+		today = Date.today
+		difference = appointmentDate - today
+		if difference > 4
+			transfer = true 
+		else
+			transfer = false
+		end
 		appointments = Appointment.where("date = '#{target_date}'")
 		taken_hours = appointments.pluck(:time)
 		test_time = "2000-01-01 08:00:00 UTC"
@@ -102,7 +110,10 @@ class AppointmentsController < ApplicationController
 				off_hours << x
 			end
 		end
-		render json: {hours: off_hours}
+		render json: {
+			hours: off_hours,
+			transfer: transfer,
+		}
 	end
 
 	def tourAppointment
@@ -115,8 +126,8 @@ class AppointmentsController < ApplicationController
 		appointment_info.store("status", "Agendada")
 		appointment_info.delete("date")
 		appointment_info.store("date",target_date)
-		appointment_info.store("appointable_id", session[:location_id])
-		appointment_info.store("appointable_type", "Location")
+		appointment_info.store("appointable_id", session[:tour_id])
+		appointment_info.store("appointable_type", "Tour")
 		tourAppointment = Appointment.new(appointment_info)
 		if tourAppointment.valid?
 			tourAppointment.save

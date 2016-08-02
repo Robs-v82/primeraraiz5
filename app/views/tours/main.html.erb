@@ -14,6 +14,8 @@
   });
 </script>
 <script>
+
+
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.tour-modal-trigger').leanModal()
@@ -21,6 +23,34 @@
     	$('#success-modal').openModal()
     	$.get()
     }
+
+	$('.terms_label').click(function() {
+	    $('#legal').attr('checked', 'checked')
+	    $('#legal-button').removeAttr('disabled', true).addClass("animated pulse")
+	})
+
+	$('#legal_form').submit(function() {
+		$('#tour-first').hide()
+		$('#tour-second').show()
+		$('#tour-zero-b-scrollspy').addClass('active animated pulse')
+		return false
+	})
+
+	$('#tour-price-form').submit(function() {
+		$.post(
+			'/virtualtour/setPrice',
+			$(this).serialize(),
+			function(data) {
+				console.log(data)
+				$('#tour-second-b').hide()
+				$('#tour-third-b').show()
+				$('#tour-second-b-scrollspy').removeClass('active anomated pulse')
+				$('#tour-third-b-scrollspy').addClass('active animated pulse')
+			},
+			"json"
+		)
+		return false	
+	})
 
 
     var setTime = function(hours) {
@@ -30,21 +60,32 @@
 				max: [17,0],
 				interval: 180,
 				disable: hours.hours,
-				clear: "Cerrar",
+				close: "Cerrar",
+				closeOnSelect: true,
 			})
 		}
 
 		$('#date_selector').change(function() {
+			console.log()
 			$('#tour-time-selector').replaceWith('<input id="tour-time-selector" disabled name="appointment[time]" class="timepicker">')
 			$.post(
 				'/getTime',
 				$(this).serialize(),
 				function(data) {
-					console.log(data)
 					setTime(data)
 					$('#tour-time-selector').prop('disabled', false)
 					$('#tour-appointment-button-label').removeClass('button-label-inactive').addClass('button-label')
 					$('#tour-appointment-button').prop('disabled', true)
+					if (data.transfer == false) {
+						$('#wire-tab-trigger').addClass('disabled tooltipped').attr({
+							"data-tooltip":"Pago con tranferencia disponible únicamente al agendar con cuatro o más días de anticipación.",
+							"data-position":"bottom",
+						})
+					}
+					else {
+						$('#wire-tab-trigger').tooltip('hide').removeClass('disabled tooltipped').removeAttr('data-tooltip data-position data-tooltip-id')
+					}
+					$('.tooltipped').tooltip({delay: 50})
 				}
 			)
 			return false
@@ -53,14 +94,6 @@
 		$('#time-wrapper').on('change', function() {
 			console.log('Working')
 			$('#tour-appointment-button').removeAttr('disabled', true).addClass("animated pulse")	
-		})
-
-
-		$("#tour-price-form input:radio").click(function() {
-			$('#price-table tr').removeClass('green-table-row')
-			$(this).parents("tr").addClass('green-table-row').delay(300).addClass('animated pulse')
-			$('#price-button-label').removeClass('button-label-inactive').addClass('button-label')
-			$('#price-button').removeAttr('disabled', true).addClass("animated pulse")
 		})
 
 		$('#tour-appointment-form').submit(function() {
@@ -78,7 +111,7 @@
 						$('#tour-third-b').hide()
 						$('#confirm-table').html('<div class="row"><div class="col s8"><div class="row black-header white-text">FECHA</div><div class="row green-cell">'+tourDate+'</div></div><div class="col s4"><div class="row black-header white-text">HORA</div><div class="row green-cell">'+tourTime+'</div></div></div><div class="row"><div class="col s12"><div class="row black-header white-text">DIRECCIÓN DEL INMUEBLE</div><div class="row green-cell">'+short_address+'</div></div></div><div class="row"><div class="col s6"><div class="row black-header white-text">DIMENSIONES</div><div class="row green-cell">De 150 a 300 m<span class="super-index">2</span></div></div><div class="col s6"><div class="row black-header white-text">TELÉFONO</div><div class="row green-cell">'+client_phone_number+'</div></div></div><div class="row"><div class="s12"><div class="row black-header white-text">CORREO ELECTRÓNICO</div><div class="row green-cell">'+client_email+'</div></div></div>')
 						$('#tour-fourth-b').show()
-						$('#tour-third-b-scrollspy').removeClass('active')
+						$('#tour-third-b-scrollspy').removeClass('active animated pulse')
 						$('#tour-fourth-b-scrollspy').addClass('active animated pulse')
 					}
 				}
@@ -89,15 +122,16 @@
 		$('#tour-confirmation-button').click(function() {
 			$('#tour-fourth-b').hide()
 			$('#tour-fifth-b').show()
-			$('#tour-fourth-b-scrollspy').removeClass('active')
-			$('#tour-fifth-b-scrollspy').addClass('active animated pulse')	
+			$('#tour-fourth-b-scrollspy').removeClass('active animated pulse')
+			$('#tour-fifth-b-scrollspy').addClass('active animated pulse')
+			$('#down-payment-tr').addClass('green-table-row animated pulse')	
 		})
 
 
 		$('#tour-edit-button').click(function() {
 			$('#tour-fourth-b').hide()
 			$('#tour-zero-b').show()
-			$('#tour-fourth-b-scrollspy').removeClass('active')
+			$('#tour-fourth-b-scrollspy').removeClass('active animated pulse')
 			$('#tour-zero-b-scrollspy').addClass('active animated pulse')	
 		})
 
@@ -123,12 +157,15 @@
 		})
 
 		$('#tour-address-form').submit(function() {
+			$('#tour-first-b-scrollspy').removeClass('animated shake')
 			$.post(
 				'/locations',
 				$(this).serialize(),
 				function(data) {
 					console.log(data)
 					if ("success" in data) {
+						$('.address-error-message-board').hide()
+						$('#checkout-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
 						$('#tour-first-b').hide()
 						$('#tour-second-b').show()
 						$('#tour-first-b-scrollspy').removeClass('active')
@@ -136,7 +173,16 @@
 
 					}
 					else {
-						console.log('Wrong!')
+						console.log(data.errors)
+						var array = data.errors
+						var newHTML = []
+						for (var i = 0; i < array.length; i++) {
+						    newHTML.push('<li class="red-text" style="opacity:0;">' + array[i] + '</li>')
+						}
+						$('#checkout-board').addClass('animated fadeOutRight').delay(4000).hide()
+						$(".address-error-message-board").html("<div class='row'><ul class='stacked_errors'>"+newHTML.join("")+"</ul></div>")
+						$('#tour-first-b-scrollspy').addClass('animated shake')
+						Materialize.showStaggeredList('.stacked_errors')
 					}
 				}
 			)
@@ -173,23 +219,21 @@
 					data: client_form.serialize(),
 					dataType: "json",
 					success: function(data) {
-						$('#error-message-board').hide()
-						$('#error-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
+						$('.error-message-board').hide()
+						$('#checkout-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
 						$('#tour-zero-b').hide()
 						$('#tour-first-b').show()
 						$('#tour-zero-b-scrollspy').removeClass('active')
 						$('#tour-first-b-scrollspy').addClass('active animated pulse')
 					},
 					error: function(data) {
-						console.log(data)
 						var array = data["responseJSON"].errors
-						console.log(array)
 						var newHTML = []
 						for (var i = 0; i < array.length; i++) {
 						    newHTML.push('<li class="red-text" style="opacity:0;">' + array[i] + '</li>')
 						}
-						$('#error-board').addClass('animated fadeOutRight').delay(4000).hide()
-						$("#error-message-board").html("<div class='row'><ul class='stacked_errors'>"+newHTML.join("")+"</ul></div>")
+						$('#checkout-board').addClass('animated fadeOutRight').delay(4000).hide()
+						$(".error-message-board").html("<div class='row'><ul class='stacked_errors'>"+newHTML.join("")+"</ul></div>")
 						$('#tour-zero-b-scrollspy').addClass('animated shake')
 						Materialize.showStaggeredList('.stacked_errors')
 					}
@@ -200,13 +244,87 @@
 		$('.client-contact').change(function() {
 			$('#client-button-label').removeClass('button-label-inactive').addClass('button-label')
 			$('#client-button').removeAttr("disabled", true).addClass("animated pulse")
+			$('.payment-tab-link').click(function() {
+				$('#card-wrapper').show()
+			})
+  		})
 
+		// Select model size and floorplan
 
-		$('.payment-tab-link').click(function() {
-			$('#card-wrapper').show()
+	  	var check_this = function(thatId, floorplanRealPrice, total, downPayment, remainder) {
+		  		$('#floorPlan-checkbox-label').click(function() {
+		        $('#floorPlan-checkbox').attr('checked', 'checked');	
+				$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>')
+				$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>')
+				$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>')
+				$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+			})
+	  	}
+
+		var setCheckout = function(thisId) {
+			$('#floorPlan-checkbox-p').empty()
+			var tourPrices = [4640,5800,6960,8120,9280,10440]
+			var floorplanPrices = [1440,1680,1920,2160,2400,2640]
+			var tourOptionArr = ['tour150','tour300','tour450','tour600','tour750','tour1000']
+			var floorplanPrice = 0
+			if ($('#floorPlan-checkbox').is(":checked")) {
+				var totalArr = [6080,7480,8880,10280,11680,13080]
+				var totalShadowArr = [4640,5800,6960,8120,9280,10440]
+				var floorplanRealPrices = floorplanPrices
+				var floorplanShadowPrices = [0,0,0,0,0,0]
+			}
+			else {
+				var totalArr = tourPrices
+				var totalShadowArr = [6080,7480,8880,10280,11680,13100]
+				var floorplanRealPrices = [0,0,0,0,0,0]
+				var floorplanShadowPrices = floorplanPrices
+			}		
+			var downPaymentArr = []
+			var downPaymentShadowArr = []
+			var remainderArr = []
+			var remainderShadowArr = []
+			for (x=0;x<6;x++) {
+				downPaymentArr[x] = totalArr[x]*0.25
+				downPaymentShadowArr[x] = totalShadowArr[x]*0.25
+				remainderArr[x] = totalArr[x]*0.75
+				remainderShadowArr[x] = totalShadowArr[x]*0.75
+				if (thisId == tourOptionArr[x]) {
+					var tourPrice = tourPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var floorplanPrice = floorplanPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var floorplanRealPrice = floorplanRealPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var floorplanShadowPrice = floorplanShadowPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var total = totalArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var totalShadow = totalShadowArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var downPayment = downPaymentArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var downPaymentShadow = downPaymentShadowArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var remainder = remainderArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					var remainderShadow = remainderShadowArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+				}
+			}
+			$('#floorPlan-checkbox-p').html('<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox"><label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >Agrega un <a id="floorplan-link"class="grey-text text-darken-3" href="">plano esquemático</a> por '+floorplanPrice+'.</label>')
+			check_this(thisId, floorplanShadowPrice, totalShadow, downPaymentShadow, remainderShadow)		
+			$('#tour-item-price').empty().html('$'+tourPrice+'<span class="currency-font"> MXN</span>') 
+			$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>') 
+			$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>') 
+			$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>') 
+			$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>') 
+			$('#checkout-table td').css('color', '#424242')
+		}
+
+		$("#tour-price-form input:radio").click(function() {
+			$('#price-table tr').removeClass('green-table-row')
+			$('#price-table tr').removeClass('animated pulse')
+			$(this).parents("tr").addClass('green-table-row').delay(300).addClass('animated pulse')
+			$('#price-button-label').removeClass('button-label-inactive').addClass('button-label')
+			$('#price-button').removeAttr('disabled', true).addClass("animated pulse")
+			var id = this.id
+			setCheckout(id)
 		})
-  	})
 	})
+
+
+
+
 </script>
 <script>
 	
@@ -346,8 +464,7 @@
 					</ul>
 				</div>
 			</div>	
-			<form id="legal_form" class="row 
-			valign-wrapper" style="width:100%">
+			<form id="legal_form" class="row valign-wrapper" style="width:100%">
 				<div class="col s8">
 					<input type="checkbox" id="legal" class="valign">
 					<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <a class="grey-text text-darken-3" href="">terminos y condiciones</a>.</label>
@@ -368,14 +485,41 @@
 						<li><a id="tour-second-b-scrollspy" class="scrollspy-li" href="#tour-second-b">Dimensiones</a></li>
 						<li><a id="tour-third-b-scrollspy" class="scrollspy-li" href="#tour-third-b">Fecha y hora</a></li>
 						<li><a id="tour-fourth-b-scrollspy" class="scrollspy-li" href="#tour-fourth-b">Confirmación</a></li>
-						<li><a id="tour-fifth-b-scrollspy" class="scrollspy-li" href="#tour-fifth-b">Pago</a></li>
+						<li><a id="tour-fifth-b-scrollspy" class="scrollspy-li" href="#tour-fifth-b">Pago anticipo</a></li>
 					</ul>
-					<div class="b-container">
-						<div id="error-board" class="valign-wrapper">
-							<h4 class="white-text valign center-align">El tour virtual más realista</h4>
+					<div id="checkout-board" class="valign-wrapper">
+						<div class="row">
+							<div class="col s12">
+								<p class="right-align light-green-text text-accent-4"><i class="material-icons">shopping_cart</i></p>
+								<table id="checkout-table">
+									<tbody>
+										<tr>
+											<td>Tour virtual</td>
+											<td id="tour-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+										</tr>
+										<tr>
+											<td>Plano esquemático</td>
+											<td id="floorplan-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+										</tr>
+										<tr id="total-tr" class="break-tr">
+											<td>Total</td>
+											<td id="checkout-total" class="right-align">$0<span class="currency-font"> MXN</span></td>
+										</tr>
+										<tr id="down-payment-tr">
+											<td>Anticipo</td>
+											<td id="checkout-down-payment" class="right-align">$0<span class="currency-font"> MXN</span></td>
+										</tr>
+										<tr>
+											<td>Saldo</td>
+											<td id="checkout-remainder" class="right-align">$0<span  class="currency-font"> MXN</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
-						<div id="error-message-board"></div>
 					</div>
+					<div class="error-message-board"></div>
+					<div class="address-error-message-board"></div>
 				</div>	
 				<div id="tour-zero-b" class="col l6 m6 s12 tour-left-column">
 					<h5 class="hide-on-med-and-up">Datos de contacto</h5>
@@ -420,6 +564,7 @@
 								<label for="tour-message-contact-radio">Mensaje SMS</label>
 							</div>
 						</div>
+						<div class="error-message-board hide-on-med-and-up"></div>
 						<p class="valign-wrapper right">
 							<span id="client-button-label" class="button-label-inactive">Siguiente</span>
 							<button id="client-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
@@ -442,7 +587,7 @@
 								<input type="text" name="location[unit]" placeholder="Núm. interior">
 							</div>
 							<div class="input-field col s12">
-								<select id="tour-district-selector" name="tour[district]" class="anti-default browser-default">
+								<select id="tour-district-selector" name="location[district]" class="anti-default browser-default">
 									<option value="" disabled selected>Delegación/Municipio</option>
 									<% @areas.each do |area| %>
 										<option><%=area%></option>
@@ -455,6 +600,7 @@
 								</select>
 							</div>
 						</div>
+						<div class="address-error-message-board hide-on-med-and-up"></div>
 						<p class="valign-wrapper right">
 							<span id="tour-address-button-label" class="button-label-inactive">Siguiente</span>
 							<button id="tour-address-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
@@ -469,54 +615,62 @@
 							<thead>
 								<tr class="valign-wrapper">
 									<th data-field="shoots" class="center-align">Dimensiones del inmueble</th>
-									<th data-field="price" class="center-align">Costo (IVA incluido)</th>
+									<th data-field="price" class="center-align">Precio</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[price]" value="4640" class="with-gap" type="radio" id="tour150" />
+										<input name="tour[model_fee]" value="4640" class="with-gap" type="radio" id="tour150" />
 										<label for="tour150">&#60 150m<span class="super-index">2</span></label>
 									</td>
 									<td class="right td-right valign">$4,640 <span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[price]" value="5800" class="with-gap" type="radio" id="tour300" />
+										<input name="tour[model_fee]" value="5800" class="with-gap" type="radio" id="tour300" />
 										<label for="tour300">150 – 300m<span class="super-index">2</span></label>
 									</td>
 									<td class="right td-right valign">$5,800 <span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[price]" value="6960" class="with-gap" type="radio" id="tour450" />
+										<input name="tour[model_fee]" value="6960" class="with-gap" type="radio" id="tour450" />
 										<label for="tour450">300 – 450m<span class="super-index">2</span></label>
 									</td>
 									<td class="right td-right valign">$6,960 <span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[price]" value="8120" class="with-gap" type="radio" id="tour600" />
+										<input name="tour[model_fee]" value="8120" class="with-gap" type="radio" id="tour600" />
 										<label for="tour600">450 – 600m<span class="super-index">2</span></label>
 									</td>
 									<td class="right td-right valign">$8,120 <span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[price]" value="9280" class="with-gap" type="radio" id="tour750" />
+										<input name="tour[model_fee]" value="9280" class="with-gap" type="radio" id="tour750" />
 										<label for="tour750">600 – 750m<span class="super-index">2</span></label>
 									</td>
 									<td class="right td-right valign">$9,280 <span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[price]" value="10440" class="with-gap" type="radio" id="tour1000" />
+										<input name="tour[model_fee]" value="10440" class="with-gap" type="radio" id="tour1000" />
 										<label for="tour1000">750 – 1,000m<span class="super-index">2</span></label>
 									</td>
 									<td class="right td-right valign">$10,440 <span class="currency-font">MXN</span></td>
 								</tr>
 							</tbody>
 						</table>
+						<div id="floorPlan-wrapper">
+							<p id="floorPlan-checkbox-p">
+								<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox">
+								<label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >
+									Agrega un <a id="floorplan-link"class="grey-text text-darken-3" href="">plano esquemático</a> por <span id="floorplan-price">$0</span>.
+								</label>
+							</p>
+						</div>
 						<p class="valign-wrapper right">
 							<span id="price-button-label" class="button-label-inactive">Siguiente</span>
 							<button id="price-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
@@ -525,7 +679,7 @@
 				</div>
 				<div id="tour-third-b" class="col l6 m6 s12 tour-left-column" style="display:none">
 					<h5 class="hide-on-med-and-up">Fecha y hora</h5>
-					<p class="header-note">Considera que se necesitan de una a dos horas para fotografiar el inmueble y se recomienda evitar el paso de personas.</p>
+					<p class="header-note">Considera que se necesitan <%= session[:timeSpean] %> horas para fotografiar el inmueble y se recomienda evitar el paso de personas.</p>
 					<form id="tour-appointment-form" action="/appointments/tourAppointment" method="post">
 						<div class="row">
 							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
@@ -567,29 +721,25 @@
 						<div class="col s12">
 							<ul class="tabs">
 								<li class="tab col s6"><a class="payment-tab-link" href="#card-tab">Tarjeta</a></li>
-								<li class="tab col s6"><a class="payment-tab-link" href="#wire-tab">Transferencia</a></li>
+								<li id="wire-tab-trigger" class="tab col s6"><a class="payment-tab-link" href="#wire-tab">Transferencia</a></li>
 							</ul>
 						</div>
 						<div id="card-wrapper" style="display:none">
 							<div id="card-tab" class="col s12">
 								<div id="credit-card-row" class="row">
-									<p>
-										<div class="payment-type col s3">
-											Crédito:
-										</div>
-										<div class="payment-type col s9">
-											<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
-											<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
-										</div>
-									</p>
-									<p>
-										<div class="payment-type col s3">
-											Débito:
-										</div>
-										<div class="col s9">
-											<span id="bank_names">Banamex HSBC Inbursa Santander</span>
-										</div>
-									</p>
+									<div class="payment-type col s3">
+										CRÉDITO:
+									</div>
+									<div class="payment-type col s9">
+										<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
+										<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
+									</div>
+									<div class="payment-type col s3">
+										DÉBITO:
+									</div>
+									<div class="col s9">
+										<span id="bank_names">Banamex HSBC Inbursa Santander</span>
+									</div>
 								</div>
 								<%= form_tag('/charges/create', id: 'card-form', :remote => true) do %>
 								  	<span class="card-errors"></span>

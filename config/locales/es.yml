@@ -24,6 +24,10 @@ es:
         mobile_phone: "El número telefónico"
         other_phone: "El número telefónico"
         name: "El nombre"
+      location:
+        street: "La calle"
+        number: "El número exterior"
+        unit: "El número interior"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

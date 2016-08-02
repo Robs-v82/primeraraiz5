@@ -4,7 +4,7 @@ class ChargesController < ApplicationController
 
 		begin
 		  @charge = Conekta::Charge.create({
-		    "amount"=> session[:tourPrice]*20,
+		    "amount"=> session[:tourPrice]*25,
 		    "currency"=> "MXN",
 		    "description"=> "Anticipo tour virtual",
 		    "reference_id"=> session[:reference_id],

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726034251) do
+ActiveRecord::Schema.define(version: 20160729225908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,21 @@ ActiveRecord::Schema.define(version: 20160726034251) do
   add_index "properties", ["agent_id"], name: "index_properties_on_agent_id", using: :btree
   add_index "properties", ["neighborhood_id"], name: "index_properties_on_neighborhood_id", using: :btree
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
+
+  create_table "tours", force: true do |t|
+    t.string   "size"
+    t.string   "status"
+    t.integer  "model_fee"
+    t.integer  "floorplan_fee"
+    t.integer  "vat"
+    t.integer  "total"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "subtotal"
+  end
+
+  add_index "tours", ["location_id"], name: "index_tours_on_location_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"

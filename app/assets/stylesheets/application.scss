@@ -225,7 +225,7 @@ footer {
 }
 
 .tabs .indicator {
-    background-color: #b2ff59;
+    background-color: #64dd17;
 }
 
 #transition-row {
@@ -615,9 +615,22 @@ select:focus {
 	display: block;
 }
 
-.payment-tab-link {
-	color: #424242 !important;
+.tabs .tab a {
+	color: #424242;
 	border-bottom: 5px;
+}
+
+.tabs .tab.disabled a {
+	color: #9e9e9e;	
+}
+
+.tabs .tab a:hover {
+	color: #64dd17;
+}
+
+
+.tabs .tab.disabled a:hover {
+	color: #9e9e9e;	
 }
 
 #credit-card-row {
@@ -634,6 +647,16 @@ select:focus {
 	font-size: 1.7em;
 	font-weight: 500;
 	border-radius: 0;
+}
+
+.material-tooltip {
+	max-width: 400;
+	color: #616161;
+}
+
+.backdrop {
+	background-color: #b2ff59;
+	border-radius: 0;	
 }
 
 .card-errors {
@@ -816,4 +839,61 @@ input[type=text] {
 .green-table-row {
 	background-color: rgba(100,221,23,0.25) !important;
 	font-weight: 500;
+}
+
+#checkout-board p {
+	width: 100%;
+	line-height: 24px;
+	margin: 0;
+	border-bottom: 1px solid #64dd17;
+}
+
+#checkout-board .row {
+	width: 100%;
+	margin: 0;
+}
+
+#floorPlan-checkbox-label {
+	font-size: 13px !important;
+}
+#floorplan-link {
+	text-decoration: underline;
+}
+
+#checkout-table td {
+	padding: 0;
+	color: #bdbdbd;
+}
+
+.break-tr td {
+	padding-bottom: 10px !important;
+}
+
+#total-tr {
+	font-weight: 500;
+}
+
+.picker__box {
+	padding: 10px;
+	border-radius: 0px;
+}
+
+.picker__day.picker__day--today {
+	color: #64dd17;
+}
+
+.picker__day--selected,
+.picker__day--selected:hover,
+.picker--focused .picker__day--selected {
+	border-radius: 50%;
+	transform: scale(0.9);
+	color: #b2ff59 !important;
+	background-color: #424242 !important;
+}
+
+@media only screen and (max-width: 992px) {
+  /* line 1, /Users/Bobsled/.rvm/gems/ruby-2.2.4/gems/materialize-sass-0.97.6/app/assets/stylesheets/materialize/components/_modal.scss */
+  .modal {
+    width: 90%;
+  }
 }

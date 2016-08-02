@@ -16,8 +16,42 @@ class ToursController < ApplicationController
 	end
 
 	def setPrice
-		session[:tourPrice] = price_params[:price].to_i
-		render json: {price: session[:tourPrice]}
+		tour_info = price_params
+		floorplanPrices = [1440,1680,1920,2160,2400,2640]
+		modelPrices = [4640,5800,6960,8120,9280,10440]
+		sizeArr = ['150','300','450','600','750','1000']
+		timeArr = ['de una a dos', 'de dos a tres', 'de cuatro a cinco', 'de cinco a siete', 'de seis a ocho','alrededor de ocho']
+		(0..5).each do |x|
+			if modelPrices[x] == tour_info[:model_fee].to_i
+				tour_info.store('size', sizeArr[x])
+				tour_info.delete('model_fee')
+				tour_info.store('model_fee', modelPrices[x])
+				session[:timeSpan] = timeArr[x]
+				if price_params[:floorplan] == "on"
+					puts floorplanPrices, floorplanPrices[x]
+					tour_info.store('floorplan_fee', floorplanPrices[x])
+					session[:total] = tour_info[:model_fee] + tour_info[:floorplan_fee]
+				else
+					session[:total] = tour_info[:model_fee]
+				end
+				tour_info.delete('floorplan')
+			end
+		end
+		tour_info.store("status","scheduled")
+		subtotal = session[:total]/1.16
+		vat = session[:total] - subtotal
+		tour_info.store("total", session[:total])
+		tour_info.store("subtotal", subtotal)
+		tour_info.store("vat", vat)
+		tour_info.store("status","scheduled")
+		tour_info.store("location_id",session[:location_id])
+		tour = Tour.new(tour_info)
+		if tour.valid?
+			tour.save
+			session[:tourPrice] = tour_info[:total]
+			session[:tour_id] = tour.id
+			render json: {price: session[:tourPrice]}
+		end
 	end
 
 	def getNeighborhoods
@@ -29,10 +63,10 @@ class ToursController < ApplicationController
 	private
 
 	def price_params
-		params.require(:tour).permit(:price)
+		params.require(:tour).permit(:model_fee, :floorplan)
 	end
 
 	def getNeighbothoods_params
-		params.require(:tour).permit(:district)
+		params.require(:location).permit(:district)
 	end
 end
