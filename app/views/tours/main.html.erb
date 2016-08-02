@@ -467,7 +467,8 @@
 			<form id="legal_form" class="row valign-wrapper" style="width:100%">
 				<div class="col s8">
 					<input type="checkbox" id="legal" class="valign">
-					<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <a class="grey-text text-darken-3" href="">terminos y condiciones</a>.</label>
+	<!-- 				<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <a class="grey-text text-darken-3" href="/legal">términos y condiciones</a>.</label> -->
+					<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.</label>
 				</div>
 				<div class="col s4">
 					<button id="legal-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
