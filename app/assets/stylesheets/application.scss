@@ -897,3 +897,24 @@ input[type=text] {
     width: 90%;
   }
 }
+
+.inline-currency {
+	display: inline-block !important;
+}
+
+.spinner-green-only {
+	border-color: #64dd17;	
+}
+
+#charge-wrapper {
+	width: 45px;
+	height: 45px;
+}
+
+#wire-tab {
+	padding: 0 !important;
+}
+
+.no-padding-p {
+	padding: 0 !important;
+}

@@ -46,9 +46,11 @@ class ChargesController < ApplicationController
 
 			if @charge.status == "paid"
 				session[:charge] = @charge
-				puts "xxXX"*100, "working!"
 				target_client = Client.find(session[:client_id])
 				target_location = Location.find(session[:location_id])
+				target_tour = Tour.find(session[:tour_id])
+				target_tour.update(:status=>"down_payment")
+				session[:tour_status] = target_tour[:status]
 				target_appointment = Appointment.find(session[:appointment_id])
 				UserMailer.tour_email(target_client, target_location, target_appointment, @charge).deliver
 				redirect_to '/virtualtour'

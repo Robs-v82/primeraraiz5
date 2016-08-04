@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'charges/create' => 'charges#create'
   get 'tours/demo'
   get 'tours/new'
+  get 'tours/wire' => 'tours#wire'
   root 'home#index'
   post 'users/login' => 'users#login'
   post 'users' => 'users#create'
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
   post 'locations' => 'locations#create'
   post 'clients' => 'clients#create'
   get 'destroyclient' => 'clients#destroy'
-  get 'legal' => 'home#legal', :format => :pdf
 
 
   # The priority is based upon order of creation: first created -> highest priority.

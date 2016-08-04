@@ -30,12 +30,25 @@ class UserMailer < ActionMailer::Base
 
 	def tour_email(client, location, appointment, charge)
 		@client = client
-		puts 'XXxx', @client.mobile_phone
+		@name = client.name.partition(" ").first
+		@amount = charge.amount
 		@greeting = greeting
 		@appointment = appointment
 		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
 		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
 		mail(to: @client.email, subject: 'Tour virtual agendado para el ' + @dateString)
+	end
+
+	def wire_email(client, location, tour, appointment)
+		@client = client
+		@location = location
+		@tour = tour
+		@greeting = greeting
+		@name = client.name.partition(" ").first
+		@appointment = appointment
+		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
+		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
+		mail(to: @client.email, subject: 'Información para tranferencia bancaria')
 	end
 
 	def user_remainder(user, property, appointment)

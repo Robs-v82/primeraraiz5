@@ -17,12 +17,20 @@
 
 
   $(document).ready(function(){
+
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.tour-modal-trigger').leanModal()
+    
     if($('#success-modal').length) {
     	$('#success-modal').openModal()
     	$.get()
     }
+
+    if($('#wire-modal').length) {
+    	$('#wire-modal').openModal()
+    	$.get()
+    }
+
+    $('.tour-modal-trigger').leanModal()
 
 	$('.terms_label').click(function() {
 	    $('#legal').attr('checked', 'checked')
@@ -258,6 +266,7 @@
 				$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>')
 				$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>')
 				$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+				$('#charge-button-label').empty().html('Pagar $'+downPayment+' '+'<span class="currency-font inline-currency">MXN</span>')
 			})
 	  	}
 
@@ -307,7 +316,8 @@
 			$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>') 
 			$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>') 
 			$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>') 
-			$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>') 
+			$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+			$('#charge-button-label').empty().html('Pagar $'+downPayment+' '+'<span class="currency-font inline-currency">MXN</span>')
 			$('#checkout-table td').css('color', '#424242')
 		}
 
@@ -339,6 +349,7 @@
 	}
 
 	var conektaErrorResponseHandler = function(response) {
+		$('#charge-wrapper').empty().html('<button id="charge-button" type="submit" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button>')
 		var $form = $("#card-form")
 
 		/* Muestra los errores en la forma */
@@ -348,6 +359,8 @@
 
 	$(function () {
 		$("#card-form").submit(function(event) {
+			$('#charge-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
+			debugger
 			var $form = $(this)
 
 			// Previene hacer submit más de una vez
@@ -381,40 +394,18 @@
 					</a>
 				</div>
 				<ul class="right hide-on-med-and-down">
-					<% if current_user %>
-						<li>
-							<form id="logout" action="/sign_out" method="post">
-								<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-								<input type="hidden" name="_method" value="delete">
-								<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
-							</form>
-						</li>
-					<% else %>
-						<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
-					<% end %>
-					<li><a href="#steps">CÓMO FUNCIONA</a></li>
-					<li><a href="#profile">NOSOTROS</a></li>
-					 <li><a class="dropdown-button" href="#!" data-activates="dropdown1">TOUR VIRTUAL<i class="material-icons right dropdown-icon">arrow_drop_down</i></a></li>
+					<li><a id="vt-link" href="https://matterport.com/try-it/" target="blank">DEMO</a></li>
+					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
+<!-- 					 <li><a class="dropdown-button" href="#!" data-activates="dropdown1">TOUR VIRTUAL<i class="material-icons right dropdown-icon">arrow_drop_down</i></a></li> -->
 				</ul>
-				<ul id="dropdown1" class="dropdown-content">
+<!-- 				<ul id="dropdown1" class="dropdown-content">
 					<li><a id="vt-link" href="/virtualtour">DESCRIPCIÓN</a></li>
 					<li><a id="vt-link" href="https://matterport.com/try-it/" target="blank">DEMO</a></li>
 					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
-				</ul>
+				</ul> -->
 				<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
-					<li><a href="#steps">CÓMO FUNCIONA</a></li>
-					<li><a href="#profile">NOSOTROS</a></li>
-					<% if current_user %>
-						<li>
-							<form id="logout" action="/sign_out" method="post">
-								<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-								<input type="hidden" name="_method" value="delete">
-								<a action="/sign_out" method="delete" onclick="document.getElementById('logout').submit()">CERRAR SESIÓN</a>
-							</form>
-						</li>
-					<% else %>
-						<li><a class="login-modal-trigger" href="#login">INICIAR SESIÓN</a></li>
-					<% end %>
+					<li><a id="vt-link" href="https://matterport.com/try-it/" target="blank">DEMO</a></li>
+					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
 				</ul>
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 			</div>
@@ -425,11 +416,11 @@
 			<div class="row title-wrapper valign-wrapper" style="width: 100%">
 				<div id="banner" class="col s12 m12 l12">
 					<div class="row">
-						<h1 id="b-title" class="hide-on-small-only center-align white-text">El tour vitual más realista</h1>
+						<h1 id="b-title" class="hide-on-small-only center-align white-text shine">El tour vitual más realista</h1>
 						<div id="b-subtitle-container" class="hide-on-small-only center-align white-text">
 							<h3 id="b-subtitle-tour"></h3>
 						</div>		
-						<h1 id="c-title" class="hide-on-med-and-up center-align white-text">El tour vitual más realista</h1>
+						<h1 id="c-title" class="hide-on-med-and-up center-align white-text shine">El tour vitual más realista</h1>
 						<div id="c-subtitle-container" class="hide-on-med-and-up center-align white-text">
 							<h3 id="c-subtitle-tour"></h3>
 						</div>
@@ -698,7 +689,7 @@
 					</form>
 				</div>
 				<div id="tour-fourth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
-					<h5 class="hide-on-med-and-up">Pago</h5>
+					<h5 class="hide-on-med-and-up">Confirmación</h5>
 					<div>
 						<p>Por favor, revisa que la información para la contratación del tour virtual sea correcta</p>
 						<div id="confirm-table" class="z-depth-1 animated pulse">
@@ -716,8 +707,8 @@
 					</p>
 				</div>
 				<div id="tour-fifth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
-					<h5 class="hide-on-med-and-up">Pago</h5>
-					<p>Por favor, selecciona una opción para el pago del anticipo:</p>
+					<h5 class="hide-on-med-and-up">Pago anticipo</h5>
+					<p>Selecciona una opción para el pago:</p>
 					<div class="row">
 						<div class="col s12">
 							<ul class="tabs">
@@ -743,7 +734,6 @@
 									</div>
 								</div>
 								<%= form_tag('/charges/create', id: 'card-form', :remote => true) do %>
-								  	<span class="card-errors"></span>
 									<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 								  	<div class="col s12">
 								    	<label>
@@ -810,11 +800,34 @@
 								      <span>CP</span>
 								      <input type="text" size="5" data-conekta="card[address][zip]"/>
 								    </label>
-								  </div>
-								  <button type="submit">¡Pagar ahora!</button>
+								</div>
+							  	<span class="card-errors"></span>
+							  	<p class="valign-wrapper right">
+									<span id="charge-button-label" class="button-label valign"></span>
+									<span id="charge-wrapper" class="valign-wrapper valign">
+										<button id="charge-button" type="submit" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button>
+									</span>
+								</p>
 								<% end %>
 							</div>
 							<div id="wire-tab" class="col s12">
+								<div class="row">
+									<div class="col s2">
+										<p>
+											<i class="material-icons grey-text text-darken-3 small">warning</i>
+										</p>
+									</div>
+									<div class="no-padding-p col s10">
+										<p>Es necesario que realices la transferencia en las próximas 48 horas. De lo contrario, la sesión fotográfica será cancelada.</p>
+										<p>Para continuar da click en "enviar".</p>
+									</div>
+								</div>
+								<p class="valign-wrapper right">
+									<span id="wire-button-label" class="button-label valign">Enviar</span>
+									<span id="wire-wrapper" class="valign-wrapper valign">
+										<a id="wire-button" href="/tours/wire" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></a>
+									</span>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -830,8 +843,21 @@
 			<p class="primera">primera<span class="raiz">Raíz</span></p>
 		</div>
 		<div class="modal-content">
-			<p class="flow-text">Transacción exitosa. Enviamos un mensaje con información importante a <%= session[:client_email] %></p>
+			<div class="b-container">
+				<p class="flow-text">¡Transacción exitosa! <br>Enviamos un mensaje con información importante a <%= session[:client_email] %></p>
+			</div>
 		</div>
 	</div>
 <% end %>
+<!-- <div id="wire-modal" class="modal">
+	<div id="tour-header" class="modal-content">
+		<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+		<p class="primera">primera<span class="raiz">Raíz</span></p>
+	</div>
+	<div class="modal-content">
+		<div class="b-container">
+			<p class="flow-text"><br>Enviamos un mensaje con información importante a <%= session[:client_email] %></p>
+		</div>
+	</div>
+</div> -->
 

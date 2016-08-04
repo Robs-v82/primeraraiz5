@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+	<body>
+		<div class="logo">
+			<%= image_tag 'logo.png', :width => '32', :height => '32' %>
+			<h5 class="brand">primera<span class="keyword-green">Raíz</span></h5>
+		</div>
+		<div>
+			<h5><%= @greeting%> <%= @name%>,</h5>
+		</div>
+		<br>
+		<p>
+			Tu sesión fotográfica quedó agendada para el próximo <%= @dateString %> a las <%= @timeString%>. Es necesario que realices la tranferencia del anticipo por $<%= @tour.total*0.25 %> en las siguientes 48 horas. De lo contrario, la sesión fotográfica será cancelada. Los datos para la transferencia son los siguientes:
+		</p>
+		<p>
+			Por favor, si tienes cualquier duda o aclaración contáctanos por este medio o al <a href="tel:5544545312">(044) 55-4454-5312</a>. ¡Gracias por tu preferencia!
+		</p>
+	</body>
+</html>

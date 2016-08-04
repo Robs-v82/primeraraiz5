@@ -3,17 +3,26 @@
 <head>
 	<title></title>
 </head>
-<body>
-	<div class="logo">
-		<%= image_tag 'logo.png', :width => '32', :height => '32' %>
-		<h5 class="brand">primera<span class="keyword-green">Raíz</span></h5>
-	</div>
-	<div>
-		<h5><%= @greeting%> <%= @client.name%></h5>
-	</div>
-	<br>
-	<p>
-		Primera Raíz es un nuevo servicio. Queremos transformar la forma de vender departamentos en la Ciudad de México, ofrecer atención de excelencia y cobrar menos que las agencias de bienes raíces tradicionales.
-	</p>
-</body>
+	<body>
+		<div class="logo">
+			<%= image_tag 'logo.png', :width => '32', :height => '32' %>
+			<h5 class="brand">primera<span class="keyword-green">Raíz</span></h5>
+		</div>
+		<div>
+			<h5><%= @greeting%> <%= @name%>,</h5>
+		</div>
+		<br>
+		<p>
+			Tu sesión fotográfica quedó agendada para el próximo <%= @dateString %> a las <%= @timeString%>. Para presentar la mejor imagen posible te recomendamos que el espacio esté limpio y ordenado (y en general tal y como quieres que aparezca en el tour virtual). También te recordamos que no se recomienda la presencia de personas o mascotas en las habitaciones o espacios en las que se estén tomando fotografías. 
+		</p>
+		<p>
+			En caso de que no sea posible llevar a cabo la sesión fotográfica en la fecha acordada, puedes reagendarla por una única ocasión, sin costo alguno, siempre y cuando nos avises con un mínimo de 48 horas de anticipación. 
+		</p>
+		<p>
+			El pago de tu anticipo por $<%= @amount/100 %> pesos fue procesado con éxito. Puedes solicitar la factura correspondiente antes de que finalice el mes en curso enviando tus datos fiscales a <a class="grey-text text-lighten-3 left" href="mailto:contacto@primeraraiz.com">facturacion@primeraraiz.com</a> (es importante que envíes la solicitud desde esta cuenta de correo). Tu saldo pendiente, correspondiente al 75% del precio del servicio, es de $<%= (@amount/100)*3 %> pesos, mismos que deberas cubrir contra entrega del tour virtual. 
+		</p>
+		<p>
+			Por favor, si tienes cualquier duda o aclaración contáctanos por este medio o al <a href="tel:5544545312">(044) 55-4454-5312</a>. ¡Gracias por tu preferencia!
+		</p>
+	</body>
 </html>
