@@ -1,6 +1,5 @@
 class Client < ActiveRecord::Base
 	has_one :location, dependent: :destroy
-	# has_many :appointments, through: :locations
 	VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 	validates :email, format:  {with: VALID_EMAIL_REGEX }
 	validates :name, length: { minimum: 3, message: "debe tener una extensión  mínima de 3 caracteres" }, allow_nil: true

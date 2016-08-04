@@ -330,8 +330,12 @@
 			var id = this.id
 			setCheckout(id)
 		})
-	})
 
+		$('#wire-button').click(function() {
+			console.log('working')
+			$('#wire-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
+		})
+	})
 
 
 
@@ -360,7 +364,6 @@
 	$(function () {
 		$("#card-form").submit(function(event) {
 			$('#charge-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
-			debugger
 			var $form = $(this)
 
 			// Previene hacer submit más de una vez
@@ -372,6 +375,7 @@
 			return false
 		})
 	})
+
 
 </script>
 <video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg">
@@ -849,15 +853,17 @@
 		</div>
 	</div>
 <% end %>
-<!-- <div id="wire-modal" class="modal">
-	<div id="tour-header" class="modal-content">
-		<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
-		<p class="primera">primera<span class="raiz">Raíz</span></p>
-	</div>
-	<div class="modal-content">
-		<div class="b-container">
-			<p class="flow-text"><br>Enviamos un mensaje con información importante a <%= session[:client_email] %></p>
+<% if @wire %>
+	<div id="wire-modal" class="modal">
+		<div id="tour-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">¡Gracias por tu preferencia!<br>Enviamos un mensaje con información importante a <%= session[:client_email] %></p>
+			</div>
 		</div>
 	</div>
-</div> -->
+<% end %>
 

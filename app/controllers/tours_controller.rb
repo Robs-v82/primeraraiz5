@@ -4,7 +4,7 @@ class ToursController < ApplicationController
 
 
 	def main
-		if session[:tour_status] = "scheduled"
+		if session[:tour_status] == 'scheduled'
 			@wire = true
 		end
 		areas_order = Area.all.order(:district)
@@ -52,7 +52,6 @@ class ToursController < ApplicationController
 		if tour.valid?
 			tour.save
 			session[:tour] = Tour.find(tour.id)
-			session[:tour_status] = session[:tour].status
 			session[:tour_id] = tour[:id]
 			session[:tourPrice] = tour_info[:total]
 			session[:tourRemainder] = tour_info[:total]*(0.75)
@@ -73,6 +72,7 @@ class ToursController < ApplicationController
 		target_tour = Tour.find(session[:tour_id])
 		target_appointment = Appointment.find(session[:appointment_id])
 		UserMailer.wire_email(target_client, target_location, target_tour, target_appointment).deliver
+		session[:tour_status] = target_tour.status
 		redirect_to '/virtualtour'
 	end
 

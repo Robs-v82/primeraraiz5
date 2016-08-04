@@ -74,6 +74,9 @@ class ApplicationController < ActionController::Base
 		if session[:charge]
 			session[:charge] = nil
 		end
+		if session[:tour_status]
+			session[:tour_status] = nil
+		end
 	end
 
 
