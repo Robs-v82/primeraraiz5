@@ -51,6 +51,13 @@ class UserMailer < ActionMailer::Base
 		mail(to: @client.email, subject: 'Información para tranferencia bancaria')
 	end
 
+	def ready_email(client)
+		@client = client
+		@greeting = greeting
+		mail(to: @client.email, subject: 'Tu tour virtual está disponible')
+	end
+
+
 	def user_remainder(user, property, appointment)
 		@user = user
 		@name = user.name.partition(" ").first

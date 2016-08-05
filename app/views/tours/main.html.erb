@@ -6,7 +6,7 @@
 
   $(function(){
       $("#b-subtitle-tour, #c-subtitle-tour").typed({
-        strings: ["^1200Inmuebles en venta", "^1200Departamento muestra", "^1200Hoteles, bares y restaurantes", "^1200Espacios culturales", "^1200Desde $4,640 pesos^1000<br> <span id='parenthesis'>(gratis al vender tu depa con nosotros)^4000<span>"],
+        strings: ["^1200¡Presume tu espacio!^1200","^1200Inmuebles en venta", "^1200Departamento muestra", "^1200Hoteles, bares y restaurantes", "^1200Espacios culturales", "^1200Desde $4,640 pesos^3000"],
         typeSpeed: 0,
         backDelay: 1000,
         loop: true,
@@ -310,7 +310,7 @@
 					var remainderShadow = remainderShadowArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 				}
 			}
-			$('#floorPlan-checkbox-p').html('<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox"><label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >Agrega un <a id="floorplan-link"class="grey-text text-darken-3" href="">plano esquemático</a> por '+floorplanPrice+'.</label>')
+			$('#floorPlan-checkbox-p').html('<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox"><label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >Agrega un <%= link_to "plano esquemático", asset_path("SchematicFloorplan.jpg"), { :id =>"floorplan-link", :class=>"grey-text text-darken-3", :target => "blank" } %> por <span id="floorplan-price">'+floorplanShadowPrice+'.</span></label>')
 			check_this(thisId, floorplanShadowPrice, totalShadow, downPaymentShadow, remainderShadow)		
 			$('#tour-item-price').empty().html('$'+tourPrice+'<span class="currency-font"> MXN</span>') 
 			$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>') 
@@ -663,7 +663,7 @@
 							<p id="floorPlan-checkbox-p">
 								<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox">
 								<label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >
-									Agrega un <a id="floorplan-link"class="grey-text text-darken-3" href="">plano esquemático</a> por <span id="floorplan-price">$0</span>.
+									Agrega un <%= link_to "plano esquemático", asset_path("SchematicFloorplan.jpg"), { :id =>"floorplan-link", :class=>"grey-text text-darken-3", :target => "blank" } %> por <span id="floorplan-price">$0</span>.
 								</label>
 							</p>
 						</div>
