@@ -60,6 +60,9 @@
 		return false	
 	})
 
+	$('#price-link').click(function() {
+		$('#b-price-table').addClass('active animated pulse')
+	})
 
     var setTime = function(hours) {
 			console.log('Setting time')
@@ -335,6 +338,7 @@
 			console.log('working')
 			$('#wire-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
 		})
+
 	})
 
 
@@ -378,10 +382,10 @@
 
 
 </script>
-<video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg">
-	<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
-</video>
 <div class="dark-screen" style="height: 800px">		
+	<video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg">
+		<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
+	</video>
 	<nav class="transparent z-depth-0" role="navigation">
 		<div class="b-container">
 			<div class="nav-wrapper">
@@ -398,8 +402,10 @@
 					</a>
 				</div>
 				<ul class="right hide-on-med-and-down">
-					<li><a id="vt-link" href="https://my.matterport.com/show/?m=XzkmtCiUTzN" target="blank">DEMO</a></li>
+					<li><a id="price-link" href="#tour-price-section">PRECIOS</a></li>
+					<li><a id="vt-link" href="#demo-section">DEMO</a></li>
 					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
+					<li><a class="faq-link" href="#FAQ">FAQ</a></li>
 <!-- 					 <li><a class="dropdown-button" href="#!" data-activates="dropdown1">TOUR VIRTUAL<i class="material-icons right dropdown-icon">arrow_drop_down</i></a></li> -->
 				</ul>
 <!-- 				<ul id="dropdown1" class="dropdown-content">
@@ -408,14 +414,16 @@
 					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
 				</ul> -->
 				<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
-					<li><a id="vt-link" href="https://my.matterport.com/show/?m=XzkmtCiUTzN" target="blank">DEMO</a></li>
+					<li><a id="price-link" href="#tour-price-section">PRECIOS</a></li>
+					<li><a id="vt-link" href="#demo-section">DEMO</a></li>
 					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
+					<li><a class="faq-link" href="#FAQ">FAQ</a></li>
 				</ul>
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 			</div>
 		</div>
 	</nav>
-	<div id="main" class="section">
+	<div id="main">
 		<div class="b-container">
 			<div class="row title-wrapper valign-wrapper" style="width: 100%">
 				<div id="banner" class="col s12 m12 l12">
@@ -431,14 +439,117 @@
 					</div>
 					<br>
 					<div class="row center-align">
-							<a href="https://my.matterport.com/show/?m=XzkmtCiUTzN" target="blank" class="b-link tour-button-container">DEMO</a>
+							<a href="#demo-section" class="b-link tour-button-container">DEMO</a>
 							<a href="#tour-modal" class="tour-modal-trigger b-link tour-button-container">CONTRATA</a>
 						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>s
+	</div>
+</div>
+<div class="main-background">
+	<div id="demo-section" class="main-section-wrapper">
+		<div class='embed-container'>
+		<iframe width="853" height="480" src="https://my.matterport.com/show/?m=XzkmtCiUTzN" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div class="row main-section-wrapper grey-text text-darken-3">
+		<div id="tour-price-section" class="col l6 m6 s12">
+			<div id="price-table-container" class="b-container center-align">
+				<h4>Precios</h4>
+				<table id="b-price-table" class="white-text z-depth-1">
+					<thead>
+						<tr class="valign-wrapper">
+							<th data-field="shoots" class="center-align">Dimensiones del inmueble</th>
+							<th data-field="price" class="center-align right">Precio*</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="body-row valign-wrapper">
+							<td class="table-left-column valign">
+								<p>&#60 150m<span class="super-index">2</span></p>
+							</td>
+							<td class="right td-right valign">$4,640 <span class="currency-font">MXN</span></td>
+						</tr>
+						<tr class="body-row valign-wrapper">
+							<td class="table-left-column valign">
+								<p>150 – 300m<span class="super-index">2</span></p>
+							</td>
+							<td class="right td-right valign">$5,800 <span class="currency-font">MXN</span></td>
+						</tr>
+						<tr class="body-row valign-wrapper">
+							<td class="table-left-column valign">
+								<p>300 – 450m<span class="super-index">2</span></p>
+							</td>
+							<td class="right td-right valign">$6,960 <span class="currency-font">MXN</span></td>
+						</tr>
+						<tr class="body-row valign-wrapper">
+							<td class="table-left-column valign">
+								<p>450 – 600m<span class="super-index">2</span></p>
+							</td>
+							<td class="right td-right valign">$8,120 <span class="currency-font">MXN</span></td>
+						</tr>
+						<tr class="body-row valign-wrapper">
+							<td class="table-left-column valign">
+								<p>600 – 750m<span class="super-index">2</span></p>
+							</td>
+							<td class="right td-right valign">$9,280 <span class="currency-font">MXN</span></td>
+						</tr>
+						<tr class="body-row valign-wrapper">
+							<td class="table-left-column valign">
+								<p>750 – 1,000m<span class="super-index">2</span></p>
+							</td>
+							<td class="right td-right valign">$10,440 <span class="currency-font">MXN</span></td>
+						</tr>
+					</tbody>
+				</table>
+				<p id="price-warning" class="right-align">*Incluye la generación del tour y acceso en línea por un año. Precios válidos en la Ciudad de México, IVA incluido.</p>
+			</div>
+		</div>
+		<div id="tour-location-section" class="b-container col l6 m6 s12">
+			<div class="b-container">
+				<h4>Clientes foráneos</h4>
+				<p class="flow-text left-align">Nos encanta viajar. Si tienes un inmueble fuera de la Ciudad de México escríbenos a:</p>
+				<p class="flow-text left-align"><a class="mail-link" href="mailto:foraneos@primeraraiz.com">foraneos@primeraraiz.com</a></p>
+				<p class="flow-text left-align">Elaboramos una cotización especial o te informamos cuando visitemos tu ciudad.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<div id="floorplan-section" class="b-container">
+		<h4 class="white-text">Plano esquemático</h4>
+		<img id="main-floorplan" class="z-depth-1" src="/SchematicFloorplan.jpg">
+	</div>
+</div>
+<div class="white tight-main-wrapper">
+	<div id="FAQ" class="row main-section-wrapper">
+		<h4>Preguntas frecuentes</h4>
+		<ul class="collapsible popout white-text" data-collapsible="accordion">
+			<li>
+				<div class="collapsible-header left-align"><p class="flow-text">¿Para qué tipo de espacios es adecuado el tour virtual?</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Sólo recomendamos espacios interiores. Por lo demás, podemos hacer un tour en cualquier espacio. Para proyectos de más de 1,000 metros cuadrados es necesario segmentar el espacio y contratar más de un tour.</p></div>
+			</li>
+			<li>
+				<div class="collapsible-header left-align"><p class="flow-text">¿Cuánto se tardan en generar un tour virtual?</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Según la disponibilidad puedes agendar tu sesión fotográfica con una anticipación mínima de 48 horas. Después de la sesión, necesitamos de uno a tres días naturales para procesar.<br>¡Puedes tener tu tour listo en menos de una semana!</p></div>
+			</li>
+			<li>
+				<div class="collapsible-header left-align"><p class="flow-text">¿Es difícil integrar el tour vitual en mi página web?</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Es muy sencillo. Cualquier desarrollador, aficionado o prefesional, que tenga las credenciales para editar tu página pueda hacer la integración, es cuestión de copiar y pegar el código que te enviaremos.Con todo gusto te proporcionamos el soporte técnico que necesites.</p></div>
+			</li>
+			<li>
+				<div class="collapsible-header left-align"><p class="flow-text">¿Emiten facturas?</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Por supuesto, para solicitar factura sólo envía tus datos fiscales a facturacion@primeraraiz.com antes de que concluya el mes durante el cual realizaste el pago a facturar. Es necesario que envíes tus datos desde la cuenta de correo que registraste al contratar el tour virtual.</p></div>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="row b-container almost-footer valign-wrapper">
+		<img class="affiliation-frame valign double-extra-right" src="/assets/matterport-service-partner.png" alt="matterport">
+		<i class="white-text fa fa-facebook-official fa-4x valign extra-right" aria-hidden="true"></i>
+		<i class="white-text fa fa-instagram fa-4x valign extra-right" aria-hidden="true"></i>
 </div>
 <div id="tour-modal" class="modal">
 	<div id="tour-header" class="modal-content">

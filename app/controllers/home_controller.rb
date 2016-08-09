@@ -20,5 +20,8 @@ class HomeController < ApplicationController
 		# 	end
 		# end
 	end
+
+	def Uwtj2dr
+	end
 	
 end

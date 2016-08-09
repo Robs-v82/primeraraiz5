@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'locations' => 'locations#create'
   post 'clients' => 'clients#create'
   get 'destroyclient' => 'clients#destroy'
+  get 'Uwtj2dr.html' => 'home#Uwtj2dr'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
