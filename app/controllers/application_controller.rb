@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
  
  	protect_from_forgery with: :exception
-	helper_method :current_user, :greeting, :set_auth, :set_date
+	helper_method :current_user, :greeting, :set_auth, :set_date, :number_with_delimiter
 	def greeting
 		current_time = Time.now.to_i
 		midnight = Time.now.beginning_of_day.to_i
@@ -76,6 +76,16 @@ class ApplicationController < ActionController::Base
 		end
 		if session[:tour_status]
 			session[:tour_status] = nil
+		end
+	end
+
+	def number_with_delimiter(number, delimiter=",", separator=".")
+		begin
+			parts = number.to_s.split('.')
+			parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{delimiter}")
+			parts.join separator
+		rescue
+			number
 		end
 	end
 

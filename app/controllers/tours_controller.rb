@@ -6,6 +6,9 @@ class ToursController < ApplicationController
 	def main
 		if session[:tour_status] == 'scheduled'
 			@wire = true
+			downPayment = Tour.find(session[:tour_id]).total*0.25
+			downPayment = (downPayment+0.5).to_i
+			@downPayment = '$'+number_with_delimiter(downPayment)
 		end
 		areas_order = Area.all.order(:district)
 		areas_wrong = areas_order.uniq.pluck(:district)

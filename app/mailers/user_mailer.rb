@@ -2,6 +2,16 @@ class UserMailer < ActionMailer::Base
 	
 	default from: "Roberto Valladares Piedras <roberto@primeraraiz.com>"
 
+	def number_with_delimiter(number, delimiter=",", separator=".")
+		begin
+			parts = number.to_s.split('.')
+			parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{delimiter}")
+			parts.join separator
+		rescue
+			number
+		end
+	end
+
 	def greeting
 		current_time = Time.now.to_i
 		midnight = Time.now.beginning_of_day.to_i
@@ -48,6 +58,9 @@ class UserMailer < ActionMailer::Base
 		@appointment = appointment
 		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
 		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
+		downPayment = tour.total*0.25
+		downPayment = (downPayment+0.5).to_i
+		@downPayment = number_with_delimiter(downPayment)
 		mail(to: @client.email, subject: 'Información para tranferencia bancaria')
 	end
 

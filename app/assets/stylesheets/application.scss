@@ -1039,3 +1039,23 @@ input[type=text] {
 	padding: 40px 0; 
 	text-align: center;
 }
+
+.green-table {
+	padding: 10px 0px;
+	background-color: rgba(0,0,0, 0.90);
+	margin: auto;
+	max-width: 350px;
+}
+
+.green-table td {
+	padding: 5px 10px;
+}
+
+.bold-cell {
+	font-weight: 500;
+}
+
+#FAQ p {
+	line-height: 1.8rem;
+	padding: 10px;
+}

@@ -528,20 +528,20 @@
 		<h4>Preguntas frecuentes</h4>
 		<ul class="collapsible popout white-text" data-collapsible="accordion">
 			<li>
-				<div class="collapsible-header left-align"><p class="flow-text">¿Para qué tipo de espacios es adecuado el tour virtual?</p></div>
-				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Sólo recomendamos espacios interiores. Por lo demás, podemos hacer un tour en cualquier espacio. Para proyectos de más de 1,000 metros cuadrados es necesario segmentar el espacio y contratar más de un tour.</p></div>
+				<div class="collapsible-header left-align valign-wrapper"><p class="flow-text valign">¿Para qué tipo de espacios es adecuado el tour virtual?</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Sólo recomendamos espacios interiores. Por lo demás, podemos hacer un tour en cualquier espacio. Para proyectos de más de 1,000 metros cuadrados es necesario segmentar y contratar más de un tour.</p></div>
 			</li>
 			<li>
 				<div class="collapsible-header left-align"><p class="flow-text">¿Cuánto se tardan en generar un tour virtual?</p></div>
-				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Según la disponibilidad puedes agendar tu sesión fotográfica con una anticipación mínima de 48 horas. Después de la sesión, necesitamos de uno a tres días naturales para procesar.<br>¡Puedes tener tu tour listo en menos de una semana!</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Según la disponibilidad puedes agendar tu sesión fotográfica con una anticipación mínima de 48 horas. Después de la sesión necesitamos de uno a tres días naturales para procesar el modelo.<br>¡Puedes tener tu tour listo en menos de una semana!</p></div>
 			</li>
 			<li>
 				<div class="collapsible-header left-align"><p class="flow-text">¿Es difícil integrar el tour vitual en mi página web?</p></div>
-				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Es muy sencillo. Cualquier desarrollador, aficionado o prefesional, que tenga las credenciales para editar tu página pueda hacer la integración, es cuestión de copiar y pegar el código que te enviaremos.Con todo gusto te proporcionamos el soporte técnico que necesites.</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Es muy sencillo. Cualquier desarrollador que tenga las credenciales para editar tu página pueda hacer la integración, es cuestión de copiar y pegar el código que te enviaremos.Con todo gusto te proporcionamos el soporte técnico que necesites.</p></div>
 			</li>
 			<li>
 				<div class="collapsible-header left-align"><p class="flow-text">¿Emiten facturas?</p></div>
-				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Por supuesto, para solicitar factura sólo envía tus datos fiscales a facturacion@primeraraiz.com antes de que concluya el mes durante el cual realizaste el pago a facturar. Es necesario que envíes tus datos desde la cuenta de correo que registraste al contratar el tour virtual.</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Por supuesto, para solicitar tu factura sólo envía los datos fiscales a facturacion@primeraraiz.com antes de que concluya el mes durante el cual realizaste el pago a facturar. Es necesario que envíes tus datos desde la cuenta de correo que registraste al contratar el tour virtual.</p></div>
 			</li>
 		</ul>
 	</div>
@@ -972,7 +972,25 @@
 		</div>
 		<div class="modal-content">
 			<div class="b-container">
-				<p class="flow-text">¡Gracias por tu preferencia!<br>Enviamos un mensaje con información importante a <%= session[:client_email] %></p>
+				<p>¡Gracias por tu preferencia!<br>Por favor, realiza el depósito por <%= @downPayment %><span id="transfer-amount"></span><span class="currency-font"> MXN</span> a la siguiente cuenta:</p>
+				<table id="transfer-table" class="green-table white-text z-depth-1">
+					<tbody>
+						<tr>
+							<td class="bold-cell">Beneficiario:</td><td>Roberto Valladares Piedras</td>
+						</tr>
+						<tr>
+							<td class="bold-cell">Banco:</td><td>Banorte / IXE</td>
+						</tr>
+						<tr>
+							<td class="bold-cell">Cuenta:</td><td>0011614706</td>
+						</tr>
+						<tr>
+							<td class="bold-cell">Clabe:</td><td>072180000116147064</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>En el concepto de la tranferencia por favor escribe <span class="bold-cell">tour<%=session[:tour_id]%></span>.</p>
+				<p>No dudes en comunicarte con nosotros para cualquier duda a <a href="mailto:contacto@primeraraiz.com" class="mail-link">contacto@primeraraiz.com</a> o al <a href="tel:5544545312" class="mail-link">(044) 55 4454 5312</a></p>
 			</div>
 		</div>
 	</div>

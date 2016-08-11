@@ -23,5 +23,9 @@ class HomeController < ApplicationController
 
 	def Uwtj2dr
 	end
+
+	def Test9jkJdTbj
+		render '9jkJdTbj.html'
+	end
 	
 end

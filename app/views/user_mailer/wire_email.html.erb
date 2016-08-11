@@ -13,7 +13,26 @@
 		</div>
 		<br>
 		<p>
-			Tu sesión fotográfica quedó agendada para el próximo <%= @dateString %> a las <%= @timeString%>. Es necesario que realices la tranferencia del anticipo por $<%= @tour.total*0.25 %> en las siguientes 48 horas. De lo contrario, la sesión fotográfica será cancelada. Los datos para la transferencia son los siguientes:
+			Tu sesión fotográfica quedó agendada para el próximo <%= @dateString %> a las <%= @timeString%>. Es necesario que realices la tranferencia del anticipo por $<%= @downPayment %> en las siguientes 48 horas. De lo contrario, la sesión fotográfica será cancelada. Los datos para la transferencia son los siguientes:
+		</p>			
+		<table id="transfer-table" class="green-table white-text z-depth-1">
+			<tbody>
+				<tr>
+					<td class="bold-cell">Beneficiario:</td><td>Roberto Valladares Piedras</td>
+				</tr>
+				<tr>
+					<td class="bold-cell">Banco:</td><td>Banorte / IXE</td>
+				</tr>
+				<tr>
+					<td class="bold-cell">Cuenta:</td><td>0011614706</td>
+				</tr>
+				<tr>
+					<td class="bold-cell">Clabe:</td><td>072180000116147064</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			En el concepto de la tranferencia por favor escribe tour<%=@tour.id%>.
 		</p>
 		<p>
 			Por favor, si tienes cualquier duda o aclaración contáctanos por este medio o al <a href="tel:5544545312">(044) 55-4454-5312</a>. ¡Gracias por tu preferencia!
