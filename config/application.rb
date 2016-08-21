@@ -22,7 +22,7 @@ module Primeraraiz5
     # -- all .rb files in that directory are automatically loaded.
     Conekta.api_key = Rails.application.secrets.conekta_private 
     
-    config.force_ssl = true
+    # config.force_ssl = true
 
     config.action_mailer.asset_host = "http://primeraraiz.com" 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
