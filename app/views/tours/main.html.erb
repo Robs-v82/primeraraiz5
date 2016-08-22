@@ -275,19 +275,19 @@
 
 		var setCheckout = function(thisId) {
 			$('#floorPlan-checkbox-p').empty()
-			var tourPrices = [4640,5800,6960,8120,9280,10440]
-			var floorplanPrices = [1440,1680,1920,2160,2400,2640]
+			var tourPrices = [2740,3320,3880,4400,4960,5580]
+			var floorplanPrices = [1240,1380,1520,1660,1800,1940]
 			var tourOptionArr = ['tour150','tour300','tour450','tour600','tour750','tour1000']
 			var floorplanPrice = 0
 			if ($('#floorPlan-checkbox').is(":checked")) {
-				var totalArr = [6080,7480,8880,10280,11680,13080]
-				var totalShadowArr = [4640,5800,6960,8120,9280,10440]
+				var totalArr = [3980,4700,5400,6100,6820,7520]
+				var totalShadowArr = [2740,3320,3880,4400,4960,5580]
 				var floorplanRealPrices = floorplanPrices
 				var floorplanShadowPrices = [0,0,0,0,0,0]
 			}
 			else {
 				var totalArr = tourPrices
-				var totalShadowArr = [6080,7480,8880,10280,11680,13100]
+				var totalShadowArr = [3980,4700,5400,6100,6820,7520]
 				var floorplanRealPrices = [0,0,0,0,0,0]
 				var floorplanShadowPrices = floorplanPrices
 			}		
@@ -743,45 +743,45 @@
 							<tbody>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[model_fee]" value="4640" class="with-gap" type="radio" id="tour150" />
+										<input name="tour[model_fee]" value="2740" class="with-gap" type="radio" id="tour150" />
 										<label for="tour150">&#60 150m<span class="super-index">2</span></label>
 									</td>
-									<td class="right td-right valign">$4,640 <span class="currency-font">MXN</span></td>
+									<td class="right td-right valign"><%= @modelPrices[0] %><span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[model_fee]" value="5800" class="with-gap" type="radio" id="tour300" />
+										<input name="tour[model_fee]" value="3320" class="with-gap" type="radio" id="tour300" />
 										<label for="tour300">150 – 300m<span class="super-index">2</span></label>
 									</td>
-									<td class="right td-right valign">$5,800 <span class="currency-font">MXN</span></td>
+									<td class="right td-right valign"><%= @modelPrices[1] %><span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[model_fee]" value="6960" class="with-gap" type="radio" id="tour450" />
+										<input name="tour[model_fee]" value="3880" class="with-gap" type="radio" id="tour450" />
 										<label for="tour450">300 – 450m<span class="super-index">2</span></label>
 									</td>
-									<td class="right td-right valign">$6,960 <span class="currency-font">MXN</span></td>
+									<td class="right td-right valign"><%= @modelPrices[2] %><span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[model_fee]" value="8120" class="with-gap" type="radio" id="tour600" />
+										<input name="tour[model_fee]" value="4440" class="with-gap" type="radio" id="tour600" />
 										<label for="tour600">450 – 600m<span class="super-index">2</span></label>
 									</td>
-									<td class="right td-right valign">$8,120 <span class="currency-font">MXN</span></td>
+									<td class="right td-right valign"><%= @modelPrices[3] %><span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[model_fee]" value="9280" class="with-gap" type="radio" id="tour750" />
+										<input name="tour[model_fee]" value="5020" class="with-gap" type="radio" id="tour750" />
 										<label for="tour750">600 – 750m<span class="super-index">2</span></label>
 									</td>
-									<td class="right td-right valign">$9,280 <span class="currency-font">MXN</span></td>
+									<td class="right td-right valign"><%= @modelPrices[4] %><span class="currency-font">MXN</span></td>
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[model_fee]" value="10440" class="with-gap" type="radio" id="tour1000" />
+										<input name="tour[model_fee]" value="5580" class="with-gap" type="radio" id="tour1000" />
 										<label for="tour1000">750 – 1,000m<span class="super-index">2</span></label>
 									</td>
-									<td class="right td-right valign">$10,440 <span class="currency-font">MXN</span></td>
+									<td class="right td-right valign"><%= @modelPrices[5] %><span class="currency-font">MXN</span></td>
 								</tr>
 							</tbody>
 						</table>

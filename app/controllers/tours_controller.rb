@@ -13,6 +13,8 @@ class ToursController < ApplicationController
 		areas_order = Area.all.order(:district)
 		areas_wrong = areas_order.uniq.pluck(:district)
 		@areas = areas_wrong.rotate(-1) 
+		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
+		@modelPrices = ['$2,740','$3,320','$3,880','$4,400','$4,960','$5,580']
 	end
 
 	def demo
@@ -23,8 +25,8 @@ class ToursController < ApplicationController
 
 	def setPrice
 		tour_info = price_params
-		floorplanPrices = [1440,1680,1920,2160,2400,2640]
-		modelPrices = [4640,5800,6960,8120,9280,10440]
+		floorplanPrices = [1240,1380,1520,1660,1800,1940]
+		modelPrices = [2740,3320,3880,4400,4960,5580]
 		sizeArr = ['150','300','450','600','750','1000']
 		timeArr = ['de una a dos', 'de dos a tres', 'de cuatro a cinco', 'de cinco a siete', 'de seis a ocho','alrededor de ocho']
 		(0..5).each do |x|
@@ -56,7 +58,8 @@ class ToursController < ApplicationController
 			tour.save
 			session[:tour] = Tour.find(tour.id)
 			session[:tour_id] = tour[:id]
-			session[:tourPrice] = tour_info[:total]
+			# session[:tourPrice] = tour_info[:total]
+			session[:tourPrice] = 10
 			session[:tourRemainder] = tour_info[:total]*(0.75)
 			session[:tour_id] = tour.id
 			render json: {price: session[:tourPrice]}

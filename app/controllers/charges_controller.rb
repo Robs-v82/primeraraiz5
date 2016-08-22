@@ -22,24 +22,24 @@ class ChargesController < ApplicationController
 		        "score"=> 9
 		      },
 		      "line_items"=> [{
-		        "name"=> "Box of Cohiba S1s",
+		        "name"=> "Anticipo tour virtual",
 		        "description"=> "Tour virtual",
-		        "unit_price"=> 20000,
+		        "unit_price"=> session[:tourPrice]*25,
 		        "quantity"=> 1,
 		        "sku"=> "cohb_s1",
 		        "category"=> "food"
 		      }],
 		      "billing_address"=> {
-		        "street1"=>"77 Mystery Lane",
-		        "street2"=> "Suite 124",
-		        "city"=> "Darlington",
-		        "state"=>"NJ",
-		        "zip"=> "10192",
+		        "street1"=>"Río Niágara 38-202",
+		        "street2"=> "Colonia Cuauhtémoc",
+		        "city"=> "Cuauhtémoc",
+		        "state"=>"CDMX",
+		        "zip"=> "06500",
 		        "country"=> "Mexico",
-		        "tax_id"=> "xmn671212drx",
-		        "company_name"=>"X-Men Inc.",
-		        "phone"=> "77-777-7777",
-		        "email"=> "purshasing@x-men.org"
+		        "tax_id"=> "",
+		        "company_name"=>"",
+		        "phone"=> "5544545312",
+		        "email"=> "roberto.valladarespiedras@gmail.com"
 		      }
 		    }
 		  })
