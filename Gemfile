@@ -46,6 +46,8 @@ gem "typedjs-rails", "~> 1.0.3"
 
 gem 'conekta'
 
+gem 'thin'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

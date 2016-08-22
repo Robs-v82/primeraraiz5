@@ -459,6 +459,9 @@ video {
     #bgvid {
         display: none;
     	}
+    .modal {
+    	width: 90%;
+  		}
 }
 
 
@@ -889,13 +892,6 @@ input[type=text] {
 	transform: scale(0.9);
 	color: #b2ff59 !important;
 	background-color: #424242 !important;
-}
-
-@media only screen and (max-width: 992px) {
-  /* line 1, /Users/Bobsled/.rvm/gems/ruby-2.2.4/gems/materialize-sass-0.97.6/app/assets/stylesheets/materialize/components/_modal.scss */
-  .modal {
-    width: 90%;
-  }
 }
 
 .inline-currency {
