@@ -26,7 +26,7 @@ class ToursController < ApplicationController
 	def setPrice
 		tour_info = price_params
 		floorplanPrices = [1240,1380,1520,1660,1800,1940]
-		modelPrices = [2740,3320,3880,4400,4960,5580]
+		modelPrices = [2740,3320,3880,4440,4960,5580]
 		sizeArr = ['150','300','450','600','750','1000']
 		timeArr = ['de una a dos', 'de dos a tres', 'de cuatro a cinco', 'de cinco a siete', 'de seis a ocho','alrededor de ocho']
 		(0..5).each do |x|
@@ -59,7 +59,7 @@ class ToursController < ApplicationController
 			session[:tour] = Tour.find(tour.id)
 			session[:tour_id] = tour[:id]
 			# session[:tourPrice] = tour_info[:total]
-			session[:tourPrice] = 10
+			session[:tourPrice] = session[:total]
 			session[:tourRemainder] = tour_info[:total]*(0.75)
 			session[:tour_id] = tour.id
 			render json: {price: session[:tourPrice]}

@@ -532,6 +532,11 @@ p.legal-warning {
 	padding-right: 10px;
 }
 
+.left-button-label {
+	font-size: 1rem;
+	padding-left: 10px;
+}
+
 .header-note {
 	font-size: 1rem !important;	
 }
@@ -764,6 +769,7 @@ ul.section.table-of-contents {
 
 .terms_label {
 	font-weight: 600;
+	line-height: normal !important;
 }
 
 .terms_label a {
@@ -843,16 +849,24 @@ input[type=text] {
 	font-weight: 500;
 }
 
-#checkout-board p {
+#small-checkout-board {
+	width: 100%;
+}
+
+#checkout-board p, #small-checkout-board p {
 	width: 100%;
 	line-height: 24px;
 	margin: 0;
 	border-bottom: 1px solid #64dd17;
 }
 
-#checkout-board .row {
+#checkout-board .row, #small-checkout-board .row {
 	width: 100%;
 	margin: 0;
+}
+
+#small-checkout-board span {
+	display: inline !important;
 }
 
 #floorPlan-checkbox-label {
@@ -865,6 +879,11 @@ input[type=text] {
 #checkout-table td {
 	padding: 0;
 	color: #bdbdbd;
+}
+
+#small-checkout-table td {
+	padding: 0;
+	color: #424242;
 }
 
 .break-tr td {
@@ -1053,4 +1072,26 @@ input[type=text] {
 #FAQ p {
 	line-height: 1.8rem;
 	padding: 10px;
+}
+
+#tour-fifth-b {
+	height: 326px;
+	overflow-y: scroll;
+}
+
+#small-checkout-wrapper {
+	min-height: 136px;
+}
+
+#small-checkout-wrapper .row {
+	width: 100%;
+	margin: 0;
+}
+
+#card-tab {
+	padding: 0;
+}
+
+#small-card-errors {
+	margin-top: 10px;
 }

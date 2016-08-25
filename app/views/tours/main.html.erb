@@ -263,25 +263,29 @@
 		// Select model size and floorplan
 
 	  	var check_this = function(thatId, floorplanRealPrice, total, downPayment, remainder) {
-		  		$('#floorPlan-checkbox-label').click(function() {
+		  	$('#floorPlan-checkbox-label').click(function() {
 		        $('#floorPlan-checkbox').attr('checked', 'checked');	
 				$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>')
+				$('#small-floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>')
 				$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>')
+				$('#small-checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>')
 				$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>')
+				$('#small-checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>')
 				$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+				$('#small-checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
 				$('#charge-button-label').empty().html('Pagar $'+downPayment+' '+'<span class="currency-font inline-currency">MXN</span>')
 			})
 	  	}
 
 		var setCheckout = function(thisId) {
 			$('#floorPlan-checkbox-p').empty()
-			var tourPrices = [2740,3320,3880,4400,4960,5580]
+			var tourPrices = [2740,3320,3880,4440,4960,5580]
 			var floorplanPrices = [1240,1380,1520,1660,1800,1940]
 			var tourOptionArr = ['tour150','tour300','tour450','tour600','tour750','tour1000']
 			var floorplanPrice = 0
 			if ($('#floorPlan-checkbox').is(":checked")) {
 				var totalArr = [3980,4700,5400,6100,6820,7520]
-				var totalShadowArr = [2740,3320,3880,4400,4960,5580]
+				var totalShadowArr = [2740,3320,3880,4440,4960,5580]
 				var floorplanRealPrices = floorplanPrices
 				var floorplanShadowPrices = [0,0,0,0,0,0]
 			}
@@ -316,10 +320,15 @@
 			$('#floorPlan-checkbox-p').html('<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox"><label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >Agrega un <%= link_to "plano esquemático", asset_path("SchematicFloorplan.jpg"), { :id =>"floorplan-link", :class=>"grey-text text-darken-3", :target => "blank" } %> por <span id="floorplan-price">'+floorplanShadowPrice+'.</span></label>')
 			check_this(thisId, floorplanShadowPrice, totalShadow, downPaymentShadow, remainderShadow)		
 			$('#tour-item-price').empty().html('$'+tourPrice+'<span class="currency-font"> MXN</span>') 
+			$('#small-tour-item-price').empty().html('$'+tourPrice+'<span class="currency-font"> MXN</span>') 
 			$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>') 
+			$('#small-floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>') 
 			$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>') 
+			$('#small-checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>') 
 			$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>') 
+			$('#small-checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>') 
 			$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+			$('#small-checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
 			$('#charge-button-label').empty().html('Pagar $'+downPayment+' '+'<span class="currency-font inline-currency">MXN</span>')
 			$('#checkout-table td').css('color', '#424242')
 		}
@@ -358,10 +367,13 @@
 
 	var conektaErrorResponseHandler = function(response) {
 		$('#charge-wrapper').empty().html('<button id="charge-button" type="submit" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button>')
-		var $form = $("#card-form")
-
+		var $form = $("#card-form") 
+		/* Oculta el checkout */
+		$('#checkout-board').addClass('animated fadeOutRight').delay(4000).hide()
 		/* Muestra los errores en la forma */
-		$form.find(".card-errors").text(response.message_to_purchaser)
+		$(".card-errors").text(response.message_to_purchaser)
+		$(".card-errors").show()
+		$('#tour-fifth-b-scrollspy').addClass('animated shake')
 		$form.find("button").prop("disabled", false)
 	}
 
@@ -377,6 +389,12 @@
 
 			// Previene que la información de la forma sea enviada al servidor
 			return false
+		})
+
+		$("#card-form").keypress(function() {
+			$('#tour-fifth-b-scrollspy').removeClass('animated shake')
+			$(".card-errors").hide()
+			$('#checkout-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
 		})
 	})
 
@@ -642,6 +660,7 @@
 					</div>
 					<div class="error-message-board"></div>
 					<div class="address-error-message-board"></div>
+					<span class="card-errors"></span>
 				</div>	
 				<div id="tour-zero-b" class="col l6 m6 s12 tour-left-column">
 					<h5 class="hide-on-med-and-up">Datos de contacto</h5>
@@ -771,7 +790,7 @@
 								</tr>
 								<tr class="valign-wrapper">
 									<td class="table-left-column valign">
-										<input name="tour[model_fee]" value="5020" class="with-gap" type="radio" id="tour750" />
+										<input name="tour[model_fee]" value="4960" class="with-gap" type="radio" id="tour750" />
 										<label for="tour750">600 – 750m<span class="super-index">2</span></label>
 									</td>
 									<td class="right td-right valign"><%= @modelPrices[4] %><span class="currency-font">MXN</span></td>
@@ -801,7 +820,7 @@
 				</div>
 				<div id="tour-third-b" class="col l6 m6 s12 tour-left-column" style="display:none">
 					<h5 class="hide-on-med-and-up">Fecha y hora</h5>
-					<p class="header-note">Considera que se necesitan <%= session[:timeSpean] %> horas para fotografiar el inmueble y se recomienda evitar el paso de personas.</p>
+					<p class="header-note">Considera que se necesitan <%= session[:timeSpan] %> horas para fotografiar el inmueble y se recomienda evitar el paso de personas.</p>
 					<form id="tour-appointment-form" action="/appointments/tourAppointment" method="post">
 						<div class="row">
 							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
@@ -826,12 +845,12 @@
 						</div>
 					</div>
 					<p class="col s6 valign-wrapper left">
-						<span class="button-label">Editar</span>
 						<a id="tour-edit-button" href="/destroyclient" data-remote=true>
-							<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">fast_rewind</i></button>
+							<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">mode_edit</i></button>
 						</a>
+						<span class="left-button-label">Editar</span>
 					</p>
-					<p class="col s6 valign-wrapper right">
+					<p class="valign-wrapper right">
 						<span class="button-label">Siguiente</span>
 						<button id="tour-confirmation-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">done</i></button>
 					</p>
@@ -931,7 +950,40 @@
 								      <input type="text" size="5" data-conekta="card[address][zip]"/>
 								    </label>
 								</div>
-							  	<span class="card-errors"></span>
+								<div id="small-checkout-wrapper" class="col s12 hide-on-med-and-up valign-wrapper">
+									<div id="small-checkout-board" class="col s12">
+										<p class="right-align light-green-text text-accent-4"><i class="material-icons">shopping_cart</i></p>
+										<table id="small-checkout-table">
+											<tbody>
+												<tr>
+													<td>Tour virtual</td>
+													<td id="small-tour-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr>
+													<td>Plano esquemático</td>
+													<td id="small-floorplan-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr id="total-tr" class="break-tr">
+													<td>Total</td>
+													<td id="small-checkout-total" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr id="down-payment-tr">
+													<td>Anticipo</td>
+													<td id="small-checkout-down-payment" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr>
+													<td>Saldo</td>
+													<td id="small-checkout-remainder" class="right-align">$0<span  class="currency-font"> MXN</span></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="hide-on-med-and-up">
+									<p>
+										<span id="small-card-errors" class="card-errors"></span>
+									</p>
+								</div>
 							  	<p class="valign-wrapper right">
 									<span id="charge-button-label" class="button-label valign"></span>
 									<span id="charge-wrapper" class="valign-wrapper valign">
