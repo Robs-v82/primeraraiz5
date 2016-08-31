@@ -13,4 +13,13 @@ class Tour < ActiveRecord::Base
 			UserMailer.ready_email(target_client).deliver
 		end 
 	end
+
+	def time_to_pay
+		target_tour = Tour.find(self[:id])
+		target_location = Location.find(self[:location_id])
+		target_client = Client.find(target_location[:client_id])
+		if self.public_url
+			UserMailer.time_to_pay(target_client, target_location, target_tour)
+		end
+	end
 end

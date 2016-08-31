@@ -82,4 +82,16 @@ class UserMailer < ActionMailer::Base
 		mail(to: user.email, subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
 	end
 
+	def time_to_pay(client, location, tour)
+		@client = client
+		@tour = tour
+		@name = client.name.partition(" ").first
+		@location = location
+		@greeting = greeting
+		remainder = tour.total*0.75
+		remainder = remainder.to_i
+		@remainder = number_with_delimiter(remainder)
+		mail(to: client.email, subject: 'Ya puedes consultar tu modelo 3D')
+	end
+
 end

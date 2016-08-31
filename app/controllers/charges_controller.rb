@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
 
 	def create
-
+		puts 'XXxx'*100, params
 		begin
 		  @charge = Conekta::Charge.create({
 		    "amount"=> session[:tourPrice]*25,
@@ -26,8 +26,8 @@ class ChargesController < ApplicationController
 		        "description"=> "Tour virtual",
 		        "unit_price"=> session[:tourPrice]*25,
 		        "quantity"=> 1,
-		        "sku"=> "cohb_s1",
-		        "category"=> "food"
+		        "sku"=> "none",
+		        "category"=> "3D showcase"
 		      }],
 		      "billing_address"=> {
 		        "street1"=>"Río Niágara 38-202",

@@ -82,6 +82,17 @@ class ToursController < ApplicationController
 		redirect_to '/virtualtour'
 	end
 
+	def update
+		target_tour = Tour.find(update_params[:id])
+		target_tour.update("public_url" => update_params[:public_url])
+		target_location = Location.find(target_tour[:location_id])
+		target_client = Client.find(target_location[:client_id])
+		if target_tour.public_url
+			UserMailer.time_to_pay(target_client, target_location, target_tour)
+		end
+		redirect_to '/admins'
+	end
+
 	private
 
 	def price_params
@@ -90,5 +101,9 @@ class ToursController < ApplicationController
 
 	def getNeighbothoods_params
 		params.require(:location).permit(:district)
+	end
+
+	def update_params
+		params.require(:tour).permit(:id, :public_url)  
 	end
 end

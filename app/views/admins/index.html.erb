@@ -1,0 +1,21 @@
+<div class="b-container">
+	<div class="row">
+	</div>
+	<div class="row">
+		<div class="basic-block col l6 m6 s12">
+			<h5>Notificar modelo</h5>
+			<div class="row">
+				<form action="/tours/update" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<div class="input-field col s4">
+						<input type="text" name="tour[id]" placeholder="ID">
+					</div>
+					<div class="input-field col s8">
+						<input type="text" name="tour[public_url]" placeholder="url">
+					</div>
+					<button id="client-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
