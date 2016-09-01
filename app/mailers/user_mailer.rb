@@ -64,6 +64,18 @@ class UserMailer < ActionMailer::Base
 		mail(to: @client.email, subject: 'Información para tranferencia bancaria')
 	end
 
+	def time_to_pay(client, location, tour)
+		@client = client
+		@tour = tour
+		@name = client.name.partition(" ").first
+		@location = location
+		@greeting = greeting
+		remainder = tour.total*0.75
+		remainder = remainder.to_i
+		@remainder = number_with_delimiter(remainder)
+		mail(to: @client.email, subject: 'Ya puedes consultar tu modelo 3D')
+	end
+
 	def ready_email(client)
 		@client = client
 		@greeting = greeting
@@ -80,18 +92,6 @@ class UserMailer < ActionMailer::Base
 		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
 		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
 		mail(to: user.email, subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
-	end
-
-	def time_to_pay(client, location, tour)
-		@client = client
-		@tour = tour
-		@name = client.name.partition(" ").first
-		@location = location
-		@greeting = greeting
-		remainder = tour.total*0.75
-		remainder = remainder.to_i
-		@remainder = number_with_delimiter(remainder)
-		mail(to: client.email, subject: 'Ya puedes consultar tu modelo 3D')
 	end
 
 end

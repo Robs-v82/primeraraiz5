@@ -1,7 +1,6 @@
 class ChargesController < ApplicationController
 
 	def create
-		puts 'XXxx'*100, params
 		begin
 		  @charge = Conekta::Charge.create({
 		    "amount"=> session[:tourPrice]*25,
@@ -49,10 +48,15 @@ class ChargesController < ApplicationController
 				target_client = Client.find(session[:client_id])
 				target_location = Location.find(session[:location_id])
 				target_tour = Tour.find(session[:tour_id])
-				target_tour.update(:status=>"down_payment")
-				session[:tour_status] = target_tour[:status]
-				target_appointment = Appointment.find(session[:appointment_id])
-				UserMailer.tour_email(target_client, target_location, target_appointment, @charge).deliver
+				if session[:status] == "remainder"
+					target_tour.update(:status=>"fully_paid")
+					session[:tour_status] = "fully_paid"
+				else
+					target_tour.update(:status=>"down_payment")
+					target_appointment = Appointment.find(session[:appointment_id])
+					UserMailer.tour_email(target_client, target_location, target_appointment, @charge).deliver
+					session[:tour_status] = "down_payment"
+				end
 				redirect_to '/virtualtour'
 			end
 

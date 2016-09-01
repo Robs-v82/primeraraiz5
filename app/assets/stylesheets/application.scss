@@ -3,6 +3,10 @@ $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 @import "materialize/extras/nouislider";
 
+a.disabled {
+    pointer-events: none;
+}
+
 blockquote{
   border-left: 5px solid #b2ff59;
 }
@@ -25,6 +29,7 @@ blockquote{
 }
 
 .card {
+	border-radius: 0px !important;
 	background-color: transparent;
 }
 
@@ -614,11 +619,11 @@ select:focus {
 	font-size: 10px !important;
 }
 
-#card-form .col {
+#card-form .col, #remainder-form .col {
 	padding: 0px;
 }
 
-#card-form span {
+#card-form span, #remainder-form span {
 	display: block;
 }
 
@@ -751,7 +756,7 @@ ul.section.table-of-contents {
 	color: #424242;
 }
 
-#tour-header {
+#tour-header, #final-header {
 	padding: 24px 34.5px 0px 34.5px !important;
 }
 
@@ -881,6 +886,14 @@ input[type=text] {
 	color: #bdbdbd;
 }
 
+#remainder-table td {
+	padding: 0px 10px;
+}
+
+#remainder-card p {
+	font-size: 1em;
+}
+
 #small-checkout-table td {
 	padding: 0;
 	color: #424242;
@@ -890,7 +903,7 @@ input[type=text] {
 	padding-bottom: 10px !important;
 }
 
-#total-tr {
+#remainder-tr, #total-tr {
 	font-weight: 500;
 }
 
@@ -920,7 +933,7 @@ input[type=text] {
 	border-color: #64dd17;	
 }
 
-#charge-wrapper, #wire-wrapper {
+#charge-wrapper, #wire-wrapper, #remainder-charge-wrapper {
 	width: 45px;
 	height: 45px;
 }
@@ -1099,4 +1112,9 @@ input[type=text] {
 .basic-block {
 	padding: 10px;
 	border: 3px solid grey;
+}
+
+#remainder-right {
+	height: 450px;
+	overflow-y: scroll;
 }

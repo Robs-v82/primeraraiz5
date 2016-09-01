@@ -4,8 +4,17 @@ class ToursController < ApplicationController
 
 
 	def main
+		if session[:tour_status] == 'down_payment'
+			@charge = true
+			puts 'XXxx'*50, 'CHARGE', 'XXxx'*50
+		end
+		if session[:tour_status] == 'fully_paid'
+			@paid = true
+			puts 'XXxx'*50, 'PAID', 'XXxx'*50
+		end
 		if session[:tour_status] == 'scheduled'
 			@wire = true
+			puts 'XXxx'*50, 'WIRE', 'XXxx'*50
 			downPayment = Tour.find(session[:tour_id]).total*0.25
 			downPayment = (downPayment+0.5).to_i
 			@downPayment = '$'+number_with_delimiter(downPayment)
@@ -88,9 +97,33 @@ class ToursController < ApplicationController
 		target_location = Location.find(target_tour[:location_id])
 		target_client = Client.find(target_location[:client_id])
 		if target_tour.public_url
-			UserMailer.time_to_pay(target_client, target_location, target_tour)
+			UserMailer.time_to_pay(target_client, target_location, target_tour).deliver
 		end
 		redirect_to '/admins'
+	end
+
+	def payment
+		@greeting = greeting
+		@tour = Tour.find(params[:id])
+		@total = number_with_delimiter(@tour[:total])
+		@model_fee = number_with_delimiter(@tour[:model_fee])
+		if @tour[:floorplan_fee]
+			@floorplan_fee = number_with_delimiter(@tour[:floorplan_fee])
+		else
+			@floorplan_fee = number_with_delimiter(0)
+		end
+		@downPayment = number_with_delimiter(@tour[:total]*0.25)
+		@remainder = number_with_delimiter(@tour[:total]*0.75)
+		target_location = Location.find(@tour[:location_id])
+		@client = Client.find(target_location[:client_id])
+		@name = @client.name.partition(" ").first
+		deadline = @tour[:updated_at] + 1.year
+		@deadline = I18n.l(deadline, :format => "%e de %B de %Y")
+		session[:tourPrice] = @tour[:total]*3
+		session[:status] = "remainder"
+		session[:tour_id] = @tour.id
+		session[:location_id] = target_location.id
+		session[:client_id] = @client.id
 	end
 
 	private

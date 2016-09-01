@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '9jkJdTbj.html' => 'home#Test9jkJdTbj'
   get 'admins' => 'admins#index'
   post 'tours/update' => 'tours#update'
+  get 'tours/:id' => 'tours#payment'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

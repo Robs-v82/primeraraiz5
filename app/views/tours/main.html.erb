@@ -1,7 +1,7 @@
 <script>
 
 	$(window).load(function() {
-		Materialize.toast('Versión de prueba<br>¡Iniciamos operaciones próximamente!', 4000)
+		Materialize.toast('¡Contrata antes del 30 de septiembre y aprovecha nuestros precios de introducción!', 4000)
 	})
 
   $(function(){
@@ -27,6 +27,11 @@
 
     if($('#wire-modal').length) {
     	$('#wire-modal').openModal()
+    	$.get()
+    }
+
+    if($('#final-modal').length) {
+    	$('#final-modal').openModal()
     	$.get()
     }
 
@@ -84,17 +89,21 @@
 				$(this).serialize(),
 				function(data) {
 					setTime(data)
+					// $('#wire-tab-trigger').removeClass('disabled')
+					$('#wire-tab-link').empty()
+					$('#wire-tab-link').html('<span id="wire-span">Transferencia</span>')					
 					$('#tour-time-selector').prop('disabled', false)
 					$('#tour-appointment-button-label').removeClass('button-label-inactive').addClass('button-label')
 					$('#tour-appointment-button').prop('disabled', true)
 					if (data.transfer == false) {
-						$('#wire-tab-trigger').addClass('disabled tooltipped').attr({
+						$('#wire-span').addClass('tooltipped').attr({
 							"data-tooltip":"Pago con tranferencia disponible únicamente al agendar con cuatro o más días de anticipación.",
 							"data-position":"bottom",
 						})
+						$('#wire-tab-trigger').addClass('disabled')
 					}
 					else {
-						$('#wire-tab-trigger').tooltip('hide').removeClass('disabled tooltipped').removeAttr('data-tooltip data-position data-tooltip-id')
+						$('#wire-tab-trigger').removeClass('disabled')
 					}
 					$('.tooltipped').tooltip({delay: 50})
 				}
@@ -862,7 +871,7 @@
 						<div class="col s12">
 							<ul class="tabs">
 								<li class="tab col s6"><a class="payment-tab-link" href="#card-tab">Tarjeta</a></li>
-								<li id="wire-tab-trigger" class="tab col s6"><a class="payment-tab-link" href="#wire-tab">Transferencia</a></li>
+								<li id="wire-tab-trigger" class="tab col s6"><a id="wire-tab-link" class="payment-tab-link" href="#wire-tab"></a></li>
 							</ul>
 						</div>
 						<div id="card-wrapper" style="display:none">
@@ -1018,7 +1027,7 @@
 		</div>
 	</div>
 </div>
-<% if session[:charge] %>
+<% if @charge %>
 	<div id="success-modal" class="modal">
 		<div id="tour-header" class="modal-content">
 			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
@@ -1062,4 +1071,17 @@
 		</div>
 	</div>
 <% end %>
+<% if @paid %>
+	<div id="final-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Transacción exitosa ¡Gracias por tu preferencia!</p>
+			</div>
+		</div>
+	</div>
+<% end%>
 

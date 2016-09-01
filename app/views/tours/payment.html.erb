@@ -1,0 +1,218 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#remainder-card-number').mask("9999-9999-9999-9999")	
+	})
+</script>
+<script>
+	
+	var conektaSuccessResponseHandler = function(token) {
+		var $form = $("#remainder-form")
+
+		/* Inserta el token_id en la forma para que se envíe al servidor */
+		$form.append($("<input type='hidden' name='conektaTokenId'>").val(token.id))
+
+		/* and submit */
+		$form.get(0).submit()
+	}
+
+	var conektaErrorResponseHandler = function(response) {
+		$('#remainder-charge-wrapper').empty().html('<button id="charge-button" type="submit" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button>')
+		var $form = $("#remainder-form") 
+		/* Oculta el checkout */
+		$('#checkout-board').addClass('animated fadeOutRight').delay(4000).hide()
+		/* Muestra los errores en la forma */
+		$(".card-errors").text(response.message_to_purchaser)
+		$(".card-errors").show()
+		$('#tour-fifth-b-scrollspy').addClass('animated shake')
+		$form.find("button").prop("disabled", false)
+	}
+
+	$(function () {
+		$("#remainder-form").submit(function(event) {
+			$('#remainder-charge-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
+			var $form = $(this)
+
+			// Previene hacer submit más de una vez
+			$form.find("button").prop("disabled", true)
+			Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler)
+			//Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler) //v5+
+
+			// Previene que la información de la forma sea enviada al servidor
+			return false
+		})
+
+		$("#remainder-form").keypress(function() {
+			$('#tour-fifth-b-scrollspy').removeClass('animated shake')
+			$(".card-errors").hide()
+			$('#checkout-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
+		})
+	})
+</script>
+<div class="dark-screen" style="height: 800px">		
+	<video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg">
+		<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
+	</video>
+	<nav class="transparent z-depth-0" role="navigation">
+		<div class="b-container">
+			<div class="nav-wrapper">
+				<div data-no-turbolink>
+					<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
+						<img src="/assets/white_logo">
+						primeraRaíz | <span id="cdmx">CDMX</span>
+					</a>
+				</div>
+				<div data-no-turbolink>
+					<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
+						<img src="/assets/white_logo" style="width:24px;height:24px;">
+						primeraRaíz
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<div class="b-container">
+		<div class="row">
+			<div class="col l8 m12 s12">
+				<div id="remainder-card" class="card white">
+					<div class="card-content grey-text text-darken-3">
+						<div class="modal-content">
+							<div class="row">
+								<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+								<p class="primera">primera<span class="raiz">Raíz</span></p>
+							</div>
+							<div class="row">
+								<div class="col l6 m6 s12">
+									<p class="right-align light-green-text text-accent-4"><i class="material-icons">shopping_cart</i></p>
+									<table id="remainder-table">
+										<tbody>
+											<tr>
+												<td>Tour virtual</td>
+												<td id="remainder-tour-item-price" class="right-align">$<%=@model_fee%><span class="currency-font"> MXN</span></td>
+											</tr>
+											<tr>
+												<td>Plano esquemático</td>
+												<td id="remainder-floorplan-item-price" class="right-align">$<%=@floorplan_fee%><span class="currency-font"> MXN</span></td>
+											</tr>
+											<tr class="break-tr">
+												<td>Total</td>
+												<td id="remainder-total" class="right-align">$<%=@total%><span class="currency-font"> MXN</span></td>
+											</tr>
+											<tr>
+												<td>Anticipo</td>
+												<td id="remainder-down-payment" class="right-align">$<%=@downPayment%><span class="currency-font"> MXN</span></td>
+											</tr>
+											<tr id="remainder-tr" class="green-table-row animated pulse">
+												<td>Saldo</td>
+												<td id="remainder-remainder" class="right-align">$<%=@remainder%><span  class="currency-font"> MXN</span></td>
+											</tr>
+										</tbody>
+									</table>
+									<br>
+								</div>
+								<div id="remainder-right" class="col l6 m6 s12">
+									<div class="row">
+										<p><%=@greeting%> <%= @name%>,<br>Por favor completa el formulario para pago con tarjeta de crédito de tu saldo. Con este pago tendrás acceso en línea a tu modelo 3D hasta el <%=@deadline%>.</p> 
+									</div>
+									<br>
+									<div id="credit-card-row" class="row">
+										<div class="payment-type col s3">
+											CRÉDITO:
+										</div>
+										<div class="payment-type col s9">
+											<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
+											<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
+										</div>
+										<div class="payment-type col s3">
+											DÉBITO:
+										</div>
+										<div class="col s9">
+											<span id="bank_names">Banamex HSBC Inbursa Santander</span>
+										</div>
+									</div>
+									<%= form_tag('/charges/create', id: 'remainder-form', :remote => true) do %>
+										<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+									  	<div class="col s12">
+									    	<label>
+									      		<span>Nombre del tarjetahabiente</span>
+									      		<input type="text" size="20" data-conekta="card[name]"/>
+									    	</label>
+									  	</div>
+									  	<div class="col s8">
+									    	<label>
+									      		<span>Número de tarjeta</span>
+									      		<input id="remainder-card-number" type="text" size="20" data-conekta="card[number]"/>
+									    	</label>
+									  	</div>
+									  	<div class="col s3 offset-s1">
+									    	<label>
+									      		<span>CVC</span>
+									      		<input type="text" size="4" data-conekta="card[cvc]"/>
+									    	</label>
+									  	</div>
+									  	<div class="form-row">
+									    	<label>
+									      		<span>Fecha de expiración</span>
+									      		<div class="col s5">
+									      			<input type="text" size="2" placeholder="MM" data-conekta="card[exp_month]"/>
+									      		</div>
+									      		<div class="col s6 offset-s1">
+									      			<input type="text" size="4" placeholder="AAAA" data-conekta="card[exp_year]"/>
+									      		</div>	
+									    	</label>
+									  	</div>
+									<!-- Información recomendada para sistema antifraude -->
+									  <div class="col s12">
+									    <label>
+									      <span>Dirección (calle y núm.)</span>
+									      <input type="text" size="25" data-conekta="card[address][street1]"/>
+									    </label>
+									  </div>
+									<div class="col s12">
+									    <label>
+									      <span>Dirección (colonia)</span>
+									      <input type="text" size="25" data-conekta="card[address][street2]"/>
+									    </label>
+									</div>
+									<div class="col s5">
+									    <label>
+									      <span>País</span>
+									      <input type="text" size="25" data-conekta="card[address][country]"/>
+									    </label>
+									</div>
+									<div class="col s6 offset-s1">
+									    <label>
+									      <span>Estado</span>
+									      <input type="text" size="25" data-conekta="card[address][state]"/>
+									    </label>
+									</div>
+									<div class="col s5">
+									    <label>
+									      <span>Ciudad</span>
+									      <input type="text" size="25" data-conekta="card[address][city]"/>
+									    </label>
+									</div>
+									<div class="col s6 offset-s1">
+									    <label>
+									      <span>CP</span>
+									      <input type="text" size="5" data-conekta="card[address][zip]"/>
+									    </label>
+									</div>
+								  	<p class="valign-wrapper right">
+										<span id="charge-button-label" class="button-label valign">Pagar $<%=@remainder%></span>
+										<span id="remainder-charge-wrapper" class="valign-wrapper valign">
+											<button id="charge-button" type="submit" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button>
+										</span>
+									</p>
+									<% end %>
+								</div>
+							</div>
+							<div class="row">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
