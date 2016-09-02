@@ -48,6 +48,9 @@ gem 'conekta'
 
 gem 'thin'
 
+gem 'axlsx', '~> 2.0'
+gem "axlsx_rails"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

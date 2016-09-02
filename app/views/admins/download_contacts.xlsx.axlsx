@@ -1,0 +1,6 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "contactos_primera_raizs") do |sheet|
+  @contacts.each do |contact|
+    sheet.add_row [contact.category, contact.name, contact.organization, contact.email, contact.mobile_phone, contact.other_phone]
+  end
+end

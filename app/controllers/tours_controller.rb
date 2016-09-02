@@ -24,6 +24,7 @@ class ToursController < ApplicationController
 		@areas = areas_wrong.rotate(-1) 
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
 		@modelPrices = ['$2,740','$3,320','$3,880','$4,400','$4,960','$5,580']
+		session[:subscription] = true
 	end
 
 	def demo

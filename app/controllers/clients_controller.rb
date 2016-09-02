@@ -5,7 +5,6 @@ class ClientsController < ApplicationController
 		unless client_info[:mobile_phone] == nil
 			raw_number = client_info.delete("mobile_phone")
 			client_info.delete("mobile_phone")
-			puts "XXxx"*100, client_info
 			lean_number = raw_number.gsub(/\D/, '')
 			client_info.store("mobile_phone", lean_number)
 		else 
@@ -25,6 +24,15 @@ class ClientsController < ApplicationController
 			session[:client_email] = client_info[:email]
 			session[:client_name] = client_info[:name]
 			session[:client_phone_number] = raw_number
+			
+			# ADD CONTACT
+			contact_info = contact_params
+			contact_info.store("client_id", new_client[:id].to_i)
+			if session[:subscription] == false
+				contact_info.store("subscription", "false")
+			end
+			new_contact = Contact.create(contact_info)
+			
 			render json: {result: "success"}
 		else
 			render json: {errors: new_client.errors.full_messages}, :status => 422
@@ -37,9 +45,17 @@ class ClientsController < ApplicationController
 		render json: {result: "success"}
 	end
 
+	def switch
+		session[:subscription] = false
+	end
+
 	private
 
 	def client_params
 		params.require(:client).permit(:name, :email, :mobile_phone, :other_phone, :contact)
+	end
+
+	def contact_params
+		params.require(:client).permit(:name, :email, :mobile_phone, :other_phone)
 	end
 end

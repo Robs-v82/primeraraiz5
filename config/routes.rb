@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'contacts/create'
+
   post 'charges/create' => 'charges#create'
   get 'tours/demo'
   get 'tours/new'
@@ -27,6 +29,9 @@ Rails.application.routes.draw do
   get 'admins' => 'admins#index'
   post 'tours/update' => 'tours#update'
   get 'tours/:id' => 'tours#payment'
+  get 'clients/switch' => 'clients#switch'
+  post 'contacts' => 'contacts#create'
+  get 'admins/download_contacts' => 'admins#download_contacts'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

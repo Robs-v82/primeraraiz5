@@ -497,7 +497,7 @@ p.legal-warning {
     border-bottom: 4px solid #64dd17;
 }
 
-#terms_label {
+#terms_label, #subscription {
 	display: inline-block;
 }
 
@@ -556,6 +556,10 @@ select.browser-default {
 	height: 2.2em;
 	margin-bottom: 15px;
 	border: 1px solid #bdbdbd !important;
+}
+
+.admins-select {
+	display: inline;
 }
 
 select:focus {
@@ -772,7 +776,7 @@ ul.section.table-of-contents {
 	margin-bottom: 0;
 }
 
-.terms_label {
+.terms_label, #subscription {
 	font-weight: 600;
 	line-height: normal !important;
 }
@@ -1117,4 +1121,8 @@ input[type=text] {
 #remainder-right {
 	height: 450px;
 	overflow-y: scroll;
+}
+
+.button-related {
+	display: inline-block;
 }

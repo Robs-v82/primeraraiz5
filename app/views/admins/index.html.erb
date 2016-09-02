@@ -1,10 +1,72 @@
-<div class="b-container">
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#contact_land_line').mask("(99) 9999-9999")
+		$('#contact_mobile_number').mask("(99) 9999-9999")
+
+		if($('#contact-success-modal').length) {
+	    	$('#contact-success-modal').openModal()
+	    	$.get()
+    	}
+		if($('#contact-error-modal').length) {
+	    	$('#contact-error-modal').openModal()
+	    	$.get()
+    	}
+	})
+</script>
+<div id="admins" class="b-container">
 	<div class="row">
 	</div>
 	<div class="row">
-		<div class="basic-block col l6 m6 s12">
+		<div class="col l6 m6 s12">
+			<h5>Agregar contacto</h5>
+			<div class="basic-block row">
+				<form action="/contacts" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<div class="input-field col s12">
+						<input type="text" name="contact[name]" placeholder="Nombre">
+					</div>
+					<div class="input-field col s12">
+						<input type="text" name="contact[email]" placeholder="Correo*">
+					</div>
+					<div class="input-field col s12">
+						<select class="admins-select browser-deafult" name="contact[category]">
+							<option value="" disabled selected>Categoría</option>
+							<option value="RE_broker">Agente inmobiliario</option>
+							<option value="RE_developer">Constructor</option>
+							<option value="RE_website">Portal bienes raíces</option>
+							<option value="architecht_designer">Arquitectura y decoradoración</option>
+							<option value="hotel_restaurant">Hospitalidad y comercio</option>
+							<option value="cultural">Cultura</option>
+							<option value="technology">Innovación y tecnología</option>
+							<option value="general">General</option>
+						</select>
+					</div>
+					<div class="input-field col s12">
+						<input id="contact_mobile_number" type="text" name="contact[mobile_phone]" placeholder="Celular">
+					</div>
+					<div class="input-field col s8">
+						<input id="contact_land_line" type="text" name="contact[other_phone]" placeholder="Teléfono fijo">
+					</div>
+					<div class="input-field col s4">
+						<input type="text" name="contact[extension]" placeholder="Extensión">
+					</div>
+					<div class="input-field col s12">
+						<input type="text" name="contact[organization]" placeholder="Organización">
+					</div>
+					<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</form>
+			</div>
+			<div class="basic-block row">
+				<p class="button-related">Descargar contactos (Excel)</p>
+				<a href="/admins/download_contacts">
+					<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</a>
+
+			</div>
+		</div>
+		<div class="col l6 m6 s12">
 			<h5>Notificar modelo</h5>
-			<div class="row">
+			<div class="basic-block row">
 				<form action="/tours/update" method="post">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 					<div class="input-field col s4">
@@ -19,3 +81,34 @@
 		</div>
 	</div>
 </div>
+<% if @contact_success %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Contacto agregado</p>
+			</div>
+		</div>
+	</div>
+<% end%>
+<% if @contact_errors %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Error fatal</p>
+				<ul>
+					<% @contact_errors.each do |error| %>
+						<li><%=error%></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end%>

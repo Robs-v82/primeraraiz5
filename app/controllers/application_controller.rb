@@ -83,6 +83,15 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def remove_contact_message
+		if session[:new_contact]
+			session[:new_contact] = nil
+		end
+		if session[:contact_errors]
+			session[:contact_errors] = nil
+		end
+	end
+
 	def number_with_delimiter(number, delimiter=",", separator=".")
 		begin
 			number = number.floor
