@@ -3,6 +3,7 @@ class AdminsController < ApplicationController
 	after_action :remove_contact_message, only: [:index]
 
 	def index
+		@states = State.all
 		if session[:new_contact]
 			@contact_success = true
 		end

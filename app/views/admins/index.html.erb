@@ -42,6 +42,14 @@
 						</select>
 					</div>
 					<div class="input-field col s12">
+						<select class="admins-select browser-deafult" name="contact[state]">
+							<option value="" disabled selected>Estado</option>
+							<% @states.each do |state| %>
+								<option value="<%= state.estado%>"><%= state.estado%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s12">
 						<input id="contact_mobile_number" type="text" name="contact[mobile_phone]" placeholder="Celular">
 					</div>
 					<div class="input-field col s8">
