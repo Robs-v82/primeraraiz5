@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902164727) do
+ActiveRecord::Schema.define(version: 20160903132859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,14 @@ ActiveRecord::Schema.define(version: 20160902164727) do
   add_index "properties", ["agent_id"], name: "index_properties_on_agent_id", using: :btree
   add_index "properties", ["neighborhood_id"], name: "index_properties_on_neighborhood_id", using: :btree
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
+
+  create_table "states", force: true do |t|
+    t.string   "clave_estado"
+    t.string   "estado"
+    t.string   "iso_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tours", force: true do |t|
     t.string   "size"
