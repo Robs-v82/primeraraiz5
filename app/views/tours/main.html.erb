@@ -39,6 +39,7 @@
 
 	$('#subscription').click(function() {
 		$('#subscription-checkbox').removeAttr('checked')
+		$('#subscription-line').addClass('animated fadeOutRight')
 	})
 
 	$('.terms_label').click(function() {
@@ -414,7 +415,7 @@
 
 </script>
 <div class="dark-screen" style="height: 800px">		
-	<video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg">
+	<video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg" alt="Matterport">
 		<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
 	</video>
 	<nav class="transparent z-depth-0" role="navigation">
@@ -422,13 +423,13 @@
 			<div class="nav-wrapper">
 				<div data-no-turbolink>
 					<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
-						<img src="/assets/white_logo">
+						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo" alt="Primera Raíz México">
 						primeraRaíz | <span id="cdmx">CDMX</span>
 					</a>
 				</div>
 				<div data-no-turbolink>
 					<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
-						<img src="/assets/white_logo" style="width:24px;height:24px;">
+						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo" alt="Primera Raíz México" style="width:24px;height:24px;">
 						primeraRaíz
 					</a>
 				</div>
@@ -482,22 +483,22 @@
 <div class="main-background">
 	<div id="demo-section" class="main-section-wrapper">
 		<div class='embed-container'>
-		<iframe width="853" height="480" src="https://my.matterport.com/show/?m=qfnRVWH21FK" frameborder="0" allowfullscreen alt="Matterport 3D showcase"></iframe>
+		<iframe title="Rosewood San Miguel de Allende" width="853" height="480" src="https://my.matterport.com/show/?m=qfnRVWH21FK" frameborder="0" allowfullscreen alt="San Miguel de Allende Matterport 3D showcase"></iframe>
 		</div>
 	</div>	
 	<div id="demo-section" class="main-section-wrapper">
 		<div class='embed-container'>
-		<iframe width="853" height="480" src="https://my.matterport.com/show/?m=y7HZpTczPWg" frameborder="0" allowfullscreen alt="Matterport 3D showcase"></iframe>
+		<iframe title="Firence CDMX México" width="853" height="480" src="https://my.matterport.com/show/?m=y7HZpTczPWg" frameborder="0" allowfullscreen alt="CDMX México Matterport 3D showcase"></iframe>
 		</div>
 	</div>	
 	<div class="main-section-wrapper">
 		<div class='embed-container'>
-		<iframe width="853" height="480" src="https://my.matterport.com/show/?m=UoKo1XgsuPi" frameborder="0" allowfullscreen alt="Matterport 3D showcase"></iframe>
+		<iframe title="Casa 1810 Guadalajara" width="853" height="480" src="https://my.matterport.com/show/?m=UoKo1XgsuPi" frameborder="0" allowfullscreen alt="San Miguel de Allende Matterport 3D showcase"></iframe>
 		</div>
 	</div>
 	<div class="main-section-wrapper">
 		<div class='embed-container'>
-		<iframe width="853" height="480" src="https://my.matterport.com/show/?m=XzkmtCiUTzN" frameborder="0" allowfullscreen alt="Matterport 3D showcase"></iframe>
+		<iframe title="Departamento CDMX México" alt="CDMX México" width="853" height="480" src="https://my.matterport.com/show/?m=XzkmtCiUTzN" frameborder="0" allowfullscreen alt="CDMX México Matterport 3D showcase"></iframe>
 		</div>
 	</div>
 	<div class="row main-section-wrapper grey-text text-darken-3">
@@ -566,7 +567,7 @@
 <div>
 	<div id="floorplan-section" class="b-container">
 		<h4 class="white-text">Plano esquemático</h4>
-		<img id="main-floorplan" class="z-depth-1" src="/SchematicFloorplan.jpg">
+		<img alt="plano México" id="main-floorplan" class="z-depth-1" src="/SchematicFloorplan.jpg">
 	</div>
 </div>
 <div class="white tight-main-wrapper">
@@ -593,13 +594,13 @@
 	</div>
 </div>
 <div class="row b-container almost-footer valign-wrapper">
-		<img class="affiliation-frame valign double-extra-right" src="/assets/matterport-service-partner.png" alt="matterport">
+		<img alt="Matterport México" class="affiliation-frame valign double-extra-right" src="/assets/matterport-service-partner.png" alt="matterport">
 		<i class="white-text fa fa-facebook-official fa-4x valign extra-right" aria-hidden="true"></i>
 		<i class="white-text fa fa-instagram fa-4x valign extra-right" aria-hidden="true"></i>
 </div>
 <div id="tour-modal" class="modal">
 	<div id="tour-header" class="modal-content">
-		<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+		<img alt="recorrido virtual México" src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
 		<p class="primera">primera<span class="raiz">Raíz</span></p>
 	</div>
 	<div id="tour-first">
@@ -617,9 +618,11 @@
 			</div>
 			<form class="row valign-wrapper" style="width:100%">
 				<a href="/clients/switch" data-remote=true>
-					<div class="col s12">
-						<input type="checkbox" id="subscription-checkbox" class="valign" checked>
-							<label id="subscription" class="valign grey-text text-darken-3">Deseo recibir información y promociones de Primera Raíz.</label>
+					<div id="subscription-wrapper">
+						<div id="subscription-line" class="col s12">
+							<input type="checkbox" id="subscription-checkbox" class="valign" checked>
+								<label id="subscription" class="valign grey-text text-darken-3">Deseo recibir información y promociones de Primera Raíz.</label>
+						</div>
 					</div>
 				</a>
 			</form>	
@@ -1040,7 +1043,7 @@
 <% if @charge %>
 	<div id="success-modal" class="modal">
 		<div id="tour-header" class="modal-content">
-			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<img alt="recorrido virtual México Primera Raíz" src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
 			<p class="primera">primera<span class="raiz">Raíz</span></p>
 		</div>
 		<div class="modal-content">
@@ -1053,7 +1056,7 @@
 <% if @wire %>
 	<div id="wire-modal" class="modal">
 		<div id="tour-header" class="modal-content">
-			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<img alt="recorrido virtual México Primera Raíz" src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
 			<p class="primera">primera<span class="raiz">Raíz</span></p>
 		</div>
 		<div class="modal-content">
@@ -1084,7 +1087,7 @@
 <% if @paid %>
 	<div id="final-modal" class="modal">
 		<div id="final-header" class="modal-content">
-			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<img alt="recorrido virtual México Primera Raíz" src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
 			<p class="primera">primera<span class="raiz">Raíz</span></p>
 		</div>
 		<div class="modal-content">
