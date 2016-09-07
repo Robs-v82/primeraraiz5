@@ -18,7 +18,8 @@ class LocationsController < ApplicationController
 				unit_string = ""
 			end
 			session[:area] = Area.find("#{location_params[:area_id]}").name
-			session[:comment] = location_params[:comment]
+			session[:metro_area] = Area.find("#{location_params[:area_id]}").metro_area
+			session[:comment] = location_params[:comment]	
 			session[:short_address] = session[:street] + " " + session[:number] + unit_string + ", Col. " + session[:area] 
 			render json: {success: "success"}
 		else

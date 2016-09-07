@@ -3,13 +3,20 @@ class AdminsController < ApplicationController
 	after_action :remove_contact_message, only: [:index]
 
 	def index
-		@states = State.all
-		if session[:new_contact]
-			@contact_success = true
+		if current_agent
+			@states = State.all
+			if session[:new_contact]
+				@contact_success = true
+			end
+			if session[:contact_errors]
+				@contact_errors = session[:contact_errors] 
+			end
+		else
+			redirect_to '/admins/password'
 		end
-		if session[:contact_errors]
-			@contact_errors = session[:contact_errors] 
-		end
+	end
+
+	def password
 	end
 
 	def download_contacts
@@ -19,5 +26,22 @@ class AdminsController < ApplicationController
 	    #    format.xlsx {render xlsx: 'download',filename: "contactos_primera_raiz.xlsx"}
 	end
 
+	def login
+		target_agent = Agent.find_by_email(agent_params[:email])
+		if target_agent
+			if target_agent.authenticate(agent_params[:password])
+				session[:agent_id] = target_agent[:id]
+				redirect_to '/admins'
+			end
+		else
+			redirect_to '/admins/password'
+		end
+	end
+
+	private
+
+	def agent_params
+		params.require(:agent).permit(:email, :password)
+	end
 
 end

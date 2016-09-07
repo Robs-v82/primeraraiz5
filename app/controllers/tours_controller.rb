@@ -82,6 +82,13 @@ class ToursController < ApplicationController
 		render json: {neighborhoods: targetNeighborhoods}
 	end
 
+	def getDistricts
+		targetMetroArea = getDistricts_params[:metro_area]
+		targetAreas = Area.where("metro_area='#{targetMetroArea}'").order(:district)
+		targetDistricts = targetAreas.order(:district).select(:district).distinct
+		render json: {districts: targetDistricts}
+	end
+
 	def wire
 		target_client = Client.find(session[:client_id])
 		target_location = Location.find(session[:location_id])
@@ -135,6 +142,10 @@ class ToursController < ApplicationController
 
 	def getNeighbothoods_params
 		params.require(:location).permit(:district)
+	end
+
+	def getDistricts_params
+		params.require(:location).permit(:metro_area)
 	end
 
 	def update_params

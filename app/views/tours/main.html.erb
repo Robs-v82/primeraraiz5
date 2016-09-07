@@ -274,6 +274,42 @@
 			})
   		})
 
+  		// Change metro area
+
+  		$('.metro-area').change(function() {
+  			$('#tour-district-selector').html('')
+  			$.post(
+  				'/virtualtour/getDistricts',
+  				$(this).serialize(),
+  				function(data) {
+  					console.log(data)
+  					var districtOptions = "<option value='' disabled selected>Delegación/Municipio</option>"
+  					for(i=0; i<data.districts.length; i++) {
+  						districtOptions += "<option value='"+data.districts[i].district+"'>"+data.districts[i].district+"</option>"
+  					}
+					$('#tour-district-selector').append(districtOptions)				
+  				}
+  			)
+  			return false
+  		})
+
+
+		// $('#tour-district-selector').change(function() {
+		// 	$('#tour-neighborhood-selector').html('')
+		// 	$.post(
+		// 		'/virtualtour/getNeighborhoods',
+		// 		$(this).serialize(),
+		// 		function(data) {
+		// 			var neighboodOptions = "<option value='' disabled selected>Colonia</option>"
+		// 			for(i=0; i<data.neighborhoods.length; i++) {
+		// 				neighboodOptions += "<option value='"+data.neighborhoods[i].id+"'>"+data.neighborhoods[i].name+"</option>"
+		// 			}
+		// 			$('#tour-neighborhood-selector').append(neighboodOptions)
+		// 		}
+		// 	)
+		// 	return false
+		// })
+
 		// Select model size and floorplan
 
 	  	var check_this = function(thatId, floorplanRealPrice, total, downPayment, remainder) {
@@ -460,11 +496,11 @@
 			<div class="row title-wrapper valign-wrapper" style="width: 100%">
 				<div id="banner" class="col s12 m12 l12">
 					<div class="row">
-						<h1 id="b-title" class="hide-on-small-only center-align white-text shine">Más que un tour virtual</h1>
+						<h1 id="b-title" class="hide-on-small-only center-align white-text shine">Tu inmueble en realidad virtual</h1>
 						<div id="b-subtitle-container" class="hide-on-small-only center-align white-text">
 							<h3 id="b-subtitle-tour"></h3>
 						</div>		
-						<h1 id="c-title" class="hide-on-med-and-up center-align white-text shine">Más que un tour virtual</h1>
+						<h1 id="c-title" class="hide-on-med-and-up center-align white-text shine">Tu inmueble en realidad virtual</h1>
 						<div id="c-subtitle-container" class="hide-on-med-and-up center-align white-text">
 							<h3 id="c-subtitle-tour"></h3>
 						</div>
@@ -557,7 +593,7 @@
 		<div id="tour-location-section" class="b-container col l6 m6 s12">
 			<div class="b-container">
 				<h4>Clientes foráneos</h4>
-				<p class="flow-text left-align">Nos encanta viajar. Si tienes un inmueble fuera de la Ciudad de México escríbenos a:</p>
+				<p class="flow-text left-align">Nos encanta viajar. Si tienes un inmueble fuera de la Ciudad de México, Guadalajara, Querétaro o San Miguel de Allende, escríbenos a:</p>
 				<p class="flow-text left-align"><a class="mail-link" href="mailto:foraneos@primeraraiz.com">foraneos@primeraraiz.com</a></p>
 				<p class="flow-text left-align">Elaboramos una cotización especial o te informamos cuando visitemos tu ciudad.</p>
 			</div>
@@ -576,7 +612,7 @@
 		<ul class="collapsible popout white-text" data-collapsible="accordion">
 			<li>
 				<div class="collapsible-header left-align valign-wrapper"><p class="flow-text valign">¿Para qué tipo de espacios es adecuado el tour virtual?</p></div>
-				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Sólo recomendamos espacios interiores. Por lo demás, podemos hacer un tour en cualquier espacio. Para proyectos de más de 1,000 metros cuadrados es necesario segmentar y contratar más de un tour.</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Lo recomendamos principalmente para espacios interiores (aunque podemos incluir tomas del exterior). Por lo demás, podemos hacer un tour en cualquier espacio. Para proyectos de más de 1,000 metros cuadrados es necesario segmentar y contratar más de un tour.</p></div>
 			</li>
 			<li>
 				<div class="collapsible-header left-align"><p class="flow-text">¿Cuánto se tardan en generar un tour virtual?</p></div>
@@ -612,7 +648,7 @@
 						<li>Recomendado para espacios interiores de hasta 1,000 m<span class="super-index">2</span>.</li>
 						<li>Difunde el modelo en redes sociales o intégralo a tu página web.</li>
 						<li>Incluye la generación de tour virtual y el acceso al modelo en línea por un año.</li>
-						<li>Servicio disponible en la Zona Metropolitana del Valle de México.</li>
+						<li>Disponible en Ciudad de México, Guadalajara, Querétaro y San Miguel de Allende (resto de la República escribir a <a href="mailto:foraneos@primeraraiz.com">foraneos@primeraraiz.com</a>).</li>
 					</ul>
 				</div>
 			</div>
@@ -740,6 +776,18 @@
 					<form id="tour-address-form" action="/locations" method="post">
 						<div class="row">
 							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+							<div class="input-field col s6">
+								<input id="metro-area-cdmx-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="CDMX" checked>
+								<label for="metro-area-cdmx-radio">CDMX</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="metro-area-gdl-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Guadalajara">
+								<label for="metro-area-gdl-radio">Guadalajara</label>
+							</div>
+							<div class="input-field col s12">
+								<input id="metro-area-qro-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Querétaro">
+								<label for="metro-area-qro-radio">Querétaro/San Miguel</label>
+							</div>
 							<div class="input-field col s12">
 								<input type="text" name="location[street]" placeholder="Calle">
 							</div>

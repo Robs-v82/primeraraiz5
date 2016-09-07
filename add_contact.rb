@@ -3,8 +3,600 @@ newArr = []
 myArr.each{|contact| contacto = contact.split("\n"); newArr.push(contacto)}
 newArr.shift
 emailArr = []
+estado = "Guanajuato"
 newArr.each{|contact| email = contact[2].slice(7,100); emailArr.push(email)}
-(0..newArr.length).each {|x| Contact.create(:name => newArr[x][0], :email => emailArr[x], :category => "RE_broker")}
+(0..newArr.length).each {|x| Contact.create(:name => newArr[x][0], :email => emailArr[x], :category => "RE_broker", :state => estado)}
+
+# SAN MIGUEL DE ALLENDE
+myString="UsuarioAcuña Ortiz Carlos Fernando
+Sección: San Miguel De Allende
+Email: info@atenearealty.com
+ Mas InformaciónTeléfonos:
+415 - 152 1337
+415 - 152 0785
+415 - 151 0101
+UsuarioBarcal Joanie
+Sección: San Miguel De Allende
+Email: joanie@allendeproperties.com
+ Mas InformaciónTeléfonos:
+01 415 - 15 4 5000
+USA 214 - 432 7558
+415 - 153 3167
+UsuarioCalderoni Ben
+Sección: San Miguel De Allende
+Email: ben@calderoniproperties.com
+ Mas InformaciónTeléfonos:
+415 - 1548164
+415 - 1535417
+UsuarioCházaro Cavero Eric
+Sección: San Miguel De Allende
+Email: eric.chazaro@kwmexico.mx
+ Mas InformaciónTeléfonos:
+415 - 154 4195 
+415 - 154 4198
+415 - 113 9812
+UsuarioCHAZARO ALMEIDA ROXANA
+Sección: San Miguel De Allende
+Email: roxana@ampi.org
+ Mas InformaciónTeléfonos:
+55 - 55664260
+UsuarioGleason Wesley
+Sección: San Miguel De Allende
+Email: agavesanmiguel@yahoo.com
+ Mas InformaciónTeléfonos:
+415 - 1522180
+415 - 1141422
+UsuarioHardcastle Philip
+Sección: San Miguel De Allende
+Email: philip@realtysanmiguel.com
+ Mas InformaciónTeléfonos:
+415 - 1858407
+415 - 1858311
+415 - 1539520
+UsuarioHowze Nancy
+Sección: San Miguel De Allende
+Email: nancy@cdrsanmiguel.com
+ Mas Información
+UsuarioKelly Liz
+Sección: San Miguel De Allende
+Email: liz@cbsanmiguel.com
+ Mas InformaciónTeléfonos:
+(415) - 154 8531
+(415) - 1526420
+(415) - 107 0194
+UsuarioLayne Blocker Peggy
+Sección: San Miguel De Allende
+Email: peggy@sanmiguel-mgmt.com
+ Mas InformaciónTeléfonos:
+415 - 152 44 16
+UsuarioLoyola Rendón Graciela
+Sección: San Miguel De Allende
+Email: graciela@sanmiguel-mgmt.com
+ Mas InformaciónTeléfonos:
+415 - 152 44 16
+415 - 1520187
+UsuarioMACHADO CHRISTINA
+Sección: San Miguel De Allende
+Email: sanmiguelhome@aol.com
+ Mas InformaciónTeléfonos:
+(415) - 152 1903
+(415) - 124 3912
+UsuarioMancera Ortega Fernando
+Sección: San Miguel De Allende
+Email: fernando@cbsanmiguel.com
+ Mas InformaciónTeléfonos:
+415 - 107 0187
+UsuarioMervin Herrera Michele John
+Sección: San Miguel De Allende
+Email: info@sanmiguel_mx.com
+ Mas InformaciónTeléfonos:
+01415 - 1522284
+UsuarioMonterisi Luciano
+Sección: San Miguel De Allende
+Email: haciendalapresita@gmail.com
+ Mas InformaciónTeléfonos:
+415 - 1559691
+415 - 1010452
+UsuarioOrtiz Cabrera Daniel
+Sección: San Miguel De Allende
+Email: daniel@coldwellbankersmart.com
+ Mas InformaciónTeléfonos:
+01 - 415 152 31 97
+UsuarioPesqueira Taunton Manuel
+Sección: San Miguel De Allende
+Email: bienesraices@sisal.com.mx
+ Mas InformaciónTeléfonos:
+442 - 223 6240
+442 - 223 8285
+442 - 3430144
+UsuarioPesqueira Taunton Manuel
+Sección: San Miguel De Allende
+Email: manuel@sisal.com.mx
+ Mas InformaciónTeléfonos:
+442 - 223-8285
+415 - 154-8944
+442 - 3430144
+UsuarioRamirez Martinez Alma Cecilia
+Sección: San Miguel De Allende
+Email: info@colonial-realestate.com
+ Mas InformaciónTeléfonos:
+415 - 154971
+415 - 1544972
+415 - 1521579
+UsuarioRangel Bautista Rosalba
+Sección: San Miguel De Allende
+Email: ventasrentas@hotmail.com
+ Mas InformaciónTeléfonos:
+415 - 1544472
+415 - 1010018
+UsuarioReichert Erwit
+Sección: San Miguel De Allende
+Email: erwitr@gmail.com
+ Mas InformaciónTeléfonos:
+415 - 154 41 95
+- US (513) 454 8236
+415 - 153 52 55
+UsuarioRubiera Gabriel
+Sección: San Miguel De Allende
+Email: gabriel@realtysanmiguel.com
+ Mas InformaciónTeléfonos:
+415 - 1010474
+UsuarioSánchez Aude Adela
+Sección: San Miguel De Allende
+Email: candelasma@hotmail.com
+ Mas InformaciónTeléfonos:
+415 - 1521828
+415 - 1523579
+UsuarioSanchez A Chris 
+Sección: San Miguel De Allende
+Email: info@realestatecandela.com
+ Mas InformaciónTeléfonos:
+415 - 152 1828
+UsuarioSimmons Lane
+Sección: San Miguel De Allende
+Email: lane@realestate-sma.com
+ Mas InformaciónTeléfonos:
+415 - 152 7363
+UsuarioTaylor Ott Margaret Gibson
+Sección: San Miguel De Allende
+Email: info@lamargaritarealestate.com
+ Mas InformaciónTeléfonos:
+01415 - 1522893
+415 - 5664658
+UsuarioVidargas Ricardo
+Sección: San Miguel De Allende
+Email: ricardo@dottyvidargas.com
+ Mas InformaciónTeléfonos:
+415 - 1520286
+415 - 1545731
+713 - 5746829
+"
+
+# QUERETARO
+myString="UsuarioAlba Hernandez Maria del Socorro
+Sección: Querétaro
+Email: c.alba@cemoza.com
+ Más InformaciónTelefonos:
+215 - 11 11
+215 - 22 22
+UsuarioAlbarran Luna Francisco
+Sección: Querétaro
+Email: ventas@sigmabienesraices.com
+ Más InformaciónTelefonos:
+442 - 148 2606
+442 - 3274338
+4422 - 2138350
+UsuarioAvendaño Macedo Dinora
+Sección: Querétaro
+Email: dinora@realtyworld.com.mx
+ Más InformaciónTelefonos:
+442 - 223-34-36
+442 - 343 10 61
+UsuarioAyala Leal Alma Gabriela
+Sección: Querétaro
+Email: direccion@ayalabienesraices.com
+ Más InformaciónTelefonos:
+442 - 444 95 12
+UsuarioBelisle Christine
+Sección: Querétaro
+Email: christine_belisle@hotmail.com
+ Más InformaciónTelefonos:
+442 - 4106381
+UsuarioBurr Muro Glenn
+Sección: Querétaro
+Email: glennburr@remax.net
+ Más InformaciónTelefonos:
+442 - 294 54 54
+UsuarioCampos Devine Cuauhtémoc Merlyn
+Sección: Querétaro
+Email: conexiondc@gmail.com
+ Más InformaciónTelefonos:
+01 (442) - 2658947 
+UsuarioCarbonell Tapia Jorge Gabriel
+Sección: Querétaro
+Email: jcarbonell@prodigy.net.mx
+ Más InformaciónTelefonos:
+442 - 2 45 19 25
+- ID 52*206288*1
+442 - 1560736
+UsuarioCasillas Villafranco Francisco
+Sección: Querétaro
+Email: gactivo@prodigy.net.mx
+ Más InformaciónTelefonos:
+442 - 214 15-35
+442 - 1136 65 58
+UsuarioCastro López Juan José
+Sección: Querétaro
+Email: jcastro@mileniotres.com
+ Más InformaciónTelefonos:
+442 - 2481698
+442 - 2237032
+442 - 2237033
+UsuarioChacon Mancilla Antonio
+Sección: Querétaro
+Email: achaconubicart@hotmail.com
+ Más InformaciónTelefonos:
+01 442 - 2151649
+UsuarioContreras Suarez Juan Ignacio
+Sección: Querétaro
+Email: ignaciocontrerasqro@gmail.com
+ Más InformaciónTelefonos:
+01442 - 2191846
+UsuarioCordoba Vital Oscar
+Sección: Querétaro
+Email: ocordoba@promessa.com.mx
+ Más InformaciónTelefonos:
+442 - 2-12-80-77
+UsuarioCuevas Ramírez Monica
+Sección: Querétaro
+ Más InformaciónTelefonos:
+442 - 2-2365-75
+UsuarioDavila Galindo Patiño Maria Ana
+Sección: Querétaro
+Email: davila.mariaana@gmail.com
+ Más InformaciónTelefonos:
+04555 - 35221740
+045442 - 2049695
+UsuarioDe la Camara Lara María de las Mercedes 
+Sección: Querétaro
+Email: mercedescamara@aaltimaxbienesraices.com
+ Más InformaciónTelefonos:
+01 442 - 148 81 93
+UsuarioDe La Rocha Rivera Sergio
+Sección: Querétaro
+Email: delarocha_sergio@hotmail.com
+ Más InformaciónTelefonos:
+442 - 688-0805
+442 - 226-2603
+UsuarioEscamilla Gamboa Pamela
+Sección: Querétaro
+Email: contacto@escamillareynosore.com
+ Más InformaciónTelefonos:
+01 442 - 2010903
+UsuarioEscobar Ibarra Alejandro
+Sección: Querétaro
+Email: alejandroe@remax.net
+ Más InformaciónTelefonos:
+442 - 348 02 02
+UsuarioFernández Herrera Bertha
+Sección: Querétaro
+Email: trofimbr@yahoo.com
+ Más InformaciónTelefonos:
+442 - 2186240
+UsuarioFlores Fernández Roberto
+Sección: Querétaro
+Email: rflores@promessa.com.mx
+ Más InformaciónTelefonos:
+442 - 2128077
+- 212 76 44 
+- Fax. 212 62 24
+UsuarioFlores González Ana Laura
+Sección: Querétaro
+Email: alflores@promessa.com.mx
+ Más InformaciónTelefonos:
+442 - 2-12-80-77
+UsuarioGarduño Rivera Jorge Manuel
+Sección: Querétaro
+Email: rivera@hotmail.com.mx
+ Más InformaciónTelefonos:
+- 0000000
+UsuarioGarduño Soto Maria Isabel
+Sección: Querétaro
+Email: sgarduno@ampi.org
+ Más InformaciónTelefonos:
+.442 - .1270616
+442 - 1230585
+UsuarioGodoy Guevara Fernando Josué 
+Sección: Querétaro
+Email: godarq@gmail.com
+ Más InformaciónTelefonos:
+442 - 210 35 92
+442 - 391 42 64
+92*15* - 12 106
+UsuarioGomez Bastida Pilar Gabriela 
+Sección: Querétaro
+Email: bastida@ampi.org
+ Más InformaciónTelefonos:
+- 4421361932
+UsuarioGonzalez Alejos Jose Eric 
+Sección: Querétaro
+Email: gonbus@hotmail.com
+ Más InformaciónTelefonos:
+442 - 414 50 12
+UsuarioGonzález Salas Diego Rodrigo
+Sección: Querétaro
+Email: diegog@promessa.com.mx
+ Más InformaciónTelefonos:
+442 - 2-12-80-77
+UsuarioGonzález Rentería Maria del Pilar
+Sección: Querétaro
+Email: gonzalezrenteriamariadelpilar@gmail.com
+ Más InformaciónTelefonos:
+01(442) - 2482918
+01 442 - 3221989
+01442 - 1486801
+UsuarioGonzález Franco Godoy Martín Ignacio
+Sección: Querétaro
+Email: mgf1607@gmail.com
+ Más InformaciónTelefonos:
+01 442 - 4674553
+UsuarioGuadarrana Ruiz Rocio Betlehem
+Sección: Querétaro
+Email: Ruizg@hotmail.com
+ Más InformaciónTelefonos:
+442 - 2 45 24 94
+UsuarioGuerrero Scott Rodolfo
+Sección: Querétaro
+Email: rguerrero@realtyworld.com.mx
+ Más InformaciónTelefonos:
+442 - 198 22 22
+442 - 322 98 82
+UsuarioGutièrrez Hernández Ivonne 
+Sección: Querétaro
+Email: igutierrez@imyinmobiliaria.com.mx
+ Más InformaciónTelefonos:
+442 - 2584662
+442 - 4118743
+UsuarioHerrera Vazaquez Rosalio 
+Sección: Querétaro
+Email: hgdesarrollos@hotmail.com
+ Más InformaciónTelefonos:
+- - -
+UsuarioLedesma Torres Rogelio
+Sección: Querétaro
+Email: rledesma@promessa.com
+ Más InformaciónTelefonos:
+442 - 2128077
+442 - 2127644
+UsuarioLomelin Velasco Andres 
+Sección: Querétaro
+Email: cvqro@lomelin.net
+ Más InformaciónTelefonos:
+01(442) - 216-3394
+UsuarioLópez Sánchez Alejandro 
+Sección: Querétaro
+Email: direccion@grupoals.com
+ Más InformaciónTelefonos:
+442 - 225 26 69
+UsuarioMatas Llergo Antonio
+Sección: Querétaro
+Email: amatas@site1mex.com
+ Más InformaciónTelefonos:
+442 - 218 55 85
+442 - 125 97 34
+UsuarioMc Dowell Ramírez Elizabeth
+Sección: Querétaro
+Email: elizabeth_mcdowell@coldwellbankercentro.com.mx
+ Más InformaciónTelefonos:
+442 - 220 6324
+442 - 246 15 88
+UsuarioMolina Gómez Judith
+Sección: Querétaro
+Email: judithmolinag@grupoaltus.com.mx
+ Más InformaciónTelefonos:
+01 442 - 312 28 99
+01 442 - 4110206
+UsuarioMolina Gomez Judith
+Sección: Querétaro
+Email: judithmolinag@hotmail.com
+ Más InformaciónTelefonos:
+01 442 - 312 28 99
+UsuarioMorelos Zaragoza Eichelmann Carlos Javier
+Sección: Querétaro
+Email: carlosjavier4@yahoo.com
+ Más InformaciónTelefonos:
+01-427 - 271-06-81
+01-427 - 271-02-57
+UsuarioMoya Gasca Alma Rosa
+Sección: Querétaro
+Email: alma64_mg@hotmail.com
+ Más InformaciónTelefonos:
+442 - 3913976
+UsuarioN. Fry Alexander
+Sección: Querétaro
+Email: info@qpropiedades.com
+ Más InformaciónTelefonos:
+01 442 - 4671333
+UsuarioNarro Vera Arnulfo
+Sección: Querétaro
+Email: anarro@mileniotres.com
+ Más InformaciónTelefonos:
+442 - 2481798
+UsuarioNoriega Río Gloria
+Sección: Querétaro
+Email: invitta.br@prodigy.net.mx
+ Más InformaciónTelefonos:
+442 - 2140827
+442 - 2128977
+UsuarioNuñez Fry Alexander Paul
+Sección: Querétaro
+Email: alexander@qpropiedades.com
+ Más InformaciónTelefonos:
+442 - 4671333
+UsuarioOlivar Hernández María Cristina
+Sección: Querétaro
+Email: cris.olivar@hotmail.com
+ Más InformaciónTelefonos:
+442 - 341 60 73
+442 - 1731215
+UsuarioPacheco Lopez Ma. Teresa
+Sección: Querétaro
+Email: tere_pl@yahoo.com.mx
+ Más InformaciónTelefonos:
+442 - 2-17-25-49
+442 - 1-21-91-41
+UsuarioPalacios Reyes Miguel Gonzalo
+Sección: Querétaro
+Email: ventas@yospi.com
+ Más InformaciónTelefonos:
+442 - 2242404
+442 - 2242564
+442 - 2242594
+UsuarioParada Ampudia Elsa Martha
+Sección: Querétaro
+Email: elsaavanza@gmail.com
+ Más InformaciónTelefonos:
+01442 - 2187631
+UsuarioParada Ampudia Dinora
+Sección: Querétaro
+Email: informes@avanzagi.com
+ Más InformaciónTelefonos:
+442 - 218 7631
+442 - 199 0491
+UsuarioPaulin Vargas Jose Trinidad
+Sección: Querétaro
+Email: ventasubicart09@yahoo.com.mx
+ Más InformaciónTelefonos:
+(442) - 182 2337/39
+- ID 52*11150*3 y 5
+442 - 4468242
+UsuarioPless De Rivera Lily
+Sección: Querétaro
+Email: ventas@arkobienesraices.com
+ Más InformaciónTelefonos:
+442 - 2462392
+UsuarioREYES MARTINEZ PEDRO ROBERTO
+Sección: Querétaro
+Email: prm88@hotmail.com
+ Más InformaciónTelefonos:
+442 - 340 31 05
+55 - 54 38 37 77
+UsuarioRivera De Garduño Ma. Teresa
+Sección: Querétaro
+Email: tererivera41@hotmail.com
+ Más InformaciónTelefonos:
+442 - 2-13 47 32
+442 - 2264410
+UsuarioRodríguez Snyder Christian Emmanuel
+Sección: Querétaro
+Email: ventas@cralinmobiliare.com
+ Más InformaciónTelefonos:
+01 (442) - 245 26 80
+01 (442) - 245 26 75
+UsuarioRojas Ayala Dulce Maria
+Sección: Querétaro
+Email: drinmobiliaria@prodigy.net.mx
+ Más InformaciónTelefonos:
+01(442) - 2451107
+UsuarioRuiz Rodriguez Luis Daniel
+Sección: Querétaro
+Email: druiz@supraterra.com.mx
+ Más InformaciónTelefonos:
+01442 - 2294850 ext. 4845
+045 - 4421060484
+UsuarioSalamanca Riba Raúl Martín
+Sección: Querétaro
+Email: sayrobr@prodigy.net.mx
+ Más InformaciónTelefonos:
+442 - 2133030
+442 - 2132111
+442 - 3184132
+UsuarioValerio Marqués Juan Francisco
+Sección: Querétaro
+Email: jvaleriom@gmail.com
+ Más InformaciónTelefonos:
+044 55 - 85336488
+UsuarioValero Kühnert Adriane 
+Sección: Querétaro
+Email: ventascaminoreal@hotmail.com
+ Más InformaciónTelefonos:
+442 - 2 28 46 11
+442 - 2 28 46 12
+442 - 1 48 10 83
+UsuarioVázquez Mellado Herrera Cosme
+Sección: Querétaro
+Email: cvmbienesraices1@live.com.mx
+ Más InformaciónTelefonos:
+442 - 2-24-22-46
+442 - 2 14 53 63
+UsuarioVázquez Mellado Herrera Cosme
+Sección: Querétaro
+Email: cvmbienesraices2@live.com.mx
+ Más InformaciónTelefonos:
+442 - 2242246
+442 - 2145363
+UsuarioVazquez Mellado Herrera Cosme
+Sección: Querétaro
+Email: cvmbienesraices@live.com.mx
+ Más InformaciónTelefonos:
+442 - 2242246
+442 - 2145363
+442 - 3227913
+UsuarioVelázquez Mondragón María Eugenia
+Sección: Querétaro
+Email: maruvelmon@hotmail.com
+ Más InformaciónTelefonos:
+442 - 4117199
+UsuarioVillalobos Caraveo Olivia
+Sección: Querétaro
+Email: ampiqueretaro@hotmail.com
+ Más InformaciónTelefonos:
+01 442 - 2142494
+UsuarioVillalobos Valdes Juan Manuel
+Sección: Querétaro
+Email: consultoriatopografica@hotmail.com
+ Más InformaciónTelefonos:
+442 - 4110407
+442 - 4115178
+442 - 1241262
+UsuarioVillalpando Arenzana Alejandro
+Sección: Querétaro
+Email: villalpando_alejandro@promobi.com.mx
+ Más InformaciónTelefonos:
+. - 3 12 25 60 
+- 3 12 25 61
+044 - 4421 30 79 65
+UsuarioVillanueva Hernández Gloria
+Sección: Querétaro
+Email: yoglo34@hotmail.com
+ Más InformaciónTelefonos:
+442 - 2462392
+442 - 2134732
+442 - 2283343
+UsuarioVillaseñor Zepeda Rodrigo
+Sección: Querétaro
+Email: rodrigo@siteinmobiliaria.com
+ Más InformaciónTelefonos:
+442 - 218 55 85 /
+442 - 125 97 37
+UsuarioVillicaña Sánchez Luz Maria
+Sección: Querétaro
+Email: lumavisa@hotmail.com
+ Más InformaciónTelefonos:
+442 - 2-12-80-77
+UsuarioVillicana Villicana Alfredo
+Sección: Querétaro
+Email: century21inver@infosel.net.mx
+ Más InformaciónTelefonos:
+01(442) - 2236065
+UsuarioZepeda Sterling Ernesto
+Sección: Querétaro
+Email: ernestozepeda@quality.com.mx
+ Más InformaciónTelefonos:
+442 - 161 26 07
+"
+
+
 myString="UsuarioArellano Y Alatriste Irma F. Gpe.
 Sección: Ciudad De México
 Email: alatristebienesraices@gmail.com

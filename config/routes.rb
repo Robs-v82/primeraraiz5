@@ -21,17 +21,20 @@ Rails.application.routes.draw do
   post 'getTime' => 'appointments#getTime'
   post 'virtualtour/setPrice' => 'tours#setPrice'
   post 'virtualtour/getNeighborhoods' => 'tours#getNeighborhoods'
+  post 'virtualtour/getDistricts' => 'tours#getDistricts'
   post 'locations' => 'locations#create'
   post 'clients' => 'clients#create'
   get 'destroyclient' => 'clients#destroy'
   get 'Uwtj2dr.html' => 'home#Uwtj2dr'
   get '9jkJdTbj.html' => 'home#Test9jkJdTbj'
+  get 'admins/password' => 'admins#password'
   get 'admins' => 'admins#index'
   post 'tours/update' => 'tours#update'
   get 'tours/:id' => 'tours#payment'
   get 'clients/switch' => 'clients#switch'
   post 'contacts' => 'contacts#create'
   get 'admins/download_contacts' => 'admins#download_contacts'
+  post 'admins/login' => 'admins#login'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
