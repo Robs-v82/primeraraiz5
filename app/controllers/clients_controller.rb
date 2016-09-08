@@ -32,8 +32,13 @@ class ClientsController < ApplicationController
 				contact_info.store("subscription", "false")
 			end
 			new_contact = Contact.create(contact_info)
-			
-			render json: {result: "success"}
+			disabledDates = []
+			offDates = Day.pluck(:day)
+			offDates.each{|day| thisDay = day.split(",").map { |s| s.to_i }; disabledDates << thisDay}
+			render json: {
+				result: "success",
+				dates: disabledDates,
+			}
 		else
 			render json: {errors: new_client.errors.full_messages}, :status => 422
 		end

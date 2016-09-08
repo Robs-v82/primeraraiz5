@@ -64,6 +64,7 @@
 				$('#tour-third-b').show()
 				$('#tour-second-b-scrollspy').removeClass('active anomated pulse')
 				$('#tour-third-b-scrollspy').addClass('active animated pulse')
+				setDate(data.dates)
 			},
 			"json"
 		)
@@ -74,12 +75,31 @@
 		$('#b-price-table').addClass('active animated pulse')
 	})
 
+    var setDate = function(dates) {
+		console.log(dates)
+		$('.datepicker').pickadate({
+			min: true + 2,
+			max: 60,
+			monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+			weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+			weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+			disable: dates,
+			today: false,
+			clear: false,
+			close: "Cerrar",
+			selected: false,
+			closeOnSelect: true,
+			format: 'dddd dd !de mmmm !de yyyy',
+		})	
+    }
+
     var setTime = function(hours) {
 			console.log('Setting time')
+			console.log(hours)
 			$('.timepicker').pickatime({
 				min: [8,0],
 				max: [17,0],
-				interval: 180,
+				interval: hours.interval,
 				disable: hours.hours,
 				close: "Cerrar",
 				closeOnSelect: true,
@@ -282,7 +302,6 @@
   				'/virtualtour/getDistricts',
   				$(this).serialize(),
   				function(data) {
-  					console.log(data)
   					var districtOptions = "<option value='' disabled selected>Delegación/Municipio</option>"
   					for(i=0; i<data.districts.length; i++) {
   						districtOptions += "<option value='"+data.districts[i].district+"'>"+data.districts[i].district+"</option>"
@@ -459,13 +478,13 @@
 			<div class="nav-wrapper">
 				<div data-no-turbolink>
 					<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
-						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo" alt="Primera Raíz México">
-						primeraRaíz | <span id="cdmx">CDMX</span>
+						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo">
+						primeraRaíz | <span id="cdmx">MX</span>
 					</a>
 				</div>
 				<div data-no-turbolink>
 					<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
-						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo" alt="Primera Raíz México" style="width:24px;height:24px;">
+						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo" style="width:24px;height:24px;">
 						primeraRaíz
 					</a>
 				</div>
@@ -784,7 +803,7 @@
 								<input id="metro-area-gdl-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Guadalajara">
 								<label for="metro-area-gdl-radio">Guadalajara</label>
 							</div>
-							<div class="input-field col s12">
+							<div id="metro-area-bottom" class="input-field col s12">
 								<input id="metro-area-qro-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Querétaro">
 								<label for="metro-area-qro-radio">Querétaro/San Miguel</label>
 							</div>

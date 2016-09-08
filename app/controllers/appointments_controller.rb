@@ -80,38 +80,44 @@ class AppointmentsController < ApplicationController
 		else
 			transfer = false
 		end
+		testTimeArr = [
+			"2000-01-01 08:00:00 UTC",
+			"2000-01-01 09:00:00 UTC",
+			"2000-01-01 10:00:00 UTC",
+			"2000-01-01 11:00:00 UTC",
+			"2000-01-01 12:00:00 UTC",
+			"2000-01-01 13:00:00 UTC",
+			"2000-01-01 14:00:00 UTC",
+			"2000-01-01 15:00:00 UTC",
+			"2000-01-01 16:00:00 UTC",
+			"2000-01-01 17:00:00 UTC",
+		]
 		appointments = Appointment.where("date = '#{target_date}'")
-		taken_hours = appointments.pluck(:time)
-		test_time = "2000-01-01 08:00:00 UTC"
-		add_list = [8]
-		if taken_hours.include? test_time
-			add_list.each do |x|
-				off_hours << x
+		appointments.each do |appointment|
+			numberOfHours = appointment.hours - 1
+			(0..numberOfHours).each do |x|
+				test_time = appointment.time + x.hours
+				testTimeArr.each do |testHour|
+					if test_time == testHour
+						string_time = test_time.to_s 
+						integer_time = string_time[11,2].to_i
+						off_hours << integer_time 
+					end
+				end
 			end
 		end
-		test_time = "2000-01-01 11:00:00 UTC" 
-		add_list = [11]
-		if taken_hours.include? test_time
-			add_list.each do |x|
-				off_hours << x
-			end
-		end
-		test_time = "2000-01-01 14:00:00 UTC" 
-		add_list = [14]
-		if taken_hours.include? test_time
-			add_list.each do |x|
-				off_hours << x
-			end
-		end
-		test_time = "2000-01-01 17:00:00 UTC" 
-		add_list = [17]
-		if taken_hours.include? test_time
-			add_list.each do |x|
-				off_hours << x
+		appointmentDuration = session[:interval]/60
+		appointments.each do |appointment|
+			numberOfHours = appointmentDuration - 1
+			string_time = appointment.time.to_s
+			integer_time = string_time[11,2].to_i
+			(1..numberOfHours).each do |x|
+				off_hours << integer_time - x
 			end
 		end
 		render json: {
 			hours: off_hours,
+			interval: session[:interval],
 			transfer: transfer,
 		}
 	end
@@ -128,6 +134,8 @@ class AppointmentsController < ApplicationController
 		appointment_info.store("date",target_date)
 		appointment_info.store("appointable_id", session[:tour_id])
 		appointment_info.store("appointable_type", "Tour")
+		hourSpan = session[:interval]/60
+		appointment_info.store("hours", hourSpan)
 		tourAppointment = Appointment.new(appointment_info)
 		if tourAppointment.valid?
 			tourAppointment.save

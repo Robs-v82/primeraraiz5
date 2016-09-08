@@ -3,6 +3,7 @@ class LocationsController < ApplicationController
 	def create
 		location_info = location_params
 		location_info.delete("district")
+		location_info.delete("metro_area")
 		location_info.store("client_id", session[:client_id])
 		newLocation = Location.new(location_info)
 		if newLocation.valid?
@@ -30,7 +31,7 @@ class LocationsController < ApplicationController
 	private
 
 	def location_params
-		params.require(:location).permit(:street, :number, :unit, :area_id, :comment, :district)
+		params.require(:location).permit(:street, :number, :unit, :area_id, :comment, :district, :metro_area)
 	end
 
 end

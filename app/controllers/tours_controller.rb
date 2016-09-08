@@ -6,20 +6,17 @@ class ToursController < ApplicationController
 	def main
 		if session[:tour_status] == 'down_payment'
 			@charge = true
-			puts 'XXxx'*50, 'CHARGE', 'XXxx'*50
 		end
 		if session[:tour_status] == 'fully_paid'
 			@paid = true
-			puts 'XXxx'*50, 'PAID', 'XXxx'*50
 		end
 		if session[:tour_status] == 'scheduled'
 			@wire = true
-			puts 'XXxx'*50, 'WIRE', 'XXxx'*50
 			downPayment = Tour.find(session[:tour_id]).total*0.25
 			downPayment = (downPayment+0.5).to_i
 			@downPayment = '$'+number_with_delimiter(downPayment)
 		end
-		areas_order = Area.all.order(:district)
+		areas_order = Area.where("metro_area='CDMX'").order(:district)
 		areas_wrong = areas_order.uniq.pluck(:district)
 		@areas = areas_wrong.rotate(-1) 
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
@@ -37,13 +34,16 @@ class ToursController < ApplicationController
 		tour_info = price_params
 		floorplanPrices = [1240,1380,1520,1660,1800,1940]
 		modelPrices = [2740,3320,3880,4440,4960,5580]
+		modelTime = [180,180,240,240,360,360]
 		sizeArr = ['150','300','450','600','750','1000']
-		timeArr = ['de una a dos', 'de dos a tres', 'de cuatro a cinco', 'de cinco a siete', 'de seis a ocho','alrededor de ocho']
+		timeArr = ['de una a dos', 'de una a dos', 'de dos a tres', 'de dos a tres', 'de tres a cuatro','de tres a cuatro']
 		(0..5).each do |x|
 			if modelPrices[x] == tour_info[:model_fee].to_i
 				tour_info.store('size', sizeArr[x])
 				tour_info.delete('model_fee')
 				tour_info.store('model_fee', modelPrices[x])
+				session[:interval] = modelTime[x]
+				puts 'XXxx'*100, session[:interval]
 				session[:timeSpan] = timeArr[x]
 				if price_params[:floorplan] == "on"
 					puts floorplanPrices, floorplanPrices[x]
@@ -72,7 +72,21 @@ class ToursController < ApplicationController
 			session[:tourPrice] = session[:total]
 			session[:tourRemainder] = tour_info[:total]*(0.75)
 			session[:tour_id] = tour.id
-			render json: {price: session[:tourPrice]}
+			if session[:metro_area] == "CDMX" || session[:metro_area] == nil
+				disabledDates = []
+				offDates = Day.pluck(:day)
+				offDates.each{|day| thisDay = day.split(",").map { |s| s.to_i } ;disabledDates << thisDay}
+			else
+				disabledDates = [true]
+				onDates = Day.where("metro_area='#{session[:metro_area]}'")
+				onDates = onDates.pluck(:day)
+				onDates.each{|day| thisDay = day.split(",").map { |s| s.to_i } ;disabledDates << thisDay}
+			end
+			render json: {
+				price: session[:tourPrice],
+				dates: disabledDates,
+				interval: session[:interval],
+			}
 		end
 	end
 
@@ -84,9 +98,12 @@ class ToursController < ApplicationController
 
 	def getDistricts
 		targetMetroArea = getDistricts_params[:metro_area]
+		session[:metro_area] = targetMetroArea
 		targetAreas = Area.where("metro_area='#{targetMetroArea}'").order(:district)
 		targetDistricts = targetAreas.order(:district).select(:district).distinct
-		render json: {districts: targetDistricts}
+		render json: {
+			districts: targetDistricts,
+		}
 	end
 
 	def wire
