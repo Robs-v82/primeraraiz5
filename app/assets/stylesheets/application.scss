@@ -828,6 +828,12 @@ input[type=text] {
 	padding-right: 10px;
 }
 
+#tour-second {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 20px;
+}
+
 #tour-second p {
 	color: #424242;
 }
@@ -916,6 +922,10 @@ input[type=text] {
 	border-radius: 0px;
 }
 
+.picker__day {
+	background-color: #b2ff59;
+}
+
 .picker__day.picker__day--today {
 	color: #64dd17;
 }
@@ -923,7 +933,7 @@ input[type=text] {
 .picker__day--selected,
 .picker__day--selected:hover,
 .picker--focused .picker__day--selected {
-	border-radius: 50%;
+	border-radius: 0% !important;
 	transform: scale(0.9);
 	color: #b2ff59 !important;
 	background-color: #424242 !important;
@@ -977,7 +987,6 @@ input[type=text] {
 
 .embed-container {
 	position: relative;
-	height: 0;
 	overflow: hidden;
 	max-width: 100%;
 	height: 480px !important;
@@ -1130,7 +1139,6 @@ input[type=text] {
 #subscription-wrapper {
   	height: 50px;
   	padding-top: 20px;
-  	border-top: 2px solid #424242;
   	vertical-align: bottom !important;
 }
 
@@ -1138,6 +1146,43 @@ input[type=text] {
 	-vendor-animation-delay: 2s;
 }
 
-#metro-area-bottom {
-	margin-bottom: 10px;
+#metro-area-row {
+	border-top: 2px solid #424242;
+	padding-top: 10px;
+}
+
+.standard-p {
+	font-size: 16px !important;
+	border-bottom: 2px solid #424242;
+	padding-bottom: 10px;
+}
+
+.central-card {
+	margin-top: 30px;
+}
+
+.container .row {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+#card-error-message {
+	padding: 45px !important;
+}
+
+#error-card-button {
+	margin-left: 15px;
+}
+
+#conekta-row {
+	margin-top: 10px;
+}
+
+.conekta-small-logo {
+	margin-top: 10px;
+}
+
+#conekta-logo-wrapper {
+	margin-top: 14px;
+	height: 45px;
 }

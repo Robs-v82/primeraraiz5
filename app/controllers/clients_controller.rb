@@ -28,6 +28,7 @@ class ClientsController < ApplicationController
 			# ADD CONTACT
 			contact_info = contact_params
 			contact_info.store("client_id", new_client[:id].to_i)
+			contact_info.store("state", session[:metro_area])
 			if session[:subscription] == false
 				contact_info.store("subscription", "false")
 			end

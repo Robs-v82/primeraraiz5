@@ -1,2 +1,456 @@
-<h1>Tours#new</h1>
-<p>Find me in app/views/tours/new.html.erb</p>
+<video autoplay id="bgvid" loop poster="/assets/tour_video_first_frame.jpg" alt="Matterport">
+	<source src="https://s3.amazonaws.com/static.matterport.com/mp_dotcom_wp/prod/wp-content/uploads/2016/04/18195748/Main-Page-Fly-Through.webmhd.webm" type="video/webm">>
+</video>
+<nav class="transparent z-depth-0" role="navigation">
+	<div class="b-container">
+		<div class="nav-wrapper">
+			<div data-no-turbolink>
+				<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
+					<img alt="tour virtual México Primera Raíz" src="/assets/white_logo">
+					primeraRaíz | <span id="cdmx"><%=@banner%></span>
+				</a>
+			</div>
+			<div data-no-turbolink>
+				<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
+					<img alt="tour virtual México Primera Raíz" src="/assets/white_logo" style="width:24px;height:24px;">
+					primeraRaíz
+				</a>
+			</div>
+			<ul class="right hide-on-med-and-down">
+				<li><a id="price-link" href="#tour-price-section">PRECIOS</a></li>
+				<li><a id="vt-link" href="#demo-section">DEMO</a></li>
+				<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
+				<li><a class="faq-link" href="#FAQ">FAQ</a></li>
+			</ul>
+			<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
+				<li><a id="price-link" href="#tour-price-section">PRECIOS</a></li>
+				<li><a id="vt-link" href="#demo-section">DEMO</a></li>
+				<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
+				<li><a class="faq-link" href="#FAQ">FAQ</a></li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col s12">
+			<div class="central-card white z-depth-2">
+				<div id="tour-header" class="modal-content">
+					<img alt="recorrido virtual México" src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+					<p class="primera">primera<span class="raiz">Raíz</span></p>
+				</div>
+				<div id="tour-second">
+					<div class="row">
+						<div id="tour-scroller" class="col l6 m6 s12 tour-right-column hide-on-small-only">
+							<ul class="section table-of-contents">
+								<li><a id="tour-zero-b-scrollspy" class="scrollspy-li active" href="#tour-zero-b">Datos de contacto</a></li>
+								<li><a id="tour-first-b-scrollspy" class="scrollspy-li" href="#tour-first-b">Dirección del inmueble</a></li>
+								<li><a id="tour-second-b-scrollspy" class="scrollspy-li" href="#tour-second-b">Dimensiones</a></li>
+								<li><a id="tour-third-b-scrollspy" class="scrollspy-li" href="#tour-third-b">Fecha y hora</a></li>
+								<li><a id="tour-fourth-b-scrollspy" class="scrollspy-li" href="#tour-fourth-b">Confirmación</a></li>
+								<li><a id="tour-fifth-b-scrollspy" class="scrollspy-li" href="#tour-fifth-b">Pago anticipo</a></li>
+							</ul>
+							<div id="checkout-board" class="valign-wrapper">
+								<div class="row">
+									<div class="col s12">
+										<p class="right-align light-green-text text-accent-4"><i class="material-icons">shopping_cart</i></p>
+										<table id="checkout-table">
+											<tbody>
+												<tr>
+													<td>Tour virtual</td>
+													<td id="tour-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr>
+													<td>Plano esquemático</td>
+													<td id="floorplan-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr id="total-tr" class="break-tr">
+													<td>Total</td>
+													<td id="checkout-total" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr id="down-payment-tr">
+													<td>Anticipo</td>
+													<td id="checkout-down-payment" class="right-align">$0<span class="currency-font"> MXN</span></td>
+												</tr>
+												<tr>
+													<td>Saldo</td>
+													<td id="checkout-remainder" class="right-align">$0<span  class="currency-font"> MXN</span></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="error-message-board"></div>
+							<div class="address-error-message-board"></div>
+							<span class="card-errors"></span>
+						</div>	
+						<div id="tour-zero-b" class="col l6 m6 s12 tour-left-column">
+							<h5 class="hide-on-med-and-up">Datos de contacto</h5>
+							<form id="client-form" action="/clients" method="post">
+								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+								<div class="row">
+									<div class="input-field col s12">
+										<input type="text" name="client[name]" placeholder="Nombre">
+									</div>
+									<div class="input-field col s12">
+										<input type="text" name="client[email]" placeholder="Correo electrónico">
+									</div>
+									<div class="input-field col s5 radio-wrapper valign-wrapper">
+										<input class="with-gap valign" name="phone_type" value="mobile" type="radio" id="tour-mobile" checked="checked">
+										<label for="tour-mobile" class="valign">Celular</label>
+									</div>
+									<div class="input-field col s7">
+										<input id="tour-mobile-number" type="text" name="client[mobile_phone]" placeholder="Número (10 dígitos)">
+									</div>
+									<div class="input-field col s5 valign-wrapper radio-wrapper">
+										<input class="with-gap valign" name="phone_type" value="land_line" type="radio" id="tour-land-line">
+										<label for="tour-land-line" class="valign">Fijo</label>
+									</div>
+									<div class="input-field col s7">
+										<input id="tour-land-line-number" type="text" name="client[other_phone]" placeholder="Número (10 dígitos)" disabled>
+									</div>
+									<p>¿Cómo prefieres que te contactemos?</p>
+									<div class="input-field col s6">
+										<input id="tour-email-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="email">
+										<label for="tour-email-contact-radio" class="valign">Correo</label>
+									</div>
+									<div class="input-field col s6">
+										<input id="tour-phone-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="phone">
+										<label for="tour-phone-contact-radio">Teléfono</label>
+									</div>
+									<div class="input-field col s6">
+										<input id="tour-whatsapp-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="whatsapp">
+										<label for="tour-whatsapp-contact-radio">WhatsApp</label>
+									</div>
+									<div class="input-field col s6">
+										<input id="tour-message-contact-radio" type="radio" name="client[contact]" class="client-contact with-gap" value="message">
+										<label for="tour-message-contact-radio">Mensaje SMS</label>
+									</div>
+								</div>
+								<div class="error-message-board hide-on-med-and-up"></div>
+								<p class="valign-wrapper right">
+									<span id="client-button-label" class="button-label-inactive">Siguiente</span>
+									<button id="client-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+								</p>
+							</form>
+						</div>
+
+						<div id="tour-first-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+						<h5 class="hide-on-med-and-up">Dirección del inmueble</h5>
+						<p class="header-note">Ingresa la dirección del inmueble en el que realizaremos el tour virtual.</p>
+						<form id="tour-address-form" action="/locations" method="post">
+							<div class="row">
+								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+								<div class="input-field col s12">
+									<input type="text" name="location[street]" placeholder="Calle">
+								</div>
+								<div class="input-field col s5">
+									<input type="text" name="location[number]" placeholder="Núm. exterior">
+								</div>
+								<div class="input-field col s5 offset-s2">
+									<input type="text" name="location[unit]" placeholder="Núm. interior">
+								</div>
+								<div class="input-field col s12">
+									<select id="tour-district-selector" name="location[district]" class="anti-default browser-default">
+										<option value="" disabled selected>Delegación/Municipio</option>
+										<% @areas.each do |area| %>
+											<option><%=area%></option>
+										<% end %>
+									</select>
+								</div>
+								<div class="input-field col s12">
+									<select id="tour-neighborhood-selector" name="location[area_id]" class="anti-default browser-default">
+										<option value="" disabled selected>Colonia</option>
+									</select>
+								</div>
+							</div>
+							<div class="address-error-message-board hide-on-med-and-up"></div>
+							<p class="valign-wrapper right">
+								<span id="tour-address-button-label" class="button-label-inactive">Siguiente</span>
+								<button id="tour-address-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+							</p>
+						</form>
+					</div>
+
+					<div id="tour-second-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+						<h5 class="hide-on-med-and-up">Dimensiones</h5>
+						<p class="header-note">Selecciona una opción de acuerdo a las dimensiones del inmueble.</p>
+						<form id="tour-price-form" action="/virtualtour/setPrice" method="post">
+							<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+							<table id="price-table" class="striped z-depth-1">
+								<thead>
+									<tr class="valign-wrapper">
+										<th data-field="shoots" class="center-align">Dimensiones del inmueble</th>
+										<th data-field="price" class="center-align">Precio</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="valign-wrapper">
+										<td class="table-left-column valign">
+											<input name="tour[model_fee]" value="2740" class="with-gap" type="radio" id="tour150" />
+											<label for="tour150">&#60 150m<span class="super-index">2</span></label>
+										</td>
+										<td class="right td-right valign"><%= @modelPrices[0] %><span class="currency-font">MXN</span></td>
+									</tr>
+									<tr class="valign-wrapper">
+										<td class="table-left-column valign">
+											<input name="tour[model_fee]" value="3320" class="with-gap" type="radio" id="tour300" />
+											<label for="tour300">150 – 300m<span class="super-index">2</span></label>
+										</td>
+										<td class="right td-right valign"><%= @modelPrices[1] %><span class="currency-font">MXN</span></td>
+									</tr>
+									<tr class="valign-wrapper">
+										<td class="table-left-column valign">
+											<input name="tour[model_fee]" value="3880" class="with-gap" type="radio" id="tour450" />
+											<label for="tour450">300 – 450m<span class="super-index">2</span></label>
+										</td>
+										<td class="right td-right valign"><%= @modelPrices[2] %><span class="currency-font">MXN</span></td>
+									</tr>
+									<tr class="valign-wrapper">
+										<td class="table-left-column valign">
+											<input name="tour[model_fee]" value="4440" class="with-gap" type="radio" id="tour600" />
+											<label for="tour600">450 – 600m<span class="super-index">2</span></label>
+										</td>
+										<td class="right td-right valign"><%= @modelPrices[3] %><span class="currency-font">MXN</span></td>
+									</tr>
+									<tr class="valign-wrapper">
+										<td class="table-left-column valign">
+											<input name="tour[model_fee]" value="4960" class="with-gap" type="radio" id="tour750" />
+											<label for="tour750">600 – 750m<span class="super-index">2</span></label>
+										</td>
+										<td class="right td-right valign"><%= @modelPrices[4] %><span class="currency-font">MXN</span></td>
+									</tr>
+									<tr class="valign-wrapper">
+										<td class="table-left-column valign">
+											<input name="tour[model_fee]" value="5580" class="with-gap" type="radio" id="tour1000" />
+											<label for="tour1000">750 – 1,000m<span class="super-index">2</span></label>
+										</td>
+										<td class="right td-right valign"><%= @modelPrices[5] %><span class="currency-font">MXN</span></td>
+									</tr>
+								</tbody>
+							</table>
+							<div id="floorPlan-wrapper">
+								<p id="floorPlan-checkbox-p">
+									<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox">
+									<label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >
+										Agrega un <%= link_to "plano esquemático", asset_path("SchematicFloorplan.jpg"), { :id =>"floorplan-link", :class=>"grey-text text-darken-3", :target => "blank" } %> por <span id="floorplan-price">$0</span>.
+									</label>
+								</p>
+							</div>
+							<p class="valign-wrapper right">
+								<span id="price-button-label" class="button-label-inactive">Siguiente</span>
+								<button id="price-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+							</p>
+						</form>
+					</div>
+					<div id="tour-third-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+						<h5 class="hide-on-med-and-up">Fecha y hora</h5>
+						<p class="header-note">Considera que se necesitan <%= session[:timeSpan] %> horas para fotografiar el inmueble y se recomienda evitar el paso de personas.</p>
+						<form id="tour-appointment-form" action="/appointments/tourAppointment" method="post">
+							<div class="row">
+								<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+								<div class="input-field col s12">
+									<input id="date-selector" type="text" name="appointment[date]" class="datepicker" placeholder="Fecha">
+								</div>
+								<div id="time-wrapper" class="input-field col s12">
+									<input id="tour-time-selector" disabled name="appointment[time]" class="timepicker" placeholder="Hora">
+								</div>
+							</div>
+							<p class="valign-wrapper right">
+								<span id="tour-appointment-button-label" class="button-label-inactive">Siguiente</span>
+								<button id="tour-appointment-button" disabled class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+							</p>
+						</form>
+					</div>
+					<div id="tour-fourth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+						<h5 class="hide-on-med-and-up">Confirmación</h5>
+						<div>
+							<p>Por favor, revisa que la información para la contratación del tour virtual sea correcta</p>
+							<div id="confirm-table" class="z-depth-1 animated pulse">
+							</div>
+						</div>
+						<p class="col s6 valign-wrapper left">
+							<a id="tour-edit-button" href="/destroyclient" data-remote=true>
+								<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">mode_edit</i></button>
+							</a>
+							<span class="left-button-label">Editar</span>
+						</p>
+						<p class="valign-wrapper right">
+							<span class="button-label">Siguiente</span>
+							<button id="tour-confirmation-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">done</i></button>
+						</p>
+					</div>
+					<div id="tour-fifth-b" class="col l6 m6 s12 tour-left-column" style="display:none">
+						<h5 class="hide-on-med-and-up">Pago anticipo</h5>
+						<p>Selecciona una opción para el pago:</p>
+						<div class="row">
+							<div class="col s12">
+								<ul class="tabs">
+									<li class="tab col s6"><a class="payment-tab-link" href="#card-tab">Tarjeta</a></li>
+									<li id="wire-tab-trigger" class="tab col s6"><a id="wire-tab-link" class="payment-tab-link" href="#wire-tab"></a></li>
+								</ul>
+							</div>
+							<div id="card-wrapper" style="display:none">
+								<div id="card-tab" class="col s12">
+									<div id="credit-card-row" class="row">
+										<div class="payment-type col s3">
+											CRÉDITO:
+										</div>
+										<div class="payment-type col s9">
+											<i class="fa fa-right fa-cc-visa fa-2x grey-text text-darken-3"></i>
+											<i class="fa fa-right fa-cc-mastercard fa-2x grey-text text-darken-3"></i>
+										</div>
+										<div class="payment-type col s3">
+											DÉBITO:
+										</div>
+										<div class="col s9">
+											<span id="bank_names">Banamex HSBC Inbursa Santander</span>
+										</div>
+									</div>
+									<%= form_tag('/charges/create', id: 'card-form', :remote => true) do %>
+										<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+									  	<div class="col s12">
+									    	<label>
+									      		<span>Nombre del tarjetahabiente</span>
+									      		<input type="text" size="20" data-conekta="card[name]"/>
+									    	</label>
+									  	</div>
+									  	<div class="col s8">
+									    	<label>
+									      		<span>Número de tarjeta</span>
+									      		<input id="tour-card" type="text" size="20" data-conekta="card[number]"/>
+									    	</label>
+									  	</div>
+									  	<div class="col s3 offset-s1">
+									    	<label>
+									      		<span>CVC</span>
+									      		<input type="text" size="4" data-conekta="card[cvc]"/>
+									    	</label>
+									  	</div>
+									  	<div class="form-row">
+									    	<label>
+									      		<span>Fecha de expiración</span>
+									      		<div class="col s5">
+									      			<input type="text" size="2" placeholder="MM" data-conekta="card[exp_month]"/>
+									      		</div>
+									      		<div class="col s6 offset-s1">
+									      			<input type="text" size="4" placeholder="AAAA" data-conekta="card[exp_year]"/>
+									      		</div>	
+									    	</label>
+									  	</div>
+									<!-- Información recomendada para sistema antifraude -->
+									  <div class="col s12">
+									    <label>
+									      <span>Dirección (calle y núm.)</span>
+									      <input type="text" size="25" name="card[street1]" data-conekta="card[address][street1]"/>
+									    </label>
+									  </div>
+									<div class="col s12">
+									    <label>
+									      <span>Dirección (colonia)</span>
+									      <input type="text" size="25" name="card[street2]" data-conekta="card[address][street2]"/>
+									    </label>
+									</div>
+									<div class="col s5">
+									    <label>
+									      <span>País</span>
+									      <input type="text" size="25" name="card[country]" data-conekta="card[address][country]"/>
+									    </label>
+									</div>
+									<div class="col s6 offset-s1">
+									    <label>
+									      <span>Estado</span>
+									      <input type="text" size="25" name="card[state]" data-conekta="card[address][state]"/>
+									    </label>
+									</div>
+									<div class="col s5">
+									    <label>
+									      <span>Ciudad</span>
+									      <input type="text" size="25" name="card[city]" data-conekta="card[address][city]"/>
+									    </label>
+									</div>
+									<div class="col s6 offset-s1">
+									    <label>
+									      <span>CP</span>
+									      <input type="text" size="5" name="card[zip]" data-conekta="card[address][zip]"/>
+									    </label>
+									</div>
+									<div id="small-checkout-wrapper" class="col s12 hide-on-med-and-up valign-wrapper">
+										<div id="small-checkout-board" class="col s12">
+											<p class="right-align light-green-text text-accent-4"><i class="material-icons">shopping_cart</i></p>
+											<table id="small-checkout-table">
+												<tbody>
+													<tr>
+														<td>Tour virtual</td>
+														<td id="small-tour-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+													</tr>
+													<tr>
+														<td>Plano esquemático</td>
+														<td id="small-floorplan-item-price" class="right-align">$0<span class="currency-font"> MXN</span></td>
+													</tr>
+													<tr id="total-tr" class="break-tr">
+														<td>Total</td>
+														<td id="small-checkout-total" class="right-align">$0<span class="currency-font"> MXN</span></td>
+													</tr>
+													<tr id="down-payment-tr">
+														<td>Anticipo</td>
+														<td id="small-checkout-down-payment" class="right-align">$0<span class="currency-font"> MXN</span></td>
+													</tr>
+													<tr>
+														<td>Saldo</td>
+														<td id="small-checkout-remainder" class="right-align">$0<span  class="currency-font"> MXN</span></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<p>
+										<span id="small-card-errors" class="card-errors"></span>
+									</p>
+									<div id="conekta-logo-wrapper" class="hide-on-med-and-down valign-wrapper col l4">
+										<img class="valign" src="/assets/conekta.png" height="20px">
+									</div>
+									<div class="conekta-small-logo hide-on-large-only valign-wrapper m12 s12 right">
+										<img class="valign" src="/assets/conekta.png" height="20px">
+									</div>
+									<div class="col l8 m12 s12">
+									  	<p class="valign-wrapper right">
+											<span id="charge-button-label" class="button-label valign"></span>
+											<span id="charge-wrapper" class="valign-wrapper valign">
+												<button id="charge-button" type="submit" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button>
+											</span>
+										</p>
+									</div>
+									<% end %>
+								</div>
+								<div id="wire-tab" class="col s12">
+									<div class="row">
+										<div class="col s2">
+											<p>
+												<i class="material-icons grey-text text-darken-3 small">warning</i>
+											</p>
+										</div>
+										<div class="no-padding-p col s10">
+											<p>Es necesario que realices la transferencia en las próximas 48 horas. De lo contrario, la sesión fotográfica será cancelada.</p>
+											<p>Para continuar da click en "enviar".</p>
+										</div>
+									</div>
+									<p class="valign-wrapper right">
+										<span id="wire-button-label" class="button-label valign">Enviar</span>
+										<span id="wire-wrapper" class="valign-wrapper valign">
+											<a id="wire-button" href="/tours/wire" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></a>
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

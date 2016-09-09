@@ -16,18 +16,45 @@ class ToursController < ApplicationController
 			downPayment = (downPayment+0.5).to_i
 			@downPayment = '$'+number_with_delimiter(downPayment)
 		end
+
+		if session[:tour_status] == 'down_payment'
+			@charge = true
+		end
+		if session[:tour_status] == 'fully_paid'
+			@paid = true
+		end
+		if session[:tour_status] == 'scheduled'
+			@wire = true
+			downPayment = Tour.find(session[:tour_id]).total*0.25
+			downPayment = (downPayment+0.5).to_i
+			@downPayment = '$'+number_with_delimiter(downPayment)
+		end
 		areas_order = Area.where("metro_area='CDMX'").order(:district)
 		areas_wrong = areas_order.uniq.pluck(:district)
 		@areas = areas_wrong.rotate(-1) 
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
 		@modelPrices = ['$2,740','$3,320','$3,880','$4,400','$4,960','$5,580']
 		session[:subscription] = true
-	end
-
-	def demo
+		session[:metro_area] = "CDMX"
 	end
 
 	def new
+		if session[:metro_area] == "CDMX"
+			@banner = "CDMX"
+		elsif session[:metro_area] == "Guadalajara"
+			@banner = "GDL"
+		elsif session[:metro_area] == "Querétaro"
+			@banner = "QRO"
+		end
+		areas_order = Area.where("metro_area='#{session[:metro_area]}'").order(:district)
+		areas_wrong = areas_order.uniq.pluck(:district)
+		@areas = areas_wrong.rotate(-1) 
+		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
+		@modelPrices = ['$2,740','$3,320','$3,880','$4,400','$4,960','$5,580']
+		session[:subscription] = true	
+	end
+
+	def demo
 	end
 
 	def setPrice
@@ -101,8 +128,10 @@ class ToursController < ApplicationController
 		session[:metro_area] = targetMetroArea
 		targetAreas = Area.where("metro_area='#{targetMetroArea}'").order(:district)
 		targetDistricts = targetAreas.order(:district).select(:district).distinct
+		session[:districts] = targetDistricts
 		render json: {
 			districts: targetDistricts,
+			city: targetMetroArea,
 		}
 	end
 

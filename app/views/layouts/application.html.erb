@@ -47,6 +47,52 @@
 		var ready
 		ready = function() {
 			$(document).ready(function() {
+
+		// CONEKTA
+
+		var conektaSuccessResponseHandler = function(token) {
+			var $form = $("#card-form")
+
+			/* Inserta el token_id en la forma para que se envíe al servidor */
+			$form.append($("<input type='hidden' name='conektaTokenId'>").val(token.id))
+
+			/* and submit */
+			$form.get(0).submit()
+		}
+
+		var conektaErrorResponseHandler = function(response) {
+			$('#charge-wrapper').empty().html('<button id="charge-button" type="submit" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button>')
+			var $form = $("#card-form") 
+			/* Oculta el checkout */
+			$('#checkout-board').addClass('animated fadeOutRight').delay(4000).hide()
+			/* Muestra los errores en la forma */
+			$(".card-errors").text(response.message_to_purchaser)
+			$(".card-errors").show()
+			$('#tour-fifth-b-scrollspy').addClass('animated shake')
+			$form.find("button").prop("disabled", false)
+		}
+
+		$(function () {
+			$("#card-form").submit(function(event) {
+				$('#charge-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
+				var $form = $(this)
+
+				// Previene hacer submit más de una vez
+				$form.find("button").prop("disabled", true)
+				Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler)
+				//Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler) //v5+
+
+				// Previene que la información de la forma sea enviada al servidor
+				return false
+			})
+		})
+
+				$("#card-form").keypress(function() {
+					$('#tour-fifth-b-scrollspy').removeClass('animated shake')
+					$(".card-errors").hide()
+					$('#checkout-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
+				})
+
 				//Bobsled commands:
 				$('.brand-logo').addClass('animated pulse')
 
@@ -168,13 +214,399 @@
 				$('ul.tabs').tabs()
 				$('.button-collapse').sideNav()
 				$('.login-modal-trigger').leanModal()
+
+
+	    if($('#success-modal').length) {
+	    	$('#success-modal').openModal()
+	    	$.get()
+	    }
+
+	    if($('#wire-modal').length) {
+	    	$('#wire-modal').openModal()
+	    	$.get()
+	    }
+
+	    if($('#final-modal').length) {
+	    	$('#final-modal').openModal()
+	    	$.get()
+	    }
+
+	    $('.tour-modal-trigger').leanModal()
+
+		$('#subscription').click(function() {
+			$('#subscription-checkbox').removeAttr('checked')
+			$('#subscription-line').addClass('animated fadeOutRight')
+		})
+
+		$('.terms_label').click(function() {
+		    $('#legal').attr('checked', 'checked')
+		    $('#legal-button').removeAttr('disabled', true).addClass("animated pulse")
+		})
+
+		$('#legal_form').submit(function() {
+			$('#tour-first').hide()
+			$('#tour-second').show()
+			$('#tour-zero-b-scrollspy').addClass('active animated pulse')
+			return false
+		})
+
+		$('#price-link').click(function() {
+			$('#b-price-table').addClass('active animated pulse')
+		})
+
+
+			$('#time-wrapper').on('change', function() {
+				console.log('Working')
+				$('#tour-appointment-button').removeAttr('disabled', true).addClass("animated pulse")	
+			})
+
+			$('#tour-appointment-form').submit(function() {
+				$.post(
+					'/appointments/tourAppointment',
+					$(this).serialize(),
+					function(data) {
+						console.log(data)
+						if ("result" in data) {
+							var tourDate = data.tourDate
+							var tourTime = data.tourTime
+							var short_address = data.short_address
+							var client_phone_number = data.client_phone_number
+							var client_email = data.client_email
+							$('#tour-third-b').hide()
+							$('#confirm-table').html('<div class="row"><div class="col s8"><div class="row black-header white-text">FECHA</div><div class="row green-cell">'+tourDate+'</div></div><div class="col s4"><div class="row black-header white-text">HORA</div><div class="row green-cell">'+tourTime+'</div></div></div><div class="row"><div class="col s12"><div class="row black-header white-text">DIRECCIÓN DEL INMUEBLE</div><div class="row green-cell">'+short_address+'</div></div></div><div class="row"><div class="col s6"><div class="row black-header white-text">DIMENSIONES</div><div class="row green-cell">De 150 a 300 m<span class="super-index">2</span></div></div><div class="col s6"><div class="row black-header white-text">TELÉFONO</div><div class="row green-cell">'+client_phone_number+'</div></div></div><div class="row"><div class="s12"><div class="row black-header white-text">CORREO ELECTRÓNICO</div><div class="row green-cell">'+client_email+'</div></div></div>')
+							$('#tour-fourth-b').show()
+							$('#tour-third-b-scrollspy').removeClass('active animated pulse')
+							$('#tour-fourth-b-scrollspy').addClass('active animated pulse')
+						}
+					}
+				)
+				return false
+			})
+
+			$('#tour-confirmation-button').click(function() {
+				$('#tour-fourth-b').hide()
+				$('#tour-fifth-b').show()
+				$('#tour-fourth-b-scrollspy').removeClass('active animated pulse')
+				$('#tour-fifth-b-scrollspy').addClass('active animated pulse')
+				$('#down-payment-tr').addClass('green-table-row animated pulse')	
+			})
+
+
+			$('#tour-edit-button').click(function() {
+				$('#tour-fourth-b').hide()
+				$('#tour-zero-b').show()
+				$('#tour-fourth-b-scrollspy').removeClass('active animated pulse')
+				$('#tour-zero-b-scrollspy').addClass('active animated pulse')	
+			})
+
+			$('#tour-district-selector').change(function() {
+				$('#tour-neighborhood-selector').html('')
+				$.post(
+					'/virtualtour/getNeighborhoods',
+					$(this).serialize(),
+					function(data) {
+						var neighboodOptions = "<option value='' disabled selected>Colonia</option>"
+						for(i=0; i<data.neighborhoods.length; i++) {
+							neighboodOptions += "<option value='"+data.neighborhoods[i].id+"'>"+data.neighborhoods[i].name+"</option>"
+						}
+						$('#tour-neighborhood-selector').append(neighboodOptions)
+					}
+				)
+				return false
+			})
+
+			$('#tour-neighborhood-selector').change(function() {
+				$('#tour-address-button-label').removeClass('button-label-inactive').addClass('button-label')
+				$('#tour-address-button').removeAttr('disabled', true).addClass("animated pulse")
+			})
+
+			$('#tour-address-form').submit(function() {
+				$('#tour-first-b-scrollspy').removeClass('animated shake')
+				$.post(
+					'/locations',
+					$(this).serialize(),
+					function(data) {
+						console.log(data)
+						if ("success" in data) {
+							$('.address-error-message-board').hide()
+							$('#checkout-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
+							$('#tour-first-b').hide()
+							$('#tour-second-b').show()
+							$('#tour-first-b-scrollspy').removeClass('active')
+							$('#tour-second-b-scrollspy').addClass('active animated pulse')
+
+						}
+						else {
+							console.log(data.errors)
+							var array = data.errors
+							var newHTML = []
+							for (var i = 0; i < array.length; i++) {
+							    newHTML.push('<li class="red-text" style="opacity:0;">' + array[i] + '</li>')
+							}
+							$('#checkout-board').addClass('animated fadeOutRight').delay(4000).hide()
+							$(".address-error-message-board").html("<div class='row'><ul class='stacked_errors'>"+newHTML.join("")+"</ul></div>")
+							$('#tour-first-b-scrollspy').addClass('animated shake')
+							Materialize.showStaggeredList('.stacked_errors')
+						}
+					}
+				)
+				return false
+			})
+
+
+			$('#tour-land-line').click(function() {
+				$('#tour-mobile-number').attr("disabled", true)
+				$('#tour-land-line-number').removeAttr("disabled")
+				$('#tour-message-contact-radio').attr("disabled", true)
+				$('#tour-whatsapp-contact-radio').attr("disabled", true)
+			})
+
+
+			$('#tour-mobile').click(function() {
+				$('#tour-mobile-number').removeAttr("disabled")
+				$('#tour-land-line-number').attr("disabled", true)
+				$('#tour-message-contact-radio').removeAttr("disabled")
+				$('#tour-whatsapp-contact-radio').removeAttr("disabled")
+			})
+
+			$('#tour-land-line-number').mask("(99) 9999-9999")
+			$('#tour-mobile-number').mask("(99) 9999-9999")
+			$('#tour-card').mask("9999-9999-9999-9999")
+
+			$('#client-form').submit(function(e) {
+				$('#tour-zero-b-scrollspy').removeClass('animated shake')
+				e.preventDefault()
+				var client_form = $('#client-form')
+				$.ajax({
+						type: "POST",
+						url: "/clients",
+						data: client_form.serialize(),
+						dataType: "json",
+						success: function(data) {
+							$('.error-message-board').hide()
+							$('#checkout-board').removeClass('fadeOutRight').addClass('fadeInLeft').show()
+							$('#tour-zero-b').hide()
+							$('#tour-first-b').show()
+							$('#tour-zero-b-scrollspy').removeClass('active')
+							$('#tour-first-b-scrollspy').addClass('active animated pulse')
+						},
+						error: function(data) {
+							var array = data["responseJSON"].errors
+							var newHTML = []
+							for (var i = 0; i < array.length; i++) {
+							    newHTML.push('<li class="red-text" style="opacity:0;">' + array[i] + '</li>')
+							}
+							$('#checkout-board').addClass('animated fadeOutRight').delay(4000).hide()
+							$(".error-message-board").html("<div class='row'><ul class='stacked_errors'>"+newHTML.join("")+"</ul></div>")
+							$('#tour-zero-b-scrollspy').addClass('animated shake')
+							Materialize.showStaggeredList('.stacked_errors')
+						}
+					})
+				})	
+
+
+			$('.client-contact').change(function() {
+				$('#client-button-label').removeClass('button-label-inactive').addClass('button-label')
+				$('#client-button').removeAttr("disabled", true).addClass("animated pulse")
+				$('.payment-tab-link').click(function() {
+					$('#card-wrapper').show()
+				})
+	  		})
+
+	  		// Change metro area
+
+	  		$('.metro-area').change(function() {
+	  			$('#tour-district-selector').html('')
+	  			$.post(
+	  				'/virtualtour/getDistricts',
+	  				$(this).serialize(),
+	  				function(data) {
+	  					var districtOptions = "<option value='' disabled selected>Delegación/Municipio</option>"
+	  					for(i=0; i<data.districts.length; i++) {
+	  						districtOptions += "<option value='"+data.districts[i].district+"'>"+data.districts[i].district+"</option>"
+	  					}
+						$('#tour-district-selector').append(districtOptions)
+						$('#metro_area-link').attr("href", "/virtualtour/"+data.city)				
+	  				}
+	  			)
+	  			return false
+	  		})
+
+
+			// Select model size and floorplan
+
+		  	var check_this = function(thatId, floorplanRealPrice, total, downPayment, remainder) {
+			  	$('#floorPlan-checkbox-label').click(function() {
+			        $('#floorPlan-checkbox').attr('checked', 'checked');	
+					$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>')
+					$('#small-floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>')
+					$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>')
+					$('#small-checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>')
+					$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>')
+					$('#small-checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>')
+					$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+					$('#small-checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+					$('#charge-button-label').empty().html('Pagar $'+downPayment+' '+'<span class="currency-font inline-currency">MXN</span>')
+				})
+		  	}
+
+			var setCheckout = function(thisId) {
+				$('#floorPlan-checkbox-p').empty()
+				var tourPrices = [2740,3320,3880,4440,4960,5580]
+				var floorplanPrices = [1240,1380,1520,1660,1800,1940]
+				var tourOptionArr = ['tour150','tour300','tour450','tour600','tour750','tour1000']
+				var floorplanPrice = 0
+				if ($('#floorPlan-checkbox').is(":checked")) {
+					var totalArr = [3980,4700,5400,6100,6820,7520]
+					var totalShadowArr = [2740,3320,3880,4440,4960,5580]
+					var floorplanRealPrices = floorplanPrices
+					var floorplanShadowPrices = [0,0,0,0,0,0]
+				}
+				else {
+					var totalArr = tourPrices
+					var totalShadowArr = [3980,4700,5400,6100,6820,7520]
+					var floorplanRealPrices = [0,0,0,0,0,0]
+					var floorplanShadowPrices = floorplanPrices
+				}		
+				var downPaymentArr = []
+				var downPaymentShadowArr = []
+				var remainderArr = []
+				var remainderShadowArr = []
+				for (x=0;x<6;x++) {
+					downPaymentArr[x] = totalArr[x]*0.25
+					downPaymentShadowArr[x] = totalShadowArr[x]*0.25
+					remainderArr[x] = totalArr[x]*0.75
+					remainderShadowArr[x] = totalShadowArr[x]*0.75
+					if (thisId == tourOptionArr[x]) {
+						var tourPrice = tourPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var floorplanPrice = floorplanPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var floorplanRealPrice = floorplanRealPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var floorplanShadowPrice = floorplanShadowPrices[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var total = totalArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var totalShadow = totalShadowArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var downPayment = downPaymentArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var downPaymentShadow = downPaymentShadowArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var remainder = remainderArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+						var remainderShadow = remainderShadowArr[x].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+					}
+				}
+				$('#floorPlan-checkbox-p').html('<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox"><label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >Agrega un <%= link_to "plano esquemático", asset_path("SchematicFloorplan.jpg"), { :id =>"floorplan-link", :class=>"grey-text text-darken-3", :target => "blank" } %> por <span id="floorplan-price">'+floorplanShadowPrice+'.</span></label>')
+				check_this(thisId, floorplanShadowPrice, totalShadow, downPaymentShadow, remainderShadow)		
+				$('#tour-item-price').empty().html('$'+tourPrice+'<span class="currency-font"> MXN</span>') 
+				$('#small-tour-item-price').empty().html('$'+tourPrice+'<span class="currency-font"> MXN</span>') 
+				$('#floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>') 
+				$('#small-floorplan-item-price').empty().html('$'+floorplanRealPrice+'<span class="currency-font"> MXN</span>') 
+				$('#checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>') 
+				$('#small-checkout-total').empty().html('$'+total+'<span class="currency-font"> MXN</span>') 
+				$('#checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>') 
+				$('#small-checkout-down-payment').empty().html('$'+downPayment+'<span class="currency-font"> MXN</span>') 
+				$('#checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+				$('#small-checkout-remainder').empty().html('$'+remainder+'<span class="currency-font"> MXN</span>')
+				$('#charge-button-label').empty().html('Pagar $'+downPayment+' '+'<span class="currency-font inline-currency">MXN</span>')
+				$('#checkout-table td').css('color', '#424242')
+			}
+
+			
+			$('#tour-price-form').submit(function() {
+				$('#date-selector').replaceWith('<input id="date-selector" type="text" name="appointment[date]" class="datepicker" placeholder="Fecha">')
+				$.post(
+					'/virtualtour/setPrice',
+					$(this).serialize(),
+					function(data) {
+						console.log(data)
+						$('#tour-second-b').hide()
+						$('#tour-third-b').show()
+						$('#tour-second-b-scrollspy').removeClass('active anomated pulse')
+						$('#tour-third-b-scrollspy').addClass('active animated pulse')
+						$('#date-selector').prop('disabled', false)
+						setDate(data.dates)
+					},
+					"json"
+				)
+				return false	
+			})
+			$("#tour-price-form input:radio").click(function() {
+				$('#price-table tr').removeClass('green-table-row')
+				$('#price-table tr').removeClass('animated pulse')
+				$(this).parents("tr").addClass('green-table-row').delay(300).addClass('animated pulse')
+				$('#price-button-label').removeClass('button-label-inactive').addClass('button-label')
+				$('#price-button').removeAttr('disabled', true).addClass("animated pulse")
+				var id = this.id
+				setCheckout(id)
+			})
+
+			$('#wire-button').click(function() {
+				console.log('working')
+				$('#wire-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
+			})
+			
+			var setDate = function(dates) {
+				console.log(dates)
+				$('.datepicker').pickadate({
+					min: true + 2,
+					max: 60,
+					monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+					weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+					weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+					disable: dates,
+					today: false,
+					clear: false,
+					close: "Cerrar",
+					selected: false,
+					closeOnSelect: true,
+					format: 'dddd dd !de mmmm !de yyyy',
+				})	
+
+		    var setTime = function(hours) {
+					console.log('Setting time')
+					console.log(hours)
+					$('.timepicker').pickatime({
+						min: [8,0],
+						max: [17,0],
+						interval: hours.interval,
+						disable: hours.hours,
+						close: "Cerrar",
+						closeOnSelect: true,
+					})
+				}
+
+				$('.datepicker').change(function() {
+					console.log()
+					$('#tour-time-selector').replaceWith('<input id="tour-time-selector" disabled name="appointment[time]" class="timepicker" placeholder="Hora">')
+					$.post(
+						'/getTime',
+						$(this).serialize(),
+						function(data) {
+							setTime(data)
+							// $('#wire-tab-trigger').removeClass('disabled')
+							$('#wire-tab-link').empty()
+							$('#wire-tab-link').html('<span id="wire-span">Transferencia</span>')					
+							$('#tour-time-selector').prop('disabled', false)
+							$('#tour-appointment-button-label').removeClass('button-label-inactive').addClass('button-label')
+							$('#tour-appointment-button').prop('disabled', true)
+							if (data.transfer == false) {
+								$('#wire-span').addClass('tooltipped').attr({
+									"data-tooltip":"Pago con tranferencia disponible únicamente al agendar con cuatro o más días de anticipación.",
+									"data-position":"bottom",
+								})
+								$('#wire-tab-trigger').addClass('disabled')
+							}
+							else {
+								$('#wire-tab-trigger').removeClass('disabled')
+							}
+							$('.tooltipped').tooltip({delay: 50})
+						}
+					)
+					return false
+				})
+		    }
 			})
 		}
 
-		$(document).ready(ready)
-		$(document).on('page:load', ready)
+	$(document).ready(ready)
+	$(document).on('page:load', ready)
 
-	</script>
+</script>
 </head>
 	<%= yield %>
 		<footer class="page-footer transparent">
