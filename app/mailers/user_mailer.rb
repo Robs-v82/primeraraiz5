@@ -35,7 +35,7 @@ class UserMailer < ActionMailer::Base
 		@greeting = greeting
 		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
 		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
-		mail(to: user.email, subject: 'Cita agendada para el ' + @dateString + ' a las ' + @timeString)
+		mail(to: user.email, cc: 'contacto@primeraraiz.com', subject: 'Cita agendada para el ' + @dateString + ' a las ' + @timeString)
 	end
 
 	def tour_email(client, location, appointment, charge)
@@ -46,7 +46,7 @@ class UserMailer < ActionMailer::Base
 		@appointment = appointment
 		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
 		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
-		mail(to: @client.email, subject: 'Tour virtual agendado para el ' + @dateString)
+		mail(to: @client.email, cc: 'contacto@primeraraiz.com', subject: 'Tour virtual agendado para el ' + @dateString)
 	end
 
 	def wire_email(client, location, tour, appointment)
@@ -61,7 +61,7 @@ class UserMailer < ActionMailer::Base
 		downPayment = tour.total*0.25
 		downPayment = (downPayment+0.5).to_i
 		@downPayment = number_with_delimiter(downPayment)
-		mail(to: @client.email, subject: 'Información para tranferencia bancaria')
+		mail(to: @client.email, cc: 'contacto@primeraraiz.com', subject: 'Información para tranferencia bancaria')
 	end
 
 	def time_to_pay(client, location, tour)
@@ -73,13 +73,13 @@ class UserMailer < ActionMailer::Base
 		remainder = tour.total*0.75
 		remainder = remainder.to_i
 		@remainder = number_with_delimiter(remainder)
-		mail(to: @client.email, subject: 'Ya puedes consultar tu modelo 3D')
+		mail(to: @client.email, cc: 'contacto@primeraraiz.com', subject: 'Ya puedes consultar tu modelo 3D')
 	end
 
 	def ready_email(client)
 		@client = client
 		@greeting = greeting
-		mail(to: @client.email, subject: 'Tu tour virtual está disponible')
+		mail(to: @client.email, cc: 'contacto@primeraraiz.com', subject: 'Tu tour virtual está disponible')
 	end
 
 
@@ -91,7 +91,7 @@ class UserMailer < ActionMailer::Base
 		@greeting = greeting
 		@dateString = I18n.l(appointment.date, :format => "%A %e de %B") 
 		@timeString = I18n.l(@appointment.time, :format => "%I:%M %p")
-		mail(to: user.email, subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
+		mail(to: user.email, cc: 'contacto@primeraraiz.com', subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
 	end
 
 end
