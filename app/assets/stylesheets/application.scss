@@ -492,6 +492,10 @@ p.legal-warning {
 	font-size: 1.2em !important;
 }
 
+.corner-button {
+	margin: 0px 20px 5px 0px !important;
+} 
+
 [type="checkbox"]:checked + label:before {
 	border-right: 4px solid #64dd17;
     border-bottom: 4px solid #64dd17;
@@ -803,7 +807,11 @@ ul.section.table-of-contents {
 }
 
 .super-index {
-	font-size: 7px;
+	font-size: 10px;
+	vertical-align:super;
+}
+.big-super-index {
+	font-size: 12px;
 	vertical-align:super;
 }
 
@@ -1185,4 +1193,29 @@ input[type=text] {
 #conekta-logo-wrapper {
 	margin-top: 14px;
 	height: 45px;
+}
+
+.small-p {
+	margin-top: 5px !important;
+	font-size: 18px !important;
+}
+
+#casas-p {
+	margin-top: 0px !important;
+}
+
+#casas-code {
+	max-width: 150px;
+}
+
+#casas-y-terrenos-wrapper .col {
+	padding: 0;
+}
+
+#casas-upper-row {
+	padding-top: 20px;
+}
+
+#casas-y-terrenos-logo {
+	margin-right: 30px;
 }
