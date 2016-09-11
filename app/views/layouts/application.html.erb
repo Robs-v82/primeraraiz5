@@ -231,8 +231,6 @@
 	    	$.get()
 	    }
 
-	    // $('.tour-modal-trigger').leanModal()
-
 		$('#subscription').click(function() {
 			$('#subscription-checkbox').removeAttr('checked')
 			$('#subscription-line').addClass('animated fadeOutRight')
@@ -243,12 +241,6 @@
 		    $('#legal-button').removeAttr('disabled', true).addClass("animated pulse")
 		})
 
-		// $('#legal_form').submit(function() {
-		// 	$('#tour-first').hide()
-		// 	$('#tour-second').show()
-		// 	$('#tour-zero-b-scrollspy').addClass('active animated pulse')
-		// 	return false
-		// })
 
 		$('#price-link').click(function() {
 			$('#b-price-table').addClass('active animated pulse')
@@ -372,6 +364,9 @@
 			$('#tour-land-line-number').mask("(99) 9999-9999")
 			$('#tour-mobile-number').mask("(99) 9999-9999")
 			$('#tour-card').mask("9999-9999-9999-9999")
+			$('#card-year').mask("9999")
+			$('#card-month').mask("99")
+			$('#card-cvc').mask("999")
 
 			$('#client-form').submit(function(e) {
 				$('#tour-zero-b-scrollspy').removeClass('animated shake')
