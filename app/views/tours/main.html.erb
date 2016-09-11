@@ -254,23 +254,22 @@
 										</div>
 									</a>
 								</form>
-							</div>	
-							<form id="legal_form" class="row valign-wrapper" style="width:100%">
-								<div class="col s8">
-									<input type="checkbox" id="legal" class="valign">
-									<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.</label>
-								</div>
-								<div class="col s4">
-									<a id="metro_area-link" href="/virtualtour/<%=session[:metro_area]%>"><button  id="legal-button" disabled class="corner-button light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button></a>
-								</div>
-							</form>
+							</div>
+							<div id="legal_form" class="row valign-wrapper" style="width:100%">	
+<!-- 							<form id="legal_form" class="row valign-wrapper" style="width:100%">
+ -->								<div class="col s8">
+										<input type="checkbox" id="legal" class="valign">
+										<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.</label>
+									</div>
+									<div class="col s4">
+										<a id="metro_area-link" href="/virtualtour/<%=session[:metro_area]%>"><button  id="legal-button" disabled class="corner-button light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button></a>
+									</div>
+<!-- 							</form>
+ -->						</div>
 						</div>
 					</div>
 				</div>
-
-
 			</div>
-
 <!-- 				END MODAL REPLACEMENT
  -->				
 			<div class="row title-wrapper valign-wrapper" style="width: 100%">
