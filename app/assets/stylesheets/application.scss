@@ -765,7 +765,7 @@ ul.section.table-of-contents {
 }
 
 #tour-header, #final-header {
-	padding: 24px 34.5px 0px 34.5px !important;
+	padding: 24px 30px 0px 30px !important;
 }
 
 #tour-features {
@@ -1140,6 +1140,11 @@ input[type=text] {
 	overflow-y: scroll;
 }
 
+#false-tour-modal {
+	height: 450px;
+	overflow-y: scroll;
+}
+
 .button-related {
 	display: inline-block;
 }
@@ -1221,5 +1226,5 @@ input[type=text] {
 }
 
 #tour-first {
-	padding: 35px;
+	padding: 30px;
 }
