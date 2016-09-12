@@ -73,6 +73,13 @@
 		}
 
 		$(function () {
+			
+			
+		    $('.tour-modal-trigger').click(function() {
+		    	$('#blog-false-tour-modal').addClass('animated bounce').show()
+		    	$('.title-wrapper').hide()
+		    })
+
 			$("#card-form").submit(function(event) {
 				$('#charge-wrapper').empty().html('<div class="preloader-wrapper small active valign"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>')
 				var $form = $(this)

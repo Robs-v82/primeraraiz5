@@ -1228,3 +1228,47 @@ input[type=text] {
 #tour-first {
 	padding: 30px;
 }
+
+#blog-background {
+	background-color: #424242;
+	min-height: 800px;
+	padding-bottom: 80px;
+}
+
+.blog-link, .inner-blog-link {
+	display: inline-block;
+	padding: 8px 16px;
+}
+
+.inner-blog-link-wrapper {
+	height: 100%;
+	vertical-align: bottom;
+}
+
+.inner-blog-link {
+	margin: 0px 15px
+}
+
+.blog-link-row {
+	margin: 0;
+}
+
+.blog-card {
+	border-radius: 0px !important;
+}
+
+.blog-card .card-content .card-title {
+	line-height: normal !important;
+}
+
+#left-post-column {
+	padding: 0;
+}
+
+#right-post-column {
+	padding: 25px;
+}
+
+.author {
+	font-weight: 600;
+}

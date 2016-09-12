@@ -1,0 +1,147 @@
+<div id="blog-background">
+	<nav class="transparent z-depth-0" role="navigation">
+		<div class="b-container">
+			<div class="nav-wrapper">
+				<div data-no-turbolink>
+					<a href="/" class="brand-logo valign-wrapper hide-on-small-only">
+						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo">
+						primeraRaíz
+					</a>
+				</div>
+				<div data-no-turbolink>
+					<a href="/" class="brand-logo small-logo valign-wrapper hide-on-med-and-up right">
+						<img alt="tour virtual México Primera Raíz" src="/assets/white_logo" style="width:24px;height:24px;">
+						primeraRaíz
+					</a>
+				</div>
+				<ul class="right hide-on-med-and-down">
+					<li><a class="tour-modal-trigger" href="#">CONTRATA</a></li>
+				</ul>
+				<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
+					<li><a class="tour-modal-trigger" href="#">CONTRATA</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div class="b-container">
+		
+<!-- 		CONTRATA
+ -->
+		<div class="container">
+			<div id="blog-false-tour-modal" class="central-card white z-depth-2" style="display:none">
+
+				<div id="tour-header" class="modal-content">
+					<img alt="recorrido virtual México" src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+					<p class="primera">primera<span class="raiz">Raíz</span></p>
+				</div>
+				<div id="tour-first">
+					<div class="modal-content">
+						<div class="row"> 
+							<div class="col s12 grey-text text-darken-3">
+								<div id="tour-features-wrapper">
+									<h5>Características del tour virtual</h5>
+									<ul id="tour-features">
+										<li>Recomendado para espacios interiores de hasta 1,000 m<span class="super-index">2</span>.</li>
+										<li>Difunde el modelo en redes sociales o intégralo a tu página web.</li>
+										<li>Incluye la generación de tour virtual y el acceso al modelo en línea por un año.</li>
+									</ul>
+								</div>
+								<div id="casas-y-terrenos-wrapper" style="display:none">
+									<div id="casas-upper-row" class="row">
+										<div class="col l6 m6 s12">
+											<input id="casas-code" type="text" class="valign" placeholder="Ingresa código">
+										</div>
+										<div class="col l6 m6 s12">
+											<img href="http://www.casasyterrenos.com/" id="casas-y-terrenos-logo" src="/assets/casasyterrenos.png" height="35px" class="right">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col l12 m12 s12">
+											<p class="small-p">Obtén tu código promocial al anunciar en Casas y Terrenos, y recibe 10% al contratar un tour de 150m<span class="big-super-index">2</span> o más.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="metro-area-row" class="row">
+							<div class="col s12">
+								<h5>¿Dónde se ubica tu inmueble?</h5>
+							</div>
+							<div class="input-field col l3 m3 s6">
+								<input id="metro-area-cdmx-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="CDMX" checked>
+								<label id="cdmx-label" for="metro-area-cdmx-radio">CDMX</label>
+							</div>
+							<div class="input-field col l3 m3 s6">
+								<input id="metro-area-gdl-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Guadalajara">
+								<label id="gdl-label" for="metro-area-gdl-radio">Guadalajara</label>
+							</div>
+							<div class="input-field col l6 m6 s12">
+								<input id="metro-area-qro-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Querétaro">
+								<label id="qro-label" for="metro-area-qro-radio">Querétaro/San Miguel</label>
+							</div>
+						</div>
+						<div class="row">
+							<p class="standard-p">*Para servicios en el resto de la república escríbenos a <a class="mail-link" href="mailto:foraneos@primeraraiz.com">foraneos@primeraraiz.com</a>.</p>
+						</div>
+						<div class="col s8">
+							<form class="row valign-wrapper" style="width:100%">
+								<a href="/clients/switch" data-remote=true>
+									<div id="subscription-wrapper">
+										<div id="subscription-line" class="col s12">
+											<input type="checkbox" id="subscription-checkbox" class="valign" checked>
+												<label id="subscription" class="valign grey-text text-darken-3">Deseo recibir información y promociones de Primera Raíz.</label>
+										</div>
+									</div>
+								</a>
+							</form>
+						</div>
+						<div id="legal_form" class="row valign-wrapper" style="width:100%">	
+<!-- 							<form id="legal_form" class="row valign-wrapper" style="width:100%">
+-->								<div class="col s8">
+									<input type="checkbox" id="legal" class="valign">
+									<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.</label>
+								</div>
+								<div class="col s4">
+									<a id="metro_area-link" href="/virtualtour/<%=session[:metro_area]%>"><button  id="legal-button" disabled class="corner-button light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button></a>
+								</div>
+<!-- 							</form>
+-->						</div>
+					</div>
+				</div>
+				<div class="row">
+					<p>
+						<br><br>
+					</p>
+				</div>
+			</div>
+		</div>
+
+			<!-- POST -->
+
+		<div class="row light-green accent-2 z-depth-1">
+			<div id="left-post-column" class="col l5 m5 s12">
+				<img src="<%=@post.picture%>" width="100%" alt="<%=@post.alt%>">
+			</div>
+			<div id="right-post-column" class="col l7 m7 s12 white">
+				<div class="row">
+					<h4><%=@post.title%></h4>
+				</div>
+				<div class="row">
+					<p><%=@post.body%></p>
+				</div>
+				<div class="row">
+					<p class="author grey-text text-darken-4">Publicado por: <%=@post.agent.name%> (<a class="light-green-text text-accent-4" href="<%=@post.agent.email%>"><%=@post.agent.email%></a>), el <%=I18n.l(@post.created_at, :format => "%A %e de %B de %Y")%></p>
+				</div>
+				<div class="row">
+					<div class="inner-blog-link-wrapper center-align">
+						<p class="tour-modal-trigger inner-blog-link grey z-depth-1 darken-2"><a class="light-green-text text-accent-2" href="#">CONTRATA</a></p>
+						<p class="inner-blog-link grey z-depth-1 darken-2"><a class="light-green-text text-accent-2" href="/posts">REGRESAR</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

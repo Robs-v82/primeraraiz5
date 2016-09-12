@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'posts/index'
+
   get 'contacts/create'
 
   post 'charges/create' => 'charges#create'
@@ -37,6 +39,9 @@ Rails.application.routes.draw do
   post 'admins/login' => 'admins#login'
   get 'virtualtour/:city' => 'tours#new'
   get 'testImage' => 'home#testImage'
+  get 'posts' => 'posts#index'
+  post 'posts' => 'posts#create'
+  get 'posts/:id' => 'posts#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

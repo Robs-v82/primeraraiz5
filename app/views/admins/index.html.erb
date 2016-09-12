@@ -74,6 +74,28 @@
 			</div>
 		</div>
 		<div class="col l6 m6 s12">
+			<h5>Agregar post</h5>
+			<div class="basic-block row">
+				<form action="/posts" enctype="multipart/form-data" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<div class="input-field col s12">
+						<input type"text" name="post[title]" placeholder="Título">
+					</div>
+					<div class="input-field col s12">
+						<textarea name="post[subtitle]" placeholder="Subtítulo"></textarea>
+					</div>
+					<div class="input-field col s12">
+						<textarea name="post[body]" placeholder="Texto"></textarea>
+					</div>
+					<div class="input-field col s12">
+						<input type="file" name="post[picture]">
+					</div>
+					<div class="input-field col s12">
+						<input type"text" name="post[alt]" placeholder="Descripción imagen (keywords)">
+					</div>
+					<button id="blog-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</form>
+			</div>
 			<h5>Notificar modelo</h5>
 			<div class="basic-block row">
 				<form action="/tours/update" method="post">
