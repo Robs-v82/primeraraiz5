@@ -27,5 +27,8 @@ class HomeController < ApplicationController
 	def Test9jkJdTbj
 		render '9jkJdTbj.html'
 	end
+
+	def testImage
+	end
 	
 end

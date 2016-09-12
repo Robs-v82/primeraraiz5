@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'admins/download_contacts' => 'admins#download_contacts'
   post 'admins/login' => 'admins#login'
   get 'virtualtour/:city' => 'tours#new'
+  get 'testImage' => 'home#testImage'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
