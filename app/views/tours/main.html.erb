@@ -229,13 +229,17 @@
 								<div class="col s12">
 									<h5>¿Dónde se ubica tu inmueble?</h5>
 								</div>
-								<div class="input-field col l3 m3 s6">
+								<div itemscope itemtype ="http://schema.org/City">
+									<div class="input-field col l3 m3 s6">
 									<input id="metro-area-cdmx-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="CDMX" checked>
-									<label id="cdmx-label" for="metro-area-cdmx-radio">CDMX</label>
+									<label id="cdmx-label" for="metro-area-cdmx-radio" itemprop="name">CDMX</label>
+									</div>
 								</div>
-								<div class="input-field col l3 m3 s6">
-									<input id="metro-area-gdl-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Guadalajara">
-									<label id="gdl-label" for="metro-area-gdl-radio">Guadalajara</label>
+								<div itemscope itemtype ="http://schema.org/City">
+									<div class="input-field col l3 m3 s6">
+										<input id="metro-area-gdl-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Guadalajara">
+										<label id="gdl-label" for="metro-area-gdl-radio" itemprop="name">Guadalajara</label>
+									</div>
 								</div>
 								<div class="input-field col l6 m6 s12">
 									<input id="metro-area-qro-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="Querétaro">
