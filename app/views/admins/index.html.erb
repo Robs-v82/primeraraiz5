@@ -44,10 +44,17 @@
 					</div>
 					<div class="input-field col s12">
 						<select class="admins-select browser-deafult" name="contact[state]">
-							<option value="" disabled selected>Estado</option>
+							<option value="" disabled selected>Ciudad</option>
 							<% @states.each do |state| %>
-								<option value="<%= state.estado%>"><%= state.estado%></option>
+								<option value="<%= state%>"><%= state%></option>
 							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s12">
+						<select class="admins-select browser-deafult" name="contact[language]">
+							<option value="" selected>Idioma</option>
+							<option value="Spanish">Español</option>
+							<option value="English">Inglés</option>
 						</select>
 					</div>
 					<div class="input-field col s12">

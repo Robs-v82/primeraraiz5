@@ -4,7 +4,7 @@ class AdminsController < ApplicationController
 
 	def index
 		if current_agent
-			@states = State.all
+			@states = ["Cancún","Ciudad de México","Guadalajara","León","Los Cabos","Monterrey","Morelia","Puebla","Puerto Vallarta","Querétaro","San Luis Potosí","San Miguel de Allende","Toluca"]
 			if session[:new_contact]
 				@contact_success = true
 			end

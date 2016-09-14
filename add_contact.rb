@@ -7,6 +7,2618 @@ estado = "Guanajuato"
 newArr.each{|contact| email = contact[2].slice(7,100); emailArr.push(email)}
 (0..newArr.length).each {|x| Contact.create(:name => newArr[x][0], :email => emailArr[x], :category => "RE_broker", :state => estado)}
 
+# PUERTO VALLARTA
+
+myString ="Pedro Robin	
+Pedro Robin
+Applegate Realtors
+Ofc: 322-221-5434
+Cel: 044-322-172-0023
+FAX
+pedro@applegaterealtors.com
+
+Edward Padalinski	
+Edward Padalinski
+Ron Morgan Properties
+Ofc:322-222-6678
+CEL: 044-322-779-1235
+USA: 303-219-6133	
+edward@ronmorgan.net
+
+Luis Muñozcano	
+Luis Muñozcano
+Timothy Real Estate Group
+Ofc: 322-223-5300
+Cell: 322-105-0017
+luis@timothyrealestategroup.com
+
+Wayne Franklin	
+Wayne Franklin
+Tropicasa Realty
+Ofc: 322.222.6505
+Cel: (322) 292-3279 
+USA: 01.800.877.7000
+franklin@tropicasa.com
+
+Nancy Valiente	
+Nancy Valiente
+Coldwell Banker - La Costa Realty
+ofc: 322-223-0055 
+cell: 322-135-0763 
+nancy@cblacosta.com
+
+Warren Paul Brander	
+Warren Paul Brander
+Boardwalk Realty Puerto Vallarta
+Ofc: 322-224-0014	
+Cel: 044-322-200-2253 
+USA: 1-855-239-0640	
+warren@boardwalkrealtypv.com
+
+Luis Perez	
+Luis Perez
+Mi Buena Estrella
+Ofc:322-222-4397
+CEL: 322-779-8046
+luisperezvallarta@gmail.com
+
+Miguel Fabritzio	
+Miguel Fabritzio
+G3 Mex Realty
+Ofc: 322-209-0832
+FAX: 322-209-1358
+Cel:
+miguel@g3mex.com
+
+Ron Morgan	
+Ron Morgan
+Ron Morgan Properties
+Ofc:322-222-6678
+CEL: 322-150-5471
+USA: 323 315 2569	
+info@ronmorgan.net
+
+Carmen Garcia	
+Carmen Garcia
+Applegate Realtors
+Ofc: 322-222-7817
+Cel: 322-150-6890
+USA:315-371-1958
+carmengarcia@applegaterealtors.com
+
+Veronica Macias	
+Veronica Macias
+Coldwell Banker La Costa
+Ofc: 322-222-2604
+Cel: 044-322-205-8161
+USA:
+veronica.macias@cblacosta.com
+
+Jose Lopez Reyes	
+Jose Lopez Reyes
+Contakto
+Ofc:
+CEL: 
+USA: 
+jreyes@contakto.com.mx
+
+Russell Faulkner	
+Russell Faulkner
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-429-7069
+USA: 877-204-7730	
+russell@timothyrealestategroup.com
+
+Robert Bertrand	
+Robert Bertrand
+Coldwell Banker La Costa
+Ofc: 322-223-0055
+Cel: 332-149-6970 
+USA: 866-978-8060 
+robert@cblacosta.com
+
+Alfredo Herrera	
+Alfredo Herrera
+Tropicasa Realty
+Ofc: 322-222-6505
+Cel: 322-142-6296 
+USA: 01-800-877-7000
+alfredoh@tropicasa.com
+
+Lambert Schneck	
+Lambert Schneck
+Neptune Realtors
+Ofc: 322-221-0287 
+Cel: 322-227-1437 
+FAX: 322-221-0433
+lambert@neptunemx.com
+
+Carmen Espinoza	
+Carmen Espinoza
+Coldwell Banker - La Costa Realty
+Ofc: 322-222-2604 
+Ofc: 322-221-1408 
+Cel: 322-117-9932 
+USA: 310-424-5696 
+carmen.espinoza@cblacosta.com
+
+Carl Timothy	
+Carl Timothy
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-227-5732 
+USA: 877-204-7730	
+carl@timothyrealestategroup.com
+
+Raul Ochoa Villapando	
+Raul Ochoa Villapando
+Pacific Estates Realty
+Ofc:(322) 223 0565
+CEL: 
+FAX: (322) 223-1830	
+pacest@realtyworld.com.mx
+
+Reena Egger	
+Reena Egger
+Ron Morgan Properties
+Ofc:329-298-0492
+CEL: 322-173-8712
+USA: 323-786-4857	
+reena@ronmorgan.net
+
+Victoria Pratt	
+Victoria Pratt
+Timothy Real Estate Group
+Ofc: 329-298-1860	
+Cel: 322-779-9283 
+USA: 877-204-7730 
+victoria@timothyrealestategroup.com
+
+Wayne Soroka	
+Wayne Soroka
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-191-1888 
+USA: 877-204-7730	
+wayne@timothyrealestategroup.com
+
+Harriet Cochran Murray	
+Harriet Cochran Murray
+Cochran Real Estate
+Ofc: 322-228-0419
+Cel: 322-205-7550 
+USA: 011-52-322-228-0419
+harriet@casasandvillas.com
+
+Rafael Becerril Alavarado	
+Rafael Becerril Alavarado
+Vertice Real Estate & Associates
+Ofc:322-297-6279
+CEL: 322-151-27651
+USA: 
+rbecerril.vertice@gmail.com
+
+Kevin McNaughton	
+Kevin McNaughton
+Coldwell Banker - La Costa Realty
+ofc: 322-223-0055 
+cell: 322-182-3885 
+kevin@cblacosta.com
+
+Jay Burchell	
+Jay Burchell
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-105-0230 
+USA: 877-204-7730 
+jay@timothyrealestategroup.com
+
+Alejandro Zamilpa	
+Alejandro Zamilpa
+Zamilpa Realtors
+Ofc: 322-206-0009
+Cel: 322-294-0877
+FAX: 322-222-4916
+alex@zamilparealtors.com
+
+Carlos Osuna	
+Carlos Osuna
+Sierra Del Mar
+Ofc:(322) 228 0001
+CEL:
+USA: (206) 701 7571
+carlos@sierradelmar.com
+
+Salvador Michel	
+Salvador Michel
+David Pullen Properties
+Ofc:(322) 209-2189 
+CEL:(322) 112-1937 
+michel@davidpullenproperties.com
+
+Arturo Alvarez Ibarra	
+Arturo Alvarez Ibarra
+Applegate Realtors
+Ofc:322-222-7817
+Cel:322-192-7091
+USA:323-638-0023
+arturo@applegaterealtors.com
+
+Jorge Guillén	
+Jorge Guillén
+Tropicasa Realty
+Ofc: 322.222.6505
+Cel: 322.306.0535
+USA: 01.800.877.7000
+jorge@tropicasa.com
+
+Sherri Narro	
+Sherri Narro
+Puerto Vallarta Dream Homes
+Ofc:(322) 228-0584
+CEL:
+USA: (903) 258-9690 
+sherri@PuertoVallartaDreamHomes.com
+
+Roger Dubois	
+Roger Dubois
+DUBOISPV
+Ofc: 
+Cel: 322-139-0285
+USA: 1-514-907-1632
+roger@duboispv.com
+
+Silvia L. Elias	
+Silvia L. Elias
+PV REALTY
+Ofc:(322) 222-4288 
+Cel: 322-292-1099
+USA: 011-52(322)223-2840
+silvia@pvre.com
+
+Ian Shepherd	
+Ian Shepherd
+Tropicasa Realty
+Ofc: 322.222.6505
+Cel: 322.183.4327
+USA: 01.866.978.5539
+ian@tropicasa.com
+
+Carmen Jasso	
+Carmen Jasso
+Coldwell Banker - La Costa Realty
+Ofc: 322-223-0055 
+Cel: 322-168-0576 
+USA: 866-978-8060 
+carmen@cblacosta.com
+
+Laura Gelezunas	
+Laura Gelezunas
+Boardwalk Realty
+Ofc: 322-223-0001	
+Cel: 322-117-2607 
+USA: 314-256-9053 
+laura@boardwalkrealtypv.com
+
+Jeri Grant	
+Jeri Grant
+Tropicasa Realty
+Ofc: 322.222.6505
+Cel: (322) 174-5841
+USA: 01.800.877.7000
+ jeri@tropicasa.com
+
+David Pullen	
+David Pullen
+David Pullen Properties
+Ofc:(322) 209-2188 
+CEL:(322) 303-7090 
+USA: 
+info@davidpullenproperties.com
+
+William John Davies	
+William John Davies
+Vallarta Real Estate Group
+Ofc:322.222.5500
+CEL: 1-415-287-6521
+FAX: 1-415-354-3460	
+johnny@rex-mexico.com
+
+Jean R Talbot	
+Jean R Talbot
+Talbot Real Estate
+Ofc:(322) 223 3770 
+Cel: (322) 145 1257
+USA: (888) 226 0563	
+info@talbotpuertovallarta.com
+
+Susanne Palmgren	
+Susanne Palmgren
+Ron Morgan Properties
+Ofc: 329-298-0492	
+Cel: 322-103-9935 
+USA: 
+susanne@ronmorgan.net
+
+Taniel Chemsian	
+Taniel Chemsian
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-120-5900 
+USA: 877-204-7730 
+taniel@timothyrealestategroup.com
+
+Alvaro Garcia	
+Alvaro Garcia
+Applegate Realtors
+Ofc: 322-221-5434
+Cel: 044-322-133-7059
+USA:
+alvaro@applegaterealtors.com
+
+Dwayne Carrier	
+Dwayne Carrier
+Timothy Real Estate Group
+Ofc: 322-223-5300
+Cell: 322-117-3579
+USA: 760-409-4913
+dwayne@timothyrealestategroup.com
+
+Donna L. Davies	
+Donna L. Davies
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-779-9406 
+USA: 877-204-7730	
+Donna@timothyrealestategroup.com
+
+Rodrigo Saracho	
+Rodrigo Saracho
+Costa Dorada Realty
+Ofc: 322-222-0499
+Nextel: 322-145-6531
+rodrigo@costadoradarealty.com
+
+Lawrence Taylor	
+Lawrence Taylor
+Luxury Beach
+Ofc:322-221-3581 
+Cel: 044-322-150-6317
+USA: 213-797-4402	
+info@luxurybeach.com
+
+Stella Leavitt	
+Stella Leavitt
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-140-2133 
+USA: 877-204-7730 
+stella@timothyrealestategroup.com
+
+Aldo Garces	
+Aldo Garces
+Pancho's Villas Real Estate
+Ofc: 322-223-0569 
+Fax: 322-223-0570
+
+Cell: 322-292-3240 
+aldo@panchosvillas.com
+info@panchosvillas.com
+
+Linda Kennedy	
+Linda Kennedy
+Timothy Real Estate Group
+Ofc: 322-223-5300	
+Cel: 322-278-9940 
+USA: 877-204-7730 
+linda@timothyrealestategroup.com
+
+Aaron Viggers	
+Aaron Viggers
+Applegate Realtors
+Ofc:322-222-0620
+Cel:322-356-6070
+USA:323-638-0023
+aaron@applegaterealtors.com
+
+Brock Squire	
+Brock Squire
+Coldwell Banker La Costa
+Ofc:. 322-223-0055
+Cel: 322-294-1552 
+USA: 866-978-8060
+brock@cblacosta.com
+
+Bill Taylor	
+Bill Taylor
+Bill Taylor Real Estate
+Ofc: 322-221-0923 
+Cel: 322-135-6082
+FAX: 322-221-1564
+bill@tristarrentals.com
+
+Ernesto Martinez Curiel	
+Ernesto Martinez Curiel
+EMC Global Realty Mexico
+Ofc: 322-293-1542	
+Cel: 322-182-1771 
+Cel: 322-133-8555 
+emc@emcglobalrealtymexico.com
+
+Kim Moore	
+Kim Moore
+Costa Alegre Realty
+Ofc:322-221-0690
+CEL: 322-429-8563
+USA: 210-587-7952
+mex.land@gmail.com
+
+Bill Hevener	
+Bill Hevener
+Ron Morgan Properties
+Ofc:322-222-6678
+CEL: 322-105-1151
+USA: 323-315-2569	
+billhevener@ronmorgan.net
+
+Dana Leavitt Scapa	
+Dana Leavitt Scapa
+Timothy Real Estate Group
+Ofc: 322-223-5300
+Cel: 322-147-3459 
+USA: 322-147-3459
+dana@timothyrealestategroup.com
+
+Cheryl Naylor-Riviera	
+Cheryl Naylor-Riviera
+Ron Morgan Properties
+Ofc:322-222-6678
+CEL: 322-779-4574
+USA: 323 315 2569
+cheryl@ronmorgan.net
+
+Rob Boyd	
+Rob Boyd
+Boardwalk Realty Puerto Vallarta
+Ofc: 322-224-0014	
+Cel: 044-322-194-1057 
+USA: 1-855-239-0640	
+rob@boardwalkrealtypv.com
+
+Michael Green	
+Michael Green
+Boardwalk Realty Vallarta
+Ofc: 322-224-0014
+Cel: 044-322-227-6064
+USA: 1-855-239-0640
+michael@boardwalkrealtypv.com
+
+Maca Macmorran	
+Maca Macmorran
+Maca & Company
+Ofc: 322-221-5640
+Cel: 322-150-6196
+USA: 520-232-2489
+macainvallarta@gmail.com
+
+Marilyn Newman	
+Marilyn Newman
+Coldwell Banker La Costa
+Ofc: 322-222-2604
+Cel: 044-322-306-0534
+USA:
+marilyn@cblacosta.com
+
+Laura Dean	
+Laura Dean
+Vallarta Real Estate Group
+Ofc:322.222.5500
+CEL: 322-157-2931
+FAX: 1-415-354-3460	
+laura@rex-mexico.com
+
+Salvador Zuniga	
+Salvador Zuniga
+Blue Oceanside Realty
+Ofc:(322) 223 80 54 
+FAX: (322) 223 80 54
+USA: 
+salvador@blueoceanside.com
+
+Marc Serrao	
+Marc Serrao
+Applegate Realtors
+Ofc: 322-222-7817	
+Cel: 322-182-0422 
+USA: 214-628-4585 
+marc@applegaterealtors.com"
+
+# MONTERREY
+
+# indexArr = []
+# VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+# lines = myString.split("\n")
+# lines.each{|line|if line[0] != ' '; indexArr.push("lead"); else; indexArr.push("lead")}
+
+
+# def labelLines(thisString)
+# 	indexArr = []
+# 	lines = thisString.split("\n")
+# 	lines.each do |line|
+# 		if line[0] == " ";indexArr.push("follow")
+# 		else indexArr.push("lead")
+# 		end
+# 	end
+#  end
+
+# names = ["jc","medina","alfonso","carmen","celia","fernando","gaby","gabriela","gaby","isa","isabel","jsucar","susana","vivian","juancarlos","jmalacara","maite","manuel","mariana","marglez","mary","norma","maximo","marroyo","monica","norma","olga"]
+
+# emails = []
+
+# names.each{|name| emails.push(name + "@bandin.mx")}
+
+# emails.each{|email| Contact.create(:email => email, :category => "RE_broker")}
+
+
+myString="
+2000 Once Bienes Raices
+Miguel Treviño Ramones
+
+ 2000once.br@gmail.com
+
+Activos Inmobiliarios
+Roberto Jiménez Salinas
+
+ roberto@activosinmobiliarios.com.mx
+ (81)-83356185, (81)-83356185
+
+ACTIVOS INMOBILIARIOS
+Juan Gabriel González Barney
+
+ ventas@activosinmobiliarios.com.mx
+ ((81))-8335-6185
+
+ADR Consorcio Inmobiliario, S.A de C.V.
+
+ADRIAN GARZA
+Adrian Garza
+
+ adrian@grupogarza.org
+ (818)-3360654
+
+ADVANCE BIENES RAICES
+Teodoro Guzmán Garza
+
+ teodorojguzman@gmail.com
+
+AFSI
+Jesús Mauricio Aceves Cazares
+
+ afsi.oficina@gmail.com
+ 40401881
+
+AG Proyectos de Inversión, S.A de C.V.
+Gerardo Aguilera Inostrosa
+
+ gerardo@grupoagmexico.com
+
+Al+deco Proyectos Inmobiliarios S.C.
+Ing. Carlos Antonio Aldeco Saldaña
+
+ carlos.aldeco@realtyworld.com.mx
+ (81)-10952861, (81)-15888263
+
+Alejandro Garza Saucedo
+Alejandro Garza Saucedo
+
+ agsainmuebles@gmail.com
+
+Alejandro Tamayo Ibarra
+Alejandro Tamayo Ibarra
+
+ tamayo@mgtlandcapital.com
+
+Alles Group
+Felix Gabriel Tejada
+
+ ftejada@allesgroupmty.com
+
+Altitud Bienes Raíces
+Bella Leal
+
+ info@altitudbienesraices.mx
+ (811)-5556783 , (81)-20877800
+
+Angelica Maria Treviño Flores
+
+Antonio Xavier Cuellar Aguirre
+
+Armando Arreola Cantú
+Armando Arreola Cantú
+
+ aarreola@amityk.com
+ (81)-83634848, (81)-83638851
+
+ASESORES Y CASAS
+KATYA GABRIELA HUITRÓN RODRÍGUEZ
+
+ informacion@asesoresycasas.com.mx
+ ((81))-83407073
+
+Asesoria Inmobiliaria Inproperties y Asociados SC
+Michel Andrés Reynoard Villegas
+
+ oscar@inproperties.com.mx
+ (81)-1967784
+
+ASIN BIENES RAICES
+Lic. Emma de Saldaña
+
+ emmacantu00@hotmail.com
+ ((81))-83792223, ((81))-83342203
+
+ASIN BIENES RAICES
+Emma Cantú De Saldaña
+
+ emmadesaldana@asinbienesraices.com
+ (81)-8379-2223, (Nextel)-18-05-7489
+
+AVA Bienes Raices
+Pablo Eduardo Salinas Treviño
+
+ psalinas@avabienesraices.mx
+
+AVALUOS VIP, S. C.
+José Luis Ruiz Garza
+
+ avaluosruiz@avaluosvip.com.mx
+ (811)-257 2310
+
+BARNEY@HOMES
+MARIA DE LOURDES GUARDADO
+
+ lulybarney@hotmail.com
+ (81)-81610134, (81)-83653358
+
+Beatriz Cárdenas Cárdenas
+Beatriz Cárdenas Cárdenas
+
+ beatriz.cardenas@villacero.com
+
+Better Homes Realty
+Luis Zapata
+
+ info@bhr.mx
+ (81)-83567080, (811)-5443195
+
+BIENES RAICES ACORE
+Rene Acosta Quezada
+
+ reneacost@yahoo.com
+
+Bodegas ADN Monterrey
+
+BR MONTERREY
+ brmonterrey@gmail.com
+ (81)-83724013, (81)-14782610
+
+Brokers Conceptos S.A. de C.V.
+Emilio De la Garza Garza
+
+ info@zonifica.com
+ (81)-83560736
+
+BRYMI INMOBILIARIA
+Silvia Judith Torres Luévano
+
+ silvia.torres@brymi.com.mx
+ (81)-21397672, (81)-10448246
+
+CADENA COMERCIAL OXXO,S.A. DE C.V.
+Luis Armando Salazar Cantú
+
+ armando.salazar@oxxo.com
+
+Cantú Quiroga y Asociados, S.C.
+Ricardo Alfonso	Cantú Garza
+
+ cantuquiroga@prodigy.net.mx
+
+CANTU QUIROGA Y ASOCIADOS,S.C.
+F. Horacio Cantú Quiroga
+
+ hcq@prodigy.net.mx
+
+CAPITEL DESARROLLOS
+Eduardo A. Mellado Flores
+
+ emellado@capitel.com.mx
+
+CAPITEL DESARROLLOS
+Eduardo Mellado Rodríguez
+
+ e_mellado_rdz@capitel.com.mx
+
+CARLOS ARMANDO MANCILLA MONTOYA
+ 
+ camancilla2@hotmail.com
+ (81)-8110502442
+
+Carlos Suárez Warden
+
+Casa O Depa.com
+Luis Martin Espinosa Gutierrez
+
+ mespinosa@casaodepa.com
+ ((81))-83567070, (81)-82598944
+
+Casas y Casas
+Joel Abraham Leal Escobedo
+
+ joel_leal76@hotmail.com
+
+CB RICHARD ELLIS, S.A. DE C.V.
+Ramón Flores Dominguez
+
+ ramon.flores@cbre.com.mx
+
+CEBRIAN BIENES RAICES
+Daniel Cebrian Ramirez
+
+ daniel@cebrianbienesraices.com
+ (81)-10114253
+
+Cecilia Erosa Barrera
+
+Cecilia Serrano Medina
+
+CEI INMOBILIARIA
+ERNESTO LEAL
+
+ elealc@prodigy.net.mx
+ (8182449089)-, (8183764415)-
+
+Centro de Negocios Inmobiliarios
+Ing. Jose Luis Pérez Madero
+
+ karen@cnivalle.mx
+ (81)-12537047, (81 )-12537048
+
+CENTURY 21 LIBRA
+ c21libralua@gmail.com
+ (81)-81732121
+
+Clío Guevara del Pino
+Clio Guevara Del Pino
+
+ clio@cgbienesraices.com
+ (811)-5-999-694
+
+COLLIERS INTERNATIONAL
+Luis Manuel Galindo Guajardo
+
+ luis.galindo@colliers.com
+ (81)-83635330
+
+COLLIERS INTERNATIONAL
+Baltazar Mauricio Cantú Gonzalez
+
+ baltazar.cantu@colliers.com
+ 83635330
+
+COLLIERS INTERNATIONAL
+Cesar A. De la Cerda Garza
+
+ cesar.delacerda@colliers.com
+ 83635330
+
+COLLIERS INTERNATIONAL
+Sergio Arturo Resendez Trujillo
+
+ sergio.resendez@colliers.com
+ 83635330
+
+COLLIERS INTERNATIONAL
+Fernando Alvarez Cardenas
+
+ fernando.alvarez@colliers.com
+ 83635330
+
+Conex
+Arturo Daniver Martinez Lozano
+
+ arturo.martinez@conex.mx
+
+Conexión Bienes Raíces
+
+Consorcio Industrial de Exportaciones
+Armando Maquivar Bustos
+
+ maquivar@ciesa.com.mx
+
+Consultoria Inmobiliaria
+
+Cuauhtemoc Moctezuma Heineken
+Juan Felipe Mendez Garcia
+
+ juanfelipe.mendez@cuamoc.com
+ (8115719980)-
+
+Datoz
+
+DEALHUNTER SA DE CV
+JESUS R. GARZA VEGA
+
+ info@dealhunter.mx
+ (81)-19712222, (81)-14777944
+
+Desarrollos Delta
+
+Dialex Servicios Inmobiliarios
+
+DIRECTO BIENES RAÍCES
+Jorge Alberto Treviño Gonzalez
+
+ jorge@directobienesraices.com
+ (81)-14138336, (81)-89983960
+
+EDMON Grupo Inmobiliario
+Lic. Eduardo Cervantes Lozano
+
+ ecervantes@edmon.com.mx
+ (81)-83745050
+
+ELVIA GODINES
+ elviagodines@prodigy.net.mx
+ 8183450497
+
+
+Enfoque Inmobiliario
+Graciela Carrasco Garza
+
+ graciela.carrasco@hotmail.com
+ (811)-6125186
+
+Enlaza Bienes Raices
+Maricela Villarreal Arreola
+
+ info@enlaza.com.mx
+ ((81))-10441259
+
+Enlaza Bienes Raices
+Yelile Marcos Tueme
+
+ info@enlaza.com.mx
+ ((81))-10441259
+
+ENLAZA BR
+Yelile Marcos / Maricela Villarreal
+
+ info@enlaza.com.mx
+ (81)-2049 4545, (81)-2050 8152
+
+ESPIGA BIENES RAICES
+HECTOR ESPINOSA B
+
+ hectorespinosab@gmail.com
+ (81)-8110323190, (81)-8110323190
+
+Expansión Mty
+María Zamora
+
+ contacto@expansionmty.com.mx
+ (81)-21879713
+
+Fernando González De la Peña
+Fernando González De la Peña
+
+ lic.fernandogonzalez@hotmail.com
+
+FIDESburó Asesores Inmobiliarios
+Eduardo Javier Cantú González
+
+ ventas@fidesburo.com
+ ((01 800))-8343 2060
+
+FIDESburó Asesores Inmobiliarios
+José Antonio Cantú González
+
+ ventas@fidesburo.com
+ (8)-3432060
+
+Garza Rendón Maria Antonia
+Garza Rendón Maria Antonia
+
+ marytonnyrmzz@hotmail.com
+
+General Contractor México
+Mario Gutierrez Beteta
+
+ mariogutie@yahoo.com.mx
+
+General Contractor México
+MaRío R. Gutiérrez de Alba
+
+ mario@generalcontractormexico.com
+
+Gerencia Red
+Claudia Hernández Morales
+
+ chernandez@gerenciared.com
+
+Gerencia Red
+Balbina Manjarrez Villalobos
+
+ bmanjarrez@gerenciared.com
+
+Gerencia Red
+Eduardo Camarena Legaspi
+
+ ecamarena@gerenciared.com
+
+Gerencia Red
+Maria Estela Zambrano Yturria
+
+ mzambrano@gerenciared.com
+
+Gerencia Red
+Veronica Moreno Tovar
+
+ vmoreno@gerenciared.com
+
+Gerencia Red
+Ma. Eugenia Castillejo de González
+
+ mcastillejos@gerenciared.com
+
+Gerencia Red
+Martha Olvera Rodarte
+
+ molvera@gerenciared.com
+
+Gerencia Red
+Hilda Ivon Mata Tafoya
+
+ imata@gerenciared.com
+
+Gerencia Red
+Gerardo M. Gutiérrez Rodríguez
+
+ gmgutierrez@gerenciared.com
+
+Gerencia Red
+Patricio Gutiérrez Rodríguez
+
+ pgutierrez@gerenciared.com
+
+Gerencia Red
+Marianela Mendoza Garza
+
+ mmendoza@gerenciared.com
+
+Gerencia Red
+Georgina Ramos Frias
+
+ gramos@gerenciared.com
+
+Gerencia Red Grupo Inmobiliario, S. A de C. V.
+Maria Teresa Delgado Adame
+
+ mdelgado@gerenciared.com
+
+Gestión y Continuidad de Negocios BCM, S.A. de C.V.
+
+GINSA GRUPO INMOBILIARIO
+JULIO CESAR GONZALEZ BRAVO
+
+ juliocesar@ginsagin.com
+ (81)-83492020, (81)-83667783
+
+Ginsa Gupo Inmobiliio
+Hector Javier Aguirre Alanís
+
+ aguirrealan@hotmail.com
+
+Global Comercial&Investment Real Estate
+César Fernando Paredes Guerra
+
+ cparedes@att.net.mx
+
+Global Commercial and Investment Real Estate
+Gerardo Paredes Guerra
+
+ gparedes@att.net.mx
+
+Gomez González Bernardo
+Gomez González Bernardo
+
+ bgomez_glez@msn.com
+
+González Bienes Raices
+Ing. Mario A. González Galindo
+
+ magg@gonzalezbienesraices.com
+ (81)-83358383, (81)-11134738
+
+
+Gordillo Jaime y Asociados
+ jorgemario@gordillojaime.com
+ (80-58-00-8)-, (811-740-15)-
+
+GOYE Real Estate
+
+Grimonsa S.A de C.V.
+Lecea Garay Mirna
+
+ mlecea@grimosa.com.mx
+
+GRIMONSA SA DE CV
+ROQUE RABELO AREVALO
+
+ mlecea@grimosa.com.mx
+ (81)-83354552, (81)-10995027
+
+Grubb & Ellis/Select
+Gerardo Pasaret Robles
+
+ gerardo.pasaret@select-rs.com
+
+Grupo Elizomar, S.A. de C.V.
+Fernando Elizondo Garza
+
+ br@materialesasfalticos.com
+
+GRUPO EQUINOCCIAL S.A DE C.V.
+Ramiro Garza Villarreal
+
+ rgarza@ampimty.com
+
+Grupo Inmobiliario EDMON
+Hugo Gutiérrez Gaona
+
+ hgutierrez@integradesarrollos.com
+
+GRUPO INMOBILIARIO MCQUADE S DE RL DE CV
+Francisco A. McQuade Castañeda
+
+ info@vendoinmuebles.com.mx
+ (81)-19904161, (81)-83408394
+
+Grupo Stiva
+Angel Ulises Rincón Pérez
+
+ ulises.rincon@stiva.com
+
+Grupo Vergel
+ info@grupovergel.com
+ (81)-84862711
+
+Grupo Vía Inmuebles
+Adrian Villarreal Lamas
+
+ adrian@gvia.mx
+
+Huidobro y Asociados
+Alberto Huidobro Llabrés
+
+ huidobro@prodigy.net.mx
+ (044 )-8111930417
+
+ILUSSAO Consultores S. de R.L.
+Fernando Juárez Vásquez
+
+ fjuarez@ilussao.com
+
+Infante Luna Myrthala
+Infante Luna Myrthala
+
+ myrthala.banorte@yahoo.com.mx
+
+Inmobiliaria Apodaca Monterrey
+RAMSES ALVAREZ BARAJAS
+
+ ramsesalvarez81@gmail.com
+ (81)-14930260, (81)-14930249
+
+
+Inmobiliaria Cumbres Monterrey
+Héctor Rentería
+
+ contacto@cumbresmonterrey.com
+ (818)-421-9880
+
+Inmobiliaria la Covadonga, S.A. de C.V.
+Lic. J Martin Fdz G
+
+ jfernandez@lacovadonga.com.mx
+ (81)-21399301, (81)-14975030
+
+INMOBILIARIA MARMUR SA DE CV
+ info@marmur.com.mx
+ (81)-82185660, (81)-21335660
+
+Inmobiliaria Monterrey
+Delfino Murillo Arellano
+
+ ventas@inmobiliariamonterrey.com.mx
+ (81)-14814705, (ext103 )-8119370101
+
+INMOBILIARIA SANCHEZ & ROJAS, S.A. DE C.V.
+DIANA ANGÉLICA SANCHEZ ROJAS
+
+ ventas@insaro.com.mx
+ (81 )-83618302, (81)-84216757
+
+Inmobiliaria Zuhause
+
+Inmuebla Enlaces
+Francisco Javier Banda Flores
+
+ info@inmueblaenlaces.com
+ (81)-12970148, (81)-21502473
+
+Inmuebla Ilussao Zona Valle
+Rene Javier Morales Montemayor
+
+ remo54@prodigy.net.mx
+
+Interra, S.A de C.V.
+
+IQ BIENES RAICES
+IDALIA QUINTANILLA CANTÚ
+
+ iq@iqbienesraices.com
+ (818)-2594974, (81)-19413818
+
+Iquarto Desarrollos
+Jorge Alberto Martínez González
+
+ jorgemg@iquarto.com
+ (81)- 83351460
+
+Isaías Aguilar Reséndez
+Isaías Aguilar Reséndez
+
+ isaias@valuacion-profesional-iar.com
+
+IZA BUSINESS CENTERS
+Federico Garcia Iza
+
+ federico.garcia@izabc.com
+
+IZA BUSINESS CENTERS
+Eloisa Cavazos Salinas
+
+ eloisa.cavazos@izabc.com
+ (81)-8000 0000
+
+Jaime Antonio González Galindo
+Jaime Antonio González Galindo
+
+ jgbienesraices@prodigy.net.mx
+
+José Guillermo Pérez Muñoz
+José Guillermo Pérez Muñoz
+
+ jose.perez@rhipotecaria.com.mx
+
+
+JOSE GUILLERMO QUINTANILLA VILLARREAL
+JOSE GUILLERMO QUINTANILLA VILLARREAL
+
+ memo64quintanilla@gmail.com
+ 8119272305
+
+José Luis Aguirre Villafaña
+José Luis Aguirre Villafaña
+
+ jlaguirre52@gmail.com
+
+Juan Miguel Medellín Moreno
+Juan Miguel Medellín Moreno
+
+ ingenieromedellin@elfraile14.com
+
+Kapital Inmobiliario
+Alberto Treviño
+
+ alberto@kapitalinmobiliario.com.mx
+ 8115001191
+
+KATO ACMA,S.A. DE C.V.
+Candor Gutiérrez Garza
+
+ candorgutierrez@yahoo.com
+
+KATZIR
+Mónica Marcela Montemayor Treviño
+
+ administracion@katzir.mx
+
+KATZIR
+Claudia Estela Montemayor Treviño
+
+ claudia_e575@hotmail.com
+
+Koinox Developers
+Benjamin Diaz Name
+
+ bdiaz@koinox.com
+ (81)-8174 7000
+
+Koinox Developers
+Jorge Luna Gutiérrez
+
+ jluna@koinox.com
+
+KONNECT
+ contacto@konnect.mx
+ (04481)-14759865
+
+LAS FLORES ASESORIA INTEGRAL
+ lasfloresasesoriaintegral@gmail.com
+ (2139-0239)-
+
+Laura Margarita Arredondo Zambrano
+Laura Margarita Arredondo Zambrano
+
+ laura@arredondoz.com
+
+Laura Porras Loyola
+
+Look for House Inmobiliaria, S.A de C.V.
+Eva Graciela Mejía Calderón
+
+ contacto_sanpedro@lookforhousemx.com
+ 83352233
+
+Luis Gonzaga Caballero Bolado
+Luis Gonzaga Caballero Bolado
+
+ luis@caballerobienesraices.com
+
+Marfil Desarrollo
+
+
+María Olivia Ayala Reyes
+María Olivia Ayala Reyes
+
+ avaluosyasesorias@prodigy.net.mx
+
+Martinez Ballesteros Bienes Raíces
+Ricardo Martinez Ballesteros
+
+ rmb1@prodigy.net.mx
+
+Master Brokers Valle
+María Jasso Reyes
+
+ mariajassor@gmail.com
+
+Matriz Inmobiliaria
+Juan José Treviño Garza
+
+ juanjose@matrizinmobiliaria.com
+ (8)-3561700
+
+Mavi Bienes Raices
+Victor M.Mata
+
+ mavibienesraices@gmail.com
+ (01)-5281151283, (5281151283)-5281151283
+
+MAXIBIENES. ASESORES INMOBILIARIOS
+Jose Briones Garcia
+
+ josebriones@maxibienes.com.mx
+ (81)-83325060
+
+MD Inmuebles
+Karla Marcos
+
+ info@mdinmuebles.com
+ (81)-23176061
+
+Mega Inmuebles
+Ernesto González de la Peña
+
+ ernestogzz@prodigy.net.mx
+ (81)-83661000
+
+Megamax Bienes Raices
+Dahuabe Martinez Elias
+
+ eliasmegamax@gmail.com
+
+MG Asesores
+Gómez Pérez Meisy Alaee
+
+ asesor.inmobiliario.citas@gmail.com
+
+Miguel Alfonso Pavon Calderon
+Miguel Alfonso Pavon Calderon
+
+ mpavon@previsionlegal.com.mx
+
+MONARCA
+Daniel Ríos Guzmán
+
+ cecilia.arcaute67@gmail.com
+
+Moncavil y Asociados, S.C.
+
+Moving Property
+Ramiro Gonzalez Botello
+
+ biogzz@prodigy.net.mx
+
+Moving Property
+Maria de los Angeles Garza Lozano
+
+ mg@movingproperty.mx
+ (81)-80449988, (81)-19922982
+
+Mundo Raiz
+Gustavo Javier Elizondo Palacios
+
+ gustavo.elizondo@mundoraiz.com
+ (81)-84007711, (81)-84007712
+
+
+Muzotto Inmobiliaria
+Guadalupe Muñoz Soto
+
+ ventas@muzotto.com
+ (81)-81140143, (81)-19374950
+
+Nivel Uno Construcciones
+Jorge Cuellar Lozoya
+
+ eduardo@niveluno.com.mx
+ (81)-19981838
+
+NOVA REALTY
+MISHAEL LÓPEZ ROMÁN
+
+ info@novarealty.mx
+ (Of. (81))-1973-6433, (Cel. (81))-8020-5858
+
+Nume Inmobiliaria
+Ma Cristina Medellin Mendoza
+
+ cristina.medellin@numeinmobiliaria.com
+ (811)-2902373, (811)-2902412
+
+Nuva Inmuebles
+Del Rivero CorralCarolina Guadalupe
+
+ carolina@nuva.mx
+
+OJABSA
+Mirna Edith Uresti Prado
+
+ ventas@ojabsa.com.mx
+ 83446301
+
+OJABSA
+Myriam Danae Velazquez Valdes
+
+ ventas@ojabsa.com.mx
+ (81)-83446301
+
+Paul Madison Douglass Robinson
+Paul Madison Douglass Robinson
+
+ paul.duglass@selec-rs.com
+
+PH7 REAL ESTATE
+SUSANA ELIZONDO
+
+ info@ph7realestate.com
+ (81)-83353712, (81)-83352683
+
+Picasso Bienes Raíces
+Brenda Villarreal
+
+ info@ipicasso.mx
+ (81)-83353048, (811)-0666967
+
+Planen Luxury
+Ana Cristina Dominguez Gandara
+
+ rebeca@planenluxury.com
+ 19348920, 18074915
+
+Planen Luxury
+Maria Cristina Garza Betancourt
+
+ marketing@planenluxury.com
+ 19348920
+
+Planen Luxury
+Irma Rebeca Aranda Delgado
+
+ marketing@planenluxury.com
+
+Planen Luxury
+Guadalupe Flores Mata
+
+ marketing@planenluxury.com
+
+Plusvalía Inmuebles
+Fernando González Sada
+
+ info@plusvaliai.com
+ (81)-13663066
+
+PR REAL ESTATE S DE RL DE CV
+ARQ. CECILIA FRIAS
+
+ cecilia@prrealestate.com.mx
+ (81 )-83353712, (81)-83352683
+
+
+Preminence Valle Bienes Raices
+Carrillo León Mario Alberto
+
+ mcarrillo@preminence.com.mx
+
+Preminence Valle Bienes Raices
+
+Preminence Valle Bienes Raices
+
+Previsión Legal
+
+Prevision Legal, SA de CV
+Marco Antonio Hinojosa Alvarez Tostado
+
+ mty@previsionlegal.com.mx
+
+Promotora Inmobiliaria González Elizondo, S. de R. L. de C. V.
+Lic. Gerardo González Elizondo
+
+ gepromotora@yahoo.com
+ (0181)-83152160, (0181)-22827141
+
+Proper Deal
+
+Quintanilla y Asociados Bienes Raices
+
+Real Key Estate
+Blanca Lidia Garza Cavazos
+
+ contacto@realkeyestate.com
+ (81)-86051764, (81)-19341242
+
+Real Key Estate
+Nora Edith López Salazar
+
+ contacto@realkeyestate.com
+ (81)-1934-1242
+
+Real Key Estate
+Jorge Eduardo Gómez Nájera
+
+ contacto@realkeyestate.com
+ (81)-1934-1242
+
+REALTY WORLD INCO VALLE CORREDORES Y ASESORES INCORPORADOS
+Jorge Alberto Paredes Guerra
+
+ jorge@realtyworld.com.mx
+ (818)-220-8480
+
+Realty World Koinox
+Fernando González Rocha
+
+ koinox@realtyworld.com.mx
+ (81)-81747002, (81)-19774238
+
+Realty World Oliva Asesores
+Hector M. Oliva Galván
+
+ info@realtyworldoliva.com
+ (0181)-83659091, (0181)-83659092
+
+REALTY WORLD PROCASAS
+María Eréndira Cárdenas Cuevas
+
+ joseluisgarza@rwpro-k-zaz.com
+ (818)-100-9487, (818)-378-4997
+
+REALTY WORLD PROCASAS
+Daniel Alberto Berrones Melchor
+
+ joseluisgarza@rwpro-k-zaz.com
+ (818)-100-9487, (818)-378-4997
+
+
+REALTY WORLD PROCASAS
+
+REALTY WORLD PROCASAS
+Brenda Deyanira Charles Garza
+
+ arq.brendacharles@gmail.com
+
+REALTY WORLD PROCASAS
+Leticia Martinez
+
+ letty_190@hotmail.com
+
+REALTY WORLD PROCASAS
+Brenda Paloma Leal Charles
+
+ paloma.charles@gmail.com
+
+REALTY WORLD PROCASAS
+Diana Elisa Gómez Mata
+
+ darelygifts@gmail.com
+
+Remax PyV
+Eduardo Guillermo Muñoz Sheridan
+
+ pelizondoe@pyv.com.mx
+ 83178283
+
+Remax PyV
+Pedro Elizondo Elizondo
+
+ pelizondoe@pyv.com.mx
+ (81)-11558012, (01800)-5092477
+
+Remax PyV
+ALEJANDRO LEOPOLDO ERHARD LOZANO
+
+ crminmobiliario@remaxmty.com
+ (81)-83178283, (81)-83178286
+
+RENTALO
+Juan Chávez Estrada
+
+ rentaloasesores@hotmail.com
+
+Rentohouse
+ORLANDO PAREDES
+
+ info@rentohouse.com
+ (8112704136)-, (81300220)-
+
+Rigoberto G. Cantú González
+Rigoberto G. Cantú González
+
+ rig67cantu@hotmail.com
+
+Rio Grande Bienes Raíces
+Francisco Javier Guzmán Martínez
+
+ francisco@riograndeworld.com.mx
+ (044)-8113007376, (81)-20863539
+
+ROCHA BIENES RAICES
+Elvira Rocha Ríos
+
+ rocharios@prodigy.net.mx
+
+SANTOS BIENES RAICES
+José Cayetano	Santos Gutiérrez
+
+ jcayetano@santosbienesraices.com
+ (81)-15220762, (81)-1522 0763
+
+Select Regional Solutions
+Alejandro Anaya Rosel
+
+ alex-anaya@select-rs.com
+
+Select Regional Solutions S de RL de CV
+Ma. Magdalena Cortez Maycotte
+
+ magdalena.cortez@selec-rs.com
+
+
+Servicios Inmobiliarios Arreola y Asociados Santa Catartina, S.A de C.V.
+Sr.Guadalupe Arreola Cantú
+
+ joseg.arreola@hotmail.com
+ (14760990)-
+
+Servicios Profesionales Dieg-Mar
+Cruz Acosta Presas
+
+ esac.inmobiliaria@gmail.com
+
+Servidesarrollo y Soluciones Integrales de México
+Marco Aurelio Avila Martinez
+
+ marco.a.avilamtz@gmail.com
+
+Sinergia7 Bienes Raíces
+ info@sinergia7.com
+ (81)-21677070
+
+Solución Hipotecaria
+Adriana Patricia Martinez Vazquez
+
+ adriana.9193@hotmail.com
+
+State Inmobiliaria
+Aragón Herrera Francisco Lic
+
+ state.francisco@gmail.com
+
+STEINBECK REAL ESTATE
+Joaquin Alberto Renero Mejia
+
+ joaquin.renero@gmail.com
+
+Susana García Bienes Raíces
+Susana Gloria García García
+
+ sgarciagarciabr@gmail.com
+ (811 601 08)-
+
+TAURO ASESORES INMOBILIARIOS S.A DE C.V
+ALEJANDRO DEL REAL IBAÑEZ
+
+ informes@taurobienesraices.com.mx
+ (0181)-83350390, (0181)-83350450
+
+Territarea Bienes Raices
+Rosa Maria Muñoz Sampayo
+
+ rosy@territarea.com
+ (81)-83683728, (81)-8115261731
+
+Trato Hecho Si
+
+TREVIÑO MANRIQUE Y ASOCIADOS
+Jorge Eduardo Treviño Manrique
+
+ jorgetreman@axtel.net
+
+UBIKA INMUEBLES
+Arturo Vázquez Ramos
+
+ arturo@ubikainmuebles.com
+ (81)-20867100, (81)-81359033
+
+UPTOWN Real Estate Group, Inc,
+Mariana Saldaña
+
+ marianaenhouston@gmail.com
+
+URBANINM
+Jorge Federico De la Vega Cadena
+
+ jorge@urbaninm.com
+
+URBANINM
+Alejandra Sarahi De León Garza
+
+ alejandra@urbaninm.com
+
+ 
+Urbanistika, SA de CV
+César Rodríguez Hernandez
+
+ crodriguez@metrofinanciera.com.mx
+
+Val Proyectos y Desarrollos S.A. de C.V.
+Ing. Valdés
+
+ ihome.mty@gmail.com
+ (8117989486)-
+
+Val Proyectos y Desarrollos S.A. de C.V.
+Francisco Javier Valdes Dominguez
+
+ ihome.mty@gmail.com
+ (8)-989 1970, 1931 9000
+
+VENTA PROPIEDADES NUEVO LEON
+Rafael Leal Flores
+
+ ventapropiedadesnuevoleon@gmail.com
+
+Victor Adrián Rangel de la Rosa
+Victor Adrián Rangel de la Rosa
+
+ vrangel@socasesores.com
+
+VIVALIA, S.A. DE C.V.
+Enrique Garcia
+
+ brmty1@gmail.com
+
+Vive Tu Casa Asesores,SA de CV
+Manuel Garza Nieto
+
+ manuel.garzanieto@bienesasesores.com
+ 50009074, (811)-5886697
+
+Xell Bienes Raices
+Maria Teresa Treviño Fernandez
+
+ mariateresa@xell.com.mx
+
+Zinko Inmuebles, S.A de C.V.
+Israel Javier Lerma Velázquez
+
+ israel@zinkoinmuebles.mx
+ ((81))-83450611, 11559931
+"
+
+# PUEBLA
+
+myString="UsuarioAguilar Machorro Ana Maria
+Sección: Angelópolis Cholula
+Email: amamgandhi@hotmail.com
+ Más InformaciónTelefonos:
+222 - 569-4635
+222 - 455-2314
+UsuarioArnal Cabrera María de Lourdes
+Sección: Angelópolis Cholula
+Email: arnalulu@gmail.com
+ Más InformaciónTelefonos:
+222 - 2488756
+- Nx. 614 0311
+222 - 212 7721
+UsuarioCabrera Ramírez Maria Del Pilar
+Sección: Angelópolis Cholula
+Email: pilarcabrera7@yahoo.com.mx
+ Más InformaciónTelefonos:
+(222) - 304-4063
+UsuarioCarrillo Escobar Jose Luis
+Sección: Angelópolis Cholula
+Email: terrenosocasas@gmail.com
+ Más InformaciónTelefonos:
+222 - 4301476
+- ID 72*15*5711
+- 222 455 6646
+UsuarioCedeño Caballero Estefania
+Sección: Angelópolis Cholula
+Email: estefania@hanna.mx
+ Más InformaciónTelefonos:
+222 - 2222224
+222 - 1162795
+UsuarioDel Valle Jose Luis
+Sección: Angelópolis Cholula
+Email: pepedelvalle4@gmail.com
+ 197 Inmuebles  |  Más InformaciónTelefonos:
+222 - 444 87 33
+222 - 162 83 87
+UsuarioDiaz Ortega Edgar
+Sección: Angelópolis Cholula
+Email: ediaz@ideasinmobiliarias.com
+ 97 Inmuebles  |  Más InformaciónTelefonos:
+222 - 2103505
+222 - 3588274
+UsuarioGerala Mantilla José Antonio
+Sección: Angelópolis Cholula
+Email: jgerala_2000@yahoo.com
+ Más InformaciónTelefonos:
+01 222 - 320 66 29
+UsuarioHaces Carvajal Rafael 
+Sección: Angelópolis Cholula
+Email: rhaces@pivasa.com.mx
+ Más InformaciónTelefonos:
+222 - 1568101
+UsuarioHanna Lajud Andrea
+Sección: Angelópolis Cholula
+Email: andrea@hanna.mx
+ Más InformaciónTelefonos:
+222 - 2222224
+229 - 9281939
+UsuarioHernandez Mejia Jorge Adalberto
+Sección: Angelópolis Cholula
+Email: adal@urbinex.mx
+ 25 Inmuebles  |  Más InformaciónTelefonos:
+222 - 2336252
+222 - 6149532
+222 - 1231536
+UsuarioLeon Soriano Carolina
+Sección: Angelópolis Cholula
+Email: caroleons@yahoo.com.mx
+ Más InformaciónTelefonos:
+- 249-6990
+- 2221360654
+UsuarioLinden Forcelledo Jose Luis
+Sección: Angelópolis Cholula
+Email: joseluis@linden.com.mx
+ 107 Inmuebles  |  Más InformaciónTelefonos:
+222 - 8 68 44 86
+222 - 2 49 86 51
+222 - 8 88 13 01
+UsuarioMadrid Rendón Maria Teresa
+Sección: Angelópolis Cholula
+Email: avacomin@hotmail.com
+ 6 Inmuebles  |  Más InformaciónTelefonos:
+(222) - 703-71-78
+(222) - 226-78-14
+045 222 - 547-56-55
+UsuarioMalibrán Lacorte Blanca Alicia
+Sección: Angelópolis Cholula
+Email: malibranbr@yahoo.com.mx
+ 4 Inmuebles  |  Más InformaciónTelefonos:
+222 - 2488756
+222 - 2222127721
+- Nx. 614-0311
+UsuarioMalibran Lacorte Luz Elena 
+Sección: Angelópolis Cholula
+Email: luzmalibran@yahoo.com.mx
+ Más InformaciónTelefonos:
+222 - 2488756
+- 4440004
+UsuarioMalibran Lacorte Dulce Ma.
+Sección: Angelópolis Cholula
+Email: dulcemariamalibran@yahoo.com.mx
+ Más InformaciónTelefonos:
+222 - 8 92 15 00
+045 - 22387820
+UsuarioMenendez Priante José Ignacio
+Sección: Angelópolis Cholula
+Email: gerenciamenpri@gmail.com
+ 13 Inmuebles  |  Más InformaciónTelefonos:
+- 240 0786 
+- 240 0607
+UsuarioMoreno Lagunes Emilio
+Sección: Angelópolis Cholula
+Email: emoreno@inviertem3.com
+ Más InformaciónTelefonos:
+01(222) - 2780449
+044(222) - 7532779
+UsuarioNachon Saldivar Carlos Alejandro 
+Sección: Angelópolis Cholula
+Email: carlos.nachon@emporioinmobiliario.mx
+ Más InformaciónTelefonos:
+222 - 85-61-07
+222 - 120-92-45
+ Peña Fuentes José Luis Bernardo
+Sección: Angelópolis Cholula
+Email: berme06@prodigy.net.mx
+ 27 Inmuebles  |  Más InformaciónTelefonos:
+222 - 2641880
+222 - 6140425
+222 - 1998411
+UsuarioPinzón González Victor Manuel
+Sección: Angelópolis Cholula
+Email: pinzongonzalezyasociados@yahoo.com
+ Más InformaciónTelefonos:
+(222) - 231 89 30
+(222) - 231 89 31
+UsuarioPinzón Erbes Adriana
+Sección: Angelópolis Cholula
+Email: ventas.pinzongonzalez@gmail.com
+ Más InformaciónTelefonos:
+- 231 8930, 231 8931
+- Nx. 614 6282, ID 62*1024484*1
+- Cel. 222 484 1563
+UsuarioPUEBLA AMPI
+Sección: Angelópolis Cholula
+Email: contacto@ampiangelopolis.org.mx
+ Más InformaciónTelefonos:
+- - -
+UsuarioRodriguez Pineda Margarita
+Sección: Angelópolis Cholula
+Email: margaritarodpin@hotmail.com
+ 7 Inmuebles  |  Más InformaciónTelefonos:
+222 - 2218430
+044 - 2224028850
+UsuarioRomero Cortés Rafael Alberto
+Sección: Angelópolis Cholula
+Email: rarc30@yahoo.com
+ 8 Inmuebles  |  Más InformaciónTelefonos:
+222 - 298 46 05
+044 - 2222386890
+UsuarioSaldivar Gomez Mayra De Jesus
+Sección: Angelópolis Cholula
+Email: may_smx@yahoo.com
+ Más InformaciónTelefonos:
+222 - 298 46 06
+222 - 298 46 05
+222 - 615 35 04
+UsuarioSaldívar Gómez Ana Rosa
+Sección: Angelópolis Cholula
+Email: anrosa_sg@hotmail.com
+ Más InformaciónTelefonos:
+222 - 298-4606
+222 - 2984605
+- Nextel: 4441979
+UsuarioSarti Navarro Héctor Manuel
+Sección: Angelópolis Cholula
+Email: hector@sartibienesraices.com.mx
+ 7 Inmuebles  |  Más InformaciónTelefonos:
+222 - 2109352
+044 - 2221605819
+UsuarioSchneider Elmar
+Sección: Angelópolis Cholula
+Email: elmar@marelbr.mx
+ Más InformaciónTelefonos:
+01 - 2225692090
+044 - 2221208356
+UsuarioTorres Aguilar Alma
+Sección: Angelópolis Cholula
+Email: berme06@prodigy.net
+ Más InformaciónTelefonos:
+01 (222) - 233 33 29"
+
+# CUERNAVACA
+
+myString="UsuarioAguilar Rello Maria Teresa
+Sección: Cuernavaca
+Email: mayteaguilar@inmobiliarianatura.com.mx
+ Más InformaciónTelefonos:
+01 777 - 2427828
+01 777 - 3020010
+- 242 7828
+UsuarioArcq Mañon Odette
+Sección: Cuernavaca
+Email: arcqyasociados@gmail.com
+ Más InformaciónTelefonos:
+777 - 315-3935
+777 - 322 6283
+777 - 234 9478
+UsuarioBarragan Pérez Guadalupe
+Sección: Cuernavaca
+Email: lupitaroman@yahoo.com
+ Más InformaciónTelefonos:
+777 - 310 3730
+777 - 310 0047
+777 - 113 1306
+UsuarioBelaunzarán Sánchez Santa Teresita
+Sección: Cuernavaca
+Email: camachobienesraices2@prodigy.net.mx
+ Más InformaciónTelefonos:
+735 - 398 1355
+735 - 735 398 1752
+UsuarioBenavides Beyer Francisco Salvador
+Sección: Cuernavaca
+Email: terranova17@hotmail.com
+ Más InformaciónTelefonos:
+777 - 3226279
+777 - 3169354
+- 044 777 5 87 84 33
+UsuarioCaballero López Raúl
+Sección: Cuernavaca
+Email: caballerobr@hotmail.com
+ Más InformaciónTelefonos:
+- 314 5676
+- 314 5677
+551 - 0885318
+UsuarioCamacho Cortes Ernesto
+Sección: Cuernavaca
+Email: bienesraicescamacho@prodigy.net.mx
+ Más InformaciónTelefonos:
+735 - 356 6638
+735 - 356 7764
+UsuarioCastillo Garcia Javier Jorge
+Sección: Cuernavaca
+Email: ventas@jcbienesraices.com
+ Más InformaciónTelefonos:
+01777 - 314 46 96
+01777 - 314 46 97
+01777 - 169 28 97
+UsuarioCUE RUIZ MA. GUADALUPE
+Sección: Cuernavaca
+Email: cue@ampi.org
+ Más InformaciónTelefonos:
+- 0000000000
+UsuarioCUERNAVACA AMPI
+Sección: Cuernavaca
+Email: contacto@ampicuernavaca.com.mx
+ Más InformaciónTelefonos:
+- - -
+Usuariodcosta century21
+Sección: Cuernavaca
+Email: dcosta@century21dcosta.com
+ Más InformaciónTelefonos:
+- 316 1817
+UsuarioDíaz Gamboa Jorge
+Sección: Cuernavaca
+Email: cocodigam@hotmail.com
+ Más InformaciónTelefonos:
+777 - 3135226
+777 - 2896920
+777 - 1887129
+UsuarioDíaz Barriga Miranda Mónica
+Sección: Cuernavaca
+Email: inovarqdiba@yahoo.com.mx
+ Más InformaciónTelefonos:
+777 - 1023111
+777 - 3636789
+UsuarioEspinoza De Los Monteros Andrea Dolch
+Sección: Cuernavaca
+Email: Monterose@hotmail.com
+ Más InformaciónTelefonos:
+777 - 310 3730
+UsuarioGarcía González J. Guillermo
+Sección: Cuernavaca
+Email: asespatrim@prodigy.net.mx.com
+ Más InformaciónTelefonos:
+- 318 18 44
+- 119 02 77
+- 52*225515*3
+UsuarioGOMEZ HERRERA JORGE ALEJANDRO
+Sección: Cuernavaca
+Email: gomez@ampi.org
+ Más InformaciónTelefonos:
+- 000000000
+UsuarioGómez Topete Josefina
+Sección: Cuernavaca
+Email: plusvaliabr@cableonline.com.mx
+ Más InformaciónTelefonos:
+- 318 5666
+- 203 6187
+- 62*13*76563
+UsuarioGonzalez Palomares Jose Roberto
+Sección: Cuernavaca
+Email: Palomaresg@hotmail.com
+ Más InformaciónTelefonos:
+777 - 310 3730
+UsuarioKettenhofen E. Martin
+Sección: Cuernavaca
+Email: bienes.raicesleal@hotmail.com.mx
+ Más InformaciónTelefonos:
+- 322 5050
+- 203 6890
+- ID 62*15*63129
+UsuarioLarios Serrano Ismael
+Sección: Cuernavaca
+Email: informes@forsalecuernavaca.com
+ Más InformaciónTelefonos:
+777 - 3229523
+777 - 2793549
+ID - 62*365469*1
+León Avalos Laura
+Sección: Cuernavaca
+Email: bienes.raicesleal@hotmail.com
+ Más InformaciónTelefonos:
+- 322 5050
+- 203 6890
+- ID62*15*63129
+UsuarioLopez Quiroz Martina
+Sección: Cuernavaca
+Email: bienesraices.maran@live.com.mx
+ Más InformaciónTelefonos:
+735 - 3943610
+55 - 29085629
+735 - 5937562
+UsuarioMartínez Casillas Georgina
+Sección: Cuernavaca
+Email: arcoirisbienesraices@live.com.mx
+ Más InformaciónTelefonos:
+01777 - 2891424 
+ID - 92*13*57624
+044 777 - 3283775
+UsuarioMata Aguilar Karla
+Sección: Cuernavaca
+Email: karla@savbienesraices.com
+ Más InformaciónTelefonos:
+777 - 102-22-35
+777 - 221-11-29
+UsuarioMorales Rodriguez Hector
+Sección: Cuernavaca
+Email: hmorales@cima.mx
+ Más InformaciónTelefonos:
+777 - 3801734
+777 - 3801734
+- 1192293
+UsuarioOvalles Contreras América
+Sección: Cuernavaca
+Email: amerova15@yahoo.com.mx
+ Más InformaciónTelefonos:
+- 317 2244
+- 288 1568
+- 52*15*5011
+UsuarioPaganoni Zenteno Guadalupe 
+Sección: Cuernavaca
+Email: lupitapaganoni@hotmail.com
+ Más InformaciónTelefonos:
+- 1196174
+- ID 52*15*23397
+UsuarioPalavicini Pola Claudia
+Sección: Cuernavaca
+Email: claudiapalavicini@tabasco.gob.mx
+ Más InformaciónTelefonos:
+044 - 9932413199
+UsuarioPavon Calderon Miguel
+Sección: Cuernavaca
+Email: previsionlegal@yahoo.com.mx
+ Más InformaciónTelefonos:
+55 - 56712314
+55 - 56712325
+UsuarioPérez Santibañez Maria Del Rosario
+Sección: Cuernavaca
+Email: persanti@hotmail.com
+ Más InformaciónTelefonos:
+777 - 3135226
+777 - 1887129
+UsuarioPérez Izquierdo Alfredo Rafael
+Sección: Cuernavaca
+Email: rperezi@imsurbr.com
+ Más InformaciónTelefonos:
+- 317 2244
+- 317 2220
+- 62*15*24943
+UsuarioRamírez Brugada Guadalupe Lucio
+Sección: Cuernavaca
+Email: avantec_inmobiliaria@yahoo.com.mx
+ Más InformaciónTelefonos:
+- 372 2277
+- 311 9789
+- 777 363 8005
+UsuarioRangel Guzmán Gustavo
+Sección: Cuernavaca
+Email: grangel@svalmor.com
+ Más InformaciónTelefonos:
+777 - 318 2404
+777 - 169-1371
+UsuarioRevilla Flores David
+Sección: Cuernavaca
+Email: revillabienesraices@hotmail.com
+ Más InformaciónTelefonos:
+- 313 9793
+- 169 2149
+UsuarioRojas Nuñez Ismael
+Sección: Cuernavaca
+Email: constructora_ismael@hotmail.com
+ Más InformaciónTelefonos:
+01747 - 4710166
+- 92*15*6246
+- 045 74 74 98 06 99
+UsuarioSalgado Castañeda Guillermo
+Sección: Cuernavaca
+Email: memosalgadoc@gmail.com
+ Más InformaciónTelefonos:
+777 - 3 22 30 60
+UsuarioSanchez Ortiz Verónica
+Sección: Cuernavaca
+Email: vero_sanchez_0@yahoo.com.mx
+ Más InformaciónTelefonos:
+777 - 2427828
+777 - 5644552
+UsuarioSANCHEZ GLIKOWSKY BEATRIZ
+Sección: Cuernavaca
+Email: GLIKOWSKY@ampi.org
+ Más InformaciónTelefonos:
+- 000000000000
+UsuarioSpencer Mitchell Allred Georgia 
+Sección: Cuernavaca
+Email: geospen@gmail.com
+ Más InformaciónTelefonos:
+777 - 310 3730
+777 - 310 3671
+777 - 328 2946
+UsuarioSpencer Stevenson Steven H.
+Sección: Cuernavaca
+Email: stevespencer21@gmail.com
+ Más InformaciónTelefonos:
+777 - 310 3730
+UsuarioVazquez Benitez Ing. Hugo
+Sección: Cuernavaca
+Email: hugo.vazquez@lacasaquequiero.com.mx
+ Más InformaciónTelefonos:
+777 - 1690814
+777 - 3158433
+UsuarioVilla McDowell Javier
+Sección: Cuernavaca
+Email: ventas@inmobiliariakey.com
+ Más InformaciónTelefonos:
+777 - 3235936
+777 - 1730170
+- Nx. 4332-4781, ID:62*194227*2
+UsuarioWaugh Bárbara
+Sección: Cuernavaca
+Email: waugh@hotmail.com
+ Más InformaciónTelefonos:
+55 - 55664260"
+
+# LEON
+
+myString="Adhemar Salceda Ricardo 
+Sección: León
+Email: ricardo@hogare.mx
+ Más InformaciónTelefonos:
+477 - 2937300
+477 - 3900240
+UsuarioAguirre Torres Fernando
+Sección: León
+Email: rwporvenir@hotmail.com
+ Más InformaciónTelefonos:
+(477) - 4227764
+- ID 52*329984*2
+UsuarioAlamilla Romero Armando
+Sección: León
+Email: ventasalamilla@gmail.com
+ Más InformaciónTelefonos:
+477 - 711 7936
+477 - 638 0869 
+- ID52*145759*1
+Usuarioampi leon admin 
+Sección: León
+Email: admin@ampileon.org
+ Más InformaciónTelefonos:
+- - -
+UsuarioAtilano Zertuche Jorge
+Sección: León
+Email: jorge.atilan@gmail.com
+ Más InformaciónTelefonos:
+477 - 7171678
+477 - 717 14 60
+477 - 143 64 69
+UsuarioBarba Blanco Alejandro 
+Sección: León
+Email: alejandro.barba@casasyterrenos.com
+ Más InformaciónTelefonos:
+33 - 3344 4072 Ext 61 
+UsuarioBravo Reynoso Eduardo
+Sección: León
+Email: oficina@lalobravo.com
+ Más InformaciónTelefonos:
+477 - 779 1243
+477 - 4707637
+- •ID 52*131637*1
+UsuarioCompean Flores Ma. Emilia
+Sección: León
+Email: emilia.asesor@mahersa.com.mx
+ Más InformaciónTelefonos:
+477 - 514 7009
+477 - 514 3625
+- ID 62*15*14637
+UsuarioDE CHARBEL AYACHE CARRILLO EDNA MARIE
+Sección: León
+Email: ednamarie.ayache@icloud.com
+ Más InformaciónTelefonos:
+4747 - 2843693
+Usuariode la Tejera Escudero Patricia 
+Sección: León
+Email: delatejerabr@prodigy.net.mx
+ Más InformaciónTelefonos:
+477 - 1044059
+477 - 1221197
+477 - 7922290
+UsuarioESCAMILLA RAMOS NELBA MARCELA
+Sección: León
+Email: casas_ycasas@hotmail.com
+ Más InformaciónTelefonos:
+477 - 7706602
+477 - 3062268
+UsuarioEscuder Ruiz Diana
+Sección: León
+Email: diana@ruizyruiz.com.mx
+ Más InformaciónTelefonos:
+477 - 7701997
+477 - 7133696
+UsuarioEscuder Ruiz Claudia
+Sección: León
+Email: claudia@ruizyruiz.com.mx
+ Más InformaciónTelefonos:
+477 - 7701997
+477 - 7133696
+UsuarioEstrada Hermosillo Alberto 
+Sección: León
+Email: albertoestrada_bienesraices@hotmail.com
+ Más InformaciónTelefonos:
+01 477 - 7730110
+UsuarioEstrada Reynoso Alberto Mario
+Sección: León
+Email: ami_bienes_raices@hotmail.com
+ Más InformaciónTelefonos:
+477 - 773-4333
+477 - 773-4343
+UsuarioFonseca Evelia
+Sección: León
+Email: lic_rosy_fonseca@hotmail.com
+ Más InformaciónTelefonos:
+477 - 147 2053 
+477 - 638 6736
+UsuarioGonzález Ochoa Juan Carlos
+Sección: León
+Email: industry@prodigy.net.mx
+ Más InformaciónTelefonos:
+472 - 722-3622
+UsuarioGUERRERO REYNOSO SERGIO
+Sección: León
+Email: seguerreror@hotmail.com
+ Más InformaciónTelefonos:
+477 - 7373433
+UsuarioGutiérrez Lozano María Araceli 
+Sección: León
+Email: aracelydobleclick@gmail.com
+ Más InformaciónTelefonos:
+(01 477) - 7 18 43 04
+(01 477) - 147 01 55
+- ID 52*54667*38
+UsuarioGutiérrez Güitrón Juan Manuel 
+Sección: León
+Email: bienesraices@aacex.com
+ Más InformaciónTelefonos:
+(477) - 779 45 26
+nextel - 6382620, ID 52*161990*1/*3
+Hernández Martínez Jesús
+Sección: León
+Email: dp@viviendadelrincon.com
+ Más InformaciónTelefonos:
+477 - 1980500
+477 - 1613605
+477 - 7293878
+UsuarioHernandez Orozco Pedro Antonio 
+Sección: León
+Email: pahopui@aol.com
+ Más InformaciónTelefonos:
+55 - 54517314
+UsuarioJasso Moreno Jose Antonio
+Sección: León
+Email: jose.jasso@prodigy.net.mx
+ Más InformaciónTelefonos:
+477 - 5147009
+477 - 5143625
+UsuarioKornhauser Chávez Susana
+Sección: León
+Email: susanakornhauser@hotmail.com
+ Más InformaciónTelefonos:
+477 - 1225343
+UsuarioLEÓN GARCIA ROGELIO ENRIQE
+Sección: León
+Email: leon.garcia.sc@me.com
+ Más InformaciónTelefonos:
+477 - 7130071
+UsuarioLino Briones J Leonardo
+Sección: León
+Email: leonardolino@patrimonioi.com
+ Más InformaciónTelefonos:
+477 - 470 38 89
+477 - 470 38 90
+UsuarioLuna Juarez Ma. del Carmen 
+Sección: León
+Email: biluna@live.com.mx
+ Más InformaciónTelefonos:
+477 - 717 85 81
+UsuarioMacedo Puebla José
+Sección: León
+Email: jmacedo6022@yahoo.com.mx
+ Más InformaciónTelefonos:
+477 - 7630316
+477 - 1471875
+UsuarioMena Ramirez Hugo Adolfo
+Sección: León
+Email: menah@ampi.org
+ Más InformaciónTelefonos:
+00 - 000
+UsuarioMeneses Hector
+Sección: León
+Email: meneses29@gmail.com
+ Más InformaciónTelefonos:
+462 - 6534212
+UsuarioMuñoz Gutierrez María Melissa
+Sección: León
+Email: mmg_78@yahoo.com.mx
+ Más InformaciónTelefonos:
+477 - 7296280
+UsuarioObregón Serrano Héctor Martín
+Sección: León
+Email: hector@obregon.pro
+ Más InformaciónTelefonos:
+477 - 2112121
+UsuarioPONCE FUENTES GABRIEL
+Sección: León
+Email: gabriel_14@hotmail.com
+ Más InformaciónTelefonos:
+477 - 1470391
+477 - 2152100
+UsuarioRamirez Juana Catalina
+Sección: León
+Email: lidercatyramirez@prodigy.net.mx
+ Más InformaciónTelefonos:
+(01 477) - 717 18 08 
+477 - 217 50 54
+477 - 727 08 16
+UsuarioRamos Luis Alberto
+Sección: León
+Email: c21brysa@gmail.com
+ Más InformaciónTelefonos:
+477 - 717 56 50
+477 - 325-5071
+UsuarioRojas Isabel
+Sección: León
+Email: isaporvenir@gmail.com
+ Más InformaciónTelefonos:
+477 - 4227764
+UsuarioRomero Tenorio Ivan
+Sección: León
+Email: iromero@vri.com.mx
+ Más InformaciónTelefonos:
+477 - 7115060
+UsuarioRuiz Cisneros Ma. Herlinda
+Sección: León
+Email: herlinda@ruizyruiz.com
+ Más InformaciónTelefonos:
+477 - 7701997
+477 - 147 2255
+UsuarioRuiz Cisneros Sara Guadalupe
+Sección: León
+Email: ruiz_mitchell_inmobiliaria@hotmail.com
+ Más InformaciónTelefonos:
+477 - 217 55 47 
+477 - 121 71 80
+- ID 52*222*11852
+UsuarioRuiz Chico Fidel
+Sección: León
+Email: fruizchico@infinance.com.mx
+ Más InformaciónTelefonos:
+462 - 1737080
+UsuarioSada Castañeda Laura
+Sección: León
+Email: laurasada@ymail.com
+ Más InformaciónTelefonos:
+01 (477) - 241 97 67
+- 62*247641*2
+UsuarioSada Gómez Melesio Humberto
+Sección: León
+Email: msadabvc@prodigy.net.mx
+ Más InformaciónTelefonos:
+477 - 711-78-88
+477 - 711-78-86
+UsuarioSanchez Mendoza Mireya
+Sección: León
+Email: msm@espaciosoptimos.com.mx
+ Más InformaciónTelefonos:
+(01477) - 152- 9492
+(01477) - 152 94 92
+- 92*1029557*2
+UsuarioSandoval Miranda José Luis
+Sección: León
+Email: sandovalinmobiliaria@yahoo.com.mx
+ Más InformaciónTelefonos:
+- 714 4516
+UsuarioSEPÚLVEDA ARRIAGA FILEMON
+Sección: León
+Email: metrofolio.bienesraices@outloock.com
+ Más InformaciónTelefonos:
+477 - 3063864
+UsuarioTraslaviña García Lorena 
+Sección: León
+Email: lorena_traslavina@yahoo.com.mx
+ Más InformaciónTelefonos:
+477 - 119-21-49
+477 - 638-63-04
+UsuarioValenzuela Quezada Elsa
+Sección: León
+Email: elsavaque@gmail.com
+ Más InformaciónTelefonos:
+477 - 1476826
+- ID 52*201476*1
+UsuarioVelázquez González Sergio
+Sección: León
+Email: direccion@inmobajio.mx
+ Más InformaciónTelefonos:
+477 - 7794940
+477 - 1727767
+477 - 7794942
+UsuarioVieyra Anaya Luz Maria
+Sección: León
+Email: info@lumainmobiliaria.com
+ Más InformaciónTelefonos:
+477 - 713 5040
+UsuarioZermeño de Obregón Ma. de la Luz 
+Sección: León
+Email: century21_magna@hotmail.com
+ Más InformaciónTelefonos:
+- 636 3780•3781•3782"
+
+# TOLUCA
+
+myString="UsuarioAguilar Castro Gabriela
+Sección: Toluca
+Email: gaguic@hotmail.com
+ Más InformaciónTelefonos:
+722 - 209 38 87
+722 - 118 9912
+UsuarioArce Ramírez Juan Carlos 
+Sección: Toluca
+Email: mexicasasinmo@hotmail.com
+ Más InformaciónTelefonos:
+01 (722) - 228 5086
+UsuarioBernal Alcantara Laura
+Sección: Toluca
+Email: arual_ba@hotmail.com
+ Más InformaciónTelefonos:
+55 - 2708144 
+55 - 2708341
+UsuarioCAMACHO LAURO
+Sección: Toluca
+Email: camsal08@hotmail.com
+ Más InformaciónTelefonos:
+722 - 219 6355 / 6343
+UsuarioDe Velasco Arizpe Ma. Amelia 
+Sección: Toluca
+Email: amelia@uniconbienesraices.com
+ Más InformaciónTelefonos:
+722 - 1802737
+722 - 3052151 
+- 52*256941*2
+UsuarioEscamilla Hernández Miguel Ángel
+Sección: Toluca
+Email: maescamilla@unobienesraices.com.mx
+ Más InformaciónTelefonos:
+722 - 211 57 68
+01 800 - 8306676
+722 - 1644043
+UsuarioFlores Alvarez Alejandro 
+Sección: Toluca
+Email: ventas@starhouse.com.mx
+ Más InformaciónTelefonos:
+(01)722 - 319-0420
+(01)722 - 319-0421
+(01)722 - 3052130
+UsuarioJaimes Gorostieta Carlota
+Sección: Toluca
+Email: elfaroinmobiliaria@hotmail.com
+ Más InformaciónTelefonos:
+(01722) - 199 90 14
+UsuarioPerez García Rosa María 
+Sección: Toluca
+Email: ideasdeinversion@prodigy.net.mx
+ Más InformaciónTelefonos:
+722 - 3188495
+UsuarioRodríguez Saavedra Conrado Julio
+Sección: Toluca
+Email: conradojrs@hotmail.com
+ Más InformaciónTelefonos:
+(01722) - 223 49 18
+(01722) - 305 1959
+UsuarioRodríguez Sánchez Nancy
+Sección: Toluca
+Email: ideasdeinversion@hotmail.com
+ Más InformaciónTelefonos:
+01722 - 3188495
+7225 - 362384
+UsuarioSilva Rodríguez Noé Hilarión
+Sección: Toluca
+Email: integrasin@hotmail.com
+ Más InformaciónTelefonos:
+01 722 - 2809165
+01 722 - 219 7964
+UsuarioSilva Rodríguez Noé Hilarión
+Sección: Toluca
+Email: integrasin@hotmail.com.mx
+ Más InformaciónTelefonos:
+- 2 09 28 80
+UsuarioSilva Rodríguez Noé Hilarión
+Sección: Toluca
+Email: integrasin@hotmail.com
+ Más InformaciónTelefonos:
+01 - 7222809165
+01 - 7222197964
+UsuarioVargas Velasco Jorge Luis 
+Sección: Toluca
+Email: towerhouseinmobiliaria@hotmail.com
+ Más InformaciónTelefonos:
+722 - 624 6775
+722 - 379 32 80 
+044 722 - 555 7692 
+UsuarioVendrel Garcia Dionisio
+Sección: Toluca
+Email: dvendrellg@hotmail.com
+ Más InformaciónTelefonos:
+55 - 2708144 
+55 - 2708341
+UsuarioVilchis Mercado Walterio
+Sección: Toluca
+Email: walteriovilchis@prodigy.net.mx
+ Más InformaciónTelefonos:
+722 - 277 1000
+01800 - 0004909
+722 - 1680705
+UsuarioVillegas Garcés Sergio Ricardo
+Sección: Toluca
+Email: ser_villegas@hotmail.com
+ Más InformaciónTelefonos:
+01 722 - 215 11 12
+01 722 - 3 18 84 95"
+
 # SAN MIGUEL DE ALLENDE
 myString="UsuarioAcuña Ortiz Carlos Fernando
 Sección: San Miguel De Allende
