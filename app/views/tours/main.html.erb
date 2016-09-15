@@ -126,6 +126,7 @@
   		// Change metro area
 
   		$('.metro-area').change(function() {
+  			$('#secret-checkbox').addClass('animated fadeInLeft').show()
   			$('#tour-district-selector').html('')
   			$.post(
   				'/virtualtour/getDistricts',
@@ -231,7 +232,7 @@
 								</div>
 								<div itemscope itemtype ="http://schema.org/City">
 									<div class="input-field col l3 m3 s6">
-									<input id="metro-area-cdmx-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="CDMX" checked>
+									<input id="metro-area-cdmx-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="CDMX">
 									<label id="cdmx-label" for="metro-area-cdmx-radio" itemprop="name">CDMX</label>
 									</div>
 								</div>
@@ -263,11 +264,14 @@
 							</div>
 							<div id="legal_form" class="row valign-wrapper" style="width:100%">	
 <!-- 							<form id="legal_form" class="row valign-wrapper" style="width:100%">
- -->								<div class="col s8">
-										<input type="checkbox" id="legal" class="valign">
-										<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.</label>
+	 -->							<div class="col s8">
+	 									<div id="secret-checkbox" style="display:none">
+											<input type="checkbox" id="legal" class="valign">
+											<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.
+											</label>
+										</div>
 									</div>
-									<div class="col s4">
+									<div class="col s4 right">
 										<a id="metro_area-link" href="/virtualtour/<%=session[:metro_area]%>"><button  id="legal-button" disabled class="corner-button light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button></a>
 									</div>
 <!-- 							</form>

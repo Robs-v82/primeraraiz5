@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
 		redirect_to "/" if session[:user_id] == nil
 	end
 
+	def require_metro_area
+		redirect_to "/" if session[:metro_area] == nil
+	end
+
 	def require_correct_user
 		user = User.find(params[:id])
 		redirect_to "/" if current_user != user

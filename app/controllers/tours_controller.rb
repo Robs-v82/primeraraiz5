@@ -1,9 +1,11 @@
 class ToursController < ApplicationController
 	
 	after_action :remove_success_message, only: [:main]
+	before_action :require_metro_area, only: [:new]
 
 
 	def main
+		session[:metro_area] = nil
 		if session[:tour_status] == 'down_payment'
 			@charge = true
 		end
@@ -35,7 +37,6 @@ class ToursController < ApplicationController
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
 		@modelPrices = ['$2,740','$3,320','$3,880','$4,400','$4,960','$5,580']
 		session[:subscription] = true
-		session[:metro_area] = "CDMX"
 	end
 
 	def new
