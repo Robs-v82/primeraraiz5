@@ -418,6 +418,7 @@
 	  		// Change metro area
 
 	  		$('.metro-area').change(function() {
+	  			$('#secret-checkbox').addClass('animated fadeInLeft').show()
 	  			$('#tour-district-selector').html('')
 	  			$.post(
 	  				'/virtualtour/getDistricts',

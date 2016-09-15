@@ -71,7 +71,7 @@
 								<h5>¿Dónde se ubica tu inmueble?</h5>
 							</div>
 							<div class="input-field col l3 m3 s6">
-								<input id="metro-area-cdmx-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="CDMX" checked>
+								<input id="metro-area-cdmx-radio" type="radio" name="location[metro_area]" class="metro-area with-gap" value="CDMX">
 								<label id="cdmx-label" for="metro-area-cdmx-radio">CDMX</label>
 							</div>
 							<div class="input-field col l3 m3 s6">
@@ -101,10 +101,13 @@
 						<div id="legal_form" class="row valign-wrapper" style="width:100%">	
 <!-- 							<form id="legal_form" class="row valign-wrapper" style="width:100%">
 -->								<div class="col s8">
-									<input type="checkbox" id="legal" class="valign">
-									<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.</label>
+ 									<div id="secret-checkbox" style="display:none">
+										<input type="checkbox" id="legal" class="valign">
+										<label class="terms_label valign grey-text text-darken-3" for="#legal">Acepto los <%= link_to "términos y condiciones", asset_path("Primera Raíz - Términos y Condiciones.pdf"), { :class=>"grey-text text-darken-3", :target => "blank" } %>.
+										</label>
+									</div>
 								</div>
-								<div class="col s4">
+								<div class="col s4 right">
 									<a id="metro_area-link" href="/virtualtour/<%=session[:metro_area]%>"><button  id="legal-button" disabled class="corner-button light-green accent-4 btn-floating btn-small waves-effect waves-light right valign"><i class="material-icons">send</i></button></a>
 								</div>
 <!-- 							</form>
