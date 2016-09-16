@@ -7,6 +7,639 @@ estado = "Guanajuato"
 newArr.each{|contact| email = contact[2].slice(7,100); emailArr.push(email)}
 (0..newArr.length).each {|x| Contact.create(:name => newArr[x][0], :email => emailArr[x], :category => "RE_broker", :state => estado)}
 
+# APCI
+
+myArr = apci.split("Asociado")
+newArr = []
+myArr.each{|contact| contacto = contact.split("\n"); newArr.push(contacto)}
+newArr.shift
+emailArr = []
+estado = "Ciudad de México"
+
+
+apci = "Asociado
+Cecilia Aguilar Marco
+caguilar@mhabitat.com
+Teléfono(s): 55 5807 0449, (55)5651 5062
+ Asociado
+Yazmín Aiza Kuri
+aizainmob@prodigy.net.mx
+Teléfono(s): (55)56621564, (55)56621713
+ Asociado
+Guadalupe Alaniz de Schoijet
+alanizasociados@me.com
+Teléfono(s): (55)56777428, (55) 54026420
+Celular: 56840968
+ Asociado
+Silvia Alcerreca Torres
+salcerreca10@gmail.com
+Teléfono(s): 56443422, ()5534348741
+Celular: 5534348741
+ Asociado
+Carlota Alonso Aguerrebere
+alonsopr@prodigy.net.mx
+Teléfono(s): (55)56451212, (55)56313266
+Celular: (55)56313391
+ Asociado
+Patricia Arachandieta De Orella
+porella1@prodigy.net.mx
+Teléfono(s): 56350599, ()56356762
+Celular: 5555020037
+ Asociado
+Gloria Arroyuelo de Pöhls
+gap.inmobiliaria@gmail.com
+Teléfono(s): (55)56111202
+Celular: (55)54193628
+ Asociado
+Clara Atilano de la Torre
+contactojc_consultores@telmex.com
+Teléfono(s): (55)56059490, (55)22067077
+Celular: (55)22067737
+ Asociado
+Hilda Baranda Serrano
+coordinacion@solarisinmobiliaria.com
+Teléfono(s): (55)15566016, (55)15566000
+ Asociado
+Rosa Maria Bermudez Piña
+bermudez_pispis@yahoo.com.mx
+Teléfono(s): 5521091688, ()56819279
+Celular: 5521091688
+ Asociado
+GARDEN BIENES INMOBILIARIOS S.A. DE C.V.
+gardenchat@hotmail.com
+Teléfono(s): (55)59486311, (55)56837112
+ Asociado
+Nova Haus Bienes Raices
+novahausbr@gmail.com
+Teléfono(s): (55)38197810, (55)36243965
+Celular: (04455)29662257
+Asociado
+Juan Manuel Blanco Campos
+cumbrebienesraices@gmail.com
+Teléfono(s): 55252216, ()5552520584
+Celular: 5554030967
+ Asociado
+Ana Lucia Bravo Castillo
+abravo@gyrainmobiliaria.com
+Teléfono(s): 5558074842, ()56519312
+Celular: 17934423
+ Asociado
+Ma. del Carmen Breña Cantú de Villalón
+info@mejorescasas.com
+Teléfono(s): 56595831, ()56592643
+ Asociado
+Eduardo Carrillo Arrivillaga
+contacto@gibosque.com
+Teléfono(s): (55)56831100, (55)56831002
+ Asociado
+Martha Carrión de Parga
+marparga@prodigy.net.mx
+Teléfono(s): (55)52114631, (55)54368103
+ Asociado
+Norma Chevalier Gomez Peralta
+castelchevalier@prodigy.net.mx
+Teléfono(s): 55139897, ()55738701
+Celular: 5539018854
+ Asociado
+Margarita Cintrón Díaz del Castillo
+mcintron@prodigy.net.mx
+Teléfono(s): 56451779
+Celular: 5522706807
+ Asociado
+Juan Contreras Labarga
+jcontreras@grupojacz.com
+Teléfono(s): (55)24744225
+ Asociado
+Lourdes Contreras .
+directora.trebol@hotmail.com
+Teléfono(s): 43366227, ()53350663
+ Asociado
+Patricia Contreras de Fernandez
+patricia_fdez@hotmail.com
+Teléfono(s): 54258264
+Celular: 5536948248
+ Asociado
+Guillermina Cordova Bulle
+bulleinmobiliaria@gmail.com
+Teléfono(s): 56682919, ()55950845
+Celular: 5548095280
+ Asociado
+Rosa Norma Cravioto Reyna
+rosin@prodigy.net.mx
+Teléfono(s): 56610105
+Celular: 5554537168
+Asociado
+Eduardo Cuen Payró
+davendano@modusvivendi.org.mx
+Teléfono(s): 50332154, ()50332153
+ Asociado
+María de Mater De La Mora García Sainz
+mater_bienesraices@yahoo.com
+Teléfono(s): (55)56521177, (55)56521174
+ Asociado
+Cecilia De Miguel Kuvener
+kuverbienesraices7@hotmail.com
+Teléfono(s): 55681378
+Celular: 5541303621
+ Asociado
+Ma. Del Carmen Del Campo Guerrero
+delcampoguerrero@prodigy.net.mx
+Teléfono(s): 70251828
+ Asociado
+Magdalena Del Castillo Velasco
+inmobiliariadelcastillo@gmail.com
+Teléfono(s): (55)5616806O, (55)56168061
+Celular: (04455)0445554136914
+ Asociado
+María Engracia Del Villar Ponce
+ventasdelvillar@yahoo.com.mx
+Teléfono(s): 70366519, ()5527539528
+ Asociado
+Carole Descloux Rossel
+desclouxr@hotmail.com
+Teléfono(s): (55)55686502
+Celular: (55)55071344
+ Asociado
+Martha Díaz de Enriquez
+aybr_2000@yahoo.com
+Teléfono(s): (55)56016150, (55)56016157
+Celular: 0445539012877 y 0445512950661
+ Asociado
+Francisco Jesús Díaz Ruiz
+fdruiz87@gmail.com
+Teléfono(s): (55)55954895, ()5533329451
+ Asociado
+Francisco Diaz Corona
+frankdief@hotmail.com
+Teléfono(s): 55440040, ()55444405
+Celular: 55 3465 7725
+ Asociado
+Alicia Díaz Esquivel
+alicia_diaz_e@hotmail.com
+Teléfono(s): 6301-4061
+Celular: 55-8532-4349
+ Asociado
+Edgar Diaz Ortega
+ediaz@ideasinmobiliarias.com
+Teléfono(s): 55596060
+Celular: 19923578
+Asociado
+Oralia Dingler Corral
+odingler@prodigy.net.mx
+Teléfono(s): (55)55936598, (55)91632608
+Celular: (55)54535952
+ Asociado
+Ma. del Carmen Farah Capur
+proyecsainmobiliariasc@gmail.com
+Teléfono(s): (55)56640222, (55)56640224
+Celular: (55)56516953
+ Asociado
+Ana Laura Ferrer de Pulido
+pulidoac@prodigy.net.mx
+Teléfono(s): (55)55933753, (55)56807959
+ Asociado
+Mónica Flores Ramírez
+monicafloresbr@gmail.com
+Teléfono(s): 5593.1648, ()63669580
+Celular: 55.1948.8663
+ Asociado
+Felix Flores Castañeda
+felixcim@yahoo.com
+Celular: 5520482930
+ Asociado
+Guadalupe Flores de Valencia
+gpeval001@yahoo.com.mx
+Teléfono(s): (55)51350689, (55)55680441
+Celular: (55)54032194
+ Asociado
+Carmen Garcia Cossio
+drausio.rubio@inmobiliarianavel.com
+Teléfono(s): (55)55688167, (55)55687050
+ Asociado
+Ma. del Carmen García Lara
+marialuisa@megasoluciones.com
+Teléfono(s): (55)24556030
+Celular: 0445536557382
+ Asociado
+Martha Alicia Garcia Zamarripa
+marthagarciazamarripa@hotmail.com
+Teléfono(s): 54465271, ()56067021
+Celular: 5559391200
+ Asociado
+Lilia Nelly Garcia de Funes
+lilianelly@fugar.com.mx
+Teléfono(s): 36251644, (55)52645330
+Celular: (04455)52543927
+ Asociado
+Paz García de Rodríguez
+pazgaca@yahoo.com.mx
+Teléfono(s): (55)56730372, (55)56032461
+ Asociado
+Eduardo Giordano Merino
+egiordano@asefi.com
+Teléfono(s): 56632380, ()56632395
+Asociado
+Armando Gómez Barreiro
+piso59@gmail.com
+Teléfono(s): (55)55435959, (55)55685382
+Celular: 5529418259
+ Asociado
+Rafael González Fragoso
+publicidad@rgasesores.com.mx
+Teléfono(s): (55)5200.5270
+Celular: 55.3239.1214
+ Asociado
+Irca González de Hammeken
+ircahammeken@yahoo.com
+Teléfono(s): (55)55955444, (55)2559.3219
+ Asociado
+Gloria Gonzalez Angeles
+gloriagonzalezangeles@yahoo.com.mx
+Teléfono(s): 55591827
+Celular: 5539878560
+ Asociado
+Oscar Grajales Regil
+elsurbr@gmail.com
+Teléfono(s): (55)56892150, (55)25888681
+Celular: (55)5555057272
+ Asociado
+Eloisa Grobet Vallarta Especialidad en Administración de Inmuebles (RENTAS)
+grobet_bienesraices@hotmail.com
+Teléfono(s): 54850454, ()54852213
+Celular: 5554000553
+ Asociado
+Ma. Teresa Guadarrama Quintanilla
+tere_guadarrama@hotmail.com
+Teléfono(s): 12850010
+Celular: 5554089906
+ Asociado
+Maritza Guevara Sánchez
+maritza.guevara@guemer.com
+Teléfono(s): (55)55955389, (55)91991425
+ Asociado
+Andres Guillot Villegas
+a.guillot@live.com
+Teléfono(s): 55688079
+Celular: 5539935207
+ Asociado
+Ricardo Guizar Reyes
+ricardoguizar@quality.com.mx
+Teléfono(s): (55)56643535, (55)19756360
+Asociado
+Raúl Jesús Guízar Reyes
+penamariadelcarmen@hotmail.com
+Teléfono(s): (55)56113081, (55)55639655
+ Asociado
+Guadalupe Gutierrez Silva
+gutierrezsilvabr@gutierrezsilva.com
+Teléfono(s): (55)55502479, (55)55503079
+Asociado
+Carla Hammeken
+hammeken2001@gmail.com
+Teléfono(s): (55) 55033531, (777) 3129351
+Celular: (55)55033531
+ Asociado
+Marisol Hernandez Gutierrez
+mhdezgu@gmail.com
+Teléfono(s): 55849727
+Celular: 49879396
+ Asociado
+Myriam Herrera Viloria
+ventas.df@bosinmobiliaria.com.mx
+Teléfono(s): 018002532530
+ Asociado
+Mario Huerta de la Sota y Fernández
+alarife@alarife.com.mx
+Teléfono(s): (55)5616.0660, (044)55.5107.9736
+Celular: (044)55.5107.9736
+ Asociado
+Patricia Huidobro Preciado
+ppreciadoh@gmail.com
+Teléfono(s): (55)56836450, (55)40307095
+ Asociado
+Rocio Jaime Paredes
+rjaime97@yahoo.com.mx
+Teléfono(s): 56521279
+Celular: 5527704220
+ Asociado
+Zita Jimenez Deschamps
+zita_hallrealsta@yahoo.com.mx
+Teléfono(s): 5520695399
+ Asociado
+Norma Katznelson Gómez Luna
+katznelson2@yahoo.com
+ Asociado
+Alejandra Leon Suarez
+aleleonsuarez@hotmail.com
+Teléfono(s): 55285918, ()55284262
+Celular: 5519264572
+ Asociado
+Blanca Lidia López Aguirre
+residenza_br@hotmail.com
+Teléfono(s): (55)55739836, (55)2588.6105
+Celular: (55)5514512098
+ Asociado
+Ana María López Venero
+lopez.anam@hotmail.com
+Teléfono(s): 55952795, ()55.5455.1696
+ Asociado
+Maria Elena Lugo Orvañanos
+mlugo@makadimexico.com
+Teléfono(s): (55)56805391
+Celular: (55)43772766
+Asociado
+Gema Madrigal Camarena
+gemamadrigal1@gmail.com
+Teléfono(s): 56551609
+Celular: 5526778061
+ Asociado
+Lourdes Malvaez Muñoz
+delolmotm@hotmail.com
+Teléfono(s): (55)55503673, (55)5516921857
+ Asociado
+Ma. de los Ángeles Marín Benito
+mariamarinb@yahoo.com.mx
+Teléfono(s): (55)56731009, (55)54573441
+ Asociado
+Ana María Mendívil de Velasco
+azumar@prodigy.net.mx
+Teléfono(s): (55)56633338, (55)25585104
+ Asociado
+Fernando Merino del Castillo
+fmdelcastillo@hotmail.com
+Teléfono(s): (55)56014991
+Celular: (55)53768091
+ Asociado
+Carmen Mingo Frías
+mingobr@gmail.com
+Teléfono(s): (55)55953210, (55)55953825
+ Asociado
+Beatriz Minvielle Mendez
+bettymin@hotmail.com
+Teléfono(s): 56838344, ()56813848
+Celular: 5554155786
+ Asociado
+Sara Montalvo González
+montalvobienesraices@hotmail.com
+Teléfono(s): (55)56768840, (55)29357451
+Celular: (55)43242364
+ Asociado
+Margarita Montalvo Maldonado
+maggie21mx@yahoo.com
+Teléfono(s): 55631811
+Celular: 5551020404
+ Asociado
+Miriam Morales Astudillo
+miriam112244@yahoo.com.mx
+Teléfono(s): 55640024
+Celular: 5554099369
+ Asociado
+Maria Morales Burguet
+marimoralesb@gmail.com
+Teléfono(s): 56587596, ()56587246
+Celular: 5534339937
+ Asociado
+Cristina Najar Carrillo
+cbfbienesraices@eninfinitum.com
+Teléfono(s): (55)56892637, (55)53360183
+Celular: (04455)5555008066
+Asociado
+Griselda Novelo Mendez
+alegriss@prodigy.net.mx
+Teléfono(s): 56305310
+Celular: 5532250151
+ Asociado
+Mirtala Nucamendi Farrera
+nucamendibienesraices@prodigy.net.mx
+Teléfono(s): (55)56053217, (55)56887249
+Celular: (044)5554549626
+ Asociado
+Daniel Núñez Medina
+danielnunez6@prodigy.net.mx
+Teléfono(s): (55)57031877, (55)55666159
+ Asociado
+Miguel Pavón Calderón
+previsionlegal@yahoo.com.mx
+Teléfono(s): (55)56712314, (55)54533400
+ Asociado
+Dolores Peláez De Castillo
+aserinmo@gmail.com
+Teléfono(s): 10424827, ()56839063
+ Asociado
+Patricia Pereda y Madruga
+patygonz0102@hotmail.com
+Teléfono(s): 55944139, (55)56030799
+Celular: 5554347073
+ Asociado
+Xochitl Pérez Montero
+inmovivienda@prodigy.net.mx
+Teléfono(s): (55)56155300
+Celular: (04455)54089484
+ Asociado
+Delfino Piña Morales
+maricarmen.pina@fampi.com.mx
+Teléfono(s): 55949910
+Celular: 5554339338
+ Asociado
+Verónica Porraz de Campuzano
+verchy@prodigy.net.mx
+Teléfono(s): (55)56802121, (55)56801730
+ Asociado
+María Isabel Quiroga Quiroga
+lucero@circulobienesraices.com
+Teléfono(s): (55)51355930, (55)51355932
+ Asociado
+Josefina Quiroz Bustos
+contacto@stqinmuebles.com.mx
+Teléfono(s): (55)56318601, (55)63553133
+Celular: (55)27252211
+ Asociado
+Esperanza Ramos Castellanos
+espe.ramos@arinet.com.mx
+Teléfono(s): (55)62346226
+Celular: 5554196021
+Asociado
+Teresa Rangel Ortiz
+teresarangel@prodigy.net.mx
+Teléfono(s): 56056968, ()10885114
+Celular: 5554099848
+ Asociado
+Georgina Reynoso Alanis
+g.reynoso@reyalvendecasas.com
+Teléfono(s): (55)36032574, (55)5540663981
+Celular: (55)12337933
+ Asociado
+Ruben Riquelme Reyes Retana
+ruben.riquelme@gmail.com
+Teléfono(s): 56823654, ()55191251
+Celular: 5514682165
+ Asociado
+Sonia Rivas Castañeda
+s.cabri@luxuryhabitat.com.mx
+Teléfono(s): 13285029, ()5539100733
+ Asociado
+Teresa Rivera Ortiz
+teresa.rivera@riverabr.com
+Teléfono(s): 53350437, ()69920481
+Celular: 5539055290
+ Asociado
+Lorena Rivero Torres
+sebra2002@gmail.com
+Teléfono(s): (55)56157175, (55)56157173
+ Asociado
+Luis Robina Ibarra
+robina@quality.com.mx
+Teléfono(s): (55)56597777
+ Asociado
+Roberto Rodríguez Rubio
+robertorr@tuhipotecafacil.com
+Teléfono(s): (55)10903231
+Celular: (55)55068890
+ Asociado
+Maria Rosa Roux Garcia
+info@rginmo.com
+Teléfono(s): (55)55938411
+Celular: (55)5554091661
+ Asociado
+Ana Gabriela Rubio de Silva
+publicidadcentro@zrygbienesraices.com
+Teléfono(s): 59486292, ()59486312
+Celular: 17180704
+ Asociado
+Gerardo Rueda Esquivel
+inmobiliaria@afimex.com.mx
+Teléfono(s): (55)54242424, (55)54242427
+Celular: (04455)11221770
+ Asociado
+Gabriela Saldaña Cataño
+servicio-externas@catanomexico.com
+Teléfono(s): (55)55687121, (55)55687068
+Celular: (55)42223133
+Asociado
+Luz Maria Martha Samperio Marin
+marthasamperio@yahoo.com.mx
+Teléfono(s): 56610856
+Celular: 5559459202
+ Asociado
+María Elena Sánchez Muñiz
+mariel18@prodigy.net.mx
+Teléfono(s): (55)55590334
+Celular: (04455)91959729
+ Asociado
+Susana Serdán Rueda
+serdan_bienesraices@hotmail.com
+Teléfono(s): (55)56622175, (55)5555 03 04 15
+Celular: 56 62 31 53
+ Asociado
+Selene Serrano Dávalos
+yasmin@serranovende.com.mx
+Teléfono(s): (55)55954045, (55)56683806
+ Asociado
+Emma Rosa Solís Angulo
+solangersa@yahoo.com.mx
+Teléfono(s): (55)54858592, (55)54061705
+ Asociado
+Jorge Alejandro Solis Angulo
+sauter.admon@gmail.com
+Teléfono(s): 6645.0447, ()554234.6940
+Celular: 5542636933
+ Asociado
+Patricia Soto Ovalle
+tradeh@prodigy.net.mx
+Teléfono(s): (55)53369768, (55)56892558
+Celular: 04455 5433 8898
+ Asociado
+Marcela Talavera Autrique
+optabienesr@gmail.com
+Teléfono(s): (55)56303929, (55)56303615
+ Asociado
+Ma. Eugenia Tanús Buhler
+inmobiliariainmex@hotmail.com
+Teléfono(s): (55)56823910, (55)56827485
+Celular: (55)5559090976
+ Asociado
+Nuria Terre
+bouquetbienesraices@gmail.com
+Teléfono(s): 56413074
+Celular: 5521094815
+ Asociado
+Gloria Torres Pérez
+evatope@gmail.com
+Teléfono(s): (55)24749220, (55)30364258
+Celular: (555)408 10 71
+ Asociado
+Mary Paz Torres Ponce
+topazbienesraices@yahoo.com
+Teléfono(s): 56802212, ()56510185
+Celular: 5510489690
+Asociado
+GRUPO TREDI
+ventas@tredi.mx
+Teléfono(s): 5631-7548, ()5645-7953
+Celular: 2615.1903
+ Asociado
+Angel Valdés Padilla
+angel.valdes@consultoriayadministracion.com
+Teléfono(s): (55)49972152, (55)22712440
+ Asociado
+José Manuel Valles Y Septién
+mvalless@yahoo.com.mx
+Teléfono(s): (55)56828239
+ Asociado
+Griselda Varela y Santiago
+gvsaldana@yahoo.com
+Teléfono(s): 999 9306475
+Celular: 999 2231677
+ Asociado
+Rosa Maria Vazquez
+rosavazquezz@prodigy.net.mx
+Teléfono(s): 56459631, ()56450171
+Celular: 5554543098
+ Asociado
+Belinda Vega Gutiérrez
+housesunlimited@prodigy.net.mx
+Teléfono(s): (55)55852520, (55)54250931
+ Asociado
+RAYO VENDE
+contacto@rayovende.com
+Teléfono(s): (55)55131010, (55)55731312
+ Asociado
+Maria G. Villela Díaz Gonzalez
+ventas@villelayasociados.com.mx
+Teléfono(s): 56681877, ()56681887
+Celular: 56810196
+ Asociado
+Victoria Virues Rincon
+vikyvirues@hotmail.com
+Teléfono(s): 56666451
+Celular: 5554073296
+ Asociado
+Luis Humberto Vivanco Zamora
+hvivanco_abogados@hotmail.com
+Teléfono(s): 55540205, ()55540161
+ Asociado
+Leticia Vivanco Topete
+info@roqueinmobiliaria.com.mx
+Teléfono(s): 56607869, ()56837106
+ Asociado
+Mariam Zacarias
+zacariasasoc@gmail.com
+Teléfono(s): 5554349571
+Asociado
+Claudia Victoria Zorrilla Ducloux
+claudiazorrillamtz@hotmail.com
+Teléfono(s): 51715357, ()56068587
+Celular: 25883825
+ Asociado
+Jeannette Isabel Zúñiga López
+janzu1@live.com.mx
+Teléfono(s): 56757489
+Celular: 5534398713
+ Asociado
+Laura Zurita de Turner
+informacion@turner-asociados.com.mx
+Teléfono(s): (55)55932833, (55)55938391"
+
 # PUERTO VALLARTA
 
 myString ="Pedro Robin	
