@@ -3,7 +3,7 @@
 <head>
 	<title>Primera Raíz</title>
 	<meta name="google-site-verification" content="xWrWEWauf0crJRezjK3ggaV-xIyRrNvHhs4DDqRHl9o" />
-	<meta name="description" content="Tu inmueble en realidad virtual. Desde $2,740 pesos. Somos una empresa de servicios de tecnología para el sector inmobiliario, turismo, comercio y entretenimiento. México Guadalajara Querétaro. First Matterport Service Partner in Mexico">
+	<meta name="description" content="Tu inmueble en realidad virtual. Desde $2,940 pesos. Somos una empresa de servicios de tecnología para el sector inmobiliario, turismo, comercio y entretenimiento. México Guadalajara Querétaro. First Matterport Service Partner in Mexico">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -455,19 +455,19 @@
 
 			var setCheckout = function(thisId) {
 				$('#floorPlan-checkbox-p').empty()
-				var tourPrices = [2740,3320,3880,4440,4960,5580]
+				var tourPrices = [2940,3620,4280,4940,5560,6280]
 				var floorplanPrices = [1240,1380,1520,1660,1800,1940]
 				var tourOptionArr = ['tour150','tour300','tour450','tour600','tour750','tour1000']
 				var floorplanPrice = 0
 				if ($('#floorPlan-checkbox').is(":checked")) {
-					var totalArr = [3980,4700,5400,6100,6820,7520]
-					var totalShadowArr = [2740,3320,3880,4440,4960,5580]
+					var totalArr = [4180,5000,5800,6600,7420,8220]
+					var totalShadowArr = [2940,3620,4280,4940,5560,6280]
 					var floorplanRealPrices = floorplanPrices
 					var floorplanShadowPrices = [0,0,0,0,0,0]
 				}
 				else {
 					var totalArr = tourPrices
-					var totalShadowArr = [3980,4700,5400,6100,6820,7520]
+					var totalShadowArr = [4180,5000,5800,6600,7420,8220]
 					var floorplanRealPrices = [0,0,0,0,0,0]
 					var floorplanShadowPrices = floorplanPrices
 				}		
