@@ -4,24 +4,26 @@ class ChargesController < ApplicationController
 		begin
 		  card_info = card_params
 		  @charge = Conekta::Charge.create({
-		    "amount"=> session[:tourPrice]*25,
-		    # "amount"=> 1000,
+		    # "amount"=> session[:tourPrice]*25,
+		    "amount"=> 2000,
+		    "monthly_installments" => session[:installments],
 		    "currency"=> "MXN",
 		    "description"=> "Anticipo tour virtual",
 		    "reference_id"=> session[:reference_id],
 		    "card"=> params[:conektaTokenId],  # Ej. "tok_a4Ff0dD2xYZZq82d9"
+		    "monthly_installments" => 6,
 		    "details"=> {
 		      "name"=> session[:client_name],
 		      "phone"=> session[:client_phone],
 		      "email"=> session[:client_email],
-		      "customer"=> {
-		        "logged_in"=> true,
-		        "successful_purchases"=> 14,
-		        "created_at"=> 1379784950,
-		        "updated_at"=> 1379784950,
-		        "offline_payments"=> 4,
-		        "score"=> 9
-		      },
+		      # "customer"=> {
+		      #   "logged_in"=> true,
+		      #   "successful_purchases"=> 14,
+		      #   "created_at"=> 1379784950,
+		      #   "updated_at"=> 1379784950,
+		      #   "offline_payments"=> 4,
+		      #   "score"=> 9
+		      # },
 		      "line_items"=> [{
 		        "name"=> "Anticipo tour virtual",
 		        "description"=> "Tour virtual",

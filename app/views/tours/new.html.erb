@@ -190,42 +190,42 @@
 								<tbody>
 									<tr class="valign-wrapper">
 										<td class="table-left-column valign">
-											<input name="tour[model_fee]" value="2740" class="with-gap" type="radio" id="tour150" />
+											<input name="tour[model_fee]" value="2940" class="with-gap" type="radio" id="tour150" />
 											<label for="tour150">&#60 150m<span class="super-index">2</span></label>
 										</td>
 										<td class="right td-right valign"><%= @modelPrices[0] %><span class="currency-font">MXN</span></td>
 									</tr>
 									<tr class="valign-wrapper">
 										<td class="table-left-column valign">
-											<input name="tour[model_fee]" value="3320" class="with-gap" type="radio" id="tour300" />
+											<input name="tour[model_fee]" value="3620" class="with-gap" type="radio" id="tour300" />
 											<label for="tour300">150 – 300m<span class="super-index">2</span></label>
 										</td>
 										<td class="right td-right valign"><%= @modelPrices[1] %><span class="currency-font">MXN</span></td>
 									</tr>
 									<tr class="valign-wrapper">
 										<td class="table-left-column valign">
-											<input name="tour[model_fee]" value="3880" class="with-gap" type="radio" id="tour450" />
+											<input name="tour[model_fee]" value="4280" class="with-gap" type="radio" id="tour450" />
 											<label for="tour450">300 – 450m<span class="super-index">2</span></label>
 										</td>
 										<td class="right td-right valign"><%= @modelPrices[2] %><span class="currency-font">MXN</span></td>
 									</tr>
 									<tr class="valign-wrapper">
 										<td class="table-left-column valign">
-											<input name="tour[model_fee]" value="4440" class="with-gap" type="radio" id="tour600" />
+											<input name="tour[model_fee]" value="4940" class="with-gap" type="radio" id="tour600" />
 											<label for="tour600">450 – 600m<span class="super-index">2</span></label>
 										</td>
 										<td class="right td-right valign"><%= @modelPrices[3] %><span class="currency-font">MXN</span></td>
 									</tr>
 									<tr class="valign-wrapper">
 										<td class="table-left-column valign">
-											<input name="tour[model_fee]" value="4960" class="with-gap" type="radio" id="tour750" />
+											<input name="tour[model_fee]" value="5560" class="with-gap" type="radio" id="tour750" />
 											<label for="tour750">600 – 750m<span class="super-index">2</span></label>
 										</td>
 										<td class="right td-right valign"><%= @modelPrices[4] %><span class="currency-font">MXN</span></td>
 									</tr>
 									<tr class="valign-wrapper">
 										<td class="table-left-column valign">
-											<input name="tour[model_fee]" value="5580" class="with-gap" type="radio" id="tour1000" />
+											<input name="tour[model_fee]" value="6280" class="with-gap" type="radio" id="tour1000" />
 											<label for="tour1000">750 – 1,000m<span class="super-index">2</span></label>
 										</td>
 										<td class="right td-right valign"><%= @modelPrices[5] %><span class="currency-font">MXN</span></td>
@@ -234,7 +234,7 @@
 							</table>
 							<div id="floorPlan-wrapper">
 								<p id="floorPlan-checkbox-p">
-									<input id="floorPlan-checkbox" name="tour[floorplan]" type="checkbox">
+									<input id="floorPlan-checkbox" velu="6" name="tour[floorplan]" type="checkbox">
 									<label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >
 										Agrega un <%= link_to "plano esquemático", asset_path("SchematicFloorplan.jpg"), { :id =>"floorplan-link", :class=>"grey-text text-darken-3", :target => "blank" } %> por <span id="floorplan-price">$0</span>.
 									</label>
@@ -377,6 +377,14 @@
 									      <span>CP</span>
 									      <input type="text" size="5" name="card[zip]" data-conekta="card[address][zip]"/>
 									    </label>
+									</div>
+									<div class="col s12">
+										<input id="installment-checkbox" type="checkbox">
+										<a href="/tours/instalmments" data-remote=true>
+											<label id="installment-checkbox-label" for="#installment-checkbox" class="valign grey-text text-darken-3" >
+												Seis meses sin intereses
+											</label>
+										</a>
 									</div>
 									<div id="small-checkout-wrapper" class="col s12 hide-on-med-and-up valign-wrapper">
 										<div id="small-checkout-board" class="col s12">

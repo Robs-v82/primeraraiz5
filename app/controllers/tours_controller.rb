@@ -37,6 +37,7 @@ class ToursController < ApplicationController
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
 		@modelPrices = ['$2,940','$3,620','$4,280','$4,940','$4,560','$6,280']
 		session[:subscription] = true
+		session[:installments] = 1
 	end
 
 	def new
@@ -179,6 +180,10 @@ class ToursController < ApplicationController
 		session[:tour_id] = @tour.id
 		session[:location_id] = target_location.id
 		session[:client_id] = @client.id
+	end
+
+	def installments
+		session[:installments] = 6
 	end
 
 	private

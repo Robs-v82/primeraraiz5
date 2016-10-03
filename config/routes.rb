@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'posts' => 'posts#index'
   post 'posts' => 'posts#create'
   get 'posts/:id' => 'posts#show'
+  get 'tours/installments' => 'tours#installments'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
