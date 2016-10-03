@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'admins/password' => 'admins#password'
   get 'admins' => 'admins#index'
   post 'tours/update' => 'tours#update'
+  get 'tours/installments' => 'tours#installments'
   get 'tours/:id' => 'tours#payment'
   get 'clients/switch' => 'clients#switch'
   post 'contacts' => 'contacts#create'
@@ -42,7 +43,6 @@ Rails.application.routes.draw do
   get 'posts' => 'posts#index'
   post 'posts' => 'posts#create'
   get 'posts/:id' => 'posts#show'
-  get 'tours/installments' => 'tours#installments'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

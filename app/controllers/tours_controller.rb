@@ -37,10 +37,11 @@ class ToursController < ApplicationController
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
 		@modelPrices = ['$2,940','$3,620','$4,280','$4,940','$4,560','$6,280']
 		session[:subscription] = true
-		session[:installments] = 1
 	end
 
 	def new
+		session[:installments] = 1
+		puts 'XXxx'*50, session[:installments]
 		if session[:metro_area] == "CDMX"
 			@banner = "CDMX"
 		elsif session[:metro_area] == "Guadalajara"
@@ -184,6 +185,7 @@ class ToursController < ApplicationController
 
 	def installments
 		session[:installments] = 6
+		puts 'XXxx'*50, session[:installments]
 	end
 
 	private
