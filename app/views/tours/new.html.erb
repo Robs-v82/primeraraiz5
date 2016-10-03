@@ -234,7 +234,7 @@
 							</table>
 							<div id="floorPlan-wrapper">
 								<p id="floorPlan-checkbox-p">
-									<input id="floorPlan-checkbox" velu="6" name="tour[floorplan]" type="checkbox">
+									<input id="floorPlan-checkbox" value="6" name="tour[floorplan]" type="checkbox">
 									<label id="floorPlan-checkbox-label" for="#floorPlan-checkbox" class="valign grey-text text-darken-3" >
 										Agrega un <%= link_to "plano esquemático", asset_path("SchematicFloorplan.jpg"), { :id =>"floorplan-link", :class=>"grey-text text-darken-3", :target => "blank" } %> por <span id="floorplan-price">$0</span>.
 									</label>
@@ -379,12 +379,12 @@
 									    </label>
 									</div>
 									<div class="col s12">
-										<input id="installment-checkbox" type="checkbox">
-										<a href="/tours/instalmments" data-remote=true>
-											<label id="installment-checkbox-label" for="#installment-checkbox" class="valign grey-text text-darken-3" >
+										<!-- <a href="/tours/installments" data-remote=true> -->
+											<input id="installment-checkbox" value="6" name="card[installments]" type="checkbox">
+											<label id="installment-checkbox-label" for="#installment-checkbox" class="valign grey-text text-darken-3">
 												Seis meses sin intereses
 											</label>
-										</a>
+										<!-- </a> -->
 									</div>
 									<div id="small-checkout-wrapper" class="col s12 hide-on-med-and-up valign-wrapper">
 										<div id="small-checkout-board" class="col s12">
