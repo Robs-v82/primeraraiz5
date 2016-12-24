@@ -21,6 +21,9 @@ class HomeController < ApplicationController
 		# end
 	end
 
+	def signature
+	end
+
 	def Uwtj2dr
 	end
 
