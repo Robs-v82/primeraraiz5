@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   post 'posts' => 'posts#create'
   get 'posts/:id' => 'posts#show'
   get 'home/signature' => 'home#signature'
+  get 'home/signature2' => 'home#signature2'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
