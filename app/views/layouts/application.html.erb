@@ -455,19 +455,19 @@
 
 			var setCheckout = function(thisId) {
 				$('#floorPlan-checkbox-p').empty()
-				var tourPrices = [2940,3620,4280,4940,5560,6280]
+				var tourPrices = [3480,4176,4872,5568,6264,6960]
 				var floorplanPrices = [1240,1380,1520,1660,1800,1940]
 				var tourOptionArr = ['tour150','tour300','tour450','tour600','tour750','tour1000']
 				var floorplanPrice = 0
 				if ($('#floorPlan-checkbox').is(":checked")) {
-					var totalArr = [4180,5000,5800,6600,7420,8220]
-					var totalShadowArr = [2940,3620,4280,4940,5560,6280]
+					var totalArr = [4720,5556,6392,7228,8064,8900]
+					var totalShadowArr = [3480,4176,4872,5568,6264,6960]
 					var floorplanRealPrices = floorplanPrices
 					var floorplanShadowPrices = [0,0,0,0,0,0]
 				}
 				else {
 					var totalArr = tourPrices
-					var totalShadowArr = [4180,5000,5800,6600,7420,8220]
+					var totalShadowArr = [4720,5556,6392,7228,8064,8900]
 					var floorplanRealPrices = [0,0,0,0,0,0]
 					var floorplanShadowPrices = floorplanPrices
 				}		
