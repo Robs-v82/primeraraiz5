@@ -38,6 +38,7 @@ class ToursController < ApplicationController
 		# @modelPrices = ['$2,940','$3,620','$4,280','$4,940','$4,560','$6,280']
 		@modelPrices = ['$3,480','$4,176','$4,872','$5,568','$6,264','$6,960']
 		session[:subscription] = true
+		@portafolio = ['https://my.matterport.com/show/?m=qfnRVWH21FK', 'https://my.matterport.com/show/?m=ivtijhnw1HN', 'https://my.matterport.com/show/?m=W43t7bYLcxV', 'https://my.matterport.com/show/?m=hysB5idbbVv','https://my.matterport.com/show/?m=ZqL4fKCGivw', 'https://my.matterport.com/show/?m=JSqN5b3jeS4', 'https://my.matterport.com/show/?m=UoKo1XgsuPi', 'https://my.matterport.com/show/?m=pxHHLwHBKmd', 'https://my.matterport.com/show/?m=XzkmtCiUTzN', 'https://my.matterport.com/show/?m=Tvk9x5sZ7HZ']
 	end
 
 	def new

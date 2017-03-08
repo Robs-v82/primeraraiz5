@@ -308,25 +308,12 @@
 	</div>
 </div>
 <div class="main-background">
-	<div id="demo-section" class="main-section-wrapper">
-		<div class='embed-container'>
-		<iframe title="Rosewood San Miguel de Allende" width="853" height="480" src="https://my.matterport.com/show/?m=qfnRVWH21FK" frameborder="0" allowfullscreen alt="San Miguel de Allende Matterport 3D showcase"></iframe>
-		</div>
-	</div>	
-	<div id="demo-section" class="main-section-wrapper">
-		<div class='embed-container'>
-		<iframe title="GAIA CDMX México" width="853" height="480" src="https://my.matterport.com/show/?m=ivtijhnw1HN" frameborder="0" allowfullscreen alt="CDMX México Matterport 3D showcase"></iframe>
-		</div>
-	</div>	
-	<div class="main-section-wrapper">
-		<div class='embed-container'>
-		<iframe title="Casa 1810 Guadalajara" width="853" height="480" src="https://my.matterport.com/show/?m=UoKo1XgsuPi" frameborder="0" allowfullscreen alt="San Miguel de Allende Matterport 3D showcase"></iframe>
-		</div>
-	</div>
-	<div class="main-section-wrapper">
-		<div class='embed-container'>
-			<iframe title="Departamento CDMX México" alt="CDMX México" width="853" height="480" src="https://my.matterport.com/show/?m=XzkmtCiUTzN" frameborder="0" allowfullscreen alt="CDMX México Matterport 3D showcase"></iframe>
-		</div>
+	<div id="demo-section" class="row">
+		<% @portafolio.each do |url| %>
+			<div class='main-section-wrapper col l6 m6 s12'>
+				<iframe width="100%" height="480" src=<%=url%> frameborder="0" allowfullscreen alt="San Miguel de Allende Matterport 3D showcase"></iframe>
+			</div>
+		<% end %>
 	</div>
 	<div class="row main-section-wrapper grey-text text-darken-3">
 		<div id="tour-price-section" class="col l6 m6 s12">
@@ -426,6 +413,10 @@
 			<li>
 				<div class="collapsible-header left-align"><p class="flow-text">¿Es difícil integrar el tour vitual en mi página web?</p></div>
 				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">Es muy sencillo. Cualquier desarrollador que tenga las credenciales para editar tu página pueda hacer la integración, es cuestión de copiar y pegar el código que te enviaremos.Con todo gusto te proporcionamos el soporte técnico que necesites.</p></div>
+			</li>
+			<li>
+				<div class="collapsible-header left-align"><p class="flow-text">¿Se puede generar un tour virtual a partir de un render?</p></div>
+				<div class="collapsible-body"><p class="grey-text text-darken-3 left-align">No, nuestro servicio siempre parte de hacer un levantamiento de imágenes y dimensiones de un espacio existente. Esto tiene muchas ventajas: la velocidad, el costo y que los usuarios tienen la percepción de estar en el espacio (algo que nunca se puede lograr con un render, por más alta que sea la calidad).</p></div>
 			</li>
 			<li>
 				<div class="collapsible-header left-align"><p class="flow-text">¿Emiten facturas?</p></div>
