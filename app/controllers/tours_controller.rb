@@ -35,7 +35,8 @@ class ToursController < ApplicationController
 		areas_wrong = areas_order.uniq.pluck(:district)
 		@areas = areas_wrong.rotate(-1) 
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
-		@modelPrices = ['$2,940','$3,620','$4,280','$4,940','$4,560','$6,280']
+		# @modelPrices = ['$2,940','$3,620','$4,280','$4,940','$4,560','$6,280']
+		@modelPrices = ['$3,480','$4,176','$4,872','$5,568','$6,264','$6,960']
 		session[:subscription] = true
 	end
 
@@ -53,7 +54,8 @@ class ToursController < ApplicationController
 		areas_wrong = areas_order.uniq.pluck(:district)
 		@areas = areas_wrong.rotate(-1) 
 		@floorplanPrices = ['$1,240','$1,380','$1,520','$1,660','$1,800','$1,940']
-		@modelPrices = ['$2,940','$3,620','$4,280','$4,940','$5,560','$6,280']
+		# @modelPrices = ['$2,940','$3,620','$4,280','$4,940','$5,560','$6,280']
+		@modelPrices = ['$3,480','$4,176','$4,872','$5,568','$6,264','$6,960']
 		session[:subscription] = true	
 	end
 
@@ -63,7 +65,7 @@ class ToursController < ApplicationController
 	def setPrice
 		tour_info = price_params
 		floorplanPrices = [1240,1380,1520,1660,1800,1940]
-		modelPrices = [2940,3620,4280,4940,5560,6280]
+		modelPrices = [3480,4176,4872,5568,6264,6960]
 		modelTime = [180,180,240,240,360,360]
 		sizeArr = ['150','300','450','600','750','1000']
 		timeArr = ['de una a dos', 'de una a dos', 'de dos a tres', 'de dos a tres', 'de tres a cuatro','de tres a cuatro']
