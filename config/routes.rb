@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'products/show'
+
   get 'posts/index'
 
   get 'contacts/create'
@@ -45,6 +47,7 @@ Rails.application.routes.draw do
   get 'posts/:id' => 'posts#show'
   get 'home/signature' => 'home#signature'
   get 'home/signature2' => 'home#signature2'
+  get 'products/:id' => 'products#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
