@@ -66,6 +66,7 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.6.3.0)
       railties (>= 3.2, < 5.1)
+    gabba (1.0.1)
     hashie (3.4.4)
     hirb (0.7.3)
     htmlentities (4.3.4)
@@ -187,6 +188,7 @@ DEPENDENCIES
   conekta
   figaro
   font-awesome-rails
+  gabba
   hirb
   jbuilder (~> 2.0)
   jquery-rails
