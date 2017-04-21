@@ -7,3 +7,15 @@ urls = [
 	"https://my.matterport.com/show/?m=gwHtBNuPHdb",	
 	"https://my.matterport.com/show/?m=YSh2sw9DegH",
 ]
+
+urls = [
+	"https://my.matterport.com/show/?m=8U6YM3KjVxH",
+	"https://my.matterport.com/show/?m=Q4fxSzeX4mE",
+	"https://my.matterport.com/show/?m=jrXcPZcFuok",
+	"https://my.matterport.com/show/?m=NRWh4VHXoqT",
+	"https://my.matterport.com/show/?m=TEpczd3rbJC",
+	"https://my.matterport.com/show/?m=1yu7dkogBdW",
+	"https://my.matterport.com/show/?m=V5twLeUCbpY",
+	"https://my.matterport.com/show/?m=rfSzcjsgzwV",
+	"https://my.matterport.com/show/?m=j29ePYThHfG"
+]

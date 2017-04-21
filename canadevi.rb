@@ -1430,6 +1430,217 @@ huchimdoctor@yahoo.com.mx
 Mérida"
 
 
+canadevi = "
+
+1
+Aprendha
+Haydee
+Haydee Mendoza Durán
+aprendha@yahoo.com.mx
+(499)-963-5604
+Aguascalientes
+
+2
+Vicarar
+Nora
+Nora Rodríguez Mirelles 
+n.rodriguez@vicarar.com.mx
+(499)-912-8950
+Aguascalientes
+
+3
+El Encino
+NO
+Alfonso Barba Aceves
+mmacias@duelencino.com
+(449)-996-6702
+Aguascalientes
+
+4
+GCMEX Grupo Inmobiliario
+Jaime
+Jaime Álvaro Lares Rojas
+jlares@gcmex.com
+(333)-826-3228
+Baja California
+
+5
+Promotora y Constructora Santa Fe
+Eric David
+Eric David Valenzuela Chon
+santafepyc@gmail.com
+646-2047083
+Baja California
+
+6
+Promotora y Constructora Santa Fe
+Eric David
+Eric David Valenzuela Chon
+ingchon@gmail.co
+646-2047083
+Baja California
+
+7
+Toledo & Asociados
+Francisco
+Francisco Toledo Cobarrubias
+fco_toledo@msn.com
+(686) 116-5560
+Baja California
+
+8
+Derex Desarrollo Residencial
+Ernesto
+Ernesto Armenta
+earmenta@derex.com
+(664) 608-7070
+Baja California
+
+9
+DSM Constructora
+Daniel
+Daniel Alberto Salgado Méndez
+dsm_constructora@yahoo.com.mx
+(646) 176-6922
+Baja California
+
+10
+Constructora Marqco
+Carlos Alberto
+Carlos ALberto Mejía Santa Ana 
+cmejia@constructoramarqco.com
+(664)-400-9355
+Baja California
+
+11
+Harvil
+Raúl
+Raúl Villanueva López
+rvillanueva55@hotmail.com
+(686)-556-5434
+Baja California
+
+12
+Harvil
+Raúl
+Raúl Villanueva López
+harvil55@hotmail.com
+(686)-556-5434
+Baja California
+
+13
+Camaos Supervisión y Construcción
+Carlos
+Carlos Ángeles González
+camaos@prodigy.net.mx
+(442) 166-1219
+Querétaro
+
+14
+Sayco Homes
+Adán
+Adán Sánchez Martínez
+sama_arq@hotmail.com
+(442) 254-3173 
+
+15
+Desarrollos Inmobiliarios Laguna
+Carlos
+Carlos Muela Muñoz
+cmuela@dil.com.mx
+(55)- 5593-4500
+Ciudad de México
+
+16
+Inmobiliaria Basgar
+Fernando
+Fernando González Martínez
+inmobiliariabasgar@yahoo.es
+(722) 214-4514
+Estado de México
+
+17
+Alteq Construcciones
+Juan José
+Juan José González Mendoza
+jgonzalez@metrovivienda.com.mx
+(55) 9177-9090
+Estado de México
+
+18
+GAMSA
+Guillermo
+Guillermo García Moreno
+gamsa2@prodigy.net.mx
+(728) 285-252
+Estado de México
+
+19
+Altta Homes
+Enrique
+Enrique Nahum Vainer Girs
+enrique@sadasi.com
+(55) 5201-0480
+Ciudad de México
+
+20
+Meda Casa
+Gonzalo
+Gonzalo Méndez Dávalos
+gonzalo.mendez@medacasa.com.mx
+(351) 515-7973
+Michoacán
+
+21
+Desarrolladora de Entornos Ecológicos
+Raymundo
+Raymundo López Olvera
+raymundo-lopez-@hotmail.com
+(443) 324-7716
+Morelia
+
+22
+Desarrolladora Delta
+Miguel
+Miguel Betancourt
+mbetancourtn@gmail.com
+(443) 334-2607
+Morelia
+  
+23
+Inmobiliaria Country
+Manuel
+Manuel Flores Arreygue
+urbasurmorelia@yahoo.com.mx
+(443) 315-2205
+Morelia
+"
+"
+17
+Casas Alteq
+Juan José
+Juan José González Mendoza
+jgonzalez@casasaltec.com
+(55) 9177-9090
+Estado de México
+
+INMOBILIARIA COUNTRY SA DE CV MANUEL FLORES ARREYGUE  ext. 106 
+RESIDENCIAL TORREÓN NUEVO S.A. DE C.V. MANUEL NOCETTI TIZNADO (443) 308-2250 residencial_torreon_nuevo@yahoo.com.mx
+DESARROLLO INMOBILIARIO COINTZIO S.A. DE C.V. DIEGO VILCHIS MEDRANO (55) 5272-2044 dvilchis@casasarko.com.mx
+DESARROLLO INMOBILIARIO ITZICUARO S.A. DE C.V. DIEGO VILCHIS MEDRANO (55) 5272-2044 dvilchis@casasarko.com.mx
+
+
+ALTEQ CONSTRUCCIONES S.A. DE C.V. JUAN JOSE GONZÁLEZ MENDOZA  
+CONSTRUCCIONES CIVILES GAMSA S.A. DE C.V. GUILLERMO GARCÍA MORENO 6 
+CONSORCIO HOGAR DE OCCIDENTE S.A DE C.V. JUAN JOSÉ GONZÁLEZ M. (55) 5917-7990 jgonzalez@casasaltec.com
+ALTTA HOMES CENTRO SUR ENRIQUE NAHUM VAINER GIRS  gbecerril@sadasi.com
+
+   GRUPO FONSIER S.A. DE C.V. LUIS ALBERTO SÁNCHEZ CERVANTES (612)-129-4260  LURE CONSTRUCCIONES S.A. DE C.V. CARLOS DAVID CASTRO CHAPARRO (624)-173-0040 cdcastro82@hotmail.com DESARROLLADORA INMOBILIARIA DE LA PAZ, S.A. DE C.V. IVAN AHUMADA Ivan.ahumada@dipaz.com.mx DECORACIÓN CON CLASE, S.A. DE C.V. JOSÉ GERARDO FAZ MORENO (615)-152-1958 facturaciondamar@gmail.com Campeche CONSTRUCTORES UNIDOS DE CAMPECHE S.A. DE C.V. RAMÓN ESPÍNDOLA TORAYA (981) 815-1643 lucy.ruiz@cucsa.com.mx VÍCTOR MANUEL BURGOS PECH VÍCTOR MANUEL BURGOS PECH (981) 817-2703 uburgos62@hotmail.com CONSTRUCCIONES Y SISTEMAS DE ING. CIVIL S.A. DE C.V. BEATRIZ ESTHER PINZÓN CEBALLOS (981) 811-5394 csi92@hotmail.com INGENIERIA Y SERVICIOS ESPECIALIZADOS DE CAMPECHE S.A. DE C.V. OSWALDO AGUSTO ROSADO RODRÍGUEZ (981) 813-1316 o_r_rodriguez@hotmail.com ARMANDO MOLINA DURAN ARMANDO MOLINA DURA (981) 133-2331 modaxx@hotmail.com CARLOS RAMON CACARES ZETINA CARLOS RAMON CACARES ZETINA (981) 829-0322 ingenierocarloscaceres@gmail.com CONSTRUCTORA E INMOBILIARIA PIEDRA DE LUZ VICTOR MANUEL BURGOS PECH (981) 829-1969 piedraluz806002@hotmail.com INMOBILIARIA ISLA AGUADA S.A. DE C.V. CÉSAR ENRIQUE FERRER SOLIS (938) 266-4800 ceferrer@hotmail.com GRUPO CONSTRUCTOR VARO DE CAMPECHE S.A. DE C.V. MANUEL RODRIGO VALLADARES GUZMÁN (981) 816-1776 grupovaro@hotmail.com CONSTRUFUTURO LUIS MOISÉS CLEMENTE COUTIÑO (962) 626-1094 (962) 112- 9370 construfuturo@hotmail.com.mx FIGO CONSTRUCCIONES, S.A. DE C.V. ÓSCAR ALEJANDRO FIGUEROA (961) 140-2220 oscaralejandrofigueroa@gmail.com ARQASA CONSTRUCTORES S.A. DE C.V. JULIO CESAR BERMUDEZ BERMUDEZ (963) 632-3336 ggordillo@arqasa.com CONSTRUCTORA INMOBILIARIA HUITEPEC S.A. DE C.V. JOSE LUIS ORANTES PASTRANA (961) 615-6901 cihuitepec@hotmail.com INMOBILIARIA REALFE, S.A. DE C.V. GABRIEL MAJARREZ JUÁREZ (962) 624-0739 gabrielmanjarrezj@yahoo.com.mx PROYECTOS Y ACABADOS DEL SURESTE S.A. DE C.V. MIGUEL ÁNGEL DIAZ SOL (961)-175-9373 (961)-179-1989 Arq.miguelangeldiazsol@hotmail.com Chihuahua JOSÉ LUIS CARRASCO GIL JOSÉ LUIS CARRASCO GIL (614) 483-0709 jlcgil59@yahoo.com.mx ÁNGEL GUTIÉRREZ CASTILLO ÁNGEL GUTIÉRREZ CASTILLO (614) 410-1954 icangelgtz@prodigy.net.mx JESÚS MANUEL MONTILLA TREJO JESÚS MANUEL MONTILLA TREJO (614) 426-5650 jesusmontilla7@hotmail.com ALARIFE DE MÉXICO S.A. DE C.V. CÉSAR OCTAVIO NÁJERA RODRIGUEZ (656) 682-4256 alarifecesar@hotmail.com SIIMON S.A. DE C.V. LUIS CARLOS MONREAL LERMA (656) 617-7141 monreal@siimon.com.mx ALTTA HOMES NORTE S. DE R.L. DE C.V. JORGE SOLANO VEGA (55)-9138-9999 Ext. 71 jsolano@sadasi.com JOSE ALGEL CASTRO PALMA JOSE ALGEL CASTO PALMA (614) 256-1988 arq.angelcastro@hotmail.com JOSE CONCEPCIÓN MEDINA BATREZ JOSE CONCEPCIÓN MEDINA BATREZ jmedina_batres@hotmail.com EVA GABRIELA LOZANO MADRID EVA GABRIELA LOZANO MADRID (656) 407-5636 glmadrid@yahoo.com.mx LUIS FERNANDO RÍOS ORTIZ LUIS FERNANDO RÍOS ORTIZ (656) 618-6751 ing.fernando@hotmail.com Ciudad de México DESARROLLOS INMOBILIARIOS SADASI S.A DE C.V. JORGE SOLANO VEGA (55)-9138-9999 Ext. 71 jsolano@sadasi.com DESARROLLOS INMOBILIARIOS LAGUNA, S.A. DE C.V. CARLOS MUELA MUÑOZ (55)- 5593-4500 cmuela@dil.com.mx"
+
+
+
+
+
 
 universe = 1..213
 universeString = []
