@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
   
 	def trackGA
-		Gabba::Gabba.new("UA-83714284-1", "primeraraiz.com").page_view("products", request.fullpath)
+		gabba = Gabba::Gabba.new("UA-83714284-1", "primeraraiz.com")
+		gabba.identify_user(cookies[:__utma], cookies[:__utmz])
+		gabba.page_view("products", request.fullpath)
 	end
 
 	def show
