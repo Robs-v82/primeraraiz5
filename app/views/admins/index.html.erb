@@ -22,8 +22,11 @@
 			<div class="basic-block row">
 				<form action="/contacts" method="post">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-					<div class="input-field col s12">
-						<input type="text" name="contact[name]" placeholder="Nombre">
+					<div class="input-field col l6 m6 s12">
+						<input type="text" name="contact[first_name]" placeholder="Nombre">
+					</div>
+					<div class="input-field col l6 m6 s12">
+						<input type="text" name="contact[name]" placeholder="Apellidos">
 					</div>
 					<div class="input-field col s12">
 						<input type="text" name="contact[email]" placeholder="Correo*">
