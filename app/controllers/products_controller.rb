@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
+		# sleep 1
 		trackGA
 		product = Product.find(params[:id])
 		myUrl = product.url

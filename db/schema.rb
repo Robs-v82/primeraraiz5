@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509195939) do
+ActiveRecord::Schema.define(version: 20170510031853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,14 @@ ActiveRecord::Schema.define(version: 20170509195939) do
 
   add_index "locations", ["area_id"], name: "index_locations_on_area_id", using: :btree
   add_index "locations", ["client_id"], name: "index_locations_on_client_id", using: :btree
+
+  create_table "municipalities", force: true do |t|
+    t.string   "clave_estado"
+    t.string   "clave_munici"
+    t.string   "munici"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "neighborhoods", force: true do |t|
     t.string   "name"
