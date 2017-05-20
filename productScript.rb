@@ -19,3 +19,7 @@ urls = [
 	"https://my.matterport.com/show/?m=rfSzcjsgzwV",
 	"https://my.matterport.com/show/?m=j29ePYThHfG"
 ]
+
+urls = [
+	"https://my.matterport.com/show/?m=xpW3txBEPQn"
+]

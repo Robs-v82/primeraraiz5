@@ -1276,3 +1276,34 @@ input[type=text] {
 .author {
 	font-weight: 600;
 }
+
+#intro-background{
+	min-width: 960px;
+	min-height: 960px;
+} 
+
+.intro-color{
+	background-color: #424242
+}
+
+#intro-image{
+	width:350px;
+	height:200px;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	margin: auto;
+}
+
+#client-image{
+	width:350px;
+	height:200px;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	margin: auto;	
+}

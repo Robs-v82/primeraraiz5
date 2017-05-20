@@ -1,0 +1,33 @@
+<script type="text/javascript">
+	var ready
+	ready = function(){
+		$(document).ready(function() {
+			var color = 
+			setTimeout(function() {
+				$("#intro-image").addClass("animated fadeOut")
+				}, 1500);
+			setTimeout(function() { 
+    			$("#intro-background").css('background-color', '#cc494f');
+				},	3000); 
+  			setTimeout(function() {
+    			$("#client-image").css("display", "inline-block").delay(500).addClass("animated pulse")
+  				}, 3500); 
+  			})
+		}
+
+
+	$(document).ready(ready)
+	$(document).on('page:load', ready)
+</script>
+<meta HTTP-EQUIV="REFRESH" content="5; '<%= @myUrl %>'">
+<div id="intro-background" class="intro-color">
+	<div id="intro-image" class="animated bounce valign-wrapper">
+		<img alt="recorrido virtual Matterport México Primera Raíz" src="/assets/light_original_logo.png" class="z-depth-1" width="48px" height="48px">
+		<h3 class="center-align" style="display:inline-block;margin-left:10px;color:#b2ff59">primera<span style="color:white">Raíz</span></h3>
+	</div>
+	<div id="client-image" style="display:none">
+		<img alt="recorrido virtual Matterport México Primera Raíz" src="/assets/logo_catedral.png" width="250px">
+	</div>
+</div>
+<div id="intro-background">
+</div>
