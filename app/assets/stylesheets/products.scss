@@ -1,3 +1,43 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#intro-background{
+	min-width: 960px;
+	min-height: 960px;
+} 
+
+.intro-color{
+	background-color: #424242
+}
+
+#intro-image{
+	width:280px;
+	height:200px;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	margin: auto;
+}
+
+#client-image{
+	width:350px;
+	height:200px;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	margin: auto;	
+}
+
+#client-png{
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	margin: auto;	
+}

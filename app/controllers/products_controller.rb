@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+	layout false
   
 	def trackGA
 		gabba = Gabba::Gabba.new("UA-83714284-1", "primeraraiz.com")
