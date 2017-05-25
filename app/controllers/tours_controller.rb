@@ -38,7 +38,18 @@ class ToursController < ApplicationController
 		# @modelPrices = ['$2,940','$3,620','$4,280','$4,940','$4,560','$6,280']
 		@modelPrices = ['$3,480','$4,176','$4,872','$5,568','$6,264','$6,960']
 		session[:subscription] = true
-		@portafolio = ['https://my.matterport.com/show/?m=qfnRVWH21FK', 'https://my.matterport.com/show/?m=ivtijhnw1HN', 'https://my.matterport.com/show/?m=W43t7bYLcxV', 'https://my.matterport.com/show/?m=hysB5idbbVv','https://my.matterport.com/show/?m=ZqL4fKCGivw', 'https://primeraraiz.com/products/23', 'https://my.matterport.com/show/?m=UoKo1XgsuPi', 'https://my.matterport.com/show/?m=pxHHLwHBKmd', 'https://primeraraiz.com/products/1', 'https://my.matterport.com/show/?m=Tvk9x5sZ7HZ']
+		@portafolio = [
+			'https://primeraraiz.com/products/3',
+			'https://primeraraiz.com/products/8',
+			'https://primeraraiz.com/products/33',
+			'https://primeraraiz.com/products/4',
+			'https://primeraraiz.com/products/2',
+			'https://primeraraiz.com/products/25',
+			'https://primeraraiz.com/products/23',
+			'https://primeraraiz.com/products/13',
+			'https://primeraraiz.com/products/1',
+			'https://primeraraiz.com/products/17'
+		]
 	end
 
 	def new

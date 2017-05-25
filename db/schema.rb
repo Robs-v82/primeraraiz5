@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510031853) do
+ActiveRecord::Schema.define(version: 20170525210708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,21 @@ ActiveRecord::Schema.define(version: 20170510031853) do
     t.datetime "updated_at"
   end
 
+  create_table "institutions", force: true do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.string   "color",              default: "#ffffff"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "institutions", ["state_id"], name: "index_institutions_on_state_id", using: :btree
+
   create_table "listings", force: true do |t|
     t.string   "website"
     t.string   "url"
@@ -163,7 +178,14 @@ ActiveRecord::Schema.define(version: 20170510031853) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumb_file_name"
+    t.string   "thumb_content_type"
+    t.integer  "thumb_file_size"
+    t.datetime "thumb_updated_at"
+    t.integer  "institution_id"
   end
+
+  add_index "products", ["institution_id"], name: "index_products_on_institution_id", using: :btree
 
   create_table "properties", force: true do |t|
     t.string   "street"
