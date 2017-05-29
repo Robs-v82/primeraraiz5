@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get 'products/:id' => 'products#show'
   get 'intro/:id' => 'products#intro'
   post 'institutions' => 'institutions#create'
+  get 'getInstitution' => 'products#find'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

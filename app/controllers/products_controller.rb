@@ -16,16 +16,27 @@ class ProductsController < ApplicationController
 	end
 
 	def intro
-		@target_color = "#cc494f"
 		product = Product.find(params[:id])
+		session[:product_id] = product.id
+		@institution = Institution.find(product.institution_id)
 		@myUrl = product.url
-		respond_to do |format|
-			format.html
-			format.json {
-				render :json => @target_color.to_json
-			}
-		end
+		domain = "http://localhost:3000"
+		@logoUrl = domain+@institution.image.url
+		@target_color = product.institution.color
+		# respond_to do |format|
+		# 	format.html
+		# 	format.json {
+		# 		render :json {
+		# 			color: target_color
+		# 		}
+		# 	}
+		# end
 	end
+
+	# def find
+	# 	target_color = Product.find(session[:product_id]).institution.color
+	# 	render json: { color: target_color }
+	# end
 
 	def lang
 		# sleep 1
