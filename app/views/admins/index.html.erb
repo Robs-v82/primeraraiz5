@@ -56,7 +56,12 @@
 						<input type="text" name="contact[extension]" placeholder="Extensión">
 					</div>
 					<div class="input-field col s12">
-						<input type="text" name="contact[organization]" placeholder="Organización">
+						<select class="admins-select browser-default" name="contact[institution_id]">
+							<option value="" selected>Organización</option>
+							<% @institutions.each do |institution|%>
+								<option value="<%= institution.id %>"><%= institution.name%></option>
+							<% end %>
+						</select>
 					</div>
 					<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 				</form>

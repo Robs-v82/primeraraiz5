@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529005944) do
+ActiveRecord::Schema.define(version: 20170529014912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,19 +80,21 @@ ActiveRecord::Schema.define(version: 20170529005944) do
     t.string   "email"
     t.string   "mobile_phone"
     t.string   "other_phone"
-    t.string   "category",     default: "general"
+    t.string   "category",       default: "general"
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "subscription", default: true
+    t.boolean  "subscription",   default: true
     t.string   "organization"
     t.string   "extension"
-    t.string   "state",        default: "Ciudad de México"
-    t.string   "language",     default: "Spanish"
+    t.string   "state",          default: "Ciudad de México"
+    t.string   "language",       default: "Spanish"
     t.string   "first_name"
+    t.integer  "institution_id"
   end
 
   add_index "contacts", ["client_id"], name: "index_contacts_on_client_id", using: :btree
+  add_index "contacts", ["institution_id"], name: "index_contacts_on_institution_id", using: :btree
 
   create_table "days", force: true do |t|
     t.string   "day"

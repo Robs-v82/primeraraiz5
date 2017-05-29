@@ -5,6 +5,7 @@ class AdminsController < ApplicationController
 
 	def index
 		if current_agent
+			@institutions = Institution.all.order(:name)
 			@states = State.all
 			@cities = ["Ciudad de México", "Querétaro", "Acapulco", "Aguascalientes", "Cancún", "Celaya", "Cuernavaca", "Guadalajara", "Juárez", "León","Los Cabos", "Mérida", "Monterrey", "Morelia","Puebla","Puerto Vallarta","Saltillo", "San Luis Potosí","San Miguel de Allende","Tampico", "Tijuana", "Toluca", "Torreón", "Veracruz"]
 			if session[:new_contact]
