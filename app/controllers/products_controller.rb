@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
 		session[:product_id] = product.id
 		@institution = Institution.find(product.institution_id)
 		@myUrl = product.url
-		domain = "http://localhost:3000"
+		domain = "https://primeraraiz.com"
 		@logoUrl = domain+@institution.image.url
 		@target_color = product.institution.color
 		# respond_to do |format|
