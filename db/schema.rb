@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525210708) do
+ActiveRecord::Schema.define(version: 20170529005944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20170525210708) do
   create_table "institutions", force: true do |t|
     t.string   "name"
     t.integer  "state_id"
-    t.string   "color",              default: "#ffffff"
+    t.string   "color"
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20170525210708) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "website"
   end
 
   add_index "institutions", ["state_id"], name: "index_institutions_on_state_id", using: :btree

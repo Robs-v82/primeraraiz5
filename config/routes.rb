@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'institutions/create'
+
   get 'products/show'
 
   get 'posts/index'
@@ -50,6 +52,7 @@ Rails.application.routes.draw do
   get 'products/:id/:lang' => 'products#lang'
   get 'products/:id' => 'products#show'
   get 'intro/:id' => 'products#intro'
+  post 'institutions' => 'institutions#create'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

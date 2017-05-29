@@ -1,15 +1,23 @@
 class AdminsController < ApplicationController
 
 	after_action :remove_contact_message, only: [:index]
+	after_action :remove_institution_message, only: [:index]
 
 	def index
 		if current_agent
-			@states = ["Ciudad de México", "Querétaro", "Acapulco", "Aguascalientes", "Cancún", "Celaya", "Cuernavaca", "Guadalajara", "Juárez", "León","Los Cabos", "Mérida", "Monterrey", "Morelia","Puebla","Puerto Vallarta","Saltillo", "San Luis Potosí","San Miguel de Allende","Tampico", "Tijuana", "Toluca", "Torreón", "Veracruz"]
+			@states = State.all
+			@cities = ["Ciudad de México", "Querétaro", "Acapulco", "Aguascalientes", "Cancún", "Celaya", "Cuernavaca", "Guadalajara", "Juárez", "León","Los Cabos", "Mérida", "Monterrey", "Morelia","Puebla","Puerto Vallarta","Saltillo", "San Luis Potosí","San Miguel de Allende","Tampico", "Tijuana", "Toluca", "Torreón", "Veracruz"]
 			if session[:new_contact]
 				@contact_success = true
 			end
 			if session[:contact_errors]
 				@contact_errors = session[:contact_errors] 
+			end
+			if session[:new_institution]
+				@institution_success = true
+			end
+			if session[:institution_errors]
+				@institution_errors = session[:institution_errors] 
 			end
 		else
 			redirect_to '/admins/password'

@@ -96,6 +96,15 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def remove_institution_message
+		if session[:new_institution]
+			session[:new_institution] = nil
+		end
+		if session[:institution_errors]
+			session[:institution_errors] = nil
+		end
+	end
+
 	def number_with_delimiter(number, delimiter=",", separator=".")
 		begin
 			number = number.floor

@@ -32,28 +32,10 @@
 						<input type="text" name="contact[email]" placeholder="Correo*">
 					</div>
 					<div class="input-field col s12">
-						<select class="admins-select browser-deafult" name="contact[category]">
-							<option value="" disabled selected>Categoría</option>
-							<option value="RE_broker">Agente inmobiliario</option>
-							<option value="RE_marketing">Mercadotecnia</option>
-							<option value="Apartments">Departamentos y suites corporativas</option>
-							<option value="FSBO">Trato directo</option>
-							<option value="RE_developer">Constructor</option>
-							<option value="RE_website">Portal bienes raíces</option>
-							<option value="architecht_designer">Arquitectura y decoradoración</option>
-							<option value="hotel_restaurant">Hospitalidad y comercio</option>
-							<option value="sport_facilities">Clubes deportivos y gimnasios</option>
-							<option value="cultural">Cultura</option>
-							<option value="technology">Innovación y tecnología</option>
-							<option value="government">Gobierno</option>
-							<option value="general">General</option>
-						</select>
-					</div>
-					<div class="input-field col s12">
 						<select class="admins-select browser-deafult" name="contact[state]">
 							<option value="" disabled selected>Ciudad</option>
-							<% @states.each do |state| %>
-								<option value="<%= state%>"><%= state%></option>
+							<% @cities.each do |city| %>
+								<option value="<%= city%>"><%= city%></option>
 							<% end %>
 						</select>
 					</div>
@@ -84,7 +66,53 @@
 				<a href="/admins/download_contacts">
 					<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 				</a>
-
+			</div>
+		</div>
+		<div class="col l6 m6 s12">
+			<h5>Agregar organización</h5>
+			<div class="basic-block row">
+				<form action="/institutions" enctype="multipart/form-data" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<div class="input-field col s12">
+						<input type="text" name="institution[name]" placeholder="Organización">
+					</div>
+					<div class="input-field col s12">
+						<input type="text" name="institution[website]" placeholder="Página Web">
+					</div>
+					<div class="input-field col s12">
+						<select class="admins-select browser-deafult" name="institution[category]">
+							<option value="" disabled selected>Categoría</option>
+							<option value="RE_broker">Agente inmobiliario</option>
+							<option value="RE_marketing">Mercadotecnia</option>
+							<option value="Apartments">Departamentos y suites corporativas</option>
+							<option value="FSBO">Trato directo</option>
+							<option value="RE_developer">Constructor</option>
+							<option value="RE_website">Portal bienes raíces</option>
+							<option value="architecht_designer">Arquitectura y decoradoración</option>
+							<option value="hotel_restaurant">Hospitalidad y comercio</option>
+							<option value="sport_facilities">Clubes deportivos y gimnasios</option>
+							<option value="cultural">Cultura</option>
+							<option value="technology">Innovación y tecnología</option>
+							<option value="government">Gobierno</option>
+							<option value="general">General</option>
+						</select>
+					</div>
+					<div class="input-field col l6 m12 s12">
+						<select class="admins-select browser-deafult" name="institution[state_id]">
+							<option value="" disabled selected>Estado</option>
+							<% @states.each do |state| %>
+								<option value="<%= state.id%>"><%= state.estado%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col l6 m12 s12">
+						<input type="text" name="institution[color]" placeholder="Color HEX">
+					</div>
+					<div class="input-field col s12">
+						<input type="file" name="institution[image]">
+					</div>
+					<button id="institution-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</form>
 			</div>
 		</div>
 		<div class="col l6 m6 s12">
@@ -93,7 +121,7 @@
 				<form action="/posts" enctype="multipart/form-data" method="post">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 					<div class="input-field col s12">
-						<input type"text" name="post[title]" placeholder="Título">
+						<input type="text" name="post[title]" placeholder="Título">
 					</div>
 					<div class="input-field col s12">
 						<textarea name="post[subtitle]" placeholder="Subtítulo"></textarea>
@@ -150,6 +178,37 @@
 				<p class="flow-text">Error fatal</p>
 				<ul>
 					<% @contact_errors.each do |error| %>
+						<li><%=error%></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end%>
+<% if @institution_succes %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Organización agregada</p>
+			</div>
+		</div>
+	</div>
+<% end %>
+<% if @institution_errors %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Error fatal</p>
+				<ul>
+					<% @institution_errors.each do |error| %>
 						<li><%=error%></li>
 					<% end %>
 				</ul>

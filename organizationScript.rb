@@ -6,6 +6,6 @@ x.save
 
 Institution.last.update(:image=>File.open("/Users/Bobsled/documents/Primera Raíz/institution_images/Luxury Habitat.jpg", "r"))
 
-Luxury Habitat.jpg
-
 x = Institution.new(:name=>"Casas Atlas", :state_id=>9, :color=>"#4ca7ff", :category=>"RE_developer", :image=>File.new("/Users/Bobsled/documents/Primera Raíz/institution_images/Casas Atlas.png", "r"))
+
+(24..32).each {|x| Product.find(x).update(:institution_id=>1)}
