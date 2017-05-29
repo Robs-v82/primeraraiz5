@@ -15,7 +15,7 @@ class InstitutionsController < ApplicationController
 	private
 
 	def institution_params
-		params.require(:institution).permit(:name, :website, :category, :state_id, :image)
+		params.require(:institution).permit(:name, :website, :category, :state_id, :image, :color)
 	end
 
 end
