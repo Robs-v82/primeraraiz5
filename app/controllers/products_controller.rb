@@ -19,7 +19,9 @@ class ProductsController < ApplicationController
 		product = Product.find(params[:id])
 		session[:product_id] = product.id
 		@institution = Institution.find(product.institution_id)
+		@name = product.name
 		@myUrl = product.url
+		@product_id = product.id.to_s
 		domain = "https://primeraraiz.com"
 		@logoUrl = domain+@institution.image.url
 		@target_color = product.institution.color

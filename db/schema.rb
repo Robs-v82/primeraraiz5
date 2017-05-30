@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530030759) do
+ActiveRecord::Schema.define(version: 20170530185024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20170530030759) do
     t.integer  "thumb_file_size"
     t.datetime "thumb_updated_at"
     t.integer  "institution_id"
+    t.string   "name"
   end
 
   add_index "products", ["institution_id"], name: "index_products_on_institution_id", using: :btree
