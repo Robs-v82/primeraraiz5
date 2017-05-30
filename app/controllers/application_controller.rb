@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
  
  	protect_from_forgery with: :exception
-	helper_method :current_agent, :current_user, :greeting, :set_auth, :set_date, :number_with_delimiter
+	helper_method :current_agent, :current_user, :current_admin, :greeting, :set_auth, :set_date, :number_with_delimiter
 	
 	def greeting
 		current_time = Time.now.to_i
@@ -125,6 +125,10 @@ class ApplicationController < ActionController::Base
 
 		def current_agent
 			@current_agent ||= Agent.find(session[:agent_id]) if session[:agent_id]
+		end
+
+		def current_admin
+			@current_admin ||= true if Agent.find(session[:agent_id]).admin == true
 		end
 
 

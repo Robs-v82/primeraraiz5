@@ -23,6 +23,11 @@ class AdminsController < ApplicationController
 		else
 			redirect_to '/admins/password'
 		end
+		if current_admin
+			@admin = true
+		else
+			@admin = false
+		end
 	end
 
 	def password

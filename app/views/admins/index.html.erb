@@ -66,12 +66,14 @@
 					<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 				</form>
 			</div>
-			<div class="basic-block row">
-				<p class="button-related">Descargar contactos (Excel)</p>
-				<a href="/admins/download_contacts">
-					<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
-				</a>
-			</div>
+			<% if @admin == true %>
+				<div class="basic-block row">
+					<p class="button-related">Descargar contactos (Excel)</p>
+					<a href="/admins/download_contacts">
+						<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+					</a>
+				</div>
+			<% end %>
 		</div>
 		<div class="col l6 m6 s12">
 			<h5>Agregar organización</h5>
