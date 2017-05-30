@@ -27,3 +27,42 @@ urls = [
 urls = [
 	"https://my.matterport.com/show/?m=SVWJr3KhutQ"
 ]
+
+(1..34).each{|x| Product.find(x).update(:name=>names[x-1])}
+
+names = [
+	"Depa Colonia Cuauhtémoc",
+	"Cava - Casa 1810",
+	"Rosewood Suite",
+	"GAIA - Tienda Prado Norte",
+	"Vive San Isidro - Casa 2",
+	"Joy Juriquilla",
+	"Vive San Isidro - Casa 1",
+	"Enquentro",
+	"Tres Lagos",
+	"Departamentos Gutiérrez Zamora",
+	"Salón de Jóvenes",
+	"Salón de Fiestas A",
+	"Ludoteca",
+	"Salón de Fiestas B",
+	"Gimnasio",
+	"Departamento Muestra",
+	"Plaza",
+	"Lobby",
+	"Roof Garden",
+	"Condesa Cimatario",
+	"Parque Norte Residencial - 75 Metros",
+	"Parque Norte Residencial - 95 Metros",
+	"Parque Norte Residencial - 88 Metros",
+	"Celeste - Casas Atlas",
+	"Dorato - Casas Atlas",
+	"Nero - Casas Atlas",
+	"Marbella - Casas Atlas",
+	"Sabolla - Casas Atlas",
+	"Olimpia - Casas Atlas",
+	"Génova - Casas Atlas",
+	"Torino - Casas Atlas",
+	"Florentino - Casas Atlas",
+	"Catedral Metropolitana de México",
+	"Casa Interlomas - Luxury Habitat",
+]

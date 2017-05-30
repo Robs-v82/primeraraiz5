@@ -128,7 +128,9 @@ class ApplicationController < ActionController::Base
 		end
 
 		def current_admin
-			@current_admin ||= true if Agent.find(session[:agent_id]).admin == true
+			if session[:agent_id]
+				@current_admin ||= true if Agent.find(session[:agent_id]).admin == true
+			end
 		end
 
 
