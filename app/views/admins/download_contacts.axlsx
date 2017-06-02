@@ -1,7 +1,7 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "contactos_primera_raiz") do |sheet|
-  sheet.add_row ['CATEGORÍA', 'NOMBRE', 'APELLIDOS', 'ORGANIZACIÓN', 'CORREO', 'CELULAR', 'TELÉFONO FIJO', 'EXTENSIÓN', 'ESTADO','IDIOMA']
+  sheet.add_row ['CATEGORÍA', 'INSTITUTION', 'LOGO', 'NOMBRE', 'APELLIDOS', 'ORGANIZACIÓN', 'CORREO', 'CELULAR', 'TELÉFONO FIJO', 'EXTENSIÓN', 'ESTADO','IDIOMA']
   @contacts.each do |contact|
-    sheet.add_row [contact.category, contact.first_name, contact.name, contact.organization, contact.email, contact.mobile_phone, contact.other_phone, contact.extension, contact.state, contact.language]
+    sheet.add_row [contact.institution.category, contact.institution.name, "https://primeraraiz.com"+contact.institution.image.url, contact.first_name, contact.name, contact.organization, contact.email, contact.mobile_phone, contact.other_phone, contact.extension, contact.state, contact.language]
   end
 end
