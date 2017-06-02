@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
 	helper_method :current_agent, :current_user, :current_admin, :greeting, :set_auth, :set_date, :number_with_delimiter
 	
 	def greeting
-		current_time = Time.now.to_i
-		midnight = Time.now.beginning_of_day.to_i
-		noon = Time.now.middle_of_day.to_i
-		five_pm = Time.now.change(:hour => 17 ).to_i
-		eight_pm = Time.now.change(:hour => 20 ).to_i
+		current_time = Time.zone.now.to_i
+		midnight = Time.zone.now.beginning_of_day.to_i
+		noon = Time.zone.now.middle_of_day.to_i
+		five_pm = Time.zone.now.change(:hour => 17 ).to_i
+		eight_pm = Time.zone.now.change(:hour => 20 ).to_i
 		if midnight.upto(noon).include?(current_time)
 			@greeting = "Buenos días"
 		elsif noon.upto(eight_pm).include?(current_time)
