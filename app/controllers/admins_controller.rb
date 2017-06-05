@@ -34,7 +34,7 @@ class AdminsController < ApplicationController
 	end
 
 	def download_contacts
-	    @contacts = Contact.where("subscription")
+	    @contacts = Contact.where("subscription and institution_id > 0")
 	    render xlsx: 'download_contacts'
 	    # respond_to do |format| 
 	    #    format.xlsx {render xlsx: 'download',filename: "contactos_primera_raiz.xlsx"}
