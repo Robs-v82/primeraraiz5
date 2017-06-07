@@ -1,10 +1,26 @@
+
+productURL = "https://my.matterport.com/show/?m=UFT43gaV5Cx&lang=es"
+productKey = productURL[34,11]
+thumbURL = "https://my.matterport.com/api/v1/player/models/"+productKey+"/thumb"
+product.thumb = URI.parse(thumbURL)
+
+"https://my.matterport.com/api/v1/player/models/UFT43gaV5Cx/thumb"
+
+
+
+
 urls = ["https://my.matterport.com/show/?m=JSqN5b3jeS4","https://my.matterport.com/show/?m=W43t7bYLcxV","https://my.matterport.com/show/?m=E5PUvwmHUcJ","https://my.matterport.com/show/?m=ZqL4fKCGivw","https://my.matterport.com/show/?m=Tvk9x5sZ7HZ","https://my.matterport.com/show/?m=Z5JscHJAuPV","https://my.matterport.com/show/?m=SE9ZzJYGbki","https://my.matterport.com/show/?m=fRYNjFNmWs5","https://my.matterport.com/show/?m=pxHHLwHBKmd","https://my.matterport.com/show/?m=jqAdGtVcrt3","https://my.matterport.com/show/?m=G61RdaBV2bP","https://my.matterport.com/show/?m=mJwM9vQ9fyG","https://my.matterport.com/show/?m=hysB5idbbVv","https://my.matterport.com/show/?m=8jikKCzqSy5","https://my.matterport.com/show/?m=Wtg2hfNQWWD","https://my.matterport.com/show/?m=ih5fbjgByVC"]
 
 urls.each{|x| 
 	myString=x[0]+"&lang=es"; 
 	myName=x[1];
 	myInstitution=x[2];
-	Product.create(:url=>myString, :name=>myName, :institution_id=>myInstitution)
+	Product.create(:url=>myString, :name=>myName, :institution_id=>myInstitution);
+	product = Product.last;
+	productKey = product.url[34,11];
+	thumbURL = "https://my.matterport.com/api/v1/player/models/"+productKey+"/thumb";
+	product.thumb = URI.parse(thumbURL);
+	product.save
 }
 
 urls = [
