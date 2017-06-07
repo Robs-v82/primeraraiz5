@@ -1,6 +1,11 @@
 urls = ["https://my.matterport.com/show/?m=JSqN5b3jeS4","https://my.matterport.com/show/?m=W43t7bYLcxV","https://my.matterport.com/show/?m=E5PUvwmHUcJ","https://my.matterport.com/show/?m=ZqL4fKCGivw","https://my.matterport.com/show/?m=Tvk9x5sZ7HZ","https://my.matterport.com/show/?m=Z5JscHJAuPV","https://my.matterport.com/show/?m=SE9ZzJYGbki","https://my.matterport.com/show/?m=fRYNjFNmWs5","https://my.matterport.com/show/?m=pxHHLwHBKmd","https://my.matterport.com/show/?m=jqAdGtVcrt3","https://my.matterport.com/show/?m=G61RdaBV2bP","https://my.matterport.com/show/?m=mJwM9vQ9fyG","https://my.matterport.com/show/?m=hysB5idbbVv","https://my.matterport.com/show/?m=8jikKCzqSy5","https://my.matterport.com/show/?m=Wtg2hfNQWWD","https://my.matterport.com/show/?m=ih5fbjgByVC"]
 
-urls.each{|x| myString=x+"&lang=es"; Product.create(:url=>myString)}
+urls.each{|x| 
+	myString=x[0]+"&lang=es"; 
+	myName=x[1];
+	myInstitution=x[2];
+	Product.create(:url=>myString, :name=>myName, :institution_id=>myInstitution)
+}
 
 urls = [
 	"https://my.matterport.com/show/?m=j5RbFzib5uJ",	
@@ -27,6 +32,10 @@ urls = [
 urls = [
 	"https://my.matterport.com/show/?m=SVWJr3KhutQ"
 ]
+urls = [
+	["https://my.matterport.com/show/?m=UFT43gaV5Cx","Ambar Tower",30]
+]
+
 
 (1..34).each{|x| Product.find(x).update(:name=>names[x-1])}
 
