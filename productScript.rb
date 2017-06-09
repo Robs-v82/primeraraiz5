@@ -23,6 +23,9 @@ urls.each{|x|
 	product.save
 }
 
+	thumbURL = "https://cdn-1.matterport.com/apifs/models/ZqL4fKCGivw/images/vFie4QzGj93/10.19.2016_17.04.23.jpg?t=2-3cfaff84fa12e209d2d752bcc7fd123626cc565d-1497633186-1";
+
+
 urls = [
 	"https://my.matterport.com/show/?m=j5RbFzib5uJ",	
 	"https://my.matterport.com/show/?m=gwHtBNuPHdb",	
