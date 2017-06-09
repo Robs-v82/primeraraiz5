@@ -19,11 +19,14 @@ urls.each{|x|
 	product = Product.last;
 	productKey = product.url[34,11];
 	thumbURL = "https://my.matterport.com/api/v1/player/models/"+productKey+"/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/p61dkc7gKbF/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/UFT43gaV5Cx/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/SVWJr3KhutQ/thumb";
 	product.thumb = URI.parse(thumbURL);
 	product.save
 }
 
-	thumbURL = "https://cdn-1.matterport.com/apifs/models/ZqL4fKCGivw/images/vFie4QzGj93/10.19.2016_17.04.23.jpg?t=2-3cfaff84fa12e209d2d752bcc7fd123626cc565d-1497633186-1";
+	thumbURL = "https://cdn-1.matterport.com/apifs/models/SVWJr3KhutQ/images/KvLeJohp3rv/06.08.2017_18.47.43.jpg?t=2-47dfab5d19e6d716afaef296814d58d7a8879dcf-1497652308-1";
 
 
 urls = [
