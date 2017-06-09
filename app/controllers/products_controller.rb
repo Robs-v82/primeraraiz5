@@ -22,8 +22,8 @@ class ProductsController < ApplicationController
 		@name = product.name
 		@myUrl = product.url
 		@product_id = product.id.to_s
-		@thumb = product.thumb.url
 		domain = "https://primeraraiz.com"
+		@thumb = domain+product.thumb.url
 		@logoUrl = domain+@institution.image.url
 		@target_color = product.institution.color
 		# respond_to do |format|

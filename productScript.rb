@@ -52,6 +52,10 @@ urls = [
 	["https://my.matterport.com/show/?m=UFT43gaV5Cx","Ambar Tower",30]
 ]
 
+urls = [
+	["https://my.matterport.com/show/?m=p61dkc7gKbF","Fuentes de Balvanera",33]
+]
+
 
 (1..34).each{|x| Product.find(x).update(:name=>names[x-1])}
 
