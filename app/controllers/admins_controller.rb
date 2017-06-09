@@ -2,6 +2,7 @@ class AdminsController < ApplicationController
 
 	after_action :remove_contact_message, only: [:index]
 	after_action :remove_institution_message, only: [:index]
+	after_action :remove_product_message, only: [:index]
 
 	def index
 		if current_agent
@@ -19,6 +20,12 @@ class AdminsController < ApplicationController
 			end
 			if session[:institution_errors]
 				@institution_errors = session[:institution_errors] 
+			end
+			if session[:new_product]
+				@product_success = true
+			end
+			if session[:product_errors]
+				@product_errors = session[:product_errors] 
 			end
 		else
 			redirect_to '/admins/password'

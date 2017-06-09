@@ -105,6 +105,15 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def remove_product_message
+		if session[:new_product]
+			session[:new_product] = nil
+		end
+		if session[:product_errors]
+			session[:product_errors] = nil
+		end
+	end
+
 	def number_with_delimiter(number, delimiter=",", separator=".")
 		begin
 			number = number.floor

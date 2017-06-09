@@ -26,23 +26,10 @@ class ProductsController < ApplicationController
 		@thumb = domain+product.thumb.url
 		@logoUrl = domain+@institution.image.url
 		@target_color = product.institution.color
-		# respond_to do |format|
-		# 	format.html
-		# 	format.json {
-		# 		render :json {
-		# 			color: target_color
-		# 		}
-		# 	}
-		# end
 	end
 
-	# def find
-	# 	target_color = Product.find(session[:product_id]).institution.color
-	# 	render json: { color: target_color }
-	# end
 
 	def lang
-		# sleep 1
 		trackGA
 		product = Product.find(params[:id])
 		lang = params[:lang]
@@ -50,6 +37,32 @@ class ProductsController < ApplicationController
 		myUrl = myUrl[0..-3]
 		myUrl = myUrl+"&lang="+lang
 		redirect_to myUrl
+	end
+
+	def create
+		product_info = product_params
+		thumbURL = product_info[:cdn]
+		myString = product_info[:url]+"&lang=es"
+		product_info.delete('url')
+		product_info.store('url', myString)
+		product_info.delete('cdn')
+		new_product = Product.new(product_info)
+		if new_product.valid?
+			new_product.save
+			product = Product.last
+			product.thumb = URI.parse(thumbURL)
+			product.save
+			session[:new_product] = true
+		else
+			session[:product_errors] = new_product.errors.full_messages
+		end
+		redirect_to "/admins"
+	end
+
+	private
+
+	def product_params
+		params.require(:product).permit(:name, :url, :cdn, :institution_id)
 	end
 
 end

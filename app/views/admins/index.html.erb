@@ -123,6 +123,30 @@
 			</div>
 		</div>
 		<div class="col l6 m6 s12">
+			<h5>Agregar modelo</h5>
+			<div class="basic-block row">
+				<form action="/products" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<div class="input-field col s12">
+						<input type="text" name="product[name]" placeholder="Nombre">
+					</div>
+					<div class="input-field col s12">
+						<input type="text" name="product[url]" placeholder="URL">
+					</div>
+					<div class="input-field col s12">
+						<input type="text" name="product[cdn]" placeholder="CDN de la portada">
+					</div>
+					<div class="input-field col s12">
+						<select class="admins-select browser-default" name="product[institution_id]">
+							<option value="" selected>Organización</option>
+							<% @institutions.each do |institution|%>
+								<option value="<%= institution.id %>"><%= institution.name%></option>
+							<% end %>
+						</select>
+					</div>
+					<button id="product-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+				</form>
+			</div>
 			<h5>Agregar post</h5>
 			<div class="basic-block row">
 				<form action="/posts" enctype="multipart/form-data" method="post">
@@ -216,6 +240,37 @@
 				<p class="flow-text">Error fatal</p>
 				<ul>
 					<% @institution_errors.each do |error| %>
+						<li><%=error%></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end%>
+<% if @product_success %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Modelo agregado</p>
+			</div>
+		</div>
+	</div>
+<% end %>
+<% if @product_errors %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Error fatal</p>
+				<ul>
+					<% @product_errors.each do |error| %>
 						<li><%=error%></li>
 					<% end %>
 				</ul>
