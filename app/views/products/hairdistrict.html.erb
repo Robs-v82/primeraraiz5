@@ -1,7 +1,7 @@
 <head>
 	<title><%=@name%></title>
 	<meta name="google-site-verification" content="xWrWEWauf0crJRezjK3ggaV-xIyRrNvHhs4DDqRHl9o" />
-	<meta HTTP-EQUIV="REFRESH" content="5.5; '<%= @myUrl %>'">
+	<meta HTTP-EQUIV="REFRESH" content="9; '<%= @myUrl %>'">
 	<meta name="description" content="<%=@name%>">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -102,7 +102,13 @@
 						},	3000); 
 		  			setTimeout(function() {
 		    			$("#client-image").css("display", "inline-block").delay(500).addClass("animated pulse")
-		  				}, 3500); 
+		  				}, 3500);
+		  			setTimeout(function() {
+		  				$("#client-png").addClass("animated fadeOut")
+		  				}, 5500)
+		  			setTimeout(function() {
+		  				$("#picto-hd").css("display", "inline-block").delay(500).addClass("animated pulse")
+		  				}, 6500) 
 		  			})
 				}
 		$(document).ready(ready)
@@ -119,6 +125,7 @@
 	<div id="second-background" style="display:none;background-color:<%=@target_color%>">
 		<div id="client-image" style="display:none">
 			<img id="client-png" alt="recorrido virtual Matterport México Primera Raíz" src="<%= @logoUrl %>" width="300px">
+			<img id="picto-hd" style="display:none" alt="recorrido virtual Matterport México Primera Raíz" src="/assets/Picto_HD.jpg" width="300px">
 		</div>
 	</div>
 </body>

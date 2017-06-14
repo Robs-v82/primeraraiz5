@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   get 'products/:id/:lang' => 'products#lang'
   get 'products/:id' => 'products#show'
   get 'intro/:id' => 'products#intro'
+  get 'hairdistrict' => 'products#hairdistrict'
   post 'institutions' => 'institutions#create'
   get 'getInstitution' => 'products#find'
   post 'products' => 'products#create'

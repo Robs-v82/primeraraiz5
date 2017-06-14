@@ -28,6 +28,19 @@ class ProductsController < ApplicationController
 		@target_color = product.institution.color
 	end
 
+	def hairdistrict
+		product = Product.find(37)
+		session[:product_id] = product.id
+		@institution = Institution.find(product.institution_id)
+		@name = product.name
+		@myUrl = product.url
+		@product_id = product.id.to_s
+		domain = "https://primeraraiz.com"
+		@thumb = domain+product.thumb.url
+		@logoUrl = domain+@institution.image.url
+		@target_color = product.institution.color
+	end
+
 
 	def lang
 		trackGA

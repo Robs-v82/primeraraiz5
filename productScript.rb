@@ -19,6 +19,7 @@ urls.each{|x|
 	product = Product.last;
 	productKey = product.url[34,11];
 	thumbURL = "https://my.matterport.com/api/v1/player/models/"+productKey+"/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/xxFNJsQyZ3r/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/p61dkc7gKbF/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/UFT43gaV5Cx/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/SVWJr3KhutQ/thumb";
