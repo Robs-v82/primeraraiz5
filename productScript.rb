@@ -22,7 +22,12 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/xxFNJsQyZ3r/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/p61dkc7gKbF/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/UFT43gaV5Cx/thumb";
-	thumbURL = "https://my.matterport.com/api/v1/player/models/SVWJr3KhutQ/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/svwjr3khutq/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/YpuasirHuEN/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/fZKAjzNr4WV/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/krTAD9qMUHF/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/Lmmwa2tiCXQ/thumb";
+	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
 }

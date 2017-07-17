@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get 'products/:id' => 'products#show'
   get 'intro/:id' => 'products#intro'
   get 'hairdistrict' => 'products#hairdistrict'
+  get 'vistabalbuena' => 'products#vistabalbuena'
   post 'institutions' => 'institutions#create'
   get 'getInstitution' => 'products#find'
   post 'products' => 'products#create'

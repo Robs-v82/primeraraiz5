@@ -1276,3 +1276,11 @@ input[type=text] {
 .author {
 	font-weight: 600;
 }
+
+#vistabalbuena-background {
+	background-image:url('vistabalbuena.jpg');
+	background-size:100%;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
