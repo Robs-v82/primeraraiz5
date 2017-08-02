@@ -40,6 +40,10 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/8FT9xCbZbyt/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/NYncDCAyfJh/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/oCHj1fAgcuo/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/4fc8G9Wu7y9/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/tCNEFjkgFDD/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/eyUaDHTwaWA/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/K45UkKcwDVU/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
