@@ -27,6 +27,19 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/fZKAjzNr4WV/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/krTAD9qMUHF/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/Lmmwa2tiCXQ/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/LRryspkiPQ6/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/xrRzRN6ecNN/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/6QBWBQyCXA9/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/QHsSL4vvQWk/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/5yHWqkuQsRG/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/XFK9P9dgwPv/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/kepwBzMSmKs/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/Eecv33ug8rJ/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/vRJQ6Qp5YtT/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/QEmWENkhsPm/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/8FT9xCbZbyt/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/NYncDCAyfJh/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/oCHj1fAgcuo/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
@@ -40,6 +53,8 @@ urls = [
 	"https://my.matterport.com/show/?m=gwHtBNuPHdb",	
 	"https://my.matterport.com/show/?m=YSh2sw9DegH",
 ]
+
+https://my.matterport.com/show/LRryspkiPQ6&lang=es
 
 urls = [
 	"https://my.matterport.com/show/?m=8U6YM3KjVxH",
