@@ -44,6 +44,14 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/tCNEFjkgFDD/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/eyUaDHTwaWA/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/K45UkKcwDVU/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/hi7XRUW47DP/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/hi7XRUW47DP/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/3MQ7RDtnnyc/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/3x8xYQYWn5J/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/gXstTx8VxM7/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/fNW2ovwamDq/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/9jGZnTQHK45/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/NzdfGrzotp2/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
