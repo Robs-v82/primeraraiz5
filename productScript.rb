@@ -52,6 +52,7 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/fNW2ovwamDq/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/9jGZnTQHK45/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/NzdfGrzotp2/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/x3jJnm42FRp/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
