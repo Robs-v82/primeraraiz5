@@ -1287,8 +1287,5 @@ input[type=text] {
 
 #rinconadalossauces-background {
 	background:url('rinconada_los_sauces.jpg')no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background-size: contain;
 }
