@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
 	end
 
 	def rinconadalossauces
-		x = params[:id]
+		x = params[:id].to_i
 		if x == 1
 			target_product = 76
 		else
