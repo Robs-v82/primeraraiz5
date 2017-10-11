@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'events/new'
+
+  get 'events/update'
+
   get 'institutions/create'
 
   get 'products/show'
@@ -54,6 +58,7 @@ Rails.application.routes.draw do
   get 'intro/:id' => 'products#intro'
   get 'hairdistrict' => 'products#hairdistrict'
   get 'vistabalbuena' => 'products#vistabalbuena'
+  get 'rinconadalossauces/:id' => 'products#rinconadalossauces'
   post 'institutions' => 'institutions#create'
   get 'getInstitution' => 'products#find'
   post 'products' => 'products#create'

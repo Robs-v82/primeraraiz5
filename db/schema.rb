@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530185024) do
+ActiveRecord::Schema.define(version: 20171010194608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,30 @@ ActiveRecord::Schema.define(version: 20170530185024) do
     t.datetime "updated_at"
   end
 
+  create_table "events", force: true do |t|
+    t.integer  "serial_no"
+    t.integer  "operation_id"
+    t.integer  "municipality_id"
+    t.string   "locality"
+    t.string   "type_of_place"
+    t.string   "reference"
+    t.integer  "zip"
+    t.date     "date"
+    t.string   "source"
+    t.string   "type_of_event"
+    t.string   "subtype_of_event"
+    t.string   "target_organization"
+    t.string   "type_of_aggressor"
+    t.string   "aggressor_name"
+    t.string   "identity"
+    t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["municipality_id"], name: "index_events_on_municipality_id", using: :btree
+  add_index "events", ["operation_id"], name: "index_events_on_operation_id", using: :btree
+
   create_table "institutions", force: true do |t|
     t.string   "name"
     t.integer  "state_id"
@@ -161,6 +185,27 @@ ActiveRecord::Schema.define(version: 20170530185024) do
     t.datetime "updated_at"
   end
 
+  create_table "operations", force: true do |t|
+    t.date     "date"
+    t.integer  "municipality_id"
+    t.string   "name"
+    t.string   "source"
+    t.string   "scope"
+    t.string   "location"
+    t.binary   "sedena"
+    t.binary   "semar"
+    t.binary   "pf"
+    t.binary   "prg"
+    t.binary   "state_in"
+    t.binary   "municipality_in"
+    t.integer  "manpower"
+    t.string   "goals"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "operations", ["municipality_id"], name: "index_operations_on_municipality_id", using: :btree
+
   create_table "posts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -209,6 +254,22 @@ ActiveRecord::Schema.define(version: 20170530185024) do
   add_index "properties", ["agent_id"], name: "index_properties_on_agent_id", using: :btree
   add_index "properties", ["neighborhood_id"], name: "index_properties_on_neighborhood_id", using: :btree
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
+
+  create_table "proyects", force: true do |t|
+    t.integer  "serial_no"
+    t.date     "date"
+    t.string   "name"
+    t.string   "source"
+    t.string   "scope"
+    t.string   "location"
+    t.integer  "state_id"
+    t.integer  "municipality_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proyects", ["municipality_id"], name: "index_proyects_on_municipality_id", using: :btree
+  add_index "proyects", ["state_id"], name: "index_proyects_on_state_id", using: :btree
 
   create_table "states", force: true do |t|
     t.string   "clave_estado"

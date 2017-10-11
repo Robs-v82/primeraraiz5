@@ -53,6 +53,17 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/9jGZnTQHK45/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/NzdfGrzotp2/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/x3jJnm42FRp/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/96gnv7VhtKK/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/CxbfHPUx63c/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/yQzhaFLfu2q/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/NjoMrUD1Zkd/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/ogo1a3iXsXb/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/TKDuKvREfdz/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/Ss55nQM96pK/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/ndw2wJtD37A/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/e2djtSEzLBo/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/VJYYKwEvyyo/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/JS3Zwjemmt7/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
