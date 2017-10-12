@@ -1286,5 +1286,8 @@ input[type=text] {
 }
 
 #rinconadalossauces-background {
-	background:url('rinconada_los_sauces.jpg') no-repeat center center fixed;
+	background:url('rinconada_los_sauces.jpg');
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:center;
 }
