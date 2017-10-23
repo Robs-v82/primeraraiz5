@@ -63,7 +63,14 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/ndw2wJtD37A/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/e2djtSEzLBo/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/VJYYKwEvyyo/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/jA9RV7UMkMt/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/JS3Zwjemmt7/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/o94sobZb7sK/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/BM7ar5X6V71/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/koHrJTsAss6/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/z7KY9QPPah5/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/Gk5cGB1EJiS/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/MZVv78qvuDp/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
