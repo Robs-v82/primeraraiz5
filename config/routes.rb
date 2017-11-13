@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
   
   get 'events/new'
-
   get 'events/update'
-
+  post 'events/getMunicipalities' => 'events#getMunicipalities'
+  post 'events/getStateMunicipalities' => 'events#getStateMunicipalities'
+  post 'events/getSubtypes' => 'events#getSubtypes'
+  post 'events' => 'events#create'
+  post 'operations' => 'events#create_operation'
   get 'institutions/create'
-
   get 'products/show'
-
   get 'posts/index'
-
   get 'contacts/create'
-
   post 'charges/create' => 'charges#create'
   get 'tours/demo'
   get 'tours/new'

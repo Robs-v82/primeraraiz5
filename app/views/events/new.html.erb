@@ -1,2 +1,370 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<head>
+	<title><%=@name%></title>
+	<meta name="google-site-verification" content="xWrWEWauf0crJRezjK3ggaV-xIyRrNvHhs4DDqRHl9o" />
+	<meta name="description" content="<%=@name%>">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js" %>
+	<%= csrf_meta_tags %>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-83714284-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script src="https://use.fontawesome.com/1c4f76a4d4.js"></script>
+	<script src="/assets/jquery.maskedinput.js" type="text/javascript"></script>
+	<meta property="og:url" content="https://primeraraiz.com/intro/<%=@product_id%>">
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="¡Explora <%=@name%> en 3D!">
+	<meta property="og:image" content="<%= @thumb %>">
+	<meta property="og:image:secure_url" content="<%= @thumb %>">
+	<meta property="fb:app_id" content="1716507028608244">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="stylesheet" href="/assets/animate.css">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<script type="text/javascript">
+		var ready
+		
+		ready = function(){
+			$(document).ready(function() {
+
+				// GET MUNICIPALITIES
+		  		$('#state-selector').change(function() {
+		  			$('#municipality-selector').html('')
+		  			$('#municipality-selector').removeAttr("disabled")
+		  			$.post(
+		  				'/events/getMunicipalities',
+		  				$(this).serialize(),
+		  				function(data) {
+		  					var municipalityOptions = "<option value='' disabled selected>Municipio</option>"
+		  					for(i=0; i<data.municipalities.length; i++) {
+		  						municipalityOptions += "<option value='"+data.municipalities[i].id+"'>"+data.municipalities[i].munici+"</option>"
+		  					}
+							$('#municipality-selector').append(municipalityOptions)				
+		  				}
+		  			)
+		  			return false
+		  		})
+
+		  		// GET STATE MUNICIPALITIES
+		  		$('#operation-state-selector').change(function() {
+		  			$('#state-municipality-selector').html('')
+		  			$('#state-municipality-selector').removeAttr("disabled")
+		  			$.post(
+		  				'/events/getStateMunicipalities',
+		  				$(this).serialize(),
+		  				function(data) {
+		  					var municipalityOptions = "<option value='' disabled selected>Municipio</option>"
+		  					for(i=0; i<data.municipalities.length; i++) {
+		  						municipalityOptions += "<option value='"+data.municipalities[i].id+"'>"+data.municipalities[i].munici+"</option>"
+		  					}
+							$('#state-municipality-selector').append(municipalityOptions)				
+		  				}
+		  			)
+		  			return false
+		  		})
+
+				// GET SUBTYPES OF EVENTS
+				$('#type-of-event-selector').change(function() {
+					$('#subtype-of-event-selector').html('')
+					$('#subtype-of-event-selector').removeAttr("disabled")
+					$.post(
+						'/events/getSubtypes',
+		  				$(this).serialize(),
+		  				function(data) {
+		  					var subtypeOptions = "<option value='' disabled selected>Subtipo de evento</option>"
+		  					for(i=0; i<data.subtypes.length; i++) {
+		  						subtypeOptions += "<option value="+data.subtypes[i]+">"+data.subtypes[i]+"</option>"
+		  					}
+		  					$('#subtype-of-event-selector').append(subtypeOptions)
+		  				}
+					)
+					return false
+				})
+
+				// ERROR MESSAGES
+				if($('#operation-success-modal').length) {
+					$('#operation-success-modal').openModal()
+					$.get()
+				}
+				if($('#operation-error-modal').length) {
+					$('#operation-error-modal').openModal()
+					$.get()
+				}
+
+				// DATEPICKER
+				$('.datepicker').pickadate({
+					monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+					weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+					weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+					today: false,
+					clear: false,
+					close: "Cerrar",
+					selected: false,
+					closeOnSelect: true,
+					format: 'dddd dd !de mmmm !de yyyy',
+				})	
+
+				})
+			}
+		$(document).ready(ready)
+		$(document).on('page:load', ready)
+	</script>
+</head>
+<body>
+	<div id="admins" class="b-container">
+		<div id="lantia-header" class="row valign-wrapper">
+			<img src="/assets/enfoquedh.png" height="84px" style="margin-right:20px">
+			<img src="/assets/logo_lantia.png" height="36px">
+		</div>
+		<div class="row">
+			<div class="col l6 m6 s12">
+				<h5>Agregar evento</h5>
+				<div class="basic-block row">
+					<form action="/events" method="post">
+						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+						<div class="input-field col l4 m6 s12">
+							<input type="text" name="event[serial_no]" placeholder="Núm. consecutivo">
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input id="date-selector" type="text" name="event[date]" class="datepicker" placeholder="Fecha*">
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<select class="admins-select browser-default" name="event[operation_id]">
+								<option value="" selected>Operativo</option>
+								<% @operations.each do |operation|%>
+									<option value="<%= operation.id %>"><%= operation.name%></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="input-field col l12 m12 s12">
+							<input type="text" name"event[source]" placeholder="Fuente*">
+						</div>
+						<div class="input-field col l6 m6 s12">
+							<select id="state-selector" class="admins-select browser-default" name="event[clave_estado]">
+								<option value="" selected>Entidad federativa*</option>
+								<% @states.each do |state|%>
+									<option value="<%= state.clave_estado %>"><%= state.estado%></option>
+								<% end %>
+							</select>					
+						</div>
+						<div class="input-field col l6 m6 s12">
+							<select id="municipality-selector" disabled name="event[municipality_id]" class="admins-select browser-default">
+								<option value="" disabled selected>Municipio*</option>
+							</select>
+						</div>
+						<div class="input-field col l6 m6 s12">
+							<select name="event[type_of_place]" class="admins-select browser-default">
+								<option value="" disabled selected>Tipo de lugar*</option>
+								<% @types_of_place.each do |type|%>
+									<option value="<%= type %>"><%= type %></option>
+								<% end %>
+							</select>
+						</div>
+
+						<div class="input-field col l6 m6 s12">
+							<input name="event[zip]" placeholder="C.P.">
+						</div>
+						<div class="input-field col l12 m12 s12">
+							<input type="text" name"event[reference]" placeholder="Referencia geofráfica">
+						</div>
+						<div class="input-field col l6 m6 s12">
+							<select id="type-of-event-selector" name="event[type_of_event]" class="admins-select browser-default">
+								<option value="" selected>Tipo de evento*</option>
+								<% @types_of_events.each do |type| %>
+									<option value="<%= type %>"><%= type %></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="input-field col l6 m6 s12">
+							<select id="subtype-of-event-selector" name="event[subtype_of_event]" disabled class="admins-select browser-default">
+								<option value="" disabled selected>Subtipo de evento</option>
+							</select>
+						</div>
+						<div class="input-field col l6 m12 s12">
+							<select name="event[type_of_aggressor]" class="admins-select browser-default">
+								<option value="" disabled selected>Tipo de agresor*</option>
+								<% @types_of_aggressors.each do |aggressor| %>
+									<option value="<%= aggressor%>"><%= aggressor%></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="input-field col l6 m12 s12">
+							<input name="event[aggressor_name]" placeholder="Organización agresora">
+						</div>
+						<div class="input-field col l6 m12 s12">
+							<input name="event[identity]" placeholder="Identidad del agresor">
+						</div>
+						<div class="input-field col l6 m12 s12">
+							<input name="event[target_organization]" placeholder="Organización agredida">
+						</div>
+						<div class="input-field col l12 m12 s12">
+							<textarea name="event[notes]" placeholder="Notas"></textarea>
+						</div>
+						<p class="valign-wrapper right">
+							<span id="event-button-label">Enviar</span>
+							<button id="event-button" class="red accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+						</p>		
+					</form>
+				</div>
+			</div>
+			<div class="col l6 m6 s12">
+				<h5>Agregar operativo</h5>
+				<div class="basic-block row">
+					<form action="/operations" method="post">
+						<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+						<div class="input-field col l6 m6 s12">
+							<input id="date-selector" type="text" name="operation[date]" class="datepicker" placeholder="Fecha*">
+						</div>
+						<div class="input-field col l6 m6 s12">
+							<input type="text" name="operation[name]" placeholder="Nombre*">
+						</div>
+						<div class="input-field col l12 m12 s12">
+							<input type="text" name="operation[source]" placeholder="Fuente*">
+						</div>
+						<div class="input-field col l6 m12 s12">
+							<select name="operation[scope]" class="admins-select browser-default">
+								<option value="" disabled selected>Cobertura*</option>
+								<% @scopes.each do |scope| %>
+									<option value="<%= scope %>"><%= scope %></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="input-field col l6 m12 s12">
+							<input type="text" name"operation[location]" placeholder="Ubicación*">
+						</div>
+						<div  class="input-field col l6 m12 s12">
+							<select id="operation-state-selector" class="admins-select browser-default" name="operation[clave_estado]">
+								<option value="" selected>Entidad federativa*</option>
+								<% @states.each do |state|%>
+									<option value="<%= state.clave_estado %>"><%= state.estado%></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="input-field col l6 m6 s12">
+							<select id="state-municipality-selector" disabled name="operation[municipality_id]" class="admins-select browser-default">
+								<option value="" disabled selected>Municipio*</option>
+							</select>
+						</div>
+						<div class="input-field col l12 m6 s12">
+						Instituciones desplegadas:
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input class="with-gap valign" name="operation[sedena]" value="true" type="radio" id="sedena-radio">
+							<label for="sedena-radio" class="valign">SEDENA</label>
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input class="with-gap valign" name="operation[semar]" value="true" type="radio" id="semar-radio">
+							<label for="semar-radio" class="valign">SEMAR</label>
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input class="with-gap valign" name="operation[pf]" value="true" type="radio" id="pf-radio">
+							<label for="pf-radio" class="valign">PF</label>
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input class="with-gap valign" name="operation[prg]" value="true" type="radio" id="prg-radio">
+							<label for="prg-radio" class="valign">PGR</label>
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input class="with-gap valign" name="operation[state_in]" value="true" type="radio" id="state_in-radio">
+							<label for="state_in-radio" class="valign">Policía estatal</label>
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input class="with-gap valign" name="operation[municipality_in]" value="true" type="radio" id="municipality_in-radio">
+							<label for="municipality_in-radio" class="valign">Policía municipal</label>
+						</div>
+						<div class="input-field col l4 m6 s12">
+							<input type="text" name"operation[manpower]" placeholder="Despliegue total">
+						</div>
+						<div class="input-field col l12 m12 s12">
+							<textarea name="operation[goals]" placeholder="Objetivos"></textarea>
+						</div>
+						<p class="valign-wrapper right">
+							<span id="operation-button-label">Enviar</span>
+							<button id="operation-button" class="red accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<% if @operation_success %>
+	<div id="operation-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_lantia.png" height="36px">
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Operación agregada</p>
+			</div>
+		</div>
+	</div>
+<% end%>
+<% if @operation_errors %>
+	<div id="operation-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_lantia.png" height="36px">
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Error fatal</p>
+				<ul>
+					<% @operation_errors.each do |error| %>
+						<li><%=error%></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end%>
+<% if @event_success %>
+	<div id="event-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_lantia.png" height="36px">
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Evento agregado</p>
+			</div>
+		</div>
+	</div>
+<% end %>
+<% if @event_errors %>
+	<div id="event-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_lantia.png" height="36px">
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Error fatal</p>
+				<ul>
+					<% @event_errors.each do |error| %>
+						<li><%=error%></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end%>

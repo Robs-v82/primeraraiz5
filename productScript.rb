@@ -71,6 +71,7 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/z7KY9QPPah5/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/Gk5cGB1EJiS/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/MZVv78qvuDp/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/pVJDf2A43q2/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
@@ -114,6 +115,7 @@ urls = [
 	["https://my.matterport.com/show/?m=p61dkc7gKbF","Fuentes de Balvanera",33]
 ]
 
+target.each{|x| Product.find(x).update(:institution_id=>773)}
 
 (1..34).each{|x| Product.find(x).update(:name=>names[x-1])}
 

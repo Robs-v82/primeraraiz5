@@ -96,6 +96,33 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def remove_event_message
+		if session[:new_event]
+			session[:new_event] = nil
+		end
+		if session[:event_errors]
+			session[:event_errors] = nil
+		end
+	end
+	
+	def remove_contact_message
+		if session[:new_contact]
+			session[:new_contact] = nil
+		end
+		if session[:contact_errors]
+			session[:contact_errors] = nil
+		end
+	end	
+
+	def remove_operation_message
+		if session[:new_operation]
+			session[:new_operation] = nil
+		end
+		if session[:operation_errors]
+			session[:operation_errors] = nil
+		end
+	end
+
 	def remove_institution_message
 		if session[:new_institution]
 			session[:new_institution] = nil

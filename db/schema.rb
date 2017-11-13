@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010194608) do
+ActiveRecord::Schema.define(version: 20171026190823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,16 +192,18 @@ ActiveRecord::Schema.define(version: 20171010194608) do
     t.string   "source"
     t.string   "scope"
     t.string   "location"
-    t.binary   "sedena"
-    t.binary   "semar"
-    t.binary   "pf"
-    t.binary   "prg"
-    t.binary   "state_in"
-    t.binary   "municipality_in"
     t.integer  "manpower"
     t.string   "goals"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "state_id"
+    t.string   "clave_estado"
+    t.boolean  "sedena"
+    t.boolean  "semar"
+    t.boolean  "pf"
+    t.boolean  "prg"
+    t.boolean  "state_in"
+    t.boolean  "municipality_in"
   end
 
   add_index "operations", ["municipality_id"], name: "index_operations_on_municipality_id", using: :btree
