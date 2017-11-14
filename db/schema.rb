@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026190823) do
+ActiveRecord::Schema.define(version: 20171113223415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,44 @@ ActiveRecord::Schema.define(version: 20171026190823) do
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "critical_event"
+    t.integer  "wounded_civil_servants"
+    t.integer  "wounded_officers"
+    t.string   "wounded_officers_agency"
+    t.integer  "wounded_unarmed_civilians"
+    t.integer  "wounded_armed_civilians"
+    t.integer  "wounded_women"
+    t.integer  "wounded_minors"
+    t.integer  "wounded_indigenous"
+    t.integer  "dead_civil_servants"
+    t.integer  "dead_officers"
+    t.string   "dead_officers_agency"
+    t.integer  "dead_unarmed_civilians"
+    t.integer  "dead_armed_civilians"
+    t.integer  "dead_women"
+    t.integer  "dead_minors"
+    t.integer  "dead_indigenous"
+    t.integer  "missing_civil_servants"
+    t.integer  "missing_officers"
+    t.string   "missing_officers_agency"
+    t.integer  "missing_unarmed_civilians"
+    t.integer  "missing_armed_civilians"
+    t.integer  "missing_women"
+    t.integer  "missing_minors"
+    t.integer  "missing_indigenous"
+    t.integer  "under_arrest_civil_servants"
+    t.integer  "under_arrest_officers"
+    t.string   "under_arrest_officers_agency"
+    t.integer  "under_arrest_unarmed_civilians"
+    t.integer  "under_arrest_armed_civilians"
+    t.integer  "under_arrest_women"
+    t.integer  "under_arrest_minors"
+    t.integer  "under_arrest_indigenous"
+    t.date     "detention_date"
+    t.time     "detention_time"
+    t.boolean  "detention_denial"
+    t.boolean  "detention_violence"
+    t.string   "detention_location"
   end
 
   add_index "events", ["municipality_id"], name: "index_events_on_municipality_id", using: :btree

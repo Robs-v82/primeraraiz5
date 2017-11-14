@@ -10,7 +10,9 @@ class EventsController < ApplicationController
   	@types_of_events=["Agresión", "Operación","Enfrentamiento","Persecusión","Mensaje","Desplazamiento","Detención arbitraria"].sort
     @types_of_aggressors=["Autoridad", "Crimen organizado", "Grupo sin filiación", "Habitantes de la comunidad", "Individuo"]
     @operations=Operation.all
+    @agencies=["SEDENA","SEMAR","PF","PGR","Policía estatal","PGJ", "Policía municipal"]
     @scopes=["Local","Municipal","Estatal","Regional"]
+    @hours=["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]
     if session[:new_operation]
       @operation_success = true
     end
@@ -59,7 +61,13 @@ class EventsController < ApplicationController
 
   def create
     long_date = event_params[:date]
-    target_date = set_date(long_date)
+    long_detencion_date = event_params[:detention_date]
+    unless long_date.empty?
+      target_date = set_date(long_date)
+    end
+    unless long_detencion_date.empty?
+      target_detention_date = set_date(long_detencion_date)
+    end
     event_info = event_params
     unless event_info[:serial_no].present?
       if Event.last.present?
@@ -72,14 +80,19 @@ class EventsController < ApplicationController
       end
     end
     event_info.delete("date")
+    event_info.delete("detention_date")
+    event_info.delete("clave_estado")
     event_info.store("date",target_date)
+    event_info.store("detention_date",target_detention_date)
     new_event = Event.new(event_info)
     if new_event.valid?
       new_event.save
       session[:new_event] = true
     else
       session[:event_errors] = new_event.errors.full_messages
+      puts session[:event_errors]
     end
+    puts "OOOooo"*100
     redirect_to "/events/new"
   end
 
@@ -110,7 +123,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:serial_no, :operation_id, :municipality_id, :type_of_place, :reference, :zip, :date, :source, :type_of_event, :subtype_of_event, :target_organization, :type_of_aggressor, :aggressor_name, :identity, :notes) 
+    params.require(:event).permit(:serial_no, :operation_id, :clave_estado, :municipality_id, :type_of_place, :reference, :zip, :date, :source, :type_of_event, :subtype_of_event, :target_organization, :type_of_aggressor, :aggressor_name, :identity, :notes, :critical_event, :wounded_civil_servants, :wounded_officers, :wounded_officers_agency, :wounded_unarmed_civilians, :wounded_armed_civilians, :wounded_women, :wounded_minors, :wounded_indigenous, :dead_civil_servants, :dead_officers, :dead_officers_agency, :dead_unarmed_civilians, :dead_armed_civilians, :dead_women, :dead_minors, :dead_indigenous, :missing_civil_servants, :missing_officers, :missing_officers_agency, :missing_unarmed_civilians, :missing_armed_civilians, :missing_women, :missing_minors, :missing_indigenous, :under_arrest_civil_servants, :under_arrest_officers, :under_arrest_officers_agency, :under_arrest_unarmed_civilians, :under_arrest_armed_civilians, :under_arrest_women, :under_arrest_minors, :under_arrest_indigenous, :detention_date, :detention_time, :detention_denial, :detention_violence, :detention_location) 
   end
 
   def operation_params
