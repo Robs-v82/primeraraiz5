@@ -159,6 +159,14 @@
 			<img src="/assets/logo_lantia.png" height="36px">
 		</div>
 		<div class="row">
+			<h4>Sistema de Alerta Temprana</h4>
+			<ul class="collection col l12">
+				<% @targetEvents.each do |event| %>
+				<li class="collection-item"><%=event[0]%>, <%=event[1]%>, <%=event[2]%>, <a><%=event[3]%></a></li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="row">
 			<div class="col l6 m6 s12">
 				<h5>Agregar evento</h5>
 				<div class="card amber lighten-4 row">

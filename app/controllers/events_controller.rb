@@ -4,7 +4,19 @@ class EventsController < ApplicationController
   after_action :remove_event_message, only: [:new]
 
   def new
-  	@states=State.all
+  	@events = Event.all
+    @targetEvents = []
+    @events.each do |event|
+      x = []
+      x.push(event.date)
+      targetMun = event.municipality
+      x.push(targetMun.munici)
+      targetState = State.where(:clave_estado=>targetMun.clave_estado).last
+      x.push(targetState.estado)
+      x.push(event.source)
+      @targetEvents.push(x)
+    end
+    @states=State.all
   	@municipalities=Municipality.all
   	@types_of_place=["Vía pública urbana","Brecha rural","Carretera","Domicilio","Zona rural","No aplica","Aeropuerto"].sort
   	@types_of_events=["Agresión", "Operación","Enfrentamiento","Persecusión","Mensaje","Desplazamiento","Detención arbitraria"].sort
@@ -79,6 +91,35 @@ class EventsController < ApplicationController
         event_info.store("serial_no", x)
       end
     end
+
+    tx = event_params[:under_arrest_women].to_i
+    event_info.delete("under_arrest_women")
+    event_info.store("under_arrest_women",tx)
+ 
+    tx = event_params[:under_arrest_minors].to_i
+    event_info.delete("under_arrest_minors")
+    event_info.store("under_arrest_minors",tx)
+ 
+    tx = event_params[:under_arrest_indigenous].to_i
+    event_info.delete("under_arrest_indigenous")
+    event_info.store("under_arrest_indigenous",tx)
+ 
+    tx = event_params[:under_arrest_civil_servants].to_i
+    event_info.delete("under_arrest_civil_servants")
+    event_info.store("under_arrest_civil_servants",tx)
+ 
+    tx = event_params[:under_arrest_officers].to_i
+    event_info.delete("under_arrest_officers")
+    event_info.store("under_arrest_officers",tx)
+ 
+    tx = event_params[:under_arrest_armed_civilians].to_i
+    event_info.delete("under_arrest_armed_civilians")
+    event_info.store("under_arrest_armed_civilians",tx)
+ 
+    tx = event_params[:under_arrest_unarmed_civilians].to_i
+    event_info.delete("under_arrest_unarmed_civilians")
+    event_info.store("under_arrest_unarmed_civilians",tx)
+
     event_info.delete("date")
     event_info.delete("detention_date")
     event_info.delete("clave_estado")
@@ -92,6 +133,8 @@ class EventsController < ApplicationController
       session[:event_errors] = new_event.errors.full_messages
       puts session[:event_errors]
     end
+    puts "OOOooo"*100
+    puts new_event.errors.full_messages
     puts "OOOooo"*100
     redirect_to "/events/new"
   end

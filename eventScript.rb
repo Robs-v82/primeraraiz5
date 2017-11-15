@@ -2,13 +2,10 @@ operationArr = []
 operationString.each_line{|l| line = l.split(","); operationArr.push(line)}
 operationArr.each{|x|x.each{|y|y.strip!}}
 
-operationArr.each{|x|
-	targetState = State.where(:clave_estado=>x[7]).first
-	targetStateId = targetState.id
-	targetMunicipality = Municipality.where(:clave_munici=>x[8]).first
-	targetId = targetMunicipality.id
-	Operation.create(date:x[1], name:x[2], source:x[3], scope:x[5], location:x[6], state_id:targetStateId, municipality_id:targetId, sedena:x[9], semar:x[10], pf:x[11], prg:x[12], state_in:x[13], municipality_in:x[14] manpower:x[15], goals:x[16], )
-}
+operationArr.each{|x| Operation.create(date:x[1], name:x[2], source:x[3], scope:x[5], location:x[6], state_id:x[7], sedena:x[9], semar:x[10], pf:x[11], prg:x[12], state_in:x[13], municipality_in:x[14], manpower:x[15], goals:x[16])}
+	
+
+	
 
 
     t.integer  "state_id"
@@ -20,8 +17,13 @@ operationArr.each{|x|
     t.boolean  "state_in"
     t.boolean  "municipality_in"
 
+Event.create(:municipality_id=>"2015", :type_of_place=>"Vía pública urbana", :date=>"2017-09-25", :source=>"http://www.valorportamaulipas.info/2017/09/vive-vallehermoso-tarde-infernal-se.html", :type_of_event=>"Enfrentamiento", :type_of_aggressor=>"Crimen organizado", :notes=>"Bloqueos y enfrentamientos en diversos puntos entre grupos del crimen organizado. Atención.", :critical_event=>true)
 
+Event.create(:municipality_id=>2007, :type_of_place=>"Vía pública urbana", :date=>"2017-09-25", :source=>"http://www.valorportamaulipas.info/2017/09/emboscan-soldados-en-oxxo-jacalitos-de.html", :type_of_event=>"Agresión", :target_organization=>"SEDENA", :type_of_aggressor=>"Crimen organizado", :critical_event=>true)
 
+Event.create(:municipality_id=>495, :type_of_place=>"Vía pública urbana", :date=>"2017-09-25",:source=>"http://www.newshidalgo.mx/policias-de-zimapan-son-vinculados-a-proceso-por-el-delito-de-homicidio/", :type_of_event=>"Agresión", :subtype_of_event=>"Homicidio", :type_of_aggressor=>"Autoridad", :aggressor_name=>"Policía municipal", :notes=>"Ejecución en custodia", :critical_event=>true, :dead_unarmed_civilians=>1)
+
+Event.create(:municipality_id=>835, :type_of_place=>"Carretera", :reference=>"Comunidad Nueva Italia", :date=>"2017-09-25", :source=>"http://www.eldiariodecoahuila.com.mx/seguridad/2017/9/26/zona-caliente-679728.html", :type_of_event=>"Agresión", :subtype_of_event=>"Homicidio", :type_of_aggressor=>"Crimen organizado", :notes=>"Ejecución de exlíder templario y sucesor de El Cenizo", :critical_event=>true, :dead_unarmed_civilians=>1)
 
 operationString = "1,2017-01-07,Operativo Costa-Soconusco,https://elorbe.com/seccion-politica/local/2017/07/02/autoridades-policiacas-y-militares-inician-operativo-costa-chiapas-2017.html,,Regional,Soconusco, Costa, Sierra de Chiapas y municipios fronterizos,07,,true,true,true,,true,,300,Reducir el índice delictivo como los robos a casas habitación, asaltos, extorsiones, tráfico de migrantes, de drogas y de armas
 2,2017-01-07,Despliegue en Los Llanos,http://www.reporteciudadanochiapas.com/?p=154639,,Estatal,,07,,,,,,true,,500,Redoblar la seguridad y participar en la restitución de predios
@@ -43,3 +45,62 @@ operationString = "1,2017-01-07,Operativo Costa-Soconusco,https://elorbe.com/sec
 19,2017-11-10,Operativo retiro de polarizados,http://www.bcsnoticias.mx/bcs-reforzaran-los-cateos-operativos-seguridad-continua-retiro-polarizados/,,Municipal,La Paz,03,3003,true,true,,,true,true,,Aumentar número de cateos y operativos conttra la delincuencia organizada
 20,2017-10-13,Operativo en Uruachi,http://entrelineas.com.mx/seguridad/despliega-fge-operativo-en-uruachi-para-brindar-seguridad-a-los-habitantes/,,Municipal,Uruachi,08,8066,,,,,true,,100,
 21,2017-10-13,Operativo en Reynosa,http://www.valorportamaulipas.info/2017/10/trasciende-fuerte-operativo-en.html,,Municipal,Reynosa,28,028032,,,true,,,,,Salvaguadar integridad de habitantes (evitar enfrentamientos)"
+
+  create_table "events", force: true do |t|
+    t.integer  "serial_no"
+    t.integer  "operation_id"
+    t.integer  "municipality_id"
+    t.string   "locality"
+    t.string   "type_of_place"
+    t.string   "reference"
+    t.integer  "zip"
+    t.date     "date"
+    t.string   "source"
+    t.string   "type_of_event"
+    t.string   "subtype_of_event"
+    t.string   "target_organization"
+    t.string   "type_of_aggressor"
+    t.string   "aggressor_name"
+    t.string   "identity"
+    t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "critical_event"
+    t.integer  "wounded_civil_servants"
+    t.integer  "wounded_officers"
+    t.string   "wounded_officers_agency"
+    t.integer  "wounded_unarmed_civilians"
+    t.integer  "wounded_armed_civilians"
+    t.integer  "wounded_women"
+    t.integer  "wounded_minors"
+    t.integer  "wounded_indigenous"
+    t.integer  "dead_civil_servants"
+    t.integer  "dead_officers"
+    t.string   "dead_officers_agency"
+    t.integer  "dead_unarmed_civilians"
+    t.integer  "dead_armed_civilians"
+    t.integer  "dead_women"
+    t.integer  "dead_minors"
+    t.integer  "dead_indigenous"
+    t.integer  "missing_civil_servants"
+    t.integer  "missing_officers"
+    t.string   "missing_officers_agency"
+    t.integer  "missing_unarmed_civilians"
+    t.integer  "missing_armed_civilians"
+    t.integer  "missing_women"
+    t.integer  "missing_minors"
+    t.integer  "missing_indigenous"
+    t.integer  "under_arrest_civil_servants"
+    t.integer  "under_arrest_officers"
+    t.string   "under_arrest_officers_agency"
+    t.integer  "under_arrest_unarmed_civilians"
+    t.integer  "under_arrest_armed_civilians"
+    t.integer  "under_arrest_women"
+    t.integer  "under_arrest_minors"
+    t.integer  "under_arrest_indigenous"
+    t.date     "detention_date"
+    t.time     "detention_time"
+    t.boolean  "detention_denial"
+    t.boolean  "detention_violence"
+    t.string   "detention_location"
+  end
