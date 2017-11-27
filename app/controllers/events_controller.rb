@@ -164,6 +164,21 @@ class EventsController < ApplicationController
     redirect_to "/events/new"
   end
 
+
+  def download_events
+    @events = Event.all.order("serial_no")
+    @total = @events.length
+    @targetInto = []
+    @events.each do |event|
+      x = []
+      targetMun = event.municipality
+      x.push(targetMun.munici)
+      targetState = State.where(:clave_estado=>targetMun.clave_estado).last
+      x.push(targetState.estado)
+      @targetEvents.push(x)
+    end
+  end
+
   private
 
   def event_params
