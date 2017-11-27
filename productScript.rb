@@ -72,6 +72,9 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/Gk5cGB1EJiS/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/MZVv78qvuDp/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/pVJDf2A43q2/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/7WHTHYUJo1y/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/4eo8iGthYQT/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/XxtDvUdjPJu/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save

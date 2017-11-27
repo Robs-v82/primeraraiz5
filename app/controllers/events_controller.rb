@@ -5,8 +5,9 @@ class EventsController < ApplicationController
 
   def new
   	@events = Event.all
+    my_events = Event.all.order("created_at DESC").limit(5)
     @targetEvents = []
-    @events.each do |event|
+    my_events.each do |event|
       x = []
       x.push(event.date)
       targetMun = event.municipality
@@ -128,14 +129,13 @@ class EventsController < ApplicationController
     new_event = Event.new(event_info)
     if new_event.valid?
       new_event.save
+      puts "OOOooo"*100
       session[:new_event] = true
     else
       session[:event_errors] = new_event.errors.full_messages
       puts session[:event_errors]
     end
-    puts "OOOooo"*100
     puts new_event.errors.full_messages
-    puts "OOOooo"*100
     redirect_to "/events/new"
   end
 
