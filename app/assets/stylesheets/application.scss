@@ -1308,3 +1308,13 @@ input[type=text] {
 	padding-bottom: 10px;
 	border-bottom: 1px solid black;
 }
+
+#previos_events {
+	height: 200px;
+	overflow-y: scroll;
+}
+
+#edit_event_link {
+	margin-right: 20px;
+	color: red;
+}

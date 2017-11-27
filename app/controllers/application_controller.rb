@@ -141,6 +141,15 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def remove_event_destroyed_message
+		if session[:destroyed_event] 
+			session[:destroyed_event] = nil
+		end
+		if session[:product_errors]
+			session[:product_errors] = nil
+		end
+	end
+
 	def number_with_delimiter(number, delimiter=",", separator=".")
 		begin
 			number = number.floor

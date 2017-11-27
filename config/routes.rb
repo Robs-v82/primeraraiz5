@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   get 'events/new'
-  get 'events/update'
+  get 'events/:id' => 'events#destroy'
   post 'events/getMunicipalities' => 'events#getMunicipalities'
   post 'events/getStateMunicipalities' => 'events#getStateMunicipalities'
   post 'events/getSubtypes' => 'events#getSubtypes'

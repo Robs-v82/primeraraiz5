@@ -2,12 +2,13 @@ class EventsController < ApplicationController
   layout false
   after_action :remove_operation_message, only: [:new]
   after_action :remove_event_message, only: [:new]
+  after_action :remove_event_destroyed_message, only: [:new]
 
   def new
   	@events = Event.all
     my_events = Event.all.order("created_at DESC").limit(5)
     @targetEvents = []
-    my_events.each do |event|
+    @events.each do |event|
       x = []
       x.push(event.serial_no)
       x.push(event.date)
@@ -16,6 +17,7 @@ class EventsController < ApplicationController
       targetState = State.where(:clave_estado=>targetMun.clave_estado).last
       x.push(targetState.estado)
       x.push(event.source)
+      x.push(event.id)
       @targetEvents.push(x)
     end
     @states=State.all
@@ -38,6 +40,9 @@ class EventsController < ApplicationController
     end
     if session[:event_errors]
       @event_errors = session[:event_errors] 
+    end
+    if session[:destroyed_event]
+      @event_destroyed = session[:destroyed_message] 
     end
   end
 
@@ -141,6 +146,14 @@ class EventsController < ApplicationController
   end
 
   def update
+  end
+
+  def destroy
+    @targetEvent = Event.find(params[:id])
+    @targetEvent.destroy
+    session[:destroyed_event] = true
+    session[:destroyed_message] = "El evento @#{@targetEvent.serial_no} fue eliminado"
+    redirect_to "/events/new"
   end
 
   def create_operation

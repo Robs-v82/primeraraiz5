@@ -122,6 +122,12 @@
 					$.get()
 				}
 
+				// EVENT DESTROYED MESSAGES
+				if($('#destroyed-event-modal').length) {
+					$('#destroyed-event-modal').openModal()
+					$.get()
+				}
+
 				// DATEPICKER
 				$('.datepicker').pickadate({
 					monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
@@ -160,9 +166,9 @@
 		</div>
 		<div class="row">
 			<h4>Sistema de Alerta Temprana</h4>
-			<ul class="collection col l12">
+			<ul id="previos_events" class="collection col l12">
 				<% @targetEvents.each do |event| %>
-				<li class="collection-item"><%=event[0]%>, <%=event[1]%>, <%=event[2]%>, <%=event[3]%>, <a><%=event[4]%></a></li>
+				<li class="collection-item"><a id="edit_event_link" href="/events/<%=event[5]%>"><i class="tiny material-icons">clear</i></a><%=event[0]%>, <%=event[1]%>, <%=event[2]%>, <%=event[3]%>, <a><%=event[4]%></a></li>
 				<% end %>
 			</ul>
 		</div>
@@ -556,6 +562,18 @@
 						<li><%=error%></li>
 					<% end %>
 				</ul>
+			</div>
+		</div>
+	</div>
+<% end%>
+<% if @event_destroyed %>
+	<div id="destroyed-event-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_lantia.png" height="36px">
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text"><%=@event_destroyed%></p>
 			</div>
 		</div>
 	</div>
