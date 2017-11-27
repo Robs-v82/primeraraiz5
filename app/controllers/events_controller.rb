@@ -9,6 +9,7 @@ class EventsController < ApplicationController
     @targetEvents = []
     my_events.each do |event|
       x = []
+      x.push(event.serial_no)
       x.push(event.date)
       targetMun = event.municipality
       x.push(targetMun.munici)
