@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     end
     @states=State.all
   	@municipalities=Municipality.all
-  	@types_of_place=["Vía pública urbana","Brecha rural","Carretera","Domicilio","Zona rural","No aplica","Aeropuerto"].sort
+  	@types_of_place=["Vía pública urbana","Brecha rural","Carretera","Domicilio","Zona rural","No aplica","Aeropuerto", "Comercios"].sort
   	@types_of_events=["Agresión", "Operación","Enfrentamiento","Persecusión","Mensaje","Desplazamiento","Detención arbitraria"].sort
     @types_of_aggressors=["Autoridad", "Crimen organizado", "Grupo sin filiación", "Habitantes de la comunidad", "Individuo"]
     @operations=Operation.all
@@ -168,15 +168,16 @@ class EventsController < ApplicationController
   def download_events
     @events = Event.all.order("serial_no")
     @total = @events.length
-    @targetInto = []
+    @targetInfo = []
     @events.each do |event|
       x = []
       targetMun = event.municipality
       x.push(targetMun.munici)
       targetState = State.where(:clave_estado=>targetMun.clave_estado).last
       x.push(targetState.estado)
-      @targetEvents.push(x)
+      @targetInfo.push(x)
     end
+    render xlsx: 'download_events'
   end
 
   private
