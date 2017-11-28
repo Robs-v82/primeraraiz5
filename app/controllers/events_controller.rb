@@ -44,6 +44,9 @@ class EventsController < ApplicationController
     if session[:destroyed_event]
       @event_destroyed = session[:destroyed_message] 
     end
+    if session[:event_date]
+      @event_date = session[:event_date]
+    end
   end
 
   def getSubtypes
@@ -80,6 +83,7 @@ class EventsController < ApplicationController
 
   def create
     long_date = event_params[:date]
+    session[:event_date] = long_date
     long_detencion_date = event_params[:detention_date]
     unless long_date.empty?
       target_date = set_date(long_date)

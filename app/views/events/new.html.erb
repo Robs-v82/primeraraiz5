@@ -182,9 +182,16 @@
 							<div class="input-field col l4 m6 s12">
 								<input type="text" name="event[serial_no]" placeholder="Núm. consecutivo">
 							</div>
+							<% unless @event_date %>
+								<div class="input-field col l4 m6 s12">
+									<input id="date-selector" type="text" name="event[date]" class="datepicker" placeholder="Fecha*">
+								</div>
+							<% end %>
+							<% if @event_date %>
 							<div class="input-field col l4 m6 s12">
-								<input id="date-selector" type="text" name="event[date]" class="datepicker" placeholder="Fecha*">
+								<input id="date-selector" type="text" name="event[date]" class="datepicker" value="<%=@event_date%>">
 							</div>
+							<% end %>
 							<div class="input-field col l4 m6 s12">
 								<select class="admins-select browser-default" name="event[operation_id]">
 									<option value="" selected>Operativo</option>
