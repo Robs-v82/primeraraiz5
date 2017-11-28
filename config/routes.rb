@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   get 'events/new'
+  get 'events/download_events' => 'events#download_events'
   get 'events/:id' => 'events#destroy'
   post 'events/getMunicipalities' => 'events#getMunicipalities'
   post 'events/getStateMunicipalities' => 'events#getStateMunicipalities'
@@ -44,7 +45,6 @@ Rails.application.routes.draw do
   get 'clients/switch' => 'clients#switch'
   post 'contacts' => 'contacts#create'
   get 'admins/download_contacts' => 'admins#download_contacts'
-  get 'events/download_events' => 'events#download_events'
   post 'admins/login' => 'admins#login'
   get 'virtualtour/:city' => 'tours#new'
   get 'testImage' => 'home#testImage'
