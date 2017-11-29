@@ -85,11 +85,15 @@ class EventsController < ApplicationController
     long_date = event_params[:date]
     session[:event_date] = long_date
     long_detencion_date = event_params[:detention_date]
+    long_date_2 = event_params[:date_2]
     unless long_date.empty?
       target_date = set_date(long_date)
     end
     unless long_detencion_date.empty?
       target_detention_date = set_date(long_detencion_date)
+    end
+    unless long_date_2.empty?
+      target_date_2 = set_date(long_date_2)
     end
     event_info = event_params
     unless event_info[:serial_no].present?
@@ -133,9 +137,11 @@ class EventsController < ApplicationController
 
     event_info.delete("date")
     event_info.delete("detention_date")
+    event_info.delete("date_2")
     event_info.delete("clave_estado")
     event_info.store("date",target_date)
     event_info.store("detention_date",target_detention_date)
+    event_info.store("date_2",target_date_2)
     new_event = Event.new(event_info)
     if new_event.valid?
       new_event.save
@@ -200,7 +206,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:serial_no, :operation_id, :clave_estado, :municipality_id, :type_of_place, :reference, :zip, :date, :source, :type_of_event, :subtype_of_event, :target_organization, :type_of_aggressor, :aggressor_name, :identity, :notes, :critical_event, :wounded_civil_servants, :wounded_officers, :wounded_officers_agency, :wounded_unarmed_civilians, :wounded_armed_civilians, :wounded_women, :wounded_minors, :wounded_indigenous, :dead_civil_servants, :dead_officers, :dead_officers_agency, :dead_unarmed_civilians, :dead_armed_civilians, :dead_women, :dead_minors, :dead_indigenous, :missing_civil_servants, :missing_officers, :missing_officers_agency, :missing_unarmed_civilians, :missing_armed_civilians, :missing_women, :missing_minors, :missing_indigenous, :under_arrest_civil_servants, :under_arrest_officers, :under_arrest_officers_agency, :under_arrest_unarmed_civilians, :under_arrest_armed_civilians, :under_arrest_women, :under_arrest_minors, :under_arrest_indigenous, :detention_date, :detention_time, :detention_denial, :detention_violence, :detention_location) 
+    params.require(:event).permit(:serial_no, :operation_id, :clave_estado, :municipality_id, :type_of_place, :reference, :zip, :date, :source, :type_of_event, :subtype_of_event, :target_organization, :type_of_aggressor, :aggressor_name, :identity, :notes, :critical_event, :wounded_civil_servants, :wounded_officers, :wounded_officers_agency, :wounded_unarmed_civilians, :wounded_armed_civilians, :wounded_women, :wounded_minors, :wounded_indigenous, :dead_civil_servants, :dead_officers, :dead_officers_agency, :dead_unarmed_civilians, :dead_armed_civilians, :dead_women, :dead_minors, :dead_indigenous, :missing_civil_servants, :missing_officers, :missing_officers_agency, :missing_unarmed_civilians, :missing_armed_civilians, :missing_women, :missing_minors, :missing_indigenous, :under_arrest_civil_servants, :under_arrest_officers, :under_arrest_officers_agency, :under_arrest_unarmed_civilians, :under_arrest_armed_civilians, :under_arrest_women, :under_arrest_minors, :under_arrest_indigenous, :detention_date, :detention_time, :detention_denial, :detention_violence, :detention_location, :date_2) 
   end
 
   def operation_params

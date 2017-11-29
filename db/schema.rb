@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113223415) do
+ActiveRecord::Schema.define(version: 20171129143354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 20171113223415) do
     t.boolean  "detention_denial"
     t.boolean  "detention_violence"
     t.string   "detention_location"
+    t.date     "date_2"
   end
 
   add_index "events", ["municipality_id"], name: "index_events_on_municipality_id", using: :btree
@@ -212,6 +213,14 @@ ActiveRecord::Schema.define(version: 20171113223415) do
     t.string   "munici"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "poblac_2015"
+    t.integer  "zm"
+    t.boolean  "zm_dico"
+    t.float    "IIM0a100"
+    t.string   "GIM_2010"
+    t.string   "g_marginacion"
+    t.float    "i_marginacion"
+    t.float    "p_indigena"
   end
 
   create_table "neighborhoods", force: true do |t|

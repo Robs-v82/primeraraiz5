@@ -193,6 +193,9 @@
 							</div>
 							<% end %>
 							<div class="input-field col l4 m6 s12">
+								<input id="date-selector" type="text" name="event[date_2]" class="datepicker" placeholder="Fecha de ocurrencia">
+							</div>
+							<div class="input-field col l4 m6 s12">
 								<select class="admins-select browser-default" name="event[operation_id]">
 									<option value="" selected>Operativo</option>
 									<% @operations.each do |operation|%>
@@ -200,7 +203,7 @@
 									<% end %>
 								</select>
 							</div>
-							<div class="input-field col l12 m12 s12">
+							<div class="input-field col l8 m12 s12">
 								<input type="text" name="event[source]" placeholder="Fuente*">
 							</div>
 							<div class="input-field col l6 m6 s12">
