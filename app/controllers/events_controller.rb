@@ -52,7 +52,7 @@ class EventsController < ApplicationController
   def getSubtypes
     if getSubtypes_params[:type_of_event]=="Agresión"
       print getSubtypes_params[:type_of_event]*20
-      subtypeArr=["Ocupación territorio","Levantón","Daño a vivienda","Golpiza","Ataque a autoridad","Amenaza","Homicidio","Daño a comercio"].sort
+      subtypeArr=["Abuso de autoridad","Ocupación territorio","Levantón","Daño a vivienda","Golpiza","Ataque a autoridad","Amenaza","Homicidio","Daño a comercio"].sort
     elsif getSubtypes_params[:type_of_event]=="Operación"
       subtypeArr=["Detención","Cateo","Inhabilitar toma clandestina","Decomiso","Erradicación de cultivo","Redada","Rescate","Reacción"].sort
     elsif getSubtypes_params[:type_of_event]=="Enfrentamiento"
