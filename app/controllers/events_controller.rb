@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   after_action :remove_event_destroyed_message, only: [:new]
 
   def new
-  	@events = Event.all
+  	@events = Event.all.order("created_at DESC")
     my_events = Event.all.order("created_at DESC").limit(5)
     @targetEvents = []
     @events.each do |event|
