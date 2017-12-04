@@ -196,6 +196,7 @@ class EventsController < ApplicationController
       x = []
       targetMun = event.municipality
       x.push(targetMun.munici)
+      x.push(targetMun.clave_munici)
       targetState = State.where(:clave_estado=>targetMun.clave_estado).last
       x.push(targetState.estado)
       @targetInfo.push(x)
