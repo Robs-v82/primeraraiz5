@@ -77,6 +77,15 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/XxtDvUdjPJu/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/9STKxMMAm7H/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/g28FaHBZug3/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/2KehLRJkHDT/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/CvTBdFX95RV/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/9R8yxioL8RJ/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/5MWVPCyS6MT/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/NHKEFuyANxD/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/7ebD2XwtUa5/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/UaRW1tBtYe4/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/6ACBybojnkp/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/udxknsQ3hUe/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
@@ -160,3 +169,7 @@ names = [
 	"Catedral Metropolitana de México",
 	"Casa Interlomas - Luxury Habitat",
 ]
+
+x = Municipality.create(clave_estado: "23", clave_munici: "23009", munici: "Tulum")
+x = Municipality.create(clave_estado: "23", clave_munici: "23010", munici: "Bacalar")
+x = Municipality.create(clave_estado: "23", clave_munici: "23011", munici: "Puerto Morelos")
