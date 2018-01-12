@@ -57,7 +57,7 @@ class EventsController < ApplicationController
       subtypeArr=["Detención","Cateo","Inhabilitar toma clandestina","Decomiso","Erradicación de cultivo","Redada","Rescate","Reacción"].sort
     elsif getSubtypes_params[:type_of_event]=="Enfrentamiento"
       subtypeArr=["Ataque a autoridad","Entre grupos"].sort
-    elsif getSubtypes_params[:type_of_event]=="Persecusión"
+    elsif getSubtypes_params[:type_of_event]=="Persecución"
       subtypeArr=["Ataque a autoridad","Entre grupos"].sort
     elsif getSubtypes_params[:type_of_event]=="Mensaje"
       subtypeArr=["Amenaza","Entre grupos","Presencia"].sort
