@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @states=State.all
   	@municipalities=Municipality.all
   	@types_of_place=["Vía pública urbana","Brecha rural","Carretera","Domicilio","Zona rural","No aplica","Aeropuerto", "Comercios","Instalaciones públicas"].sort
-  	@types_of_events=["Agresión", "Operación","Enfrentamiento","Persecusión","Mensaje","Desplazamiento","Detención arbitraria","Disputa de tierras","Megaproyecto"].sort
+  	@types_of_events=["Agresión", "Operación","Enfrentamiento","Persecución","Mensaje","Desplazamiento","Detención arbitraria","Disputa de tierras","Megaproyecto"].sort
     @types_of_aggressors=["Autoridad", "Crimen organizado", "Grupo sin filiación", "Habitantes de la comunidad", "Individuo"]
     @operations=Operation.all
     @agencies=["SEDENA","SEMAR","PF","PGR","Policía estatal","PGJ", "Policía municipal"]
