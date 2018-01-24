@@ -1,6 +1,7 @@
 dataArr=[]
 rawData.each_line{|l| line = l.split(","); dataArr.push(line)}
 dataArr.each{|x|x.each{|y|y.strip!}}
+dataArr.each{|x| target=Municipality.where(:clave_munici=>x[0]).last; target.update(:violent_deaths_2008_2017=>x[1])}
 
 rawData="01001,230
 01002,4

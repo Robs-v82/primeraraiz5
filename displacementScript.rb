@@ -1,0 +1,1 @@
+rails g model Displacement date:date type source no_individuals:integer no_families:integer municipality:references localities
