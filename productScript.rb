@@ -86,6 +86,13 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/UaRW1tBtYe4/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/6ACBybojnkp/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/udxknsQ3hUe/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/4mfAWs3pNNQ/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/hiemnNhvdjC/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/RA6egkGPrkg/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/BS94C3PbYHn/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/9rZEz4peNbK/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/CpwNfaBumDt/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/sVjZmBPmW87/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129143354) do
+ActiveRecord::Schema.define(version: 20180124182106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 20171129143354) do
     t.string   "g_marginacion"
     t.float    "i_marginacion"
     t.float    "p_indigena"
+    t.integer  "violent_deaths_2008_2017"
   end
 
   create_table "neighborhoods", force: true do |t|

@@ -104,3 +104,7 @@ operationString = "1,2017-01-07,Operativo Costa-Soconusco,https://elorbe.com/sec
     t.boolean  "detention_violence"
     t.string   "detention_location"
   end
+
+
+  target = Event.where(:type_of_event=>"Persecusión")
+  target.each{|x| x.update(:type_of_event=>"Persecución")}

@@ -1,0 +1,2465 @@
+
+
+
+
+cve_mun,GIM_2010,g_marginacion,i_marginacion,p_indigena
+dataArr = []
+rawData.each_line{|l| line = l.split(","); dataArr.push(line)}
+dataArr.each{|x|x.each{|y|y.strip!}}
+dataArr.each{|x| target=Municipality.where(:clave_munici=>x[0]).last; target.update(:g_marginacion=>x[2])}
+dataArr.each{|x| target=Municipality.where(:clave_munici=>x[0]).last; target.update(:i_marginacion=>x[3])}
+Municipality.where
+
+rawData ="20151,2 Bajo,Alto,37.2456,3.4846 
+20155,2 Bajo,Muy alto,47.9222,2.8466 
+20311,3 Medio,Alto,36.4049,1.4317 
+20435,2 Bajo,Muy alto,45.1076,1.3927 
+20352,3 Medio,Muy alto,51.5614,1.3684 
+20517,2 Bajo,Muy alto,47.3232,1.2798 
+07118,1 Muy Bajo,Muy alto,43.1788,1.2439 
+20100,5 Muy Alto,Alto,36.0265,1.2302 
+20275,1 Muy Bajo,Muy alto,39.9340,1.1370 
+20231,1 Muy Bajo,Muy alto,49.4002,1.1185 
+20003,1 Muy Bajo,Muy alto,40.2849,1.1150 
+20216,4 Alto,Alto,34.1055,1.1118 
+20271,2 Bajo,Muy alto,47.3115,1.1102 
+20146,3 Medio,Muy alto,44.0704,1.1067 
+20451,2 Bajo,Muy alto,45.0102,1.1055 
+20436,2 Bajo,Alto,35.4693,1.1043 
+20110,3 Medio,Muy alto,50.3052,1.1040 
+20337,1 Muy Bajo,Muy alto,49.6435,1.1028 
+30019,4 Alto,Muy alto,45.2666,1.0988 
+20187,2 Bajo,Muy alto,44.3687,1.0961 
+20257,3 Medio,Muy alto,40.9307,1.0958 
+07056,1 Muy Bajo,Muy alto,49.2141,1.0923 
+20522,1 Muy Bajo,Muy alto,42.3233,1.0873 
+12078,2 Bajo,Muy alto,76.9752,1.0813 
+20085,2 Bajo,Muy alto,52.6597,1.0743 
+07024,1 Muy Bajo,Muy alto,44.7407,1.0650 
+07014,1 Muy Bajo,Muy alto,39.5172,1.0624 
+20445,3 Medio,Alto,33.6760,1.0615 
+20060,3 Medio,Muy alto,40.9407,1.0562 
+31099,0 Nulo,Alto,37.0842,1.0521 
+30159,2 Bajo,Muy alto,59.7182,1.0510 
+20126,4 Alto,Muy alto,44.0790,1.0503 
+20502,1 Muy Bajo,Muy alto,46.1518,1.0435 
+20471,2 Bajo,Alto,35.4443,1.0435 
+07112,1 Muy Bajo,Muy alto,50.5841,1.0410 
+07111,1 Muy Bajo,Muy alto,46.3655,1.0406 
+21028,1 Muy Bajo,Muy alto,40.8689,1.0394 
+20514,3 Medio,Muy alto,49.5193,1.0394 
+07023,2 Bajo,Muy alto,48.1806,1.0356 
+07082,1 Muy Bajo,Muy alto,62.9545,1.0334 
+20494,3 Medio,Muy alto,45.5674,1.0321 
+20210,4 Alto,Alto,36.6236,1.0321 
+20248,1 Muy Bajo,Muy alto,54.7359,1.0288 
+20497,5 Muy Alto,Muy alto,47.6308,1.0273 
+20420,3 Medio,Muy alto,39.3309,1.0241 
+12076,1 Muy Bajo,Muy alto,57.3760,1.0239 
+31073,1 Muy Bajo,Muy alto,46.4345,1.0234 
+20534,4 Alto,Muy alto,42.5054,1.0207 
+20252,3 Medio,Muy alto,38.6040,1.0156 
+20391,3 Medio,Muy alto,56.2946,1.0132 
+21036,1 Muy Bajo,Muy alto,47.3400,1.0125 
+12009,2 Bajo,Muy alto,49.5122,1.0117 
+20229,3 Medio,Muy alto,48.4713,1.0097 
+30067,1 Muy Bajo,Muy alto,42.6548,1.0096 
+20394,1 Muy Bajo,Alto,33.0400,1.0087 
+07031,1 Muy Bajo,Muy alto,51.2735,1.0069 
+20170,2 Bajo,Muy alto,50.7186,1.0062 
+07060,1 Muy Bajo,Muy alto,46.8962,1.0037 
+07026,1 Muy Bajo,Muy alto,48.0186,1.0000 
+20016,4 Alto,Muy alto,59.0452,0.9964 
+20116,1 Muy Bajo,Muy alto,47.6205,0.9960 
+30064,1 Muy Bajo,Muy alto,39.7703,0.9956 
+20490,1 Muy Bajo,Muy alto,44.9035,0.9946 
+07049,1 Muy Bajo,Muy alto,43.1533,0.9938 
+21077,1 Muy Bajo,Muy alto,45.2409,0.9929 
+30147,2 Bajo,Muy alto,47.6761,0.9902 
+31049,1 Muy Bajo,Muy alto,43.3436,0.9889 
+21217,1 Muy Bajo,Muy alto,50.9183,0.9877 
+07119,1 Muy Bajo,Muy alto,42.1167,0.9863 
+20437,2 Bajo,Muy alto,42.8649,0.9858 
+20509,4 Alto,Muy alto,48.9634,0.9838 
+20325,3 Medio,Muy alto,45.1491,0.9811 
+20236,2 Bajo,Muy alto,51.0074,0.9807 
+20303,3 Medio,Alto,32.8295,0.9798 
+12043,3 Medio,Muy alto,62.8874,0.9797 
+07038,1 Muy Bajo,Muy alto,44.8223,0.9786 
+20335,2 Bajo,Muy alto,42.8218,0.9777 
+12004,4 Alto,Muy alto,58.6923,0.9776 
+31016,2 Bajo,Alto,37.3028,0.9775 
+07096,1 Muy Bajo,Muy alto,42.0785,0.9768 
+20395,2 Bajo,Muy alto,49.4186,0.9761 
+30020,2 Bajo,Muy alto,47.4933,0.9753 
+30110,1 Muy Bajo,Muy alto,60.7487,0.9747 
+07100,1 Muy Bajo,Muy alto,47.4855,0.9747 
+20131,4 Alto,Alto,37.2348,0.9745 
+20200,3 Medio,Muy alto,38.6280,0.9719 
+30137,1 Muy Bajo,Muy alto,44.5613,0.9719 
+20432,4 Alto,Medio,30.2987,0.9708 
+20428,2 Bajo,Muy alto,42.7076,0.9675 
+30168,1 Muy Bajo,Muy alto,44.2914,0.9666 
+20299,4 Alto,Alto,33.5289,0.9650 
+20554,2 Bajo,Alto,37.2365,0.9646 
+20480,2 Bajo,Muy alto,42.1575,0.9643 
+20031,4 Alto,Alto,37.0958,0.9638 
+20128,4 Alto,Medio,29.8205,0.9637 
+20050,4 Alto,Muy alto,41.8126,0.9633 
+20312,2 Bajo,Muy alto,46.0066,0.9629 
+12071,2 Bajo,Muy alto,56.1237,0.9627 
+30184,4 Alto,Muy alto,43.8249,0.9620 
+07093,1 Muy Bajo,Muy alto,41.0381,0.9611 
+21061,1 Muy Bajo,Muy alto,47.7734,0.9601 
+20272,5 Muy Alto,Alto,33.0720,0.9582 
+20532,3 Medio,Muy alto,38.3495,0.9575 
+20040,1 Muy Bajo,Muy alto,52.4823,0.9529 
+20434,1 Muy Bajo,Muy alto,41.7910,0.9518 
+20441,1 Muy Bajo,Medio,29.6670,0.9515 
+20212,1 Muy Bajo,Muy alto,70.5537,0.9499 
+20222,1 Muy Bajo,Alto,35.9407,0.9498 
+20138,4 Alto,Alto,32.2256,0.9488 
+20074,3 Medio,Alto,32.3867,0.9476 
+13078,1 Muy Bajo,Muy alto,45.1722,0.9465 
+20326,3 Medio,Muy alto,40.4056,0.9457 
+07022,1 Muy Bajo,Muy alto,58.6080,0.9440 
+31022,1 Muy Bajo,Muy alto,41.0177,0.9422 
+12041,2 Bajo,Muy alto,49.5691,0.9394 
+20374,1 Muy Bajo,Muy alto,49.4477,0.9385 
+20454,1 Muy Bajo,Alto,37.9852,0.9372 
+07064,0 Nulo,Muy alto,46.4202,0.9368 
+20105,3 Medio,Alto,34.8862,0.9358 
+20541,2 Bajo,Medio,31.7612,0.9355 
+31092,1 Muy Bajo,Muy alto,40.9828,0.9328 
+07090,2 Bajo,Alto,36.1593,0.9320 
+21167,2 Bajo,Muy alto,43.8868,0.9311 
+20171,1 Muy Bajo,Muy alto,61.6961,0.9305 
+31019,1 Muy Bajo,Muy alto,42.0964,0.9295 
+20367,2 Bajo,Muy alto,44.0728,0.9265 
+20319,2 Bajo,Muy alto,38.3433,0.9259 
+20233,5 Muy Alto,Muy alto,42.8618,0.9254 
+20473,2 Bajo,Medio,31.4159,0.9251 
+12079,1 Muy Bajo,Muy alto,61.4658,0.9232 
+20396,1 Muy Bajo,Muy alto,52.7921,0.9227 
+21006,1 Muy Bajo,Muy alto,39.9072,0.9216 
+20038,2 Bajo,Muy alto,40.4809,0.9212 
+20208,5 Muy Alto,Muy alto,41.1910,0.9207 
+21215,2 Bajo,Alto,34.2298,0.9206 
+20246,3 Medio,Alto,36.1770,0.9181 
+30103,1 Muy Bajo,Muy alto,45.0325,0.9181 
+12020,2 Bajo,Muy alto,55.5659,0.9180 
+20529,1 Muy Bajo,Muy alto,49.4279,0.9130 
+31094,1 Muy Bajo,Alto,38.1429,0.9127 
+20234,1 Muy Bajo,Muy alto,48.9425,0.9106 
+20097,4 Alto,Alto,32.4381,0.9099 
+20136,1 Muy Bajo,Alto,33.8440,0.9094 
+20323,1 Muy Bajo,Muy alto,41.8062,0.9088 
+20118,5 Muy Alto,Muy alto,41.8550,0.9082 
+20379,3 Medio,Muy alto,42.1204,0.9075 
+30098,0 Nulo,Alto,34.2835,0.9064 
+20111,3 Medio,Muy alto,42.1789,0.9052 
+12063,1 Muy Bajo,Muy alto,54.2947,0.9042 
+20228,0 Nulo,Muy alto,42.5845,0.9038 
+30149,1 Muy Bajo,Muy alto,46.3179,0.9031 
+20029,1 Muy Bajo,Muy alto,56.9064,0.9003 
+21084,1 Muy Bajo,Muy alto,43.0080,0.9001 
+20182,1 Muy Bajo,Muy alto,40.7652,0.9000 
+20194,5 Muy Alto,Medio,29.4623,0.8998 
+20457,3 Medio,Muy alto,46.1645,0.8977 
+21145,1 Muy Bajo,Muy alto,43.6683,0.8971 
+20426,2 Bajo,Muy alto,47.7709,0.8971 
+31021,1 Muy Bajo,Alto,35.9723,0.8960 
+20169,1 Muy Bajo,Muy alto,50.8049,0.8959 
+31081,0 Nulo,Alto,35.5688,0.8950 
+20288,3 Medio,Alto,35.8088,0.8940 
+31024,3 Medio,Alto,33.3152,0.8921 
+20406,1 Muy Bajo,Muy alto,56.1822,0.8919 
+31017,1 Muy Bajo,Muy alto,38.8562,0.8855 
+18009,2 Bajo,Muy alto,68.3824,0.8850 
+12081,2 Bajo,Muy alto,47.5279,0.8833 
+13032,2 Bajo,Medio,31.4652,0.8819 
+20134,1 Muy Bajo,Muy alto,42.3976,0.8805 
+20300,2 Bajo,Alto,37.4992,0.8803 
+20527,1 Muy Bajo,Alto,36.1622,0.8784 
+31090,1 Muy Bajo,Alto,34.0447,0.8778 
+20001,4 Alto,Alto,36.6764,0.8776 
+20260,4 Alto,Muy alto,38.4626,0.8775 
+12062,3 Medio,Muy alto,59.3752,0.8753 
+21075,1 Muy Bajo,Alto,33.2995,0.8741 
+12072,1 Muy Bajo,Muy alto,48.9615,0.8741 
+21129,4 Alto,Medio,29.7706,0.8740 
+30104,1 Muy Bajo,Muy alto,39.3963,0.8738 
+20425,2 Bajo,Muy alto,41.8527,0.8735 
+07066,1 Muy Bajo,Muy alto,51.7384,0.8694 
+20148,5 Muy Alto,Muy alto,41.7797,0.8692 
+20560,4 Alto,Alto,34.4287,0.8686 
+20528,5 Muy Alto,Alto,38.1699,0.8676 
+31010,1 Muy Bajo,Muy alto,40.0466,0.8668 
+20232,2 Bajo,Muy alto,44.9440,0.8668 
+20389,5 Muy Alto,Muy alto,41.8790,0.8667 
+21080,1 Muy Bajo,Muy alto,38.3190,0.8641 
+20322,1 Muy Bajo,Muy alto,44.9622,0.8640 
+20201,2 Bajo,Muy alto,39.6209,0.8622 
+20302,3 Medio,Muy alto,40.3576,0.8609 
+20535,4 Alto,Muy alto,39.4360,0.8608 
+20361,2 Bajo,Muy alto,38.3646,0.8569 
+20051,5 Muy Alto,Muy alto,49.6850,0.8568 
+20475,5 Muy Alto,Muy alto,39.0561,0.8533 
+20240,4 Alto,Muy alto,53.1065,0.8528 
+20133,2 Bajo,Muy alto,46.2107,0.8523 
+21100,1 Muy Bajo,Muy alto,38.8136,0.8520 
+20465,1 Muy Bajo,Alto,35.2998,0.8515 
+20120,2 Bajo,Medio,28.3056,0.8504 
+20446,5 Muy Alto,Medio,29.5970,0.8484 
+20058,1 Muy Bajo,Muy alto,48.7447,0.8482 
+21030,4 Alto,Alto,35.7977,0.8477 
+07113,1 Muy Bajo,Muy alto,43.2516,0.8473 
+21107,1 Muy Bajo,Muy alto,48.5452,0.8464 
+20433,5 Muy Alto,Muy alto,47.3976,0.8455 
+20189,2 Bajo,Muy alto,51.1108,0.8451 
+20127,2 Bajo,Muy alto,49.2475,0.8448 
+20442,4 Alto,Medio,32.0748,0.8425 
+30140,1 Muy Bajo,Muy alto,38.8985,0.8380 
+24026,1 Muy Bajo,Alto,37.9190,0.8377 
+20242,5 Muy Alto,Muy alto,53.8613,0.8372 
+20214,5 Muy Alto,Muy alto,42.0638,0.8345 
+20119,2 Bajo,Alto,35.8751,0.8316 
+30027,1 Muy Bajo,Alto,35.7174,0.8316 
+30076,2 Bajo,Muy alto,48.3273,0.8305 
+31075,2 Bajo,Alto,36.5486,0.8299 
+07077,0 Nulo,Muy alto,43.4318,0.8293 
+13080,1 Muy Bajo,Muy alto,41.9214,0.8293 
+21078,1 Muy Bajo,Muy alto,46.2571,0.8276 
+21072,1 Muy Bajo,Muy alto,47.7430,0.8263 
+31047,3 Medio,Alto,35.1990,0.8256 
+07081,1 Muy Bajo,Muy alto,39.9063,0.8237 
+20124,1 Muy Bajo,Muy alto,46.5557,0.8234 
+20173,3 Medio,Alto,32.3467,0.8224 
+07047,1 Muy Bajo,Alto,36.1707,0.8223 
+20142,1 Muy Bajo,Muy alto,40.6506,0.8209 
+21162,1 Muy Bajo,Muy alto,40.6033,0.8193 
+12069,4 Alto,Muy alto,55.9593,0.8152 
+21029,1 Muy Bajo,Alto,34.1694,0.8138 
+20359,4 Alto,Alto,32.7541,0.8138 
+31043,1 Muy Bajo,Muy alto,39.8117,0.8138 
+20354,1 Muy Bajo,Muy alto,53.2431,0.8112 
+20114,4 Alto,Alto,33.5284,0.8087 
+31066,4 Alto,Alto,32.4375,0.8081 
+31085,1 Muy Bajo,Alto,34.0648,0.8072 
+14019,2 Bajo,Muy alto,50.4412,0.8049 
+20506,4 Alto,Alto,35.4260,0.8046 
+24041,1 Muy Bajo,Alto,35.7399,0.8016 
+20112,3 Medio,Alto,33.2615,0.8015 
+30202,2 Bajo,Muy alto,47.0911,0.8014 
+14061,2 Bajo,Muy alto,60.4811,0.8001 
+20372,4 Alto,Muy alto,40.4466,0.7977 
+21202,1 Muy Bajo,Muy alto,39.6360,0.7960 
+20393,4 Alto,Alto,35.6570,0.7933 
+20213,5 Muy Alto,Muy alto,39.0361,0.7932 
+20481,2 Bajo,Alto,34.0575,0.7929 
+20284,1 Muy Bajo,Muy alto,48.8854,0.7911 
+31014,1 Muy Bajo,Alto,34.5855,0.7911 
+20195,2 Bajo,Muy alto,42.6048,0.7898 
+10014,2 Bajo,Muy alto,66.0555,0.7896 
+20205,3 Medio,Muy alto,42.9571,0.7892 
+20070,2 Bajo,Alto,37.6523,0.7883 
+20468,4 Alto,Muy alto,40.3891,0.7871 
+07059,1 Muy Bajo,Muy alto,41.8593,0.7858 
+20309,1 Muy Bajo,Muy alto,42.3235,0.7830 
+31055,1 Muy Bajo,Medio,29.6346,0.7827 
+20466,2 Bajo,Muy alto,48.7660,0.7729 
+30203,1 Muy Bajo,Muy alto,47.7133,0.7726 
+20041,1 Muy Bajo,Muy alto,42.8986,0.7722 
+20452,3 Medio,Muy alto,42.7955,0.7699 
+20223,4 Alto,Medio,31.3514,0.7665 
+20356,5 Muy Alto,Alto,32.4706,0.7660 
+21210,1 Muy Bajo,Alto,33.1457,0.7646 
+07076,1 Muy Bajo,Muy alto,42.8630,0.7621 
+20297,5 Muy Alto,Muy alto,46.8204,0.7604 
+24014,1 Muy Bajo,Alto,35.0399,0.7589 
+20163,0 Nulo,Muy alto,43.6494,0.7589 
+12019,3 Medio,Muy alto,54.4949,0.7581 
+13011,1 Muy Bajo,Alto,33.9734,0.7574 
+20564,1 Muy Bajo,Muy alto,40.4723,0.7532 
+20218,3 Medio,Muy alto,42.6364,0.7515 
+07033,1 Muy Bajo,Muy alto,40.9097,0.7509 
+30170,4 Alto,Muy alto,48.6467,0.7476 
+07025,1 Muy Bajo,Alto,38.1230,0.7464 
+20225,2 Bajo,Muy alto,45.2732,0.7440 
+13026,1 Muy Bajo,Muy alto,39.8924,0.7434 
+20264,5 Muy Alto,Muy alto,41.6276,0.7420 
+31046,5 Muy Alto,Medio,31.3328,0.7416 
+20209,3 Medio,Muy alto,41.2378,0.7398 
+20188,2 Bajo,Alto,38.0273,0.7392 
+20269,2 Bajo,Medio,28.7053,0.7378 
+13025,1 Muy Bajo,Alto,36.2154,0.7338 
+21049,2 Bajo,Muy alto,43.2492,0.7328 
+20336,5 Muy Alto,Muy alto,41.8413,0.7310 
+30209,2 Bajo,Alto,34.4300,0.7304 
+21052,1 Muy Bajo,Alto,33.0864,0.7293 
+31104,1 Muy Bajo,Muy alto,41.5710,0.7292 
+20211,2 Bajo,Muy alto,43.6964,0.7283 
+20164,5 Muy Alto,Alto,37.5848,0.7264 
+20249,1 Muy Bajo,Muy alto,39.9686,0.7259 
+20198,1 Muy Bajo,Muy alto,39.3545,0.7199 
+21216,1 Muy Bajo,Alto,37.3479,0.7192 
+30201,3 Medio,Muy alto,38.3682,0.7182 
+23002,1 Muy Bajo,Medio,29.9298,0.7138 
+31025,4 Alto,Medio,30.1558,0.7118 
+21039,2 Bajo,Alto,37.4074,0.7115 
+21068,2 Bajo,Muy alto,40.7551,0.7108 
+31018,2 Bajo,Alto,32.2925,0.7074 
+24003,2 Bajo,Muy alto,48.8939,0.7071 
+20384,4 Alto,Muy alto,39.8872,0.7040 
+20444,3 Medio,Muy alto,44.6295,0.7030 
+12010,2 Bajo,Muy alto,53.1107,0.7028 
+21043,1 Muy Bajo,Muy alto,39.6464,0.7019 
+20306,3 Medio,Muy alto,44.3026,0.7017 
+31091,1 Muy Bajo,Medio,31.3890,0.7006 
+30171,5 Muy Alto,Muy alto,39.7000,0.6975 
+20458,4 Alto,Medio,28.8810,0.6955 
+20278,1 Muy Bajo,Muy alto,38.9209,0.6885 
+30083,1 Muy Bajo,Muy alto,42.4179,0.6876 
+20320,3 Medio,Medio,31.0536,0.6866 
+21014,2 Bajo,Muy alto,43.1478,0.6864 
+21159,4 Alto,Muy alto,41.8455,0.6858 
+07007,1 Muy Bajo,Muy alto,50.9160,0.6846 
+21070,2 Bajo,Alto,37.9825,0.6726 
+20279,3 Medio,Alto,36.4180,0.6726 
+30058,1 Muy Bajo,Alto,34.5261,0.6682 
+20546,3 Medio,Alto,32.7027,0.6654 
+24012,1 Muy Bajo,Muy alto,38.4440,0.6653 
+31086,1 Muy Bajo,Medio,31.8441,0.6643 
+20296,3 Medio,Medio,31.5056,0.6642 
+20386,4 Alto,Muy alto,49.8423,0.6637 
+20012,2 Bajo,Muy alto,44.2420,0.6618 
+07004,1 Muy Bajo,Muy alto,40.1910,0.6570 
+12066,3 Medio,Alto,33.6345,0.6565 
+20197,3 Medio,Medio,30.5816,0.6561 
+24018,1 Muy Bajo,Alto,34.7653,0.6554 
+13015,5 Muy Alto,Medio,28.0106,0.6543 
+20007,4 Alto,Muy alto,44.9242,0.6537 
+16025,3 Medio,Medio,29.4973,0.6516 
+20450,2 Bajo,Muy alto,57.1365,0.6512 
+21146,1 Muy Bajo,Alto,35.5113,0.6503 
+07109,1 Muy Bajo,Muy alto,41.5130,0.6493 
+30212,4 Alto,Muy alto,40.2792,0.6481 
+07039,1 Muy Bajo,Muy alto,42.5097,0.6480 
+30050,1 Muy Bajo,Muy alto,43.2144,0.6420 
+20095,2 Bajo,Muy alto,50.4408,0.6387 
+31001,1 Muy Bajo,Medio,31.9890,0.6357 
+20117,3 Medio,Muy alto,41.4163,0.6355 
+24039,1 Muy Bajo,Alto,38.0652,0.6331 
+31056,4 Alto,Medio,28.7535,0.6329 
+31058,3 Medio,Medio,29.6599,0.6322 
+20043,1 Muy Bajo,Medio,20.6062,0.6291 
+31079,2 Bajo,Medio,28.3235,0.6289 
+20259,5 Muy Alto,Muy alto,46.1132,0.6276 
+30122,2 Bajo,Alto,36.3882,0.6253 
+20086,3 Medio,Alto,32.8955,0.6244 
+20020,3 Medio,Muy alto,43.1802,0.6207 
+24057,1 Muy Bajo,Alto,36.9012,0.6206 
+20009,3 Medio,Medio,30.7496,0.6189 
+21123,1 Muy Bajo,Muy alto,43.6522,0.6182 
+12074,3 Medio,Muy alto,47.2702,0.6162 
+20042,2 Bajo,Medio,30.2905,0.6160 
+31033,1 Muy Bajo,Alto,32.6017,0.6153 
+31034,1 Muy Bajo,Medio,30.6002,0.6150 
+20065,5 Muy Alto,Muy alto,40.7852,0.6134 
+24031,4 Alto,Muy alto,52.9250,0.6124 
+08027,1 Muy Bajo,Muy alto,54.6024,0.6096 
+31003,2 Bajo,Medio,26.4560,0.6044 
+20531,3 Medio,Medio,24.1298,0.6044 
+21183,2 Bajo,Muy alto,39.4621,0.6044 
+20371,1 Muy Bajo,Alto,37.7886,0.6017 
+13028,1 Muy Bajo,Medio,29.7573,0.6009 
+20417,3 Medio,Alto,33.6567,0.6008 
+31062,1 Muy Bajo,Medio,29.3419,0.5997 
+20469,2 Bajo,Muy alto,43.4056,0.5994 
+31032,1 Muy Bajo,Alto,35.8075,0.5962 
+13046,1 Muy Bajo,Alto,36.0670,0.5946 
+31008,1 Muy Bajo,Medio,31.9025,0.5939 
+30051,2 Bajo,Alto,35.6532,0.5879 
+20503,3 Medio,Medio,30.9358,0.5864 
+31071,1 Muy Bajo,Alto,32.3555,0.5840 
+20027,1 Muy Bajo,Muy alto,41.6415,0.5832 
+23006,1 Muy Bajo,Medio,30.9951,0.5831 
+20207,3 Medio,Muy alto,46.1370,0.5797 
+20557,1 Muy Bajo,Bajo,17.9415,0.5764 
+20559,3 Medio,Medio,32.0757,0.5754 
+31074,1 Muy Bajo,Medio,28.8193,0.5681 
+31015,1 Muy Bajo,Medio,30.7933,0.5671 
+20470,1 Muy Bajo,Alto,38.1785,0.5671 
+20526,3 Medio,Alto,38.1604,0.5645 
+31088,1 Muy Bajo,Medio,30.7650,0.5584 
+31102,1 Muy Bajo,Medio,26.1097,0.5575 
+20220,1 Muy Bajo,Alto,33.0801,0.5566 
+20543,3 Medio,Muy alto,40.1584,0.5538 
+16021,3 Medio,Alto,35.7940,0.5505 
+13027,2 Bajo,Muy alto,43.5737,0.5484 
+20392,1 Muy Bajo,Muy alto,48.2182,0.5468 
+30056,1 Muy Bajo,Muy alto,40.5928,0.5466 
+31077,1 Muy Bajo,Alto,32.9910,0.5463 
+21109,4 Alto,Muy alto,39.0247,0.5452 
+21088,1 Muy Bajo,Alto,37.2006,0.5425 
+31036,1 Muy Bajo,Medio,28.7374,0.5414 
+21089,3 Medio,Muy alto,40.9818,0.5413 
+20544,5 Muy Alto,Medio,28.6111,0.5408 
+20346,3 Medio,Alto,33.1314,0.5404 
+20081,5 Muy Alto,Alto,37.2592,0.5400 
+31103,1 Muy Bajo,Medio,31.0806,0.5390 
+31098,1 Muy Bajo,Medio,31.2857,0.5386 
+20331,2 Bajo,Alto,37.4371,0.5372 
+07013,1 Muy Bajo,Alto,33.7686,0.5367 
+30037,2 Bajo,Muy alto,39.1889,0.5342 
+31069,1 Muy Bajo,Medio,30.8863,0.5322 
+13055,4 Alto,Medio,22.8975,0.5314 
+04001,1 Muy Bajo,Medio,24.9983,0.5304 
+20125,2 Bajo,Muy alto,39.1043,0.5303 
+20313,2 Bajo,Muy alto,40.8339,0.5298 
+20015,4 Alto,Muy alto,55.3132,0.5295 
+31031,2 Bajo,Muy alto,38.3038,0.5291 
+13043,5 Muy Alto,Alto,32.3758,0.5285 
+12042,4 Alto,Muy alto,47.8677,0.5276 
+21124,3 Medio,Medio,32.0786,0.5260 
+21214,3 Medio,Medio,26.8846,0.5239 
+20308,1 Muy Bajo,Medio,30.1941,0.5238 
+30135,1 Muy Bajo,Medio,31.8251,0.5229 
+21196,4 Alto,Medio,28.0686,0.5221 
+31064,1 Muy Bajo,Medio,29.4473,0.5197 
+20280,3 Medio,Medio,27.9465,0.5190 
+21013,3 Medio,Medio,25.8036,0.5187 
+12052,1 Muy Bajo,Muy alto,50.9912,0.5156 
+20511,1 Muy Bajo,Muy alto,48.0311,0.5140 
+21192,1 Muy Bajo,Alto,33.1181,0.5136 
+21010,3 Medio,Muy alto,38.3108,0.5130 
+24053,1 Muy Bajo,Medio,28.7163,0.5125 
+20202,5 Muy Alto,Muy alto,39.4648,0.5112 
+31080,2 Bajo,Medio,29.2354,0.5102 
+20276,2 Bajo,Muy alto,46.5331,0.5094 
+23007,1 Muy Bajo,Medio,27.8704,0.5090 
+30180,4 Alto,Muy alto,42.3072,0.5069 
+08012,3 Medio,Muy alto,55.2413,0.5061 
+20382,2 Bajo,Muy alto,46.1399,0.5039 
+07052,3 Medio,Muy alto,41.4487,0.5039 
+13073,3 Medio,Alto,34.9768,0.5028 
+30078,1 Muy Bajo,Muy alto,39.0001,0.4996 
+31030,1 Muy Bajo,Alto,36.7055,0.4958 
+30155,1 Muy Bajo,Alto,35.4794,0.4925 
+31076,1 Muy Bajo,Medio,31.4357,0.4916 
+20267,3 Medio,Medio,23.1420,0.4909 
+20549,5 Muy Alto,Alto,37.6322,0.4904 
+20460,3 Medio,Muy alto,41.1240,0.4903 
+07072,1 Muy Bajo,Alto,38.1689,0.4894 
+21212,2 Bajo,Alto,36.3964,0.4890 
+31045,1 Muy Bajo,Medio,28.2449,0.4889 
+08008,1 Muy Bajo,Muy alto,72.2683,0.4859 
+08007,2 Bajo,Muy alto,50.2350,0.4839 
+31097,3 Medio,Alto,35.0710,0.4832 
+20419,4 Alto,Medio,21.8414,0.4815 
+31037,1 Muy Bajo,Alto,34.4262,0.4777 
+07116,2 Bajo,Muy alto,42.3137,0.4745 
+20190,3 Medio,Alto,34.1964,0.4729 
+31053,3 Medio,Medio,20.9705,0.4721 
+20438,2 Bajo,Muy alto,42.2686,0.4713 
+20098,3 Medio,Muy alto,43.4842,0.4693 
+20305,1 Muy Bajo,Bajo,16.8979,0.4676 
+20130,2 Bajo,Muy alto,40.3031,0.4666 
+31070,1 Muy Bajo,Medio,28.0491,0.4650 
+07067,1 Muy Bajo,Muy alto,41.4241,0.4648 
+20108,3 Medio,Muy alto,39.8278,0.4641 
+20036,1 Muy Bajo,Alto,37.8989,0.4639 
+21127,3 Medio,Alto,33.5008,0.4637 
+07065,1 Muy Bajo,Alto,34.6741,0.4634 
+08065,1 Muy Bajo,Muy alto,48.8558,0.4630 
+20315,3 Medio,Muy alto,50.0084,0.4615 
+04006,1 Muy Bajo,Medio,29.4342,0.4574 
+20550,3 Medio,Medio,25.5237,0.4567 
+07094,1 Muy Bajo,Alto,38.2497,0.4535 
+20175,4 Alto,Alto,36.4626,0.4530 
+20011,4 Alto,Muy alto,42.5929,0.4522 
+24038,1 Muy Bajo,Alto,34.6125,0.4507 
+13019,4 Alto,Medio,25.9089,0.4452 
+24029,1 Muy Bajo,Muy alto,38.5720,0.4443 
+21204,2 Bajo,Medio,27.4957,0.4441 
+20005,2 Bajo,Medio,21.7288,0.4431 
+20217,2 Bajo,Muy alto,46.2879,0.4420 
+18019,2 Bajo,Muy alto,45.9766,0.4404 
+20037,5 Muy Alto,Muy alto,45.7181,0.4388 
+20504,5 Muy Alto,Medio,31.1446,0.4388 
+20365,3 Medio,Medio,29.2638,0.4376 
+31035,2 Bajo,Alto,32.5979,0.4339 
+07042,1 Muy Bajo,Alto,35.6140,0.4337 
+20492,1 Muy Bajo,Muy alto,43.6000,0.4289 
+31089,2 Bajo,Medio,21.3807,0.4286 
+20422,1 Muy Bajo,Alto,32.1867,0.4283 
+20569,2 Bajo,Alto,35.6241,0.4281 
+20196,3 Medio,Medio,23.2730,0.4272 
+20495,1 Muy Bajo,Muy alto,43.6015,0.4263 
+20104,3 Medio,Muy alto,38.4436,0.4233 
+13030,4 Alto,Medio,19.8738,0.4228 
+20019,2 Bajo,Muy alto,38.3492,0.4216 
+31048,1 Muy Bajo,Medio,30.3136,0.4202 
+12045,3 Medio,Muy alto,47.2156,0.4185 
+24037,1 Muy Bajo,Alto,32.4550,0.4174 
+24054,2 Bajo,Alto,34.2040,0.4156 
+04005,1 Muy Bajo,Medio,24.3899,0.4144 
+21184,3 Medio,Alto,36.2637,0.4138 
+20026,3 Medio,Alto,35.1849,0.4133 
+13062,3 Medio,Muy alto,43.2145,0.4132 
+07115,1 Muy Bajo,Muy alto,44.9274,0.4127 
+16056,3 Medio,Alto,33.1459,0.4093 
+13002,2 Bajo,Alto,37.1354,0.4057 
+31096,1 Muy Bajo,Medio,29.2963,0.4056 
+31063,1 Muy Bajo,Medio,29.8437,0.4041 
+31042,1 Muy Bajo,Medio,31.1393,0.3971 
+31054,1 Muy Bajo,Medio,27.1609,0.3970 
+21207,2 Bajo,Medio,30.3546,0.3952 
+31060,1 Muy Bajo,Alto,34.2264,0.3948 
+20355,1 Muy Bajo,Muy alto,44.1763,0.3934 
+31087,4 Alto,Alto,36.3557,0.3921 
+20082,4 Alto,Alto,35.6635,0.3917 
+31005,1 Muy Bajo,Medio,27.5087,0.3907 
+20439,3 Medio,Muy alto,42.9444,0.3835 
+20348,4 Alto,Alto,36.6558,0.3820 
+20440,4 Alto,Medio,31.6326,0.3793 
+21200,1 Muy Bajo,Alto,34.5628,0.3780 
+31040,1 Muy Bajo,Medio,25.4133,0.3762 
+07078,1 Muy Bajo,Medio,21.6971,0.3737 
+21111,2 Bajo,Muy alto,38.7894,0.3726 
+21017,1 Muy Bajo,Alto,32.4814,0.3723 
+30066,2 Bajo,Alto,33.4830,0.3722 
+20030,1 Muy Bajo,Muy bajo,11.8717,0.3711 
+30185,1 Muy Bajo,Medio,31.4292,0.3710 
+12012,3 Medio,Muy alto,44.6193,0.3704 
+30081,2 Bajo,Medio,26.5528,0.3702 
+20513,2 Bajo,Medio,28.5785,0.3658 
+30041,2 Bajo,Alto,35.0056,0.3636 
+20298,2 Bajo,Medio,28.8050,0.3620 
+21195,4 Alto,Muy alto,45.8952,0.3617 
+16084,4 Alto,Medio,27.7909,0.3588 
+31044,1 Muy Bajo,Medio,28.9437,0.3578 
+31012,4 Alto,Medio,30.4666,0.3562 
+07005,1 Muy Bajo,Muy alto,45.2820,0.3552 
+20343,4 Alto,Medio,26.9052,0.3527 
+13058,5 Muy Alto,Medio,24.9171,0.3517 
+20274,1 Muy Bajo,Muy alto,48.6276,0.3505 
+20407,2 Bajo,Muy alto,42.7072,0.3493 
+20512,3 Medio,Muy alto,40.3222,0.3493 
+20122,2 Bajo,Medio,24.0640,0.3449 
+31072,1 Muy Bajo,Medio,26.9296,0.3445 
+31078,1 Muy Bajo,Medio,28.0651,0.3442 
+13014,2 Bajo,Alto,35.3366,0.3439 
+30199,1 Muy Bajo,Medio,27.6545,0.3432 
+31002,1 Muy Bajo,Medio,21.5881,0.3431 
+20244,1 Muy Bajo,Medio,29.5477,0.3424 
+16008,3 Medio,Muy alto,49.9639,0.3423 
+20456,3 Medio,Medio,31.8219,0.3416 
+13053,2 Bajo,Muy alto,47.3903,0.3371 
+30055,1 Muy Bajo,Alto,34.0676,0.3365 
+21035,2 Bajo,Medio,30.0571,0.3358 
+15074,2 Bajo,Alto,33.6879,0.3358 
+12046,2 Bajo,Muy alto,38.9104,0.3345 
+21213,3 Medio,Alto,38.0861,0.3341 
+20380,3 Medio,Medio,29.9769,0.3335 
+20073,4 Alto,Medio,28.4157,0.3317 
+30129,1 Muy Bajo,Medio,30.7028,0.3294 
+08030,1 Muy Bajo,Muy alto,47.0038,0.3252 
+21120,3 Medio,Muy alto,40.4483,0.3251 
+16073,4 Alto,Medio,25.2757,0.3243 
+13068,4 Alto,Alto,36.0698,0.3212 
+20414,4 Alto,Alto,34.9463,0.3201 
+16065,4 Alto,Medio,26.4405,0.3195 
+12028,3 Medio,Muy alto,45.0690,0.3173 
+30210,3 Medio,Muy alto,38.3120,0.3155 
+20397,3 Medio,Medio,25.0724,0.3148 
+07073,1 Muy Bajo,Alto,33.6596,0.3134 
+20166,4 Alto,Medio,29.4945,0.3123 
+04010,3 Medio,Alto,37.1545,0.3108 
+20156,4 Alto,Medio,30.9551,0.3090 
+20206,2 Bajo,Medio,30.4288,0.3057 
+07085,1 Muy Bajo,Medio,31.9759,0.3040 
+31023,1 Muy Bajo,Medio,26.1933,0.3026 
+20443,3 Medio,Medio,21.6542,0.3007 
+07114,1 Muy Bajo,Alto,37.5722,0.2993 
+20349,4 Alto,Alto,32.2370,0.2956 
+20412,3 Medio,Muy alto,44.0681,0.2954 
+20498,3 Medio,Muy alto,41.5950,0.2944 
+20285,2 Bajo,Alto,36.8892,0.2938 
+20145,3 Medio,Medio,23.2513,0.2932 
+20360,4 Alto,Alto,36.8456,0.2932 
+20364,3 Medio,Alto,35.0757,0.2917 
+20551,3 Medio,Medio,20.7725,0.2908 
+31052,1 Muy Bajo,Medio,24.4357,0.2887 
+20094,1 Muy Bajo,Alto,33.8764,0.2879 
+12024,2 Bajo,Alto,37.8270,0.2867 
+31095,1 Muy Bajo,Medio,23.3865,0.2855 
+20265,1 Muy Bajo,Muy alto,39.8541,0.2830 
+20090,3 Medio,Alto,35.1589,0.2794 
+31068,1 Muy Bajo,Medio,27.2118,0.2789 
+08029,1 Muy Bajo,Muy alto,56.6437,0.2766 
+16024,4 Alto,Medio,25.6571,0.2765 
+20410,3 Medio,Medio,31.1193,0.2746 
+20427,2 Bajo,Medio,29.4815,0.2745 
+22001,4 Alto,Alto,34.0342,0.2732 
+12065,5 Muy Alto,Muy alto,43.4001,0.2718 
+31006,3 Medio,Medio,27.5747,0.2714 
+26056,2 Bajo,Medio,24.7265,0.2714 
+20062,4 Alto,Medio,21.3666,0.2711 
+21177,3 Medio,Alto,32.8802,0.2702 
+31084,1 Muy Bajo,Medio,27.6600,0.2686 
+20378,4 Alto,Alto,32.5222,0.2681 
+15087,1 Muy Bajo,Medio,26.4210,0.2675 
+24034,2 Bajo,Medio,28.8278,0.2674 
+30130,4 Alto,Alto,32.7238,0.2653 
+31100,1 Muy Bajo,Medio,25.6064,0.2646 
+21005,3 Medio,Muy alto,47.0751,0.2618 
+31041,1 Muy Bajo,Bajo,15.6821,0.2618 
+20461,3 Medio,Muy alto,42.8801,0.2597 
+20500,3 Medio,Alto,33.8647,0.2591 
+13060,4 Alto,Medio,32.0620,0.2578 
+31067,1 Muy Bajo,Medio,25.4318,0.2573 
+21025,2 Bajo,Alto,34.4654,0.2568 
+20467,2 Bajo,Medio,28.8680,0.2551 
+20520,5 Muy Alto,Alto,32.4858,0.2536 
+31007,1 Muy Bajo,Medio,19.8554,0.2519 
+08046,1 Muy Bajo,Muy alto,55.9665,0.2508 
+20270,2 Bajo,Muy alto,48.0869,0.2506 
+30195,2 Bajo,Muy alto,44.7363,0.2506 
+13054,3 Medio,Medio,20.4892,0.2470 
+21071,2 Bajo,Medio,24.2713,0.2464 
+22018,3 Medio,Medio,29.3716,0.2462 
+20153,2 Bajo,Alto,33.6488,0.2455 
+31038,2 Bajo,Medio,28.0781,0.2454 
+30073,2 Bajo,Alto,34.1765,0.2451 
+20519,4 Alto,Medio,27.9776,0.2436 
+20489,3 Medio,Muy alto,41.9829,0.2377 
+31057,1 Muy Bajo,Medio,28.6157,0.2374 
+12002,3 Medio,Muy alto,49.6994,0.2350 
+20448,2 Bajo,Muy alto,47.3689,0.2349 
+20053,1 Muy Bajo,Medio,26.5796,0.2343 
+31026,1 Muy Bajo,Medio,27.5218,0.2341 
+07043,1 Muy Bajo,Alto,32.3017,0.2340 
+15032,2 Bajo,Alto,37.8476,0.2339 
+20501,5 Muy Alto,Alto,35.4048,0.2332 
+31009,2 Bajo,Medio,28.0396,0.2324 
+07044,1 Muy Bajo,Alto,34.7104,0.2290 
+20273,2 Bajo,Muy alto,48.4067,0.2274 
+20447,5 Muy Alto,Alto,36.1579,0.2264 
+07106,1 Muy Bajo,Alto,35.9550,0.2262 
+12036,2 Bajo,Muy alto,40.8841,0.2209 
+21172,2 Bajo,Alto,34.6126,0.2200 
+20411,4 Alto,Medio,22.6009,0.2183 
+16075,2 Bajo,Medio,19.9765,0.2164 
+30063,1 Muy Bajo,Alto,36.9022,0.2162 
+13034,3 Medio,Alto,32.3558,0.2156 
+20024,1 Muy Bajo,Muy alto,46.1610,0.2146 
+20424,2 Bajo,Muy alto,43.1763,0.2133 
+16032,4 Alto,Medio,27.4800,0.2122 
+20482,2 Bajo,Medio,31.2631,0.2120 
+30124,2 Bajo,Medio,31.3023,0.2107 
+21178,2 Bajo,Muy alto,39.1876,0.2100 
+20568,5 Muy Alto,Alto,36.9576,0.2098 
+07092,1 Muy Bajo,Alto,34.8488,0.2070 
+08041,1 Muy Bajo,Muy alto,40.4822,0.2070 
+20014,1 Muy Bajo,Bajo,15.1866,0.2046 
+31106,1 Muy Bajo,Medio,28.5117,0.2043 
+31101,1 Muy Bajo,Bajo,19.0565,0.2039 
+21209,4 Alto,Alto,34.5379,0.2012 
+08066,1 Muy Bajo,Muy alto,48.9986,0.2010 
+20064,3 Medio,Alto,32.4540,0.2008 
+20330,3 Medio,Muy alto,39.9775,0.1998 
+16016,5 Muy Alto,Medio,26.9865,0.1985 
+12059,4 Alto,Alto,36.1081,0.1978 
+12061,2 Bajo,Medio,31.0787,0.1975 
+20113,4 Alto,Alto,36.3544,0.1963 
+15056,2 Bajo,Medio,31.9884,0.1956 
+21158,2 Bajo,Alto,37.8607,0.1955 
+20144,3 Medio,Medio,31.3275,0.1952 
+30030,2 Bajo,Bajo,19.1119,0.1941 
+04008,1 Muy Bajo,Medio,26.9110,0.1939 
+08009,1 Muy Bajo,Medio,31.7706,0.1930 
+21186,3 Medio,Medio,28.1857,0.1893 
+20362,2 Bajo,Alto,32.5245,0.1890 
+27015,1 Muy Bajo,Medio,27.7675,0.1887 
+20537,5 Muy Alto,Alto,34.5226,0.1884 
+13006,4 Alto,Medio,28.5787,0.1864 
+12005,4 Alto,Medio,31.8713,0.1860 
+30173,2 Bajo,Alto,36.8296,0.1854 
+20545,1 Muy Bajo,Medio,20.2433,0.1848 
+21101,2 Bajo,Alto,32.1725,0.1839 
+07061,1 Muy Bajo,Alto,32.3386,0.1831 
+31004,1 Muy Bajo,Medio,26.2142,0.1813 
+20103,1 Muy Bajo,Alto,34.4764,0.1808 
+15085,3 Medio,Medio,28.8200,0.1806 
+20226,4 Alto,Alto,35.2434,0.1788 
+30035,1 Muy Bajo,Alto,35.0654,0.1775 
+30006,2 Bajo,Alto,34.4127,0.1767 
+17022,4 Alto,Medio,22.9975,0.1755 
+27013,1 Muy Bajo,Bajo,16.7663,0.1747 
+20261,4 Alto,Muy alto,41.6205,0.1736 
+20022,1 Muy Bajo,Medio,27.4484,0.1722 
+31013,1 Muy Bajo,Bajo,17.4317,0.1721 
+24042,2 Bajo,Medio,24.9511,0.1719 
+21026,4 Alto,Medio,30.0280,0.1698 
+20087,3 Medio,Medio,29.8360,0.1691 
+12075,2 Bajo,Medio,28.9990,0.1685 
+20530,3 Medio,Alto,36.9517,0.1664 
+31029,1 Muy Bajo,Medio,20.7090,0.1661 
+26026,1 Muy Bajo,Medio,23.6582,0.1660 
+20399,2 Bajo,Bajo,17.8504,0.1642 
+15014,2 Bajo,Medio,20.2532,0.1623 
+07045,1 Muy Bajo,Muy alto,39.5311,0.1615 
+20340,2 Bajo,Alto,32.4499,0.1612 
+20121,2 Bajo,Medio,31.7236,0.1601 
+21173,2 Bajo,Medio,19.9706,0.1601 
+20035,3 Medio,Muy bajo,12.5404,0.1597 
+20286,4 Alto,Alto,35.7968,0.1591 
+29018,2 Bajo,Bajo,18.7002,0.1584 
+15042,2 Bajo,Medio,25.6404,0.1579 
+20415,4 Alto,Alto,33.3046,0.1568 
+20048,3 Medio,Muy alto,47.0481,0.1562 
+29025,2 Bajo,Bajo,18.2448,0.1557 
+07018,2 Bajo,Alto,35.2749,0.1553 
+20141,1 Muy Bajo,Alto,34.7569,0.1549 
+20162,3 Medio,Alto,37.4224,0.1549 
+20219,3 Medio,Alto,38.1576,0.1548 
+20006,2 Bajo,Medio,24.6000,0.1545 
+20558,2 Bajo,Medio,27.9945,0.1545 
+20491,2 Bajo,Alto,36.0067,0.1540 
+19025,1 Muy Bajo,Muy bajo,6.6972,0.1536 
+31093,1 Muy Bajo,Medio,20.3931,0.1521 
+15001,3 Medio,Medio,31.0991,0.1506 
+15064,2 Bajo,Medio,26.2754,0.1504 
+20375,2 Bajo,Muy bajo,13.2000,0.1503 
+07110,1 Muy Bajo,Muy alto,41.4635,0.1497 
+20263,3 Medio,Muy alto,52.1169,0.1492 
+20184,2 Bajo,Bajo,19.5101,0.1491 
+20049,4 Alto,Alto,32.7923,0.1481 
+31039,1 Muy Bajo,Medio,26.6745,0.1479 
+30144,2 Bajo,Medio,31.1601,0.1474 
+20177,2 Bajo,Medio,30.1130,0.1469 
+30167,1 Muy Bajo,Alto,33.7333,0.1467 
+16100,4 Alto,Medio,28.1694,0.1464 
+20092,3 Medio,Medio,26.2729,0.1445 
+12033,4 Alto,Medio,29.2207,0.1440 
+21091,1 Muy Bajo,Bajo,17.8039,0.1438 
+18005,2 Bajo,Muy alto,44.1421,0.1437 
+15026,1 Muy Bajo,Medio,27.5746,0.1437 
+30033,1 Muy Bajo,Alto,33.2561,0.1435 
+07084,1 Muy Bajo,Alto,32.3873,0.1420 
+20431,3 Medio,Medio,28.1112,0.1414 
+21187,2 Bajo,Muy alto,40.4276,0.1409 
+20292,4 Alto,Muy alto,45.5622,0.1405 
+15124,2 Bajo,Alto,37.6740,0.1400 
+20083,2 Bajo,Bajo,17.1320,0.1394 
+20496,2 Bajo,Bajo,19.4525,0.1392 
+13037,4 Alto,Alto,33.0081,0.1381 
+31082,1 Muy Bajo,Medio,25.2005,0.1357 
+23008,1 Muy Bajo,Muy bajo,9.5435,0.1345 
+23003,1 Muy Bajo,Bajo,17.3642,0.1329 
+20262,3 Medio,Medio,26.4102,0.1324 
+24040,3 Medio,Medio,23.2174,0.1322 
+31051,1 Muy Bajo,Medio,23.2647,0.1321 
+07002,1 Muy Bajo,Medio,31.7941,0.1318 
+21050,1 Muy Bajo,Muy alto,38.8840,0.1318 
+08020,1 Muy Bajo,Muy alto,49.1773,0.1314 
+29050,3 Medio,Bajo,17.1843,0.1312 
+20390,2 Bajo,Muy bajo,9.3423,0.1302 
+24036,4 Alto,Alto,33.0565,0.1301 
+20553,3 Medio,Medio,21.0020,0.1301 
+20405,5 Muy Alto,Medio,30.6857,0.1298 
+11040,4 Alto,Alto,35.3295,0.1295 
+21054,1 Muy Bajo,Medio,29.7268,0.1293 
+20107,2 Bajo,Bajo,17.9882,0.1284 
+18011,3 Medio,Medio,23.1418,0.1271 
+20459,2 Bajo,Medio,26.3792,0.1257 
+20430,0 Nulo,Alto,35.3545,0.1254 
+21147,3 Medio,Alto,36.0499,0.1245 
+20002,4 Alto,Alto,32.8937,0.1243 
+20472,1 Muy Bajo,Medio,25.7369,0.1237 
+20510,2 Bajo,Muy alto,43.4136,0.1233 
+31020,1 Muy Bajo,Medio,23.9298,0.1224 
+31061,1 Muy Bajo,Medio,24.7682,0.1222 
+20057,1 Muy Bajo,Medio,24.5601,0.1221 
+08049,2 Bajo,Alto,35.1521,0.1206 
+21208,2 Bajo,Medio,24.9486,0.1192 
+20370,2 Bajo,Medio,29.0532,0.1191 
+20565,3 Medio,Medio,25.7066,0.1185 
+20059,3 Medio,Medio,31.0196,0.1185 
+23001,1 Muy Bajo,Muy bajo,10.9624,0.1180 
+20101,4 Alto,Muy alto,41.4299,0.1177 
+21188,3 Medio,Alto,33.4102,0.1176 
+20091,2 Bajo,Bajo,14.1079,0.1171 
+21166,4 Alto,Medio,30.0592,0.1161 
+31105,1 Muy Bajo,Medio,24.0328,0.1156 
+20310,3 Medio,Medio,29.4412,0.1128 
+31083,1 Muy Bajo,Medio,24.0338,0.1119 
+07099,3 Medio,Alto,34.0014,0.1119 
+21163,2 Bajo,Medio,21.2134,0.1117 
+21083,3 Medio,Alto,36.8731,0.1114 
+21161,4 Alto,Medio,29.2217,0.1102 
+26033,1 Muy Bajo,Medio,20.7102,0.1096 
+20139,2 Bajo,Muy alto,46.0536,0.1087 
+04004,1 Muy Bajo,Medio,24.4474,0.1079 
+21020,1 Muy Bajo,Medio,25.0697,0.1075 
+23005,1 Muy Bajo,Muy bajo,9.8772,0.1071 
+20338,2 Bajo,Bajo,14.3692,0.1063 
+30153,1 Muy Bajo,Medio,31.4844,0.1054 
+21102,3 Medio,Medio,22.9202,0.1043 
+07063,1 Muy Bajo,Medio,26.2254,0.1029 
+20385,2 Bajo,Bajo,14.9473,0.1016 
+23004,1 Muy Bajo,Bajo,16.0654,0.1000 
+12008,4 Alto,Muy alto,39.7840,0.0991 
+08035,3 Medio,Bajo,19.2607,0.0983 
+20515,2 Bajo,Medio,23.5106,0.0971 
+13084,5 Muy Alto,Medio,22.5666,0.0970 
+21057,4 Alto,Alto,36.7641,0.0969 
+15007,2 Bajo,Medio,29.8954,0.0968 
+26012,3 Medio,Medio,20.9931,0.0967 
+07091,1 Muy Bajo,Medio,27.4506,0.0964 
+31050,1 Muy Bajo,Muy bajo,10.1967,0.0958 
+20345,4 Alto,Alto,34.2857,0.0948 
+21086,2 Bajo,Alto,37.4410,0.0941 
+20324,3 Medio,Alto,32.4772,0.0935 
+20408,2 Bajo,Alto,32.2538,0.0930 
+20533,2 Bajo,Medio,31.5573,0.0912 
+20398,5 Muy Alto,Alto,34.4664,0.0910 
+30157,2 Bajo,Alto,35.1563,0.0887 
+15047,2 Bajo,Medio,26.7436,0.0887 
+10033,3 Medio,Medio,27.8735,0.0885 
+26029,2 Bajo,Muy bajo,12.8982,0.0879 
+24016,3 Medio,Medio,22.1227,0.0875 
+29017,2 Bajo,Bajo,17.1395,0.0869 
+20508,2 Bajo,Medio,23.2764,0.0868 
+20521,2 Bajo,Muy alto,39.9331,0.0859 
+20333,2 Bajo,Medio,25.0079,0.0859 
+21156,2 Bajo,Bajo,17.2372,0.0857 
+20143,1 Muy Bajo,Medio,27.0279,0.0852 
+20347,2 Bajo,Muy alto,43.8407,0.0841 
+21175,3 Medio,Medio,26.8405,0.0837 
+15067,1 Muy Bajo,Medio,21.5959,0.0834 
+20287,1 Muy Bajo,Medio,30.5181,0.0833 
+21155,3 Medio,Medio,27.5022,0.0833 
+07021,1 Muy Bajo,Medio,31.0432,0.0830 
+20401,2 Bajo,Medio,25.7808,0.0830 
+20183,4 Alto,Alto,35.5605,0.0825 
+20247,2 Bajo,Bajo,15.1620,0.0823 
+20281,3 Medio,Medio,25.0844,0.0822 
+24013,2 Bajo,Bajo,16.8648,0.0818 
+20109,3 Medio,Medio,24.2498,0.0812 
+20067,2 Bajo,Muy bajo,10.2179,0.0812 
+30160,2 Bajo,Medio,31.8980,0.0811 
+31027,1 Muy Bajo,Medio,20.5346,0.0808 
+20008,1 Muy Bajo,Medio,30.3750,0.0801 
+30150,1 Muy Bajo,Medio,30.5407,0.0793 
+21033,3 Medio,Medio,30.7915,0.0793 
+20304,1 Muy Bajo,Muy alto,39.4635,0.0787 
+15111,2 Bajo,Alto,33.8068,0.0787 
+20072,2 Bajo,Alto,37.6177,0.0785 
+30207,3 Medio,Medio,27.9665,0.0785 
+21001,3 Medio,Medio,24.3959,0.0784 
+07029,1 Muy Bajo,Medio,28.1296,0.0782 
+31065,0 Nulo,Medio,23.8496,0.0778 
+13018,4 Alto,Alto,34.4254,0.0778 
+15003,1 Muy Bajo,Medio,30.3572,0.0775 
+12034,4 Alto,Alto,32.1960,0.0760 
+20178,2 Bajo,Bajo,18.6628,0.0753 
+10023,1 Muy Bajo,Medio,30.6160,0.0745 
+20253,2 Bajo,Muy alto,48.2183,0.0744 
+12013,4 Alto,Muy alto,39.7905,0.0740 
+21169,4 Alto,Alto,33.7102,0.0736 
+13059,5 Muy Alto,Medio,27.9542,0.0735 
+20039,4 Alto,Bajo,17.1155,0.0734 
+21174,2 Bajo,Bajo,16.9143,0.0732 
+30161,2 Bajo,Alto,33.1409,0.0729 
+30040,1 Muy Bajo,Bajo,15.9497,0.0727 
+30120,1 Muy Bajo,Medio,28.5406,0.0725 
+21149,2 Bajo,Medio,29.4605,0.0714 
+20152,4 Alto,Muy alto,46.2011,0.0713 
+31011,1 Muy Bajo,Medio,25.0461,0.0708 
+26072,1 Muy Bajo,Medio,21.9750,0.0707 
+29016,2 Bajo,Bajo,17.3189,0.0691 
+21098,4 Alto,Alto,34.9028,0.0689 
+07020,1 Muy Bajo,Muy alto,39.4519,0.0688 
+20307,2 Bajo,Medio,30.5166,0.0686 
+20377,3 Medio,Muy alto,45.3548,0.0683 
+16090,2 Bajo,Medio,22.3779,0.0683 
+26069,1 Muy Bajo,Medio,27.7073,0.0678 
+16102,3 Medio,Muy bajo,13.4128,0.0674 
+20046,3 Medio,Alto,34.9684,0.0673 
+20102,2 Bajo,Medio,24.9577,0.0672 
+14042,4 Alto,Medio,27.4671,0.0670 
+15102,3 Medio,Medio,24.7935,0.0668 
+07017,1 Muy Bajo,Medio,29.1470,0.0667 
+30060,1 Muy Bajo,Medio,31.8016,0.0663 
+20484,5 Muy Alto,Alto,36.9080,0.0661 
+20366,2 Bajo,Muy alto,47.1536,0.0658 
+21032,4 Alto,Alto,33.4557,0.0656 
+20334,4 Alto,Alto,32.4850,0.0653 
+20403,2 Bajo,Bajo,18.6942,0.0652 
+12051,2 Bajo,Muy alto,41.9256,0.0651 
+25010,2 Bajo,Medio,23.0138,0.0650 
+21064,1 Muy Bajo,Alto,32.5679,0.0649 
+30085,2 Bajo,Bajo,19.3853,0.0647 
+26049,1 Muy Bajo,Alto,37.7621,0.0646 
+21087,4 Alto,Alto,37.1057,0.0635 
+18014,3 Medio,Medio,23.2416,0.0634 
+15114,3 Medio,Alto,36.6252,0.0634 
+07107,2 Bajo,Alto,35.5044,0.0630 
+04011,2 Bajo,Alto,35.0946,0.0629 
+07070,1 Muy Bajo,Muy alto,39.7044,0.0627 
+07083,2 Bajo,Alto,36.2540,0.0625 
+17020,3 Medio,Bajo,18.8494,0.0617 
+24023,5 Muy Alto,Medio,30.8715,0.0616 
+16066,3 Medio,Bajo,19.5497,0.0615 
+04009,2 Bajo,Medio,26.0349,0.0613 
+30113,1 Muy Bajo,Alto,34.0773,0.0613 
+20409,2 Bajo,Muy bajo,8.1711,0.0609 
+20453,2 Bajo,Medio,29.2565,0.0601 
+30154,1 Muy Bajo,Alto,34.6344,0.0601 
+31059,1 Muy Bajo,Bajo,14.4574,0.0598 
+20493,2 Bajo,Medio,25.3840,0.0593 
+20023,2 Bajo,Medio,23.7395,0.0593 
+21106,3 Medio,Alto,36.1904,0.0592 
+20033,2 Bajo,Bajo,16.8694,0.0592 
+21007,4 Alto,Alto,37.9249,0.0585 
+21058,2 Bajo,Muy alto,40.6360,0.0582 
+20416,1 Muy Bajo,Muy alto,38.8879,0.0576 
+03002,1 Muy Bajo,Bajo,15.3918,0.0576 
+12023,4 Alto,Alto,34.1377,0.0576 
+02001,2 Bajo,Muy bajo,12.2993,0.0575 
+21076,3 Medio,Alto,34.5961,0.0572 
+30115,3 Medio,Bajo,18.5544,0.0571 
+21037,2 Bajo,Medio,29.0200,0.0571 
+18010,4 Alto,Medio,25.9255,0.0570 
+08015,4 Alto,Medio,20.8880,0.0564 
+20025,2 Bajo,Medio,28.0464,0.0562 
+20505,1 Muy Bajo,Medio,21.6417,0.0562 
+19018,1 Muy Bajo,Muy bajo,8.9369,0.0560 
+07046,1 Muy Bajo,Medio,30.5120,0.0560 
+21097,3 Medio,Medio,21.0740,0.0559 
+14115,4 Alto,Medio,29.7273,0.0558 
+20268,3 Medio,Medio,31.1617,0.0553 
+15086,2 Bajo,Medio,30.3208,0.0550 
+07098,1 Muy Bajo,Muy alto,41.2840,0.0550 
+20079,1 Muy Bajo,Muy bajo,12.4584,0.0546 
+27017,2 Bajo,Medio,23.6247,0.0540 
+08057,3 Medio,Medio,22.8854,0.0539 
+07075,1 Muy Bajo,Muy alto,38.9724,0.0539 
+20477,3 Medio,Muy alto,44.3813,0.0539 
+04002,1 Muy Bajo,Muy bajo,12.0901,0.0539 
+16085,3 Medio,Medio,22.6539,0.0537 
+21016,2 Bajo,Alto,33.7466,0.0535 
+26003,1 Muy Bajo,Medio,28.6674,0.0532 
+20418,3 Medio,Medio,24.8217,0.0528 
+07048,1 Muy Bajo,Medio,29.8748,0.0520 
+20350,2 Bajo,Muy bajo,6.3090,0.0516 
+21190,1 Muy Bajo,Medio,28.0103,0.0514 
+30061,2 Bajo,Alto,35.9566,0.0513 
+20363,2 Bajo,Medio,27.3035,0.0512 
+08064,4 Alto,Medio,26.1768,0.0512 
+20176,1 Muy Bajo,Alto,37.3339,0.0510 
+08023,3 Medio,Bajo,16.8113,0.0509 
+21197,2 Bajo,Medio,25.8683,0.0508 
+21211,2 Bajo,Bajo,17.3764,0.0508 
+26071,2 Bajo,Bajo,18.7524,0.0508 
+26042,1 Muy Bajo,Bajo,15.8490,0.0506 
+30003,1 Muy Bajo,Medio,24.7472,0.0500 
+16091,3 Medio,Medio,19.8585,0.0495 
+13081,3 Medio,Medio,20.1379,0.0490 
+07041,2 Bajo,Alto,35.5129,0.0486 
+17026,2 Bajo,Medio,19.9483,0.0484 
+30072,3 Medio,Alto,34.4402,0.0484 
+21112,4 Alto,Alto,33.4814,0.0481 
+30048,1 Muy Bajo,Bajo,16.7164,0.0473 
+20293,2 Bajo,Muy bajo,9.3582,0.0472 
+13063,2 Bajo,Bajo,15.9772,0.0472 
+21060,2 Bajo,Medio,25.0234,0.0472 
+31028,1 Muy Bajo,Medio,23.2935,0.0472 
+20021,2 Bajo,Medio,26.1965,0.0471 
+07012,1 Muy Bajo,Alto,33.0958,0.0470 
+20052,3 Medio,Medio,29.1087,0.0466 
+21194,2 Bajo,Medio,25.5871,0.0464 
+07027,1 Muy Bajo,Medio,26.0028,0.0461 
+20266,2 Bajo,Muy alto,39.8890,0.0461 
+07019,2 Bajo,Medio,23.1683,0.0459 
+20174,1 Muy Bajo,Muy bajo,13.1455,0.0455 
+29027,3 Medio,Bajo,17.1874,0.0446 
+29028,2 Bajo,Bajo,17.0693,0.0442 
+21150,3 Medio,Muy alto,38.9973,0.0442 
+30117,3 Medio,Medio,31.7843,0.0432 
+20342,2 Bajo,Medio,22.7118,0.0431 
+12026,4 Alto,Muy alto,42.1057,0.0429 
+30091,3 Medio,Alto,32.6014,0.0427 
+20318,2 Bajo,Medio,20.2932,0.0425 
+20499,2 Bajo,Medio,21.4643,0.0424 
+27012,1 Muy Bajo,Medio,23.3881,0.0423 
+20115,2 Bajo,Bajo,16.2898,0.0423 
+20010,1 Muy Bajo,Bajo,19.6185,0.0423 
+20402,4 Alto,Alto,32.4389,0.0417 
+08010,2 Bajo,Bajo,15.8173,0.0416 
+13003,3 Medio,Bajo,16.5344,0.0412 
+18001,2 Bajo,Medio,19.8352,0.0407 
+17018,2 Bajo,Bajo,13.9312,0.0404 
+07028,2 Bajo,Alto,35.9600,0.0403 
+20254,2 Bajo,Muy alto,42.5318,0.0403 
+21133,4 Alto,Medio,27.6327,0.0403 
+20413,2 Bajo,Medio,20.4967,0.0402 
+14113,5 Muy Alto,Medio,22.5082,0.0401 
+08018,4 Alto,Bajo,18.3607,0.0397 
+15031,2 Bajo,Bajo,15.2070,0.0392 
+20191,3 Medio,Medio,25.1113,0.0391 
+12080,4 Alto,Muy alto,40.1883,0.0389 
+20570,4 Alto,Medio,27.2845,0.0388 
+19034,1 Muy Bajo,Bajo,13.6611,0.0387 
+16112,3 Medio,Medio,22.2646,0.0385 
+19041,1 Muy Bajo,Muy bajo,12.2166,0.0383 
+17004,3 Medio,Medio,20.1678,0.0382 
+30158,3 Medio,Alto,32.4288,0.0382 
+29059,3 Medio,Medio,20.9245,0.0377 
+21105,3 Medio,Medio,30.5653,0.0376 
+27003,1 Muy Bajo,Medio,27.0660,0.0376 
+07062,1 Muy Bajo,Muy alto,38.4192,0.0376 
+20096,2 Bajo,Medio,20.2453,0.0375 
+29048,2 Bajo,Bajo,16.8112,0.0374 
+13077,3 Medio,Bajo,13.9335,0.0373 
+27004,1 Muy Bajo,Muy bajo,10.9222,0.0371 
+20204,5 Muy Alto,Medio,27.1827,0.0371 
+20277,3 Medio,Muy alto,46.3623,0.0367 
+20071,2 Bajo,Muy alto,43.6102,0.0365 
+30018,3 Medio,Muy alto,44.0639,0.0365 
+20123,4 Alto,Alto,33.8444,0.0363 
+20199,3 Medio,Muy alto,46.9530,0.0363 
+07006,3 Medio,Alto,37.3476,0.0359 
+12077,3 Medio,Medio,29.9360,0.0358 
+20068,2 Bajo,Medio,25.7369,0.0357 
+19010,1 Muy Bajo,Muy bajo,11.5689,0.0354 
+21119,2 Bajo,Bajo,15.0369,0.0351 
+09009,1 Muy Bajo,Bajo,15.0683,0.0346 
+30045,2 Bajo,Bajo,19.2300,0.0343 
+13051,2 Bajo,Muy bajo,8.9599,0.0343 
+20376,5 Muy Alto,Alto,33.5852,0.0343 
+20282,3 Medio,Alto,37.7520,0.0336 
+30175,1 Muy Bajo,Medio,30.4222,0.0333 
+17002,2 Bajo,Bajo,19.6083,0.0330 
+19012,1 Muy Bajo,Muy bajo,9.1114,0.0322 
+20158,2 Bajo,Muy alto,45.4632,0.0322 
+15063,4 Alto,Medio,27.9691,0.0321 
+21114,2 Bajo,Muy bajo,8.7346,0.0321 
+17006,3 Medio,Muy bajo,13.0301,0.0320 
+29026,1 Muy Bajo,Bajo,16.8423,0.0317 
+12018,4 Alto,Alto,32.9569,0.0317 
+30013,1 Muy Bajo,Bajo,15.5279,0.0316 
+20227,2 Bajo,Bajo,14.5608,0.0314 
+20075,2 Bajo,Medio,27.2715,0.0312 
+15070,2 Bajo,Bajo,13.8749,0.0312 
+20132,2 Bajo,Medio,26.9873,0.0311 
+30077,2 Bajo,Medio,24.4057,0.0310 
+16058,4 Alto,Bajo,18.1167,0.0309 
+30094,2 Bajo,Medio,26.2707,0.0309 
+21019,4 Alto,Bajo,18.9935,0.0308 
+15122,2 Bajo,Bajo,13.8349,0.0307 
+15106,1 Muy Bajo,Muy bajo,9.5445,0.0307 
+15048,3 Medio,Medio,20.9840,0.0306 
+20327,1 Muy Bajo,Medio,28.5521,0.0306 
+30069,2 Bajo,Medio,24.4394,0.0305 
+30108,1 Muy Bajo,Bajo,18.7946,0.0304 
+15100,1 Muy Bajo,Bajo,16.3110,0.0303 
+14076,3 Medio,Medio,28.3270,0.0303 
+20185,2 Bajo,Medio,28.9411,0.0301 
+13069,2 Bajo,Muy bajo,10.5197,0.0301 
+26047,1 Muy Bajo,Muy bajo,13.0078,0.0299 
+20044,2 Bajo,Medio,23.9555,0.0297 
+13048,1 Muy Bajo,Muy bajo,7.6030,0.0294 
+20045,2 Bajo,Bajo,16.1840,0.0293 
+30074,2 Bajo,Medio,21.2080,0.0292 
+21092,3 Medio,Alto,36.1991,0.0289 
+20339,2 Bajo,Medio,23.4391,0.0289 
+17017,2 Bajo,Medio,21.7624,0.0288 
+20129,2 Bajo,Medio,21.6004,0.0287 
+21081,4 Alto,Alto,38.0011,0.0286 
+07016,1 Muy Bajo,Medio,31.7666,0.0284 
+20255,4 Alto,Muy alto,46.6424,0.0283 
+07008,2 Bajo,Alto,35.2130,0.0280 
+15035,1 Muy Bajo,Muy bajo,11.2829,0.0280 
+21201,5 Muy Alto,Medio,31.3781,0.0280 
+08031,3 Medio,Bajo,18.9475,0.0276 
+08063,2 Bajo,Medio,27.6157,0.0275 
+30174,3 Medio,Medio,23.6402,0.0275 
+20523,2 Bajo,Medio,27.6910,0.0272 
+29010,3 Medio,Bajo,14.3519,0.0270 
+20294,3 Medio,Bajo,16.9321,0.0268 
+15057,1 Muy Bajo,Muy bajo,8.8600,0.0266 
+08022,5 Muy Alto,Medio,20.8744,0.0265 
+20237,5 Muy Alto,Medio,26.3308,0.0261 
+20028,3 Medio,Alto,32.7449,0.0260 
+13023,4 Alto,Bajo,15.9282,0.0258 
+25007,3 Medio,Alto,34.0738,0.0257 
+03009,1 Muy Bajo,Muy bajo,13.3636,0.0257 
+21015,2 Bajo,Bajo,17.9035,0.0254 
+29022,2 Bajo,Medio,20.1902,0.0254 
+13050,3 Medio,Bajo,13.7922,0.0251 
+03008,2 Bajo,Muy bajo,11.1723,0.0251 
+13064,3 Medio,Medio,21.7199,0.0250 
+12055,2 Bajo,Medio,24.3333,0.0249 
+19045,1 Muy Bajo,Bajo,16.3466,0.0248 
+21002,3 Medio,Alto,35.6778,0.0247 
+17027,2 Bajo,Medio,25.1036,0.0247 
+12029,2 Bajo,Bajo,18.0799,0.0243 
+29041,2 Bajo,Bajo,13.6166,0.0240 
+15112,1 Muy Bajo,Medio,26.9887,0.0239 
+20301,3 Medio,Muy alto,38.8784,0.0238 
+32049,5 Muy Alto,Medio,25.0598,0.0238 
+08047,1 Muy Bajo,Alto,34.8340,0.0237 
+16106,3 Medio,Bajo,17.9691,0.0237 
+15025,1 Muy Bajo,Bajo,13.6467,0.0233 
+13041,3 Medio,Bajo,15.7591,0.0233 
+15125,1 Muy Bajo,Bajo,14.5793,0.0233 
+07108,1 Muy Bajo,Medio,29.8354,0.0232 
+30206,1 Muy Bajo,Muy bajo,9.5926,0.0232 
+09013,1 Muy Bajo,Muy bajo,9.1033,0.0232 
+20089,3 Medio,Medio,29.1314,0.0232 
+13047,5 Muy Alto,Alto,37.7250,0.0230 
+21041,2 Bajo,Muy bajo,11.3943,0.0230 
+15002,2 Bajo,Muy bajo,12.7220,0.0230 
+18017,3 Medio,Muy bajo,8.3997,0.0230 
+20180,4 Alto,Alto,32.2359,0.0229 
+20429,3 Medio,Muy alto,41.3340,0.0228 
+30172,2 Bajo,Alto,33.4535,0.0226 
+11033,4 Alto,Medio,25.3420,0.0224 
+14002,3 Medio,Muy bajo,11.7148,0.0224 
+07101,1 Muy Bajo,Muy bajo,12.4771,0.0224 
+15060,2 Bajo,Muy bajo,11.6477,0.0223 
+19031,1 Muy Bajo,Muy bajo,8.0872,0.0222 
+15099,1 Muy Bajo,Muy bajo,10.9938,0.0221 
+15051,1 Muy Bajo,Muy bajo,13.1970,0.0221 
+20168,4 Alto,Alto,34.9340,0.0220 
+29001,2 Bajo,Muy bajo,12.3251,0.0220 
+30039,1 Muy Bajo,Muy bajo,11.2239,0.0219 
+19019,1 Muy Bajo,Muy bajo,2.0896,0.0218 
+07050,1 Muy Bajo,Medio,31.8768,0.0218 
+22004,4 Alto,Medio,28.3665,0.0217 
+07053,2 Bajo,Alto,36.6591,0.0216 
+20478,2 Bajo,Alto,32.7107,0.0214 
+20258,1 Muy Bajo,Medio,32.0789,0.0213 
+15011,1 Muy Bajo,Bajo,15.1352,0.0208 
+15053,1 Muy Bajo,Muy bajo,12.3536,0.0208 
+26048,2 Bajo,Muy bajo,10.3304,0.0208 
+20316,3 Medio,Alto,32.6175,0.0208 
+12035,3 Medio,Bajo,18.1733,0.0208 
+24002,5 Muy Alto,Alto,35.3154,0.0207 
+08005,2 Bajo,Bajo,17.2158,0.0206 
+21165,4 Alto,Muy alto,39.1956,0.0206 
+12038,2 Bajo,Bajo,17.5494,0.0203 
+26020,1 Muy Bajo,Bajo,17.6053,0.0198 
+30070,4 Alto,Alto,37.9584,0.0198 
+15059,1 Muy Bajo,Bajo,15.0519,0.0198 
+30059,2 Bajo,Medio,23.9654,0.0198 
+30118,1 Muy Bajo,Muy bajo,8.2065,0.0197 
+20056,1 Muy Bajo,Alto,34.3754,0.0193 
+07015,2 Bajo,Medio,27.7425,0.0192 
+18012,3 Medio,Bajo,19.0931,0.0190 
+16097,4 Alto,Muy alto,38.3582,0.0190 
+20149,2 Bajo,Muy alto,44.0704,0.0189 
+20084,2 Bajo,Bajo,14.2873,0.0188 
+15039,2 Bajo,Muy bajo,10.5049,0.0188 
+26027,3 Medio,Muy bajo,9.7160,0.0187 
+30014,3 Medio,Medio,25.1751,0.0187 
+30169,2 Bajo,Medio,30.5182,0.0184 
+21182,1 Muy Bajo,Medio,27.2045,0.0184 
+30131,1 Muy Bajo,Muy bajo,10.4156,0.0183 
+15030,1 Muy Bajo,Muy bajo,12.3287,0.0182 
+30133,1 Muy Bajo,Bajo,17.2135,0.0181 
+12056,2 Bajo,Muy alto,39.1266,0.0181 
+20066,1 Muy Bajo,Medio,31.0914,0.0179 
+20539,2 Bajo,Bajo,17.7966,0.0179 
+32048,4 Alto,Bajo,18.0501,0.0179 
+30189,1 Muy Bajo,Bajo,17.4948,0.0178 
+17028,3 Medio,Bajo,16.7039,0.0177 
+20525,1 Muy Bajo,Medio,26.9704,0.0176 
+28003,2 Bajo,Muy bajo,12.1907,0.0176 
+20474,4 Alto,Medio,31.9948,0.0175 
+20488,1 Muy Bajo,Medio,27.7620,0.0172 
+20135,4 Alto,Medio,29.5446,0.0172 
+07034,2 Bajo,Medio,30.1794,0.0172 
+21011,4 Alto,Medio,31.2199,0.0171 
+12058,4 Alto,Alto,34.7393,0.0171 
+09012,1 Muy Bajo,Muy bajo,7.3992,0.0170 
+30052,3 Medio,Medio,28.9372,0.0170 
+14025,4 Alto,Bajo,15.1058,0.0170 
+08017,3 Medio,Muy bajo,8.5256,0.0169 
+07079,1 Muy Bajo,Medio,29.1204,0.0168 
+20215,2 Bajo,Medio,23.7982,0.0168 
+29058,4 Alto,Bajo,16.7428,0.0167 
+20077,2 Bajo,Medio,21.7371,0.0166 
+09007,1 Muy Bajo,Muy bajo,8.8880,0.0166 
+15037,1 Muy Bajo,Muy bajo,8.8611,0.0166 
+26035,2 Bajo,Bajo,13.6558,0.0165 
+06009,3 Medio,Bajo,17.8373,0.0164 
+15115,1 Muy Bajo,Bajo,14.7114,0.0164 
+20295,4 Alto,Bajo,19.5278,0.0163 
+15083,1 Muy Bajo,Bajo,14.6350,0.0163 
+15092,1 Muy Bajo,Muy bajo,13.0081,0.0163 
+30044,2 Bajo,Muy bajo,13.5241,0.0163 
+09015,1 Muy Bajo,Muy bajo,4.5984,0.0162 
+20332,2 Bajo,Medio,28.3296,0.0161 
+21126,3 Medio,Medio,30.9499,0.0161 
+20314,4 Alto,Medio,28.3593,0.0161 
+30123,3 Medio,Medio,20.9710,0.0160 
+16081,3 Medio,Muy alto,39.4945,0.0160 
+12001,2 Bajo,Bajo,17.8176,0.0160 
+26017,2 Bajo,Muy bajo,12.9669,0.0159 
+19049,2 Bajo,Muy bajo,8.2422,0.0159 
+30034,1 Muy Bajo,Bajo,13.9207,0.0159 
+21046,3 Medio,Medio,26.5846,0.0158 
+20088,4 Alto,Muy alto,39.0515,0.0158 
+25008,2 Bajo,Medio,21.1726,0.0158 
+15062,1 Muy Bajo,Muy bajo,12.6004,0.0157 
+08055,2 Bajo,Bajo,15.1718,0.0157 
+20540,2 Bajo,Bajo,19.7172,0.0157 
+20221,1 Muy Bajo,Alto,32.2831,0.0156 
+25017,2 Bajo,Medio,31.0391,0.0156 
+20167,3 Medio,Muy alto,38.9999,0.0156 
+29029,2 Bajo,Bajo,18.0291,0.0155 
+21022,5 Muy Alto,Alto,33.2288,0.0154 
+21094,3 Medio,Medio,23.2304,0.0153 
+07104,3 Medio,Alto,34.1473,0.0153 
+21040,2 Bajo,Medio,30.1913,0.0153 
+30010,4 Alto,Alto,35.1278,0.0153 
+15013,1 Muy Bajo,Muy bajo,7.3587,0.0153 
+07089,1 Muy Bajo,Medio,22.7316,0.0153 
+25018,2 Bajo,Bajo,18.2677,0.0152 
+20486,1 Muy Bajo,Medio,29.1174,0.0152 
+20137,2 Bajo,Muy alto,42.1004,0.0151 
+17029,3 Medio,Bajo,15.0282,0.0151 
+20476,2 Bajo,Medio,28.7406,0.0151 
+15033,1 Muy Bajo,Muy bajo,9.3892,0.0151 
+08026,4 Alto,Medio,20.1560,0.0149 
+30089,1 Muy Bajo,Medio,21.1274,0.0148 
+20034,3 Medio,Medio,28.5823,0.0148 
+20463,1 Muy Bajo,Alto,35.9706,0.0148 
+20239,3 Medio,Medio,30.0434,0.0148 
+20358,5 Muy Alto,Alto,35.4148,0.0148 
+20383,2 Bajo,Medio,29.8996,0.0148 
+04003,1 Muy Bajo,Bajo,14.2792,0.0148 
+20230,5 Muy Alto,Alto,32.7854,0.0148 
+08006,3 Medio,Bajo,17.4469,0.0147 
+10009,3 Medio,Medio,31.1050,0.0147 
+30082,1 Muy Bajo,Medio,21.1426,0.0146 
+30119,3 Medio,Medio,24.3012,0.0146 
+14031,4 Alto,Muy alto,39.8689,0.0145 
+15081,2 Bajo,Muy bajo,7.7087,0.0145 
+07032,2 Bajo,Alto,33.7600,0.0144 
+08042,4 Alto,Medio,29.6392,0.0144 
+21148,3 Medio,Alto,34.2835,0.0144 
+29036,2 Bajo,Muy bajo,12.4819,0.0143 
+29033,2 Bajo,Muy bajo,7.5149,0.0142 
+20245,4 Alto,Alto,34.9806,0.0142 
+20421,2 Bajo,Medio,27.6720,0.0142 
+30145,2 Bajo,Medio,22.5384,0.0141 
+28028,4 Alto,Medio,26.1579,0.0141 
+20423,1 Muy Bajo,Alto,37.3840,0.0141 
+30197,4 Alto,Alto,36.7153,0.0141 
+20487,1 Muy Bajo,Medio,28.3278,0.0140 
+10017,4 Alto,Medio,22.8842,0.0140 
+20150,2 Bajo,Bajo,18.8446,0.0139 
+28037,2 Bajo,Medio,23.2007,0.0139 
+20547,3 Medio,Medio,29.4199,0.0139 
+12011,3 Medio,Medio,32.0564,0.0139 
+08011,2 Bajo,Muy bajo,10.1547,0.0139 
+29053,1 Muy Bajo,Bajo,15.1234,0.0138 
+20357,2 Bajo,Medio,31.6068,0.0138 
+13033,4 Alto,Medio,27.6317,0.0138 
+20250,2 Bajo,Medio,27.3541,0.0138 
+27001,2 Bajo,Medio,27.4386,0.0138 
+15104,1 Muy Bajo,Muy bajo,7.4637,0.0138 
+14022,2 Bajo,Bajo,16.5452,0.0138 
+09011,1 Muy Bajo,Muy bajo,9.0956,0.0137 
+20224,2 Bajo,Medio,24.6272,0.0137 
+10011,4 Alto,Medio,22.1176,0.0137 
+02005,3 Medio,Muy bajo,10.8580,0.0136 
+07058,1 Muy Bajo,Muy alto,39.2846,0.0135 
+25001,2 Bajo,Muy bajo,12.4217,0.0135 
+22009,5 Muy Alto,Medio,23.7421,0.0134 
+21044,3 Medio,Medio,27.9103,0.0134 
+21074,3 Medio,Bajo,17.9043,0.0134 
+13009,2 Bajo,Medio,21.8864,0.0134 
+15075,1 Muy Bajo,Bajo,14.6808,0.0133 
+12025,2 Bajo,Muy alto,43.4479,0.0133 
+15108,1 Muy Bajo,Muy bajo,9.8560,0.0133 
+20507,4 Alto,Muy alto,41.3599,0.0132 
+09003,1 Muy Bajo,Muy bajo,3.8592,0.0132 
+17010,4 Alto,Medio,21.9245,0.0131 
+14071,4 Alto,Medio,25.9578,0.0131 
+07057,1 Muy Bajo,Alto,33.0520,0.0130 
+03001,1 Muy Bajo,Bajo,14.1143,0.0130 
+20076,5 Muy Alto,Alto,33.2892,0.0129 
+29060,2 Bajo,Medio,20.9105,0.0129 
+15095,1 Muy Bajo,Muy bajo,12.0708,0.0129 
+07010,2 Bajo,Muy alto,40.0736,0.0129 
+20536,1 Muy Bajo,Medio,29.7530,0.0128 
+20556,2 Bajo,Medio,28.8994,0.0128 
+14106,4 Alto,Medio,25.4751,0.0127 
+20193,4 Alto,Medio,25.8448,0.0127 
+21062,4 Alto,Medio,28.0923,0.0127 
+15058,1 Muy Bajo,Muy bajo,8.9042,0.0126 
+29002,2 Bajo,Bajo,14.2186,0.0126 
+21023,3 Medio,Muy alto,38.4776,0.0126 
+09005,1 Muy Bajo,Muy bajo,7.1468,0.0126 
+21090,3 Medio,Medio,23.3791,0.0125 
+21191,5 Muy Alto,Medio,29.2265,0.0124 
+32037,2 Bajo,Medio,22.9706,0.0124 
+09008,1 Muy Bajo,Muy bajo,7.8574,0.0123 
+20241,5 Muy Alto,Alto,34.3199,0.0123 
+30138,2 Bajo,Muy bajo,10.1570,0.0122 
+08067,3 Medio,Medio,20.1217,0.0122 
+21003,4 Alto,Medio,23.9336,0.0122 
+13056,3 Medio,Bajo,16.3901,0.0122 
+21018,2 Bajo,Alto,33.8398,0.0121 
+09010,1 Muy Bajo,Muy bajo,6.2586,0.0121 
+07117,2 Bajo,Muy alto,39.3509,0.0121 
+15023,1 Muy Bajo,Bajo,14.4189,0.0121 
+21034,2 Bajo,Medio,25.7657,0.0120 
+30121,1 Muy Bajo,Alto,33.1732,0.0120 
+09004,1 Muy Bajo,Muy bajo,6.9774,0.0119 
+15120,1 Muy Bajo,Muy bajo,13.2455,0.0119 
+29024,2 Bajo,Bajo,15.9155,0.0118 
+19021,1 Muy Bajo,Muy bajo,7.3832,0.0118 
+21140,2 Bajo,Bajo,13.7736,0.0118 
+29009,1 Muy Bajo,Medio,20.5361,0.0118 
+07036,1 Muy Bajo,Alto,36.2151,0.0118 
+12007,3 Medio,Medio,30.3536,0.0117 
+17007,2 Bajo,Muy bajo,7.2565,0.0117 
+15110,2 Bajo,Bajo,18.8669,0.0116 
+21125,2 Bajo,Bajo,18.2358,0.0116 
+12070,4 Alto,Alto,37.6510,0.0116 
+20329,2 Bajo,Muy alto,40.1811,0.0116 
+13042,3 Medio,Medio,29.5350,0.0116 
+16107,3 Medio,Bajo,14.2380,0.0115 
+15101,2 Bajo,Bajo,17.6650,0.0115 
+16043,3 Medio,Bajo,16.8409,0.0114 
+03003,1 Muy Bajo,Muy bajo,7.9567,0.0114 
+20078,3 Medio,Medio,19.9970,0.0114 
+17030,2 Bajo,Medio,20.8920,0.0114 
+20485,3 Medio,Muy alto,44.6210,0.0114 
+21116,1 Muy Bajo,Muy alto,39.9754,0.0114 
+20291,4 Alto,Alto,38.1558,0.0114 
+30183,2 Bajo,Medio,25.2901,0.0113 
+09016,1 Muy Bajo,Muy bajo,3.5569,0.0113 
+28032,2 Bajo,Muy bajo,9.6261,0.0113 
+10025,3 Medio,Medio,29.2440,0.0113 
+21199,3 Medio,Alto,34.1684,0.0113 
+09014,1 Muy Bajo,Muy bajo,1.2109,0.0112 
+14015,3 Medio,Muy bajo,11.5720,0.0111 
+14067,2 Bajo,Muy bajo,8.5957,0.0111 
+18020,2 Bajo,Muy bajo,10.6486,0.0111 
+17011,2 Bajo,Muy bajo,8.5969,0.0110 
+08002,3 Medio,Muy bajo,9.8813,0.0110 
+16083,3 Medio,Medio,25.6738,0.0110 
+15029,2 Bajo,Muy bajo,9.8605,0.0110 
+26041,2 Bajo,Muy bajo,7.0342,0.0110 
+19048,1 Muy Bajo,Muy bajo,6.4985,0.0109 
+17009,1 Muy Bajo,Bajo,17.4734,0.0109 
+20061,4 Alto,Muy alto,47.1387,0.0109 
+16086,3 Medio,Bajo,19.5385,0.0109 
+20562,1 Muy Bajo,Medio,26.3536,0.0109 
+06005,3 Medio,Muy bajo,12.5101,0.0109 
+18008,3 Medio,Muy bajo,10.5853,0.0109 
+08045,3 Medio,Muy bajo,11.9807,0.0108 
+15109,1 Muy Bajo,Muy bajo,8.2387,0.0108 
+26030,2 Bajo,Muy bajo,7.6535,0.0108 
+14120,2 Bajo,Muy bajo,6.0106,0.0108 
+20344,3 Medio,Alto,36.3721,0.0108 
+07105,3 Medio,Medio,30.1596,0.0107 
+07068,1 Muy Bajo,Medio,27.3414,0.0107 
+08003,3 Medio,Bajo,16.7283,0.0106 
+15098,1 Muy Bajo,Bajo,17.7007,0.0106 
+30211,3 Medio,Medio,24.9435,0.0106 
+21082,3 Medio,Medio,27.1203,0.0106 
+30142,3 Medio,Alto,33.3963,0.0106 
+21103,2 Bajo,Alto,32.9263,0.0106 
+15046,1 Muy Bajo,Bajo,17.3111,0.0106 
+27011,1 Muy Bajo,Medio,27.1890,0.0105 
+17024,4 Alto,Bajo,18.3648,0.0104 
+09017,1 Muy Bajo,Muy bajo,6.1097,0.0104 
+08036,2 Bajo,Muy bajo,12.9630,0.0104 
+30152,1 Muy Bajo,Medio,31.6262,0.0103 
+08048,4 Alto,Bajo,15.7767,0.0102 
+30151,1 Muy Bajo,Medio,31.9239,0.0101 
+19039,1 Muy Bajo,Muy bajo,5.9521,0.0101 
+32013,2 Bajo,Medio,20.0916,0.0101 
+15012,2 Bajo,Bajo,17.4272,0.0101 
+15093,1 Muy Bajo,Bajo,15.4708,0.0101 
+15024,1 Muy Bajo,Muy bajo,6.4272,0.0100 
+15043,1 Muy Bajo,Medio,19.9533,0.0099 
+18004,4 Alto,Bajo,16.6353,0.0099 
+08060,2 Bajo,Muy bajo,10.2837,0.0099 
+20483,2 Bajo,Medio,19.8694,0.0099 
+17008,2 Bajo,Muy bajo,12.6275,0.0099 
+30205,2 Bajo,Medio,22.1311,0.0098 
+18006,3 Medio,Muy bajo,13.2799,0.0098 
+14100,3 Medio,Medio,23.8735,0.0098 
+30102,2 Bajo,Medio,20.0017,0.0098 
+13079,2 Bajo,Medio,31.8728,0.0098 
+21048,3 Medio,Medio,22.9285,0.0097 
+20181,1 Muy Bajo,Medio,31.4386,0.0097 
+30096,3 Medio,Medio,29.0810,0.0097 
+30198,3 Medio,Muy alto,43.3423,0.0097 
+08033,3 Medio,Medio,27.2502,0.0097 
+26053,1 Muy Bajo,Bajo,14.9517,0.0096 
+15041,2 Bajo,Alto,33.6447,0.0096 
+08056,4 Alto,Medio,25.8732,0.0096 
+08021,2 Bajo,Muy bajo,8.4344,0.0096 
+29052,2 Bajo,Medio,21.2426,0.0096 
+20179,3 Medio,Alto,34.4557,0.0096 
+15084,1 Muy Bajo,Bajo,17.8385,0.0096 
+26043,2 Bajo,Muy bajo,9.7397,0.0096 
+30068,2 Bajo,Bajo,14.7495,0.0095 
+14097,2 Bajo,Muy bajo,8.9606,0.0094 
+09006,1 Muy Bajo,Muy bajo,5.8646,0.0094 
+19016,2 Bajo,Bajo,18.7690,0.0094 
+08061,2 Bajo,Bajo,19.7069,0.0093 
+24005,4 Alto,Bajo,17.6726,0.0093 
+21079,3 Medio,Medio,23.8654,0.0093 
+16111,3 Medio,Medio,24.2805,0.0092 
+13083,2 Bajo,Bajo,15.8943,0.0092 
+28002,2 Bajo,Medio,21.0297,0.0092 
+17023,1 Muy Bajo,Medio,28.7713,0.0092 
+28009,1 Muy Bajo,Muy bajo,6.8861,0.0092 
+14027,3 Medio,Alto,35.1888,0.0091 
+28022,2 Bajo,Muy bajo,10.8246,0.0091 
+16052,2 Bajo,Muy bajo,12.5954,0.0091 
+30116,2 Bajo,Medio,23.4925,0.0090 
+26039,3 Medio,Muy bajo,8.2080,0.0090 
+08054,2 Bajo,Muy bajo,13.2026,0.0090 
+02003,3 Medio,Muy bajo,10.7789,0.0089 
+20369,4 Alto,Medio,22.9582,0.0089 
+28033,2 Bajo,Muy bajo,13.5146,0.0089 
+13029,3 Medio,Medio,21.1307,0.0089 
+08004,1 Muy Bajo,Muy bajo,9.2292,0.0089 
+20256,2 Bajo,Medio,29.8318,0.0088 
+20368,4 Alto,Medio,31.9162,0.0088 
+14104,4 Alto,Medio,22.6182,0.0088 
+12030,3 Medio,Alto,32.9910,0.0088 
+17003,3 Medio,Medio,27.5570,0.0087 
+13035,4 Alto,Medio,24.8493,0.0087 
+20462,5 Muy Alto,Medio,24.8473,0.0087 
+08019,2 Bajo,Muy bajo,4.8164,0.0087 
+21067,2 Bajo,Medio,26.9326,0.0087 
+07011,3 Medio,Alto,35.1529,0.0087 
+08032,2 Bajo,Muy bajo,8.5878,0.0087 
+02004,2 Bajo,Muy bajo,7.1457,0.0086 
+30053,4 Alto,Medio,22.7283,0.0086 
+20552,1 Muy Bajo,Medio,29.0096,0.0085 
+12053,3 Medio,Muy alto,38.7524,0.0085 
+29038,2 Bajo,Bajo,15.6756,0.0085 
+14040,3 Medio,Medio,24.9429,0.0085 
+06007,2 Bajo,Muy bajo,10.1213,0.0085 
+21093,1 Muy Bajo,Alto,34.0386,0.0085 
+19028,2 Bajo,Bajo,16.8561,0.0084 
+05020,2 Bajo,Muy bajo,11.9495,0.0084 
+30029,3 Medio,Muy alto,42.5771,0.0083 
+15028,1 Muy Bajo,Bajo,14.1787,0.0083 
+08051,1 Muy Bajo,Alto,32.5890,0.0083 
+13022,3 Medio,Bajo,19.5477,0.0082 
+08058,2 Bajo,Bajo,15.0971,0.0082 
+08040,3 Medio,Bajo,17.9006,0.0082 
+20561,4 Alto,Alto,34.1973,0.0082 
+28038,1 Muy Bajo,Muy bajo,6.5113,0.0081 
+21151,3 Medio,Medio,20.3483,0.0081 
+21136,2 Bajo,Muy bajo,12.3132,0.0081 
+30101,3 Medio,Medio,24.6235,0.0081 
+26058,2 Bajo,Muy bajo,9.3935,0.0081 
+10038,4 Alto,Bajo,15.5210,0.0081 
+30111,2 Bajo,Medio,24.5984,0.0080 
+18007,4 Alto,Medio,24.3142,0.0078 
+21008,1 Muy Bajo,Medio,25.5935,0.0078 
+16014,3 Medio,Medio,20.9450,0.0078 
+12015,3 Medio,Medio,21.7230,0.0078 
+13052,3 Medio,Bajo,19.2384,0.0078 
+29005,2 Bajo,Muy bajo,9.3078,0.0078 
+26025,3 Medio,Muy bajo,12.7047,0.0078 
+17013,4 Alto,Medio,22.3756,0.0078 
+19006,1 Muy Bajo,Muy bajo,5.3252,0.0078 
+13075,2 Bajo,Bajo,15.4548,0.0077 
+21027,3 Medio,Alto,34.9568,0.0077 
+30193,1 Muy Bajo,Muy bajo,9.1218,0.0077 
+26070,2 Bajo,Muy bajo,12.9696,0.0077 
+25011,2 Bajo,Bajo,18.2541,0.0076 
+15089,1 Muy Bajo,Bajo,15.0566,0.0076 
+08013,2 Bajo,Bajo,16.4497,0.0076 
+15022,1 Muy Bajo,Muy bajo,12.6645,0.0076 
+08043,4 Alto,Bajo,18.6356,0.0076 
+21113,5 Muy Alto,Medio,31.3997,0.0076 
+27007,1 Muy Bajo,Bajo,17.7513,0.0076 
+20192,3 Medio,Bajo,18.0410,0.0076 
+10018,4 Alto,Bajo,17.0635,0.0075 
+19009,1 Muy Bajo,Muy bajo,9.1597,0.0075 
+25009,2 Bajo,Bajo,17.0884,0.0075 
+30204,1 Muy Bajo,Bajo,17.9182,0.0074 
+20140,1 Muy Bajo,Medio,27.9051,0.0074 
+24058,4 Alto,Medio,21.4491,0.0074 
+21206,5 Muy Alto,Alto,36.7752,0.0074 
+26046,3 Medio,Bajo,15.6996,0.0073 
+13013,1 Muy Bajo,Bajo,14.1033,0.0073 
+17012,2 Bajo,Bajo,14.0099,0.0073 
+13067,3 Medio,Medio,20.9279,0.0073 
+07069,2 Bajo,Alto,33.5869,0.0073 
+29042,3 Medio,Muy bajo,10.7444,0.0073 
+29056,2 Bajo,Bajo,15.6585,0.0072 
+16108,3 Medio,Bajo,14.9576,0.0072 
+14037,3 Medio,Muy bajo,12.4225,0.0071 
+13070,3 Medio,Bajo,16.4105,0.0071 
+20054,2 Bajo,Medio,26.9359,0.0071 
+09002,1 Muy Bajo,Muy bajo,5.1821,0.0071 
+24019,5 Muy Alto,Alto,35.4163,0.0071 
+21059,4 Alto,Medio,29.4182,0.0071 
+21171,3 Medio,Medio,22.7281,0.0071 
+28012,4 Alto,Medio,22.2827,0.0070 
+21121,4 Alto,Alto,38.1611,0.0070 
+26018,1 Muy Bajo,Muy bajo,9.6370,0.0070 
+28014,2 Bajo,Bajo,14.0473,0.0070 
+30114,2 Bajo,Medio,29.1440,0.0070 
+21135,2 Bajo,Alto,34.1533,0.0070 
+24056,3 Medio,Medio,29.3754,0.0069 
+08062,3 Medio,Muy bajo,12.9169,0.0069 
+12006,3 Medio,Alto,33.1896,0.0069 
+20518,2 Bajo,Medio,24.5992,0.0068 
+08014,3 Medio,Bajo,19.6533,0.0068 
+07071,2 Bajo,Alto,38.1022,0.0068 
+15121,1 Muy Bajo,Muy bajo,5.7444,0.0068 
+20516,4 Alto,Muy alto,38.8103,0.0068 
+04007,1 Muy Bajo,Medio,29.3995,0.0068 
+20243,4 Alto,Medio,24.5474,0.0067 
+13082,3 Medio,Bajo,16.1381,0.0067 
+20063,2 Bajo,Bajo,18.5202,0.0067 
+29019,2 Bajo,Bajo,14.4614,0.0067 
+29043,2 Bajo,Muy bajo,11.5086,0.0067 
+20404,3 Medio,Medio,23.6507,0.0067 
+21205,4 Alto,Medio,26.0042,0.0067 
+15005,1 Muy Bajo,Medio,23.6962,0.0067 
+27010,1 Muy Bajo,Bajo,19.4522,0.0066 
+15073,2 Bajo,Muy bajo,10.5718,0.0066 
+13049,5 Muy Alto,Alto,36.4899,0.0066 
+13020,4 Alto,Medio,29.6630,0.0066 
+21138,2 Bajo,Medio,27.3140,0.0066 
+27016,1 Muy Bajo,Medio,21.9371,0.0065 
+07030,2 Bajo,Muy alto,38.7463,0.0065 
+14044,2 Bajo,Bajo,14.3875,0.0065 
+21198,4 Alto,Alto,34.2557,0.0065 
+21066,4 Alto,Alto,34.7084,0.0065 
+17033,3 Medio,Medio,25.0265,0.0064 
+13012,5 Muy Alto,Medio,25.5649,0.0064 
+07009,2 Bajo,Medio,26.0034,0.0064 
+26051,1 Muy Bajo,Medio,28.6460,0.0064 
+25002,1 Muy Bajo,Bajo,16.8049,0.0064 
+18015,4 Alto,Medio,20.9527,0.0064 
+12014,3 Medio,Medio,25.9027,0.0064 
+30032,2 Bajo,Medio,26.7226,0.0064 
+26002,2 Bajo,Muy bajo,10.4345,0.0063 
+15044,1 Muy Bajo,Muy bajo,6.8811,0.0063 
+30028,2 Bajo,Muy bajo,7.7954,0.0063 
+15049,4 Alto,Medio,24.4513,0.0062 
+13076,2 Bajo,Muy bajo,12.3476,0.0062 
+16095,3 Medio,Bajo,19.0817,0.0062 
+21153,2 Bajo,Medio,22.3434,0.0062 
+32010,3 Medio,Bajo,16.0801,0.0062 
+21053,3 Medio,Medio,26.2591,0.0062 
+19020,2 Bajo,Bajo,16.4698,0.0061 
+12017,5 Muy Alto,Alto,33.6197,0.0061 
+29031,2 Bajo,Bajo,15.0213,0.0061 
+22016,2 Bajo,Muy bajo,12.8050,0.0061 
+15006,2 Bajo,Bajo,14.7681,0.0060 
+30087,2 Bajo,Muy bajo,9.0692,0.0060 
+20400,5 Muy Alto,Medio,28.3724,0.0060 
+15017,1 Muy Bajo,Bajo,18.7210,0.0060 
+15027,1 Muy Bajo,Muy bajo,11.9632,0.0059 
+12039,3 Medio,Medio,30.4542,0.0059 
+15038,1 Muy Bajo,Medio,20.9518,0.0059 
+21122,3 Medio,Medio,20.3571,0.0059 
+26004,2 Bajo,Muy bajo,13.1828,0.0059 
+20013,4 Alto,Medio,25.3116,0.0059 
+20161,2 Bajo,Alto,35.3468,0.0058 
+15118,1 Muy Bajo,Bajo,15.8770,0.0058 
+24010,4 Alto,Medio,27.5958,0.0058 
+14108,2 Bajo,Bajo,15.7569,0.0058 
+22014,2 Bajo,Muy bajo,7.3649,0.0058 
+24044,3 Medio,Medio,31.9722,0.0058 
+14098,2 Bajo,Muy bajo,9.1168,0.0058 
+21189,4 Alto,Medio,23.6524,0.0058 
+22007,4 Alto,Medio,19.7470,0.0058 
+30022,2 Bajo,Alto,33.0434,0.0057 
+18013,4 Alto,Bajo,19.0685,0.0057 
+20449,3 Medio,Alto,36.9521,0.0057 
+20538,3 Medio,Alto,35.5857,0.0057 
+15020,1 Muy Bajo,Muy bajo,4.5055,0.0057 
+13031,5 Muy Alto,Medio,29.8791,0.0056 
+26060,2 Bajo,Bajo,18.5169,0.0056 
+16053,2 Bajo,Muy bajo,9.6733,0.0056 
+26059,2 Bajo,Bajo,16.5123,0.0056 
+28027,2 Bajo,Muy bajo,9.8837,0.0056 
+21085,4 Alto,Medio,21.1671,0.0056 
+21069,5 Muy Alto,Alto,32.7558,0.0055 
+29051,3 Medio,Bajo,17.1805,0.0055 
+21132,2 Bajo,Bajo,13.6186,0.0055 
+10005,3 Medio,Muy bajo,9.1848,0.0055 
+08024,3 Medio,Bajo,15.4031,0.0055 
+08050,3 Medio,Muy bajo,8.9158,0.0055 
+14014,4 Alto,Medio,21.7209,0.0055 
+26007,4 Alto,Muy bajo,13.4001,0.0054 
+13045,4 Alto,Medio,25.1131,0.0054 
+30181,2 Bajo,Medio,28.8050,0.0054 
+13066,2 Bajo,Bajo,17.7743,0.0054 
+15080,3 Medio,Muy alto,39.1866,0.0054 
+22006,2 Bajo,Muy bajo,7.0543,0.0054 
+32011,5 Muy Alto,Bajo,19.6207,0.0054 
+13071,5 Muy Alto,Alto,35.2179,0.0054 
+15065,2 Bajo,Bajo,18.4819,0.0054 
+08052,4 Alto,Muy bajo,10.3713,0.0054 
+21065,2 Bajo,Medio,28.2445,0.0054 
+15016,1 Muy Bajo,Medio,20.6601,0.0054 
+21108,1 Muy Bajo,Medio,23.8662,0.0054 
+29044,2 Bajo,Muy bajo,13.3087,0.0054 
+21143,2 Bajo,Medio,20.3692,0.0053 
+21042,2 Bajo,Alto,36.9106,0.0053 
+28020,2 Bajo,Medio,26.4246,0.0053 
+24028,2 Bajo,Muy bajo,7.0183,0.0052 
+21193,2 Bajo,Alto,35.7555,0.0052 
+16012,3 Medio,Medio,25.0540,0.0052 
+07103,2 Bajo,Alto,36.1157,0.0052 
+16023,5 Muy Alto,Medio,21.8155,0.0052 
+13061,2 Bajo,Muy bajo,10.4474,0.0052 
+20317,2 Bajo,Alto,32.5433,0.0051 
+17031,3 Medio,Muy bajo,11.5567,0.0051 
+29003,3 Medio,Medio,25.2165,0.0051 
+08037,2 Bajo,Muy bajo,9.5528,0.0051 
+07074,1 Muy Bajo,Bajo,19.4464,0.0050 
+06001,3 Medio,Medio,19.8869,0.0050 
+21038,1 Muy Bajo,Medio,26.2194,0.0050 
+16088,2 Bajo,Bajo,14.8658,0.0050 
+30071,3 Medio,Medio,26.6429,0.0050 
+29054,2 Bajo,Muy bajo,12.4654,0.0050 
+01008,5 Muy Alto,Bajo,19.1593,0.0050 
+26055,3 Medio,Muy bajo,11.7836,0.0049 
+29057,2 Bajo,Bajo,19.5799,0.0049 
+20373,2 Bajo,Alto,37.5095,0.0049 
+19026,1 Muy Bajo,Muy bajo,4.7870,0.0049 
+13057,4 Alto,Medio,26.8539,0.0049 
+16026,4 Alto,Alto,35.1941,0.0049 
+28015,2 Bajo,Muy bajo,13.4764,0.0049 
+17016,3 Medio,Medio,25.8941,0.0048 
+21154,2 Bajo,Medio,21.0769,0.0048 
+19004,1 Muy Bajo,Muy bajo,8.8908,0.0048 
+13024,5 Muy Alto,Medio,26.1360,0.0048 
+05012,3 Medio,Bajo,18.7404,0.0048 
+17014,3 Medio,Medio,20.6987,0.0048 
+15091,1 Muy Bajo,Muy bajo,11.2199,0.0048 
+30075,2 Bajo,Alto,35.2344,0.0048 
+20464,2 Bajo,Alto,34.0172,0.0048 
+13039,2 Bajo,Muy bajo,13.4097,0.0048 
+12044,3 Medio,Medio,31.9322,0.0048 
+30196,3 Medio,Medio,22.4944,0.0048 
+21181,2 Bajo,Medio,19.7515,0.0048 
+24035,2 Bajo,Muy bajo,8.0929,0.0047 
+13010,2 Bajo,Muy bajo,11.6569,0.0047 
+02002,2 Bajo,Muy bajo,7.8488,0.0047 
+14083,3 Medio,Muy bajo,12.9481,0.0047 
+21095,1 Muy Bajo,Medio,27.8129,0.0047 
+28019,2 Bajo,Medio,26.5049,0.0047 
+21164,2 Bajo,Medio,21.6212,0.0047 
+30141,2 Bajo,Medio,29.9157,0.0047 
+32017,2 Bajo,Muy bajo,8.2449,0.0047 
+08038,4 Alto,Bajo,17.2383,0.0047 
+27002,1 Muy Bajo,Medio,21.2228,0.0047 
+29020,2 Bajo,Medio,21.6150,0.0046 
+16045,4 Alto,Bajo,15.0654,0.0046 
+08039,4 Alto,Bajo,17.3240,0.0046 
+30062,2 Bajo,Medio,30.3688,0.0046 
+29015,3 Medio,Bajo,18.0488,0.0046 
+12050,3 Medio,Medio,21.8122,0.0046 
+30021,2 Bajo,Medio,22.7521,0.0046 
+15045,2 Bajo,Medio,23.9173,0.0045 
+15096,1 Muy Bajo,Muy bajo,12.9316,0.0045 
+12021,3 Medio,Alto,34.8622,0.0045 
+29039,2 Bajo,Bajo,19.1767,0.0045 
+30176,2 Bajo,Medio,29.9056,0.0045 
+11003,4 Alto,Medio,23.2734,0.0045 
+21176,4 Alto,Medio,26.6003,0.0045 
+29030,3 Medio,Medio,27.2642,0.0045 
+13004,3 Medio,Medio,30.9811,0.0045 
+28025,2 Bajo,Muy bajo,9.3218,0.0045 
+17025,3 Medio,Medio,19.9765,0.0045 
+30192,2 Bajo,Medio,21.4832,0.0045 
+20154,4 Alto,Muy alto,38.5167,0.0045 
+13005,3 Medio,Bajo,17.7438,0.0045 
+12048,2 Bajo,Medio,26.7376,0.0045 
+30011,2 Bajo,Medio,20.8033,0.0044 
+21051,5 Muy Alto,Medio,24.0316,0.0044 
+30024,4 Alto,Alto,37.6832,0.0044 
+13074,2 Bajo,Bajo,14.6950,0.0044 
+20388,5 Muy Alto,Muy alto,45.7828,0.0044 
+30105,1 Muy Bajo,Bajo,14.7024,0.0044 
+21160,4 Alto,Medio,30.1796,0.0044 
+12057,3 Medio,Medio,30.0971,0.0044 
+30109,2 Bajo,Medio,26.6590,0.0044 
+16061,2 Bajo,Medio,29.8983,0.0044 
+14070,2 Bajo,Muy bajo,12.8982,0.0043 
+17015,4 Alto,Medio,22.8233,0.0043 
+14101,2 Bajo,Muy bajo,10.7319,0.0043 
+19015,2 Bajo,Bajo,18.7970,0.0043 
+13016,3 Medio,Medio,25.1000,0.0043 
+29012,2 Bajo,Medio,25.6518,0.0042 
+15055,1 Muy Bajo,Muy bajo,11.5969,0.0042 
+07054,2 Bajo,Alto,36.1602,0.0042 
+27008,2 Bajo,Medio,27.4927,0.0042 
+28023,2 Bajo,Medio,26.9728,0.0042 
+15076,1 Muy Bajo,Muy bajo,12.5780,0.0042 
+07040,2 Bajo,Medio,27.7288,0.0041 
+30065,2 Bajo,Bajo,16.1462,0.0041 
+30079,1 Muy Bajo,Alto,35.1164,0.0041 
+20235,4 Alto,Muy alto,44.3261,0.0041 
+20099,4 Alto,Muy alto,40.2448,0.0041 
+20548,2 Bajo,Alto,36.4492,0.0041 
+22003,5 Muy Alto,Medio,28.3338,0.0041 
+32051,3 Medio,Medio,22.9649,0.0041 
+19046,1 Muy Bajo,Muy bajo,2.6909,0.0041 
+32056,2 Bajo,Muy bajo,6.6597,0.0041 
+30162,5 Muy Alto,Alto,35.6222,0.0041 
+16022,5 Muy Alto,Medio,22.3502,0.0041 
+16070,4 Alto,Bajo,14.5035,0.0041 
+14078,4 Alto,Bajo,16.3416,0.0040 
+24006,2 Bajo,Medio,30.3854,0.0040 
+13038,3 Medio,Medio,28.7927,0.0040 
+30026,2 Bajo,Muy bajo,12.8392,0.0040 
+30128,1 Muy Bajo,Medio,21.9642,0.0040 
+19042,1 Muy Bajo,Bajo,18.7317,0.0040 
+16009,3 Medio,Medio,23.9660,0.0040 
+17019,4 Alto,Medio,25.0235,0.0040 
+15054,1 Muy Bajo,Muy bajo,5.4715,0.0040 
+28035,2 Bajo,Bajo,19.1531,0.0040 
+15094,2 Bajo,Bajo,19.3062,0.0040 
+06002,2 Bajo,Muy bajo,8.4823,0.0040 
+29007,2 Bajo,Medio,23.4638,0.0039 
+20238,2 Bajo,Medio,30.4264,0.0039 
+30099,3 Medio,Medio,30.2895,0.0039 
+26005,1 Muy Bajo,Medio,21.0836,0.0039 
+10032,4 Alto,Medio,20.5921,0.0039 
+21203,3 Medio,Medio,31.8020,0.0039 
+05002,2 Bajo,Muy bajo,12.0920,0.0039 
+29040,2 Bajo,Medio,21.6347,0.0039 
+21045,2 Bajo,Medio,23.6628,0.0039 
+30194,1 Muy Bajo,Medio,31.4599,0.0039 
+22012,2 Bajo,Bajo,19.0199,0.0038 
+20055,4 Alto,Medio,30.8085,0.0038 
+16069,4 Alto,Muy bajo,13.1960,0.0038 
+10035,3 Medio,Medio,29.7369,0.0038 
+20351,5 Muy Alto,Alto,37.5400,0.0038 
+25012,1 Muy Bajo,Muy bajo,9.3852,0.0038 
+16068,3 Medio,Bajo,16.9188,0.0038 
+20157,2 Bajo,Muy bajo,7.8012,0.0038 
+14033,5 Muy Alto,Medio,20.2289,0.0038 
+08044,2 Bajo,Bajo,17.0974,0.0037 
+29023,2 Bajo,Medio,20.6208,0.0037 
+21144,1 Muy Bajo,Medio,20.2175,0.0037 
+12040,3 Medio,Alto,35.7433,0.0037 
+15090,2 Bajo,Bajo,19.1590,0.0037 
+16064,4 Alto,Medio,29.6006,0.0037 
+14082,3 Medio,Muy bajo,12.4820,0.0037 
+24007,4 Alto,Medio,21.1778,0.0037 
+16002,4 Alto,Medio,28.9976,0.0037 
+12032,2 Bajo,Muy alto,49.8118,0.0036 
+29013,2 Bajo,Bajo,18.1955,0.0036 
+29037,1 Muy Bajo,Medio,26.6867,0.0036 
+28021,3 Medio,Bajo,14.5317,0.0036 
+16006,3 Medio,Medio,20.3310,0.0036 
+20018,2 Bajo,Alto,35.5037,0.0036 
+07097,2 Bajo,Medio,27.9868,0.0036 
+18018,3 Medio,Bajo,17.3208,0.0036 
+30054,2 Bajo,Medio,26.3059,0.0036 
+22017,3 Medio,Bajo,16.7860,0.0036 
+21099,3 Medio,Alto,34.9908,0.0036 
+22011,2 Bajo,Bajo,18.8955,0.0036 
+08025,3 Medio,Bajo,13.6459,0.0036 
+20555,3 Medio,Alto,33.4930,0.0036 
+25006,2 Bajo,Muy bajo,9.9352,0.0036 
+30080,3 Medio,Alto,34.4476,0.0036 
+30143,2 Bajo,Medio,31.5244,0.0035 
+20251,4 Alto,Muy alto,41.2441,0.0035 
+15061,1 Muy Bajo,Bajo,19.6915,0.0035 
+20353,4 Alto,Alto,35.7987,0.0035 
+30084,2 Bajo,Medio,31.4270,0.0035 
+21180,2 Bajo,Medio,24.4244,0.0035 
+30057,4 Alto,Muy alto,38.5251,0.0035 
+21134,2 Bajo,Medio,20.1633,0.0035 
+19038,2 Bajo,Muy bajo,11.2491,0.0035 
+14039,2 Bajo,Muy bajo,5.2533,0.0035 
+07051,2 Bajo,Medio,31.8328,0.0035 
+08016,3 Medio,Bajo,15.6349,0.0035 
+18003,4 Alto,Medio,20.3665,0.0035 
+28001,3 Medio,Medio,21.6031,0.0035 
+20080,2 Bajo,Alto,37.8949,0.0034 
+26021,1 Muy Bajo,Medio,21.0486,0.0034 
+15103,1 Muy Bajo,Muy bajo,11.5293,0.0034 
+24011,5 Muy Alto,Medio,20.4514,0.0034 
+15019,1 Muy Bajo,Muy bajo,13.3037,0.0034 
+05027,1 Muy Bajo,Muy bajo,8.4045,0.0034 
+28008,1 Muy Bajo,Medio,31.4552,0.0034 
+13036,4 Alto,Medio,26.3057,0.0034 
+28004,4 Alto,Medio,25.7501,0.0034 
+24024,4 Alto,Medio,21.7348,0.0034 
+20387,4 Alto,Medio,29.8523,0.0034 
+13040,5 Muy Alto,Muy alto,39.2026,0.0034 
+19047,1 Muy Bajo,Muy bajo,8.6574,0.0034 
+29006,2 Bajo,Bajo,15.4613,0.0034 
+21004,2 Bajo,Medio,24.2181,0.0034 
+07088,2 Bajo,Muy alto,38.3685,0.0034 
+14091,5 Muy Alto,Bajo,19.6638,0.0033 
+14043,4 Alto,Medio,20.4008,0.0033 
+30190,2 Bajo,Medio,29.6268,0.0033 
+12037,5 Muy Alto,Alto,34.8792,0.0033 
+14055,3 Medio,Bajo,14.4756,0.0033 
+05037,3 Medio,Muy bajo,13.1435,0.0033 
+27005,1 Muy Bajo,Medio,20.9660,0.0033 
+32044,4 Alto,Medio,20.3507,0.0032 
+32028,4 Alto,Medio,26.0351,0.0032 
+16096,3 Medio,Muy alto,38.3687,0.0032 
+15009,1 Muy Bajo,Bajo,14.5542,0.0032 
+32032,3 Medio,Muy bajo,12.2548,0.0032 
+20106,1 Muy Bajo,Medio,31.6649,0.0032 
+12068,3 Medio,Alto,33.3276,0.0032 
+21024,5 Muy Alto,Medio,32.0660,0.0032 
+21168,3 Medio,Alto,37.9822,0.0032 
+30107,1 Muy Bajo,Muy alto,40.4733,0.0032 
+14030,2 Bajo,Muy bajo,11.1455,0.0032 
+26036,2 Bajo,Muy bajo,8.1692,0.0032 
+30182,1 Muy Bajo,Medio,24.6553,0.0032 
+25016,2 Bajo,Medio,25.4085,0.0032 
+14012,4 Alto,Bajo,19.1698,0.0032 
+13017,3 Medio,Medio,28.6504,0.0032 
+15068,2 Bajo,Bajo,19.2153,0.0032 
+14047,3 Medio,Bajo,16.0965,0.0032 
+22015,5 Muy Alto,Alto,33.7000,0.0031 
+14007,4 Alto,Bajo,16.0562,0.0031 
+15018,1 Muy Bajo,Bajo,14.4204,0.0031 
+13065,3 Medio,Bajo,15.6400,0.0031 
+11007,3 Medio,Muy bajo,11.7579,0.0031 
+11028,4 Alto,Medio,20.8413,0.0031 
+30016,1 Muy Bajo,Bajo,15.7728,0.0031 
+19022,2 Bajo,Bajo,17.2223,0.0031 
+21142,2 Bajo,Medio,24.4546,0.0031 
+25014,2 Bajo,Medio,19.9734,0.0031 
+14041,5 Muy Alto,Medio,21.1690,0.0031 
+13008,2 Bajo,Bajo,16.6472,0.0030 
+26016,2 Bajo,Muy bajo,11.2818,0.0030 
+05001,3 Medio,Bajo,15.2928,0.0030 
+32045,5 Muy Alto,Medio,22.2462,0.0030 
+15072,1 Muy Bajo,Muy bajo,13.5212,0.0030 
+21157,4 Alto,Medio,30.0615,0.0030 
+30093,3 Medio,Medio,23.3415,0.0030 
+21139,4 Alto,Medio,28.7911,0.0030 
+15079,2 Bajo,Medio,24.1212,0.0030 
+30088,3 Medio,Alto,32.2718,0.0030 
+21047,4 Alto,Medio,25.5819,0.0030 
+14099,5 Muy Alto,Medio,28.3479,0.0030 
+15077,3 Medio,Medio,29.3381,0.0030 
+22013,4 Alto,Medio,31.2247,0.0029 
+32031,4 Alto,Medio,22.9822,0.0029 
+20147,0 Nulo,Medio,27.8044,0.0029 
+13021,2 Bajo,Muy bajo,13.3940,0.0029 
+15069,1 Muy Bajo,Bajo,14.9013,0.0029 
+28034,2 Bajo,Medio,30.7609,0.0029 
+18002,5 Muy Alto,Bajo,16.4248,0.0029 
+13001,5 Muy Alto,Medio,29.5369,0.0029 
+16036,5 Muy Alto,Bajo,19.6516,0.0029 
+15088,2 Bajo,Medio,19.8148,0.0029 
+20289,3 Medio,Alto,32.9636,0.0029 
+28029,3 Medio,Medio,23.7352,0.0029 
+30186,3 Medio,Medio,23.4915,0.0029 
+14006,4 Alto,Bajo,14.1456,0.0029 
+15036,1 Muy Bajo,Bajo,18.2453,0.0028 
+05018,2 Bajo,Muy bajo,6.5267,0.0028 
+01009,4 Alto,Medio,20.7962,0.0028 
+29021,3 Medio,Bajo,17.2671,0.0028 
+06010,2 Bajo,Muy bajo,5.8874,0.0028 
+16049,3 Medio,Alto,36.4026,0.0028 
+20328,2 Bajo,Muy alto,42.5937,0.0028 
+29035,3 Medio,Bajo,14.7852,0.0028 
+17021,3 Medio,Medio,22.1543,0.0028 
+32020,4 Alto,Bajo,14.6445,0.0028 
+26052,2 Bajo,Medio,20.6232,0.0028 
+11044,3 Medio,Bajo,16.8274,0.0028 
+16082,4 Alto,Medio,23.4304,0.0028 
+21185,4 Alto,Medio,29.8340,0.0028 
+14085,4 Alto,Bajo,16.3017,0.0028 
+26019,3 Medio,Muy bajo,6.3764,0.0027 
+11009,4 Alto,Medio,25.6412,0.0027 
+11010,5 Muy Alto,Medio,25.4022,0.0027 
+08001,2 Bajo,Bajo,13.8422,0.0027 
+22002,5 Muy Alto,Alto,36.7992,0.0027 
+16011,4 Alto,Medio,21.2860,0.0027 
+16059,3 Medio,Medio,29.2740,0.0027 
+28011,3 Medio,Medio,26.3724,0.0027 
+16039,3 Medio,Medio,23.8330,0.0027 
+28041,2 Bajo,Muy bajo,9.1137,0.0027 
+20542,4 Alto,Alto,34.3232,0.0027 
+07080,2 Bajo,Muy alto,39.8184,0.0027 
+32022,4 Alto,Bajo,16.7933,0.0027 
+28040,2 Bajo,Bajo,14.2765,0.0027 
+07037,2 Bajo,Alto,35.9118,0.0027 
+16055,4 Alto,Medio,23.3893,0.0027 
+14112,5 Muy Alto,Medio,20.3145,0.0027 
+17001,4 Alto,Medio,21.6647,0.0027 
+32005,2 Bajo,Bajo,14.3201,0.0027 
+16030,5 Muy Alto,Medio,24.2329,0.0027 
+20455,3 Medio,Alto,37.2999,0.0027 
+05030,1 Muy Bajo,Muy bajo,6.2779,0.0027 
+16031,4 Alto,Medio,30.3124,0.0027 
+27006,1 Muy Bajo,Medio,23.5471,0.0027 
+17032,4 Alto,Medio,22.9639,0.0026 
+18016,2 Bajo,Medio,20.1719,0.0026 
+21055,4 Alto,Alto,33.3826,0.0026 
+21117,1 Muy Bajo,Bajo,17.7358,0.0026 
+10001,3 Medio,Bajo,18.5911,0.0026 
+21104,1 Muy Bajo,Medio,22.9519,0.0026 
+21131,1 Muy Bajo,Medio,28.0590,0.0026 
+26009,2 Bajo,Medio,22.0456,0.0026 
+16071,5 Muy Alto,Medio,23.0011,0.0026 
+15071,2 Bajo,Medio,20.7906,0.0026 
+30038,2 Bajo,Bajo,15.6653,0.0026 
+30134,3 Medio,Medio,21.6978,0.0026 
+30023,4 Alto,Alto,35.2421,0.0026 
+21118,2 Bajo,Medio,23.9928,0.0026 
+01011,3 Medio,Bajo,14.7415,0.0026 
+07003,2 Bajo,Alto,37.4924,0.0026 
+11020,2 Bajo,Muy bajo,10.7145,0.0026 
+05022,2 Bajo,Muy bajo,11.1420,0.0026 
+07102,1 Muy Bajo,Medio,31.4830,0.0026 
+26044,1 Muy Bajo,Medio,23.2272,0.0026 
+24008,4 Alto,Bajo,18.2792,0.0025 
+16051,5 Muy Alto,Bajo,13.8816,0.0025 
+13072,3 Medio,Muy bajo,12.2204,0.0025 
+13007,3 Medio,Medio,24.7425,0.0025 
+30191,3 Medio,Bajo,14.8379,0.0025 
+29034,2 Bajo,Medio,23.3147,0.0025 
+07087,1 Muy Bajo,Alto,34.7041,0.0025 
+12054,2 Bajo,Muy alto,56.4667,0.0025 
+26022,2 Bajo,Medio,23.7655,0.0025 
+11041,3 Medio,Bajo,14.7239,0.0025 
+11025,4 Alto,Bajo,16.4112,0.0025 
+30100,2 Bajo,Medio,23.1530,0.0025 
+05025,2 Bajo,Muy bajo,8.3382,0.0025 
+15015,2 Bajo,Medio,21.9755,0.0025 
+30004,3 Medio,Medio,24.1610,0.0025 
+21141,4 Alto,Medio,27.7383,0.0025 
+01001,2 Bajo,Muy bajo,7.6904,0.0025 
+32025,4 Alto,Bajo,18.8151,0.0025 
+29049,2 Bajo,Muy bajo,12.1601,0.0025 
+13044,2 Bajo,Medio,26.6888,0.0025 
+07086,1 Muy Bajo,Medio,25.9021,0.0024 
+30177,1 Muy Bajo,Alto,33.9932,0.0024 
+29032,2 Bajo,Bajo,18.5123,0.0024 
+16087,3 Medio,Bajo,18.8282,0.0024 
+14020,2 Bajo,Medio,24.6203,0.0024 
+21021,5 Muy Alto,Medio,25.2773,0.0024 
+10026,1 Muy Bajo,Medio,30.8002,0.0024 
+05028,2 Bajo,Muy bajo,7.9886,0.0024 
+16092,5 Muy Alto,Muy alto,43.4027,0.0024 
+14090,3 Medio,Bajo,18.4847,0.0024 
+08028,2 Bajo,Medio,19.9958,0.0024 
+21073,5 Muy Alto,Medio,29.5186,0.0024 
+30188,4 Alto,Alto,33.9384,0.0024 
+32024,3 Medio,Bajo,18.7879,0.0024 
+30092,1 Muy Bajo,Medio,25.7570,0.0024 
+16050,3 Medio,Medio,25.0057,0.0024 
+21110,3 Medio,Alto,32.4869,0.0024 
+20203,4 Alto,Muy alto,47.9086,0.0024 
+14013,3 Medio,Bajo,16.0689,0.0024 
+27014,1 Muy Bajo,Bajo,16.0358,0.0024 
+14122,4 Alto,Medio,27.3462,0.0024 
+30165,2 Bajo,Muy alto,40.8143,0.0024 
+30086,1 Muy Bajo,Alto,34.2881,0.0024 
+14046,4 Alto,Bajo,15.2286,0.0024 
+25003,2 Bajo,Muy alto,38.3676,0.0024 
+20032,5 Muy Alto,Alto,37.2990,0.0023 
+19013,1 Muy Bajo,Muy bajo,11.9247,0.0023 
+15010,1 Muy Bajo,Bajo,14.5414,0.0023 
+17005,3 Medio,Medio,25.7463,0.0023 
+30047,3 Medio,Alto,37.7818,0.0023 
+11031,4 Alto,Bajo,15.7079,0.0023 
+16015,4 Alto,Medio,28.0173,0.0023 
+05035,1 Muy Bajo,Muy bajo,6.4228,0.0023 
+15040,4 Alto,Medio,21.5844,0.0023 
+32016,4 Alto,Medio,25.9426,0.0023 
+16001,3 Medio,Medio,25.2663,0.0023 
+26065,1 Muy Bajo,Bajo,19.1700,0.0023 
+21137,1 Muy Bajo,Medio,30.7317,0.0023 
+28007,2 Bajo,Bajo,13.7560,0.0023 
+08059,2 Bajo,Bajo,14.4754,0.0023 
+14023,2 Bajo,Muy bajo,9.0543,0.0023 
+14051,2 Bajo,Muy bajo,12.8143,0.0023 
+19024,1 Muy Bajo,Alto,32.1850,0.0023 
+19002,2 Bajo,Bajo,16.4248,0.0023 
+32046,4 Alto,Medio,23.7674,0.0023 
+14116,5 Muy Alto,Bajo,15.0760,0.0023 
+32034,5 Muy Alto,Bajo,17.9560,0.0023 
+30164,2 Bajo,Medio,23.3928,0.0022 
+20165,4 Alto,Alto,36.2888,0.0022 
+27009,1 Muy Bajo,Medio,21.2750,0.0022 
+26010,2 Bajo,Medio,20.8703,0.0022 
+14063,2 Bajo,Muy bajo,11.3330,0.0022 
+16062,5 Muy Alto,Medio,23.3644,0.0022 
+28039,3 Medio,Medio,28.5461,0.0022 
+11017,2 Bajo,Muy bajo,13.1288,0.0022 
+01007,4 Alto,Bajo,15.9820,0.0022 
+11004,5 Muy Alto,Medio,22.2965,0.0022 
+01005,3 Medio,Muy bajo,13.4105,0.0022 
+21152,3 Medio,Medio,25.8297,0.0022 
+06003,3 Medio,Bajo,17.1575,0.0022 
+28013,1 Muy Bajo,Medio,26.9381,0.0021 
+25013,2 Bajo,Medio,25.1659,0.0021 
+15050,1 Muy Bajo,Bajo,17.8900,0.0021 
+10013,3 Medio,Medio,20.1371,0.0021 
+05003,2 Bajo,Muy bajo,9.1625,0.0021 
+11002,4 Alto,Bajo,18.7105,0.0021 
+14124,3 Medio,Bajo,18.6304,0.0021 
+16101,4 Alto,Muy alto,45.6774,0.0021 
+30049,2 Bajo,Medio,29.3091,0.0021 
+30125,3 Medio,Medio,28.3544,0.0021 
+25015,2 Bajo,Muy bajo,12.2328,0.0021 
+21130,2 Bajo,Medio,28.2175,0.0021 
+11032,3 Medio,Medio,19.8771,0.0021 
+16005,2 Bajo,Medio,29.0218,0.0021 
+16020,4 Alto,Medio,23.2486,0.0021 
+16076,3 Medio,Bajo,14.4480,0.0021 
+11043,4 Alto,Medio,30.5858,0.0021 
+14073,3 Medio,Bajo,14.8405,0.0021 
+19033,2 Bajo,Muy bajo,13.1706,0.0021 
+16010,2 Bajo,Medio,30.8254,0.0021 
+20283,1 Muy Bajo,Medio,31.4583,0.0021 
+11014,5 Muy Alto,Medio,26.0428,0.0021 
+11015,3 Medio,Muy bajo,13.2936,0.0021 
+30112,3 Medio,Medio,22.7162,0.0021 
+22010,5 Muy Alto,Alto,32.4443,0.0021 
+11005,4 Alto,Medio,20.5751,0.0021 
+24047,4 Alto,Alto,35.9819,0.0021 
+14059,3 Medio,Bajo,16.7098,0.0021 
+14050,3 Medio,Bajo,16.3242,0.0021 
+22005,2 Bajo,Medio,24.0603,0.0021 
+30036,2 Bajo,Medio,27.4401,0.0020 
+12031,4 Alto,Muy alto,41.1849,0.0020 
+30178,2 Bajo,Medio,24.8847,0.0020 
+11011,3 Medio,Bajo,16.3789,0.0020 
+19005,3 Medio,Bajo,14.7744,0.0020 
+19011,2 Bajo,Muy bajo,11.8806,0.0020 
+28017,2 Bajo,Medio,23.6649,0.0020 
+24020,3 Medio,Bajo,14.2178,0.0020 
+19036,2 Bajo,Medio,30.8139,0.0020 
+07001,2 Bajo,Medio,31.9790,0.0020 
+16103,5 Muy Alto,Medio,19.8533,0.0020 
+11042,4 Alto,Medio,21.3970,0.0020 
+14093,3 Medio,Muy bajo,12.1386,0.0020 
+29047,4 Alto,Medio,24.0459,0.0020 
+19029,3 Medio,Muy bajo,12.3735,0.0020 
+01006,3 Medio,Bajo,13.6028,0.0020 
+01003,5 Muy Alto,Bajo,19.1524,0.0020 
+16044,4 Alto,Medio,23.6728,0.0020 
+14094,2 Bajo,Bajo,15.9688,0.0019 
+24049,4 Alto,Medio,31.6057,0.0019 
+14001,4 Alto,Medio,20.1940,0.0019 
+30031,4 Alto,Alto,35.3412,0.0019 
+15107,3 Medio,Bajo,19.0176,0.0019 
+16094,4 Alto,Medio,24.9355,0.0019 
+30208,2 Bajo,Bajo,18.2318,0.0019 
+30126,2 Bajo,Medio,22.7251,0.0019 
+14107,3 Medio,Bajo,18.2707,0.0019 
+05034,1 Muy Bajo,Bajo,15.9053,0.0019 
+29055,4 Alto,Medio,20.8959,0.0019 
+30127,4 Alto,Muy alto,44.0634,0.0019 
+30008,3 Medio,Alto,37.1134,0.0019 
+11046,4 Alto,Medio,22.8761,0.0019 
+06006,4 Alto,Medio,24.2515,0.0019 
+21128,1 Muy Bajo,Medio,26.5287,0.0019 
+10007,2 Bajo,Muy bajo,10.1453,0.0019 
+16077,4 Alto,Alto,35.3559,0.0019 
+14096,4 Alto,Bajo,18.0227,0.0019 
+21115,2 Bajo,Medio,30.2647,0.0019 
+30015,1 Muy Bajo,Medio,28.2937,0.0019 
+30097,2 Bajo,Bajo,14.4679,0.0019 
+20069,2 Bajo,Muy alto,38.6907,0.0019 
+06008,3 Medio,Bajo,18.4797,0.0019 
+15052,4 Alto,Medio,25.9171,0.0019 
+16019,5 Muy Alto,Medio,21.3841,0.0019 
+14018,3 Medio,Bajo,14.9084,0.0019 
+11037,3 Medio,Medio,20.1990,0.0019 
+10020,4 Alto,Medio,20.3001,0.0019 
+16007,4 Alto,Medio,29.8399,0.0018 
+11024,5 Muy Alto,Medio,24.3395,0.0018 
+06004,4 Alto,Bajo,16.8726,0.0018 
+30090,2 Bajo,Medio,26.1785,0.0018 
+32019,4 Alto,Bajo,16.7813,0.0018 
+32003,4 Alto,Medio,23.0548,0.0018 
+24027,5 Muy Alto,Medio,25.6508,0.0018 
+32039,5 Muy Alto,Bajo,17.4438,0.0018 
+10039,4 Alto,Bajo,19.0898,0.0018 
+14035,4 Alto,Bajo,18.4066,0.0018 
+16027,5 Muy Alto,Medio,28.5691,0.0018 
+19032,2 Bajo,Muy bajo,13.0629,0.0018 
+19008,2 Bajo,Bajo,16.4353,0.0018 
+14021,3 Medio,Bajo,16.8707,0.0018 
+24015,2 Bajo,Medio,23.3752,0.0018 
+16004,4 Alto,Medio,24.4433,0.0018 
+20017,4 Alto,Muy alto,44.3418,0.0018 
+16105,4 Alto,Bajo,18.0065,0.0018 
+05033,2 Bajo,Bajo,17.4820,0.0018 
+32033,5 Muy Alto,Medio,21.6997,0.0017 
+14016,4 Alto,Medio,21.4879,0.0017 
+29014,4 Alto,Medio,22.8156,0.0017 
+30002,2 Bajo,Medio,26.4872,0.0017 
+05010,2 Bajo,Muy bajo,9.1528,0.0017 
+14026,5 Muy Alto,Medio,21.1562,0.0017 
+16089,3 Medio,Medio,22.0356,0.0017 
+11021,4 Alto,Muy bajo,12.6598,0.0017 
+10002,2 Bajo,Muy alto,45.8914,0.0017 
+14114,3 Medio,Bajo,15.3317,0.0017 
+14052,4 Alto,Medio,19.9237,0.0017 
+28018,2 Bajo,Bajo,16.9503,0.0017 
+15034,2 Bajo,Medio,24.1579,0.0017 
+30005,2 Bajo,Medio,30.2946,0.0017 
+14084,3 Medio,Medio,21.5530,0.0017 
+12027,5 Muy Alto,Muy alto,39.3689,0.0017 
+14119,4 Alto,Bajo,17.2649,0.0017 
+14109,5 Muy Alto,Medio,21.3833,0.0017 
+30136,1 Muy Bajo,Medio,21.6998,0.0017 
+19037,1 Muy Bajo,Bajo,19.7294,0.0017 
+30200,4 Alto,Alto,32.1423,0.0017 
+28030,1 Muy Bajo,Medio,19.9453,0.0017 
+10010,4 Alto,Medio,21.5052,0.0017 
+16079,4 Alto,Medio,25.8317,0.0017 
+14009,3 Medio,Muy bajo,13.0262,0.0017 
+26061,1 Muy Bajo,Bajo,18.9409,0.0017 
+14111,4 Alto,Bajo,17.5176,0.0017 
+21012,3 Medio,Medio,29.0505,0.0017 
+24021,4 Alto,Medio,27.7213,0.0017 
+15082,3 Medio,Medio,28.8770,0.0016 
+16054,5 Muy Alto,Medio,26.4228,0.0016 
+16042,4 Alto,Medio,24.3655,0.0016 
+11035,4 Alto,Medio,24.1158,0.0016 
+16028,4 Alto,Medio,19.9761,0.0016 
+19044,2 Bajo,Muy bajo,9.3916,0.0016 
+10034,2 Bajo,Muy alto,46.0959,0.0016 
+26038,2 Bajo,Muy bajo,11.6493,0.0016 
+14102,4 Alto,Bajo,19.0467,0.0016 
+14074,4 Alto,Bajo,13.6128,0.0016 
+20381,5 Muy Alto,Medio,26.1695,0.0016 
+21031,3 Medio,Alto,33.2806,0.0016 
+10012,2 Bajo,Muy bajo,12.2083,0.0016 
+30163,4 Alto,Alto,36.3852,0.0016 
+11026,4 Alto,Medio,24.5010,0.0016 
+22008,5 Muy Alto,Medio,24.9297,0.0016 
+05031,2 Bajo,Muy bajo,8.6199,0.0016 
+16041,4 Alto,Medio,26.9051,0.0016 
+16093,3 Medio,Medio,29.4854,0.0016 
+16037,5 Muy Alto,Medio,28.5798,0.0016 
+14032,4 Alto,Medio,26.2395,0.0016 
+14092,4 Alto,Medio,22.5209,0.0016 
+14005,3 Medio,Bajo,14.0738,0.0016 
+16033,3 Medio,Medio,24.5683,0.0016 
+14086,3 Medio,Medio,21.8144,0.0016 
+16109,4 Alto,Medio,22.4016,0.0016 
+14053,4 Alto,Bajo,16.0491,0.0015 
+30042,3 Medio,Alto,33.4645,0.0015 
+32004,4 Alto,Medio,21.7708,0.0015 
+30025,1 Muy Bajo,Muy alto,41.5809,0.0015 
+11023,4 Alto,Medio,24.0201,0.0015 
+14077,4 Alto,Bajo,15.5269,0.0015 
+30095,4 Alto,Alto,35.6139,0.0015 
+16038,4 Alto,Alto,32.3337,0.0015 
+24009,2 Bajo,Bajo,17.8046,0.0015 
+05019,2 Bajo,Muy bajo,10.4592,0.0015 
+16040,4 Alto,Medio,25.5438,0.0015 
+21009,4 Alto,Medio,29.6364,0.0015 
+16035,3 Medio,Alto,33.2207,0.0015 
+14048,4 Alto,Medio,22.3030,0.0015 
+08034,4 Alto,Bajo,19.1023,0.0015 
+29008,1 Muy Bajo,Medio,20.8173,0.0015 
+11001,4 Alto,Medio,25.6216,0.0015 
+24051,3 Medio,Medio,26.3413,0.0015 
+32057,4 Alto,Bajo,17.4411,0.0015 
+29011,3 Medio,Medio,20.6758,0.0015 
+14087,4 Alto,Medio,20.5513,0.0015 
+16104,5 Muy Alto,Medio,23.5297,0.0015 
+10015,4 Alto,Medio,22.2085,0.0015 
+14060,5 Muy Alto,Medio,20.9558,0.0015 
+14054,4 Alto,Bajo,17.4257,0.0015 
+24050,3 Medio,Medio,26.5192,0.0015 
+05023,2 Bajo,Medio,20.5205,0.0015 
+05007,2 Bajo,Bajo,17.3713,0.0015 
+30106,3 Medio,Medio,31.3843,0.0015 
+16098,4 Alto,Medio,26.6262,0.0015 
+26024,2 Bajo,Bajo,14.9108,0.0015 
+12003,4 Alto,Muy alto,46.4781,0.0015 
+32023,5 Muy Alto,Bajo,14.9354,0.0015 
+01010,4 Alto,Medio,20.0756,0.0015 
+14066,3 Medio,Bajo,18.8681,0.0015 
+19001,1 Muy Bajo,Bajo,15.0915,0.0015 
+14065,4 Alto,Medio,22.2790,0.0015 
+11027,3 Medio,Muy bajo,13.3292,0.0015 
+16034,4 Alto,Medio,24.0274,0.0015 
+14038,4 Alto,Medio,27.2333,0.0014 
+24017,3 Medio,Alto,37.3416,0.0014 
+14010,3 Medio,Medio,22.4176,0.0014 
+24030,5 Muy Alto,Medio,30.3038,0.0014 
+05015,3 Medio,Bajo,17.9373,0.0014 
+10008,4 Alto,Bajo,15.3885,0.0014 
+32053,5 Muy Alto,Medio,21.0877,0.0014 
+05014,3 Medio,Medio,24.6958,0.0014 
+19007,1 Muy Bajo,Medio,30.9494,0.0014 
+12067,4 Alto,Alto,32.3274,0.0014 
+14121,2 Bajo,Muy bajo,13.0357,0.0014 
+11029,5 Muy Alto,Medio,31.1434,0.0014 
+32008,3 Medio,Bajo,19.2722,0.0014 
+21179,2 Bajo,Medio,29.8535,0.0014 
+30179,4 Alto,Medio,28.9676,0.0014 
+14029,4 Alto,Medio,25.9194,0.0014 
+16046,4 Alto,Medio,28.2561,0.0014 
+25004,2 Bajo,Medio,24.0211,0.0014 
+14088,3 Medio,Bajo,16.6696,0.0014 
+15113,2 Bajo,Medio,25.9498,0.0014 
+05032,2 Bajo,Muy bajo,8.4677,0.0014 
+10003,5 Muy Alto,Medio,26.9225,0.0014 
+16013,4 Alto,Alto,38.0906,0.0014 
+11006,3 Medio,Alto,37.6833,0.0014 
+19014,3 Medio,Medio,30.3481,0.0014 
+16110,4 Alto,Medio,23.7022,0.0014 
+16080,3 Medio,Medio,27.9791,0.0014 
+16029,4 Alto,Muy alto,39.8864,0.0014 
+24022,4 Alto,Alto,33.5191,0.0014 
+19017,2 Bajo,Medio,26.2952,0.0014 
+05009,2 Bajo,Bajo,15.9815,0.0014 
+11008,5 Muy Alto,Medio,25.4094,0.0013 
+05006,2 Bajo,Muy bajo,11.2585,0.0013 
+15004,4 Alto,Medio,30.0328,0.0013 
+24043,5 Muy Alto,Medio,29.8530,0.0013 
+24052,5 Muy Alto,Medio,29.7856,0.0013 
+10004,3 Medio,Bajo,19.4975,0.0013 
+20004,4 Alto,Medio,26.8491,0.0013 
+21170,1 Muy Bajo,Medio,30.1853,0.0013 
+28016,2 Bajo,Medio,22.9243,0.0013 
+32047,4 Alto,Bajo,18.3712,0.0013 
+30001,1 Muy Bajo,Medio,29.7176,0.0013 
+11018,4 Alto,Bajo,18.3854,0.0013 
+10019,3 Medio,Muy alto,45.6396,0.0013 
+32050,4 Alto,Medio,19.9366,0.0013 
+14017,4 Alto,Medio,19.9269,0.0013 
+05024,1 Muy Bajo,Bajo,16.1815,0.0013 
+20567,4 Alto,Muy alto,44.0317,0.0013 
+30046,3 Medio,Alto,33.9913,0.0013 
+24032,4 Alto,Medio,29.6903,0.0013 
+15021,4 Alto,Medio,27.7388,0.0013 
+12022,3 Medio,Muy alto,43.7198,0.0013 
+14049,4 Alto,Medio,29.4615,0.0013 
+28043,2 Bajo,Bajo,19.0973,0.0013 
+26067,2 Bajo,Muy bajo,13.0837,0.0013 
+14068,5 Muy Alto,Medio,26.9665,0.0013 
+30009,2 Bajo,Medio,26.1424,0.0013 
+14024,4 Alto,Bajo,15.8631,0.0013 
+32006,3 Medio,Bajo,17.2210,0.0013 
+30132,1 Muy Bajo,Medio,27.3557,0.0013 
+16113,5 Muy Alto,Medio,22.7094,0.0013 
+10036,2 Bajo,Bajo,18.4053,0.0013 
+30146,2 Bajo,Alto,33.3113,0.0013 
+28005,3 Medio,Medio,25.7788,0.0013 
+14103,2 Bajo,Bajo,18.2055,0.0013 
+11016,5 Muy Alto,Medio,22.8942,0.0012 
+01004,3 Medio,Medio,20.3522,0.0012 
+05036,2 Bajo,Medio,21.7375,0.0012 
+15078,3 Medio,Medio,25.4098,0.0012 
+30007,3 Medio,Alto,32.9549,0.0012 
+11045,5 Muy Alto,Muy alto,39.4287,0.0012 
+28024,2 Bajo,Muy bajo,12.2364,0.0012 
+05004,2 Bajo,Bajo,19.5393,0.0012 
+14118,4 Alto,Bajo,17.1324,0.0012 
+32055,4 Alto,Bajo,18.9169,0.0012 
+11039,5 Muy Alto,Medio,23.0057,0.0012 
+16017,4 Alto,Medio,29.1343,0.0012 
+16063,5 Muy Alto,Medio,27.3912,0.0012 
+20321,3 Medio,Muy alto,42.2442,0.0012 
+26064,2 Bajo,Medio,21.1532,0.0012 
+05005,2 Bajo,Medio,20.3782,0.0012 
+14036,3 Medio,Muy bajo,12.4264,0.0012 
+21063,2 Bajo,Medio,25.3472,0.0012 
+26066,2 Bajo,Bajo,15.6912,0.0012 
+29004,2 Bajo,Medio,27.7559,0.0012 
+28026,2 Bajo,Alto,35.3192,0.0012 
+12049,4 Alto,Medio,27.3617,0.0012 
+16060,4 Alto,Medio,21.3372,0.0012 
+11012,5 Muy Alto,Medio,22.3018,0.0012 
+19043,1 Muy Bajo,Medio,28.8902,0.0012 
+24055,2 Bajo,Medio,27.6146,0.0012 
+01002,3 Medio,Medio,22.4450,0.0012 
+10024,4 Alto,Medio,21.5781,0.0012 
+32058,4 Alto,Medio,23.1321,0.0012 
+12064,4 Alto,Alto,34.8014,0.0012 
+10022,4 Alto,Bajo,18.6158,0.0012 
+26040,2 Bajo,Medio,21.8429,0.0011 
+14058,4 Alto,Bajo,14.5049,0.0011 
+14064,5 Muy Alto,Medio,22.9170,0.0011 
+30187,2 Bajo,Alto,35.5646,0.0011 
+14072,5 Muy Alto,Bajo,17.2749,0.0011 
+11013,5 Muy Alto,Medio,27.6796,0.0011 
+16072,5 Muy Alto,Medio,22.8746,0.0011 
+30148,2 Bajo,Medio,24.7903,0.0011 
+30012,2 Bajo,Medio,29.6516,0.0011 
+15119,4 Alto,Alto,33.4245,0.0011 
+16018,5 Muy Alto,Medio,24.8483,0.0011 
+11034,4 Alto,Medio,30.5608,0.0011 
+28006,3 Medio,Alto,37.3896,0.0011 
+15117,3 Medio,Muy alto,38.6587,0.0011 
+32042,4 Alto,Medio,19.9434,0.0011 
+16047,5 Muy Alto,Medio,27.4856,0.0011 
+16003,5 Muy Alto,Medio,22.0071,0.0011 
+20290,5 Muy Alto,Medio,31.7298,0.0011 
+25005,2 Bajo,Medio,27.9378,0.0011 
+14110,4 Alto,Bajo,14.1122,0.0011 
+11030,5 Muy Alto,Medio,29.0768,0.0011 
+16099,4 Alto,Muy alto,39.9311,0.0010 
+15116,2 Bajo,Medio,23.5473,0.0010 
+16048,5 Muy Alto,Medio,23.8650,0.0010 
+14095,4 Alto,Bajo,17.5821,0.0010 
+16067,5 Muy Alto,Medio,26.2466,0.0010 
+30043,4 Alto,Alto,36.2619,0.0010 
+24046,3 Medio,Medio,31.6280,0.0010 
+11019,5 Muy Alto,Medio,31.8605,0.0010 
+14089,4 Alto,Medio,20.0675,0.0010 
+10016,4 Alto,Medio,20.0629,0.0010 
+11038,4 Alto,Medio,21.2009,0.0010 
+11022,5 Muy Alto,Medio,28.2662,0.0010 
+29045,2 Bajo,Bajo,15.3038,0.0010 
+26034,1 Muy Bajo,Muy bajo,13.5051,0.0010 
+32029,4 Alto,Bajo,18.0694,0.0010 
+32036,4 Alto,Bajo,19.7066,0.0010 
+05017,2 Bajo,Bajo,14.0257,0.0010 
+12060,4 Alto,Alto,36.5255,0.0009 
+14069,4 Alto,Medio,30.6016,0.0009 
+24045,4 Alto,Medio,29.6123,0.0009 
+10021,3 Medio,Medio,21.2519,0.0009 
+32052,4 Alto,Bajo,19.1897,0.0009 
+12016,3 Medio,Muy alto,55.8989,0.0009 
+15097,3 Medio,Medio,30.0008,0.0009 
+28010,2 Bajo,Medio,25.0339,0.0009 
+14045,4 Alto,Medio,21.2558,0.0009 
+20563,4 Alto,Muy alto,47.6157,0.0009 
+30017,3 Medio,Medio,23.6940,0.0008 
+32001,5 Muy Alto,Medio,23.3648,0.0008 
+07055,1 Muy Bajo,Medio,28.5775,0.0008 
+14057,5 Muy Alto,Bajo,18.2702,0.0008 
+21096,2 Bajo,Medio,25.3665,0.0008 
+08053,3 Medio,Bajo,19.7185,0.0008 
+26031,2 Bajo,Bajo,17.3877,0.0008 
+24025,5 Muy Alto,Medio,25.3950,0.0008 
+14011,3 Medio,Medio,25.6302,0.0008 
+32043,5 Muy Alto,Medio,24.2940,0.0008 
+24001,4 Alto,Alto,32.6749,0.0008 
+05011,1 Muy Bajo,Medio,22.7909,0.0008 
+14003,4 Alto,Muy bajo,12.5426,0.0008 
+26015,3 Medio,Bajo,17.1073,0.0008 
+29046,3 Medio,Medio,27.4147,0.0008 
+14004,5 Muy Alto,Medio,19.7716,0.0008 
+32040,5 Muy Alto,Medio,25.2965,0.0008 
+28042,2 Bajo,Medio,26.3539,0.0008 
+32038,4 Alto,Medio,27.8202,0.0008 
+32009,5 Muy Alto,Medio,23.6708,0.0008 
+32007,2 Bajo,Bajo,16.3353,0.0008 
+16078,4 Alto,Medio,22.6232,0.0008 
+14117,5 Muy Alto,Medio,21.8062,0.0008 
+14056,4 Alto,Muy alto,42.3411,0.0008 
+10028,4 Alto,Medio,22.6969,0.0008 
+10037,3 Medio,Muy alto,38.3675,0.0008 
+16074,4 Alto,Medio,21.8908,0.0007 
+26037,1 Muy Bajo,Bajo,16.6519,0.0007 
+19051,2 Bajo,Bajo,16.6493,0.0007 
+05038,2 Bajo,Bajo,13.8059,0.0007 
+14105,4 Alto,Bajo,17.6294,0.0007 
+32026,2 Bajo,Medio,30.1200,0.0007 
+26057,2 Bajo,Bajo,18.1831,0.0007 
+15105,4 Alto,Alto,35.8129,0.0007 
+30166,3 Medio,Alto,32.1601,0.0007 
+26013,2 Bajo,Bajo,14.4509,0.0007 
+24004,3 Medio,Medio,30.1408,0.0007 
+05013,2 Bajo,Bajo,17.6481,0.0007 
+16057,4 Alto,Muy alto,41.5010,0.0007 
+15066,3 Medio,Medio,31.6413,0.0006 
+11036,5 Muy Alto,Medio,24.4014,0.0006 
+32015,4 Alto,Medio,27.4702,0.0006 
+20566,1 Muy Bajo,Muy alto,44.7394,0.0006 
+14062,5 Muy Alto,Medio,23.5934,0.0006 
+32035,3 Medio,Medio,26.4545,0.0006 
+20159,3 Medio,Muy alto,44.9571,0.0006 
+19003,2 Bajo,Bajo,19.1833,0.0006 
+26014,2 Bajo,Bajo,15.9274,0.0006 
+32054,4 Alto,Medio,26.4067,0.0006 
+12047,4 Alto,Muy alto,55.1196,0.0006 
+32014,5 Muy Alto,Medio,24.6733,0.0006 
+30156,1 Muy Bajo,Muy alto,39.0906,0.0006 
+19030,1 Muy Bajo,Medio,27.0118,0.0006 
+14081,4 Alto,Medio,24.7142,0.0005 
+19050,2 Bajo,Bajo,19.3546,0.0005 
+14080,4 Alto,Medio,24.0477,0.0005 
+10006,3 Medio,Medio,26.4581,0.0005 
+30139,2 Bajo,Medio,28.4689,0.0005 
+05021,2 Bajo,Bajo,16.5620,0.0005 
+10027,3 Medio,Medio,28.1722,0.0005 
+14123,4 Alto,Medio,22.3464,0.0005 
+15008,4 Alto,Alto,34.4165,0.0005 
+32018,5 Muy Alto,Medio,22.2189,0.0005 
+15123,5 Muy Alto,Alto,37.9944,0.0005 
+12073,3 Medio,Muy alto,45.9778,0.0004 
+24033,4 Alto,Medio,29.4509,0.0004 
+26001,2 Bajo,Bajo,16.7939,0.0004 
+24048,3 Medio,Medio,20.6151,0.0004 
+14079,3 Medio,Bajo,18.5890,0.0004 
+26045,3 Medio,Medio,21.3754,0.0004 
+07035,1 Muy Bajo,Alto,32.7269,0.0004 
+05008,3 Medio,Bajo,18.5180,0.0004 
+32041,1 Muy Bajo,Medio,29.6730,0.0003 
+26023,3 Medio,Muy bajo,13.1939,0.0003 
+26006,2 Bajo,Bajo,17.9913,0.0003 
+05026,2 Bajo,Bajo,16.4941,0.0003 
+14075,2 Bajo,Bajo,19.6480,0.0003 
+32002,5 Muy Alto,Medio,24.9099,0.0002 
+32021,4 Alto,Alto,34.1383,0.0002 
+10031,4 Alto,Medio,25.3945,0.0002 
+32012,3 Medio,Medio,24.8451,0.0001 
+05016,2 Bajo,Bajo,14.9664,0.0000 
+05029,1 Muy Bajo,Bajo,15.1339,0.0000 
+10029,5 Muy Alto,Medio,22.7424,0.0000 
+10030,5 Muy Alto,Medio,22.7882,0.0000 
+14028,5 Muy Alto,Medio,21.3760,0.0000 
+14034,4 Alto,Bajo,18.9123,0.0000 
+19023,3 Medio,Bajo,17.7910,0.0000 
+19027,2 Bajo,Bajo,19.3426,0.0000 
+19035,3 Medio,Bajo,14.2241,0.0000 
+19040,2 Bajo,Bajo,17.0695,0.0000 
+20047,2 Bajo,Medio,22.2930,0.0000 
+20093,2 Bajo,Medio,27.0928,0.0000 
+20160,4 Alto,Medio,29.0331,0.0000 
+20172,1 Muy Bajo,Medio,25.6252,0.0000 
+20186,5 Muy Alto,Alto,32.7062,0.0000 
+20341,2 Bajo,Medio,24.4984,0.0000 
+20479,0 Nulo,Alto,33.7121,0.0000 
+20524,3 Medio,Medio,30.7119,0.0000 
+21056,4 Alto,Medio,31.8297,0.0000 
+26008,1 Muy Bajo,Bajo,19.0549,0.0000 
+26011,3 Medio,Bajo,17.0079,0.0000 
+26028,3 Medio,Muy bajo,13.4190,0.0000 
+26032,3 Medio,Bajo,14.1454,0.0000 
+26050,2 Bajo,Bajo,19.2637,0.0000 
+26054,2 Bajo,Bajo,18.8501,0.0000 
+26062,1 Muy Bajo,Bajo,18.4745,0.0000 
+26063,2 Bajo,Bajo,17.7852,0.0000 
+26068,1 Muy Bajo,Bajo,15.9488,0.0000 
+28031,3 Medio,Medio,25.8183,0.0000 
+28036,1 Muy Bajo,Muy alto,39.6233,0.0000 
+32027,2 Bajo,Medio,29.0547,0.0000 
+32030,5 Muy Alto,Medio,20.0677,0.0000" 
