@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124194204) do
+ActiveRecord::Schema.define(version: 20180124202725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20180124194204) do
 
   create_table "displacements", force: true do |t|
     t.date     "date"
-    t.string   "type"
+    t.string   "type_of_displacement"
     t.string   "source"
     t.integer  "no_individuals"
     t.integer  "no_families"
