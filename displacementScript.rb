@@ -3,7 +3,41 @@ rails g model Displacement date:date type source no_individuals:integer no_famil
 dataArr=[]
 rawData.each_line{|l| line = l.split(","); dataArr.push(line)}
 dataArr.each{|x|x.each{|y|y.strip!}}
-dataArr.each{|x| id=Municipality.where(:clave_munici=>x[2]).last.id; Displacement.create(:date=>x[1], :type=>x[5], :source=>x[0], :no_individuals=>x[6], :no_families=>x[7], :municipality_id=>id, :localities=>x[3])}
+dataArr.each{|x| id=Municipality.where(:clave_munici=>x[2]).last.id; Displacement.create(:date=>x[1], :source=>x[0], :no_individuals=>x[6], :no_families=>x[7], :municipality_id=>id, :localities=>x[3])}
+
+dataArr=[]
+rawData.each_line{|l| line = l.split(","); dataArr.push(line)}
+dataArr.each{|x|x.each{|y|y.strip!}}
+dataArr.each{|x| target=Displacement.find(x[0]); target.update(:type_of_displacement=>x[1])}
+
+rawData="1,Violencia generada por GCO y Edo
+2,Violencia Política y Conflictividad Social
+3,Violencia generada por GCO y Edo
+4,Violencia generada por GCO y Edo
+5,Intolerancia Religiosa
+6,Violencia generada por GCO y Edo
+7,Intolerancia Religiosa
+8,Violencia Política y Conflictividad Social
+9,Violencia generada por GCO y Edo
+10,Violencia generada por GCO y Edo
+11,Violencia generada por GCO y Edo
+12,Violencia generada por GCO y Edo
+13,Violencia generada por GCO y Edo
+14,Violencia generada por GCO y Edo
+15,Violencia generada por GCO y Edo
+16,Violencia generada por GCO y Edo
+17,Violencia generada por GCO y Edo
+18,Violencia generada por GCO y Edo
+19,Violencia generada por GCO y Edo
+20,Violencia Política y Conflictividad Social
+21,MegaProyectos
+22,Violencia generada por GCO y Edo
+23,Violencia generada por GCO y Edo
+24,Violencia generada por GCO y Edo
+25,Violencia Política y Conflictividad Social
+26,Violencia generada por GCO y Edo
+27,Violencia Política y Conflictividad Social"
+
 
 rawData="http://bajopalabra.com.mx/piden-medidas-cautelares-para-indigenas-desplazados-por-crimen-en-guerrero#.V0iaxjXhAdU, 2016-02-17, 12028, , , Violencia generada por GCO y Edo, 500, 
 http://www.prensalibrechiapas.com/2014/index.php/secciones/portada/item/3465-exigen-retorno-seguro-para-familias-desplazadas-de-oxchuc, 2016-03-30, 07064,  ,  , Violencia Política y Conflictividad Social,  , 36

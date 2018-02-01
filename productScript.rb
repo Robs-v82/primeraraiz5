@@ -93,12 +93,26 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/9rZEz4peNbK/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/CpwNfaBumDt/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/sVjZmBPmW87/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/NXiz6WNxpJF/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/PuvHqf3vr8g/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/itT4hCLe57e/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/qBv5thJCK1u/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/5RHnshG9aPb/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/hzNCNivcj6q/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/jtkgLC7dHRG/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/zWyfG1Cbv2i/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/w6fuk4EN9t4/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/iArbvQAAQ4X/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
 }
 
 	thumbURL = "https://cdn-1.matterport.com/apifs/models/SVWJr3KhutQ/images/KvLeJohp3rv/06.08.2017_18.47.43.jpg?t=2-47dfab5d19e6d716afaef296814d58d7a8879dcf-1497652308-1";
+
+
+table = []
+(114..121).each{|x| myArr = []; target=Product.find(x); myArr.push(target.name); myArr.push(target.url); table.push(myArr)}
 
 
 urls = [
@@ -180,3 +194,16 @@ names = [
 x = Municipality.create(clave_estado: "23", clave_munici: "23009", munici: "Tulum")
 x = Municipality.create(clave_estado: "23", clave_munici: "23010", munici: "Bacalar")
 x = Municipality.create(clave_estado: "23", clave_munici: "23011", munici: "Puerto Morelos")
+
+
+
+
+
+Villanova, https://my.matterport.com/show/?m=NXiz6WNxpJF&lang=es
+Florentino Verona,https://my.matterport.com/show/?m=WtaNRKKp5hz&lang=es
+Génova Provenza, https://my.matterport.com/show/?m=PuvHqf3vr8g&lang=es
+Saboya Provenza, https://my.matterport.com/show/?m=itT4hCLe57e&lang=es
+Marbella Provenza,https://my.matterport.com/show/?m=qBv5thJCK1u&lang=es
+Torino Provenza, https://my.matterport.com/show/?m=5RHnshG9aPb&lang=es
+Bernini Provenza, https://my.matterport.com/show/?m=hzNCNivcj6q&lang=es
+Florentino Provenza,https://my.matterport.com/show/?m=jtkgLC7dHRG&lang=es
