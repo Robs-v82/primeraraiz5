@@ -53,6 +53,8 @@ gem "axlsx_rails"
 
 gem "gabba"
 
+gem 'xml-simple'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

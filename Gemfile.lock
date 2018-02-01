@@ -176,6 +176,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -205,6 +206,7 @@ DEPENDENCIES
   turbolinks
   typedjs-rails (~> 1.0.3)
   uglifier (>= 1.3.0)
+  xml-simple
 
 BUNDLED WITH
    1.11.2
