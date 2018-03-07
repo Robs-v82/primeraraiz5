@@ -74,9 +74,9 @@ class ProductsController < ApplicationController
 	def pharos
 		x = params[:id].to_i
 		if x == 1
-			target_product = 112
+			target_product = 1
 		else
-			target_product = 113
+			target_product = 1
 		end
 		product = Product.find(target_product)
 		session[:product_id] = product.id
