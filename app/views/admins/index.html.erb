@@ -11,6 +11,37 @@
 	    	$('#contact-error-modal').openModal()
 	    	$.get()
     	}
+
+  		// GET CLIENTS
+  		$('#package-institution-selector').change(function() {
+  			$('#package-client-selector').html('')
+  			$('#package-client-selector').removeAttr("disabled")
+  			$.post(
+  				'/packages/getClients',
+  				$(this).serialize(),
+  				function(data) {
+  					var clientOptions = "<option value='' disabled selected>Cliente</option>"
+  					for(i=0; i<data.clients.length; i++) {
+  						clientOptions += "<option value='"+data.clients[i].id+"'>"+data.clients[i].first_name+" "+data.clients[i].name+"</option>"
+  					}
+					$('#package-client-selector').append(clientOptions)				
+  				}
+  			)
+  			return false
+  		})
+
+  		// CHANGE SUBTOTAL
+  		$('.myQuote').change(function() {
+  			$.post(
+				'/packages/getSubtotal',
+				$('#quoteForm').serialize(),
+				function(data) {
+					var myText = '$'+data.subtotal+'.00 MN'
+				$('#quote-subtotal').text(myText)
+				}
+  			)
+  			return false
+  		})
 	})
 </script>
 <div id="admins" class="b-container">
@@ -18,6 +49,168 @@
 	</div>
 	<div class="row">
 		<div class="col l6 m6 s12">
+			<h5>Agregar cotización</h5>
+			<div class="basic-block row">
+				<form id="quoteForm" action="/packages" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<div class="input-field col s12">
+						<select id="package-institution-selector" class="admins-select browser-default" name="package[institution_id]">
+							<option value="" selected>Organización</option>
+							<% @institutions.each do |institution|%>
+								<option value="<%= institution.id %>"><%= institution.name%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s12">
+						<select id="package-client-selector" class="admins-select browser-default" disabled name="package[client_id]">
+							<option value="" disabled selected>Cliente*</option>
+						</select>
+					</div>
+					<div class="col s12">
+						<h6>Modelos</h6>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Completo 100</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[completo100]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Completo 200</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[completo200]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Completo 300</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[completo300]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Completo 400</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[completo400]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Completo 500</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[completo500]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Completo 1000</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[completo1000]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Básico 60</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[basico60]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Básico 60 x 2</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[basico60x2]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Básico 100</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[basico100]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="col s12">
+						<h6>Complementos</h6>
+					</div>
+					<div class="input-field col s4">
+						<p class="quoteLabel col s9">Toma 360</p>
+						<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[toma360]">
+							<option value="0" disabled selected>-</option>
+							<% @myNumbers.each do |number|%>
+								<option value="<%= number%>"><%=number%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s4">
+						<p class="quoteLabel col s9">Video</p>
+						<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[video]">
+							<option value="0" disabled selected>-</option>
+							<% @myNumbers.each do |number|%>
+								<option value="<%= number%>"><%=number%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s4">
+						<p class="quoteLabel col s9">Plano</p>
+						<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[plano]">
+							<option value="0" disabled selected>-</option>
+							<% @myNumbers.each do |number|%>
+								<option value="<%= number%>"><%=number%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s4">
+						<p class="quoteLabel col s9">Hosting</p>
+						<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[hosting]">
+							<option value="0" disabled selected>-</option>
+							<% @myNumbers.each do |number|%>
+								<option value="<%= number%>"><%=number%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s4">
+						<p class="quoteLabel col s9">Procesamiento</p>
+						<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[procesamiento]">
+							<option value="0" disabled selected>-</option>
+							<% @myNumbers.each do |number|%>
+								<option value="<%= number%>"><%=number%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="col s12">
+						<h6>Viáticos</h6>
+					</div>
+					<div class="col s12">
+						<div class="row">
+							<p class="quoteLabel col s9">Subtotal</p>
+							<div class="subtotal-box teal lighten-5 z-depth-2 col s3 valign-wrapper right-align">
+								<p id="quote-subtotal" class="valign right-align">-</p>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
 			<h5>Agregar contacto</h5>
 			<div class="basic-block row">
 				<form action="/contacts" method="post">

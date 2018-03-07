@@ -5,6 +5,10 @@ class AdminsController < ApplicationController
 	after_action :remove_product_message, only: [:index]
 
 	def index
+		
+		@myNumbers = (0..20)
+		@generalPrices = generalPrices
+
 		if current_agent
 			@institutions = Institution.all.order(:name)
 			@states = State.all

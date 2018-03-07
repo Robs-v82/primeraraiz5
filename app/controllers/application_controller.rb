@@ -183,5 +183,25 @@ class ApplicationController < ActionController::Base
 			@auth = session[:omniauth] if session[:omniauth]
 		end
 
-
+		def generalPrices
+			@generalPrices = [
+				{:item=>"completo100", :amount=>3300},
+				{:item=>"completo200", :amount=>4200},
+				{:item=>"completo300", :amount=>5100},
+				{:item=>"completo400", :amount=>6000},
+				{:item=>"completo500", :amount=>6900},
+				{:item=>"completo1000", :amount=>7800},
+				{:item=>"basico60", :amount=>3300},
+				{:item=>"basico60x2", :amount=>4800},
+				{:item=>"basico100", :amount=>4200},
+				{:item=>"toma360", :amount=>150},
+				{:item=>"video", :amount=>900},
+				{:item=>"plano", :amount=>1200},
+				{:item=>"hosting", :amount=>540},
+				{:item=>"procesamiento", :amount=>1200},
+				{:item=>"alimentos", :amount=>900},
+				{:item=>"hospedajeA", :amount=>1200},
+				{:item=>"hospedajeB", :amount=>1500},
+			]
+		end
 end

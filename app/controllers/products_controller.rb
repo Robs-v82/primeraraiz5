@@ -71,6 +71,25 @@ class ProductsController < ApplicationController
 		@target_color = product.institution.color
 	end
 
+	def pharos
+		x = params[:id].to_i
+		if x == 1
+			target_product = 112
+		else
+			target_product = 113
+		end
+		product = Product.find(target_product)
+		session[:product_id] = product.id
+		@institution = Institution.find(product.institution_id)
+		@name = product.name
+		@myUrl = product.url
+		@product_id = product.id.to_s
+		domain = "https://primeraraiz.com"
+		@thumb = domain+product.thumb.url
+		@target_color = product.institution.color
+	end
+
+
 
 	def lang
 		trackGA

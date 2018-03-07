@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124202725) do
+ActiveRecord::Schema.define(version: 20180201235343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,6 +270,38 @@ ActiveRecord::Schema.define(version: 20180124202725) do
 
   add_index "operations", ["municipality_id"], name: "index_operations_on_municipality_id", using: :btree
 
+  create_table "packages", force: true do |t|
+    t.string   "name"
+    t.integer  "contact_id"
+    t.integer  "municipality_id"
+    t.float    "total"
+    t.integer  "completo100"
+    t.integer  "completo200"
+    t.integer  "completo300"
+    t.integer  "completo400"
+    t.integer  "completo500"
+    t.integer  "completo1000"
+    t.integer  "basico60"
+    t.integer  "basico60x2"
+    t.integer  "basico100"
+    t.integer  "toma360"
+    t.integer  "video"
+    t.integer  "plano"
+    t.integer  "hosting"
+    t.integer  "procesamiento"
+    t.integer  "alimentos"
+    t.integer  "hospedajeA"
+    t.integer  "hospedajeB"
+    t.integer  "avion"
+    t.integer  "terrestre"
+    t.float    "descuento"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "packages", ["contact_id"], name: "index_packages_on_contact_id", using: :btree
+  add_index "packages", ["municipality_id"], name: "index_packages_on_municipality_id", using: :btree
+
   create_table "posts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -297,9 +329,11 @@ ActiveRecord::Schema.define(version: 20180124202725) do
     t.datetime "thumb_updated_at"
     t.integer  "institution_id"
     t.string   "name"
+    t.integer  "package_id"
   end
 
   add_index "products", ["institution_id"], name: "index_products_on_institution_id", using: :btree
+  add_index "products", ["package_id"], name: "index_products_on_package_id", using: :btree
 
   create_table "properties", force: true do |t|
     t.string   "street"
