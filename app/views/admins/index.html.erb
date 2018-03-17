@@ -93,7 +93,7 @@
 						<select id="operation-state-selector" class="admins-select browser-default" name="operation[clave_estado]">
 							<option value="" selected>Estado</option>
 							<% @myStates.each do |estado|%>
-								<option value="<%= estado.id %>"><%= estado.estado%></option>
+								<option value="<%= estado.clave_estado %>"><%= estado.estado%></option>
 							<% end %>
 						</select>
 					</div>
