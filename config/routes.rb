@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  post 'packages' => 'packages#create'
   post '/packages/getSubtotal' => 'packages#getSubtotal'
   get 'packages/create'
   post 'packages/getClients' => 'packages#getClients'

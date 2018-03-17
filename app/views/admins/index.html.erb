@@ -42,6 +42,25 @@
   			)
   			return false
   		})
+
+
+  		// GET STATE MUNICIPALITIES
+  		$('#operation-state-selector').change(function() {
+  			$('#state-municipality-selector').html('')
+  			$('#state-municipality-selector').removeAttr("disabled")
+  			$.post(
+  				'/events/getStateMunicipalities',
+  				$(this).serialize(),
+  				function(data) {
+  					var municipalityOptions = "<option value='' disabled selected>Municipio</option>"
+  					for(i=0; i<data.municipalities.length; i++) {
+  						municipalityOptions += "<option value='"+data.municipalities[i].id+"'>"+data.municipalities[i].munici+"</option>"
+  					}
+					$('#state-municipality-selector').append(municipalityOptions)				
+  				}
+  			)
+  			return false
+  		})
 	})
 </script>
 <div id="admins" class="b-container">
@@ -62,8 +81,25 @@
 						</select>
 					</div>
 					<div class="input-field col s12">
-						<select id="package-client-selector" class="admins-select browser-default" disabled name="package[client_id]">
+						<select id="package-client-selector" class="admins-select browser-default" disabled name="package[contact_id]">
 							<option value="" disabled selected>Cliente*</option>
+						</select>
+					</div>
+					<div class="input-field col s12" >
+						<input class="with-gap valign" name="package[taxPayer]" value="true" type="radio" id="tax-payer-radio">
+						<label for="tax-payer-radio" class="valign">Factura como persona física</label>
+					</div>
+					<div class="input-field col s6">
+						<select id="operation-state-selector" class="admins-select browser-default" name="operation[clave_estado]">
+							<option value="" selected>Estado</option>
+							<% @myStates.each do |estado|%>
+								<option value="<%= estado.id %>"><%= estado.estado%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s6">
+						<select id="state-municipality-selector" disabled class="admins-select browser-default" name="package[municipality_id]">
+							<option value="" disabled selected>Municipio*</option>
 						</select>
 					</div>
 					<div class="col s12">
@@ -199,8 +235,66 @@
 						</select>
 					</div>
 					<div class="col s12">
+						<h6>Descuento</h6>
+					</div>
+					<div class="input-field col s6">
+						<p class="quoteLabel col s6">Descuento</p>
+						<select class="myQuote admins-select browser-default col s6" name="package[descuento]">
+							<option value="0.0" disabled selected>-</option>
+							<% @discountNumbers.each do |number|%>
+								<option value="<%= number[1]%>"><%=number[0]%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="col s12">
 						<h6>Viáticos</h6>
 					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Alimentos</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[alimentos]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Hospedaje</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[hospedajeA]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s4">
+							<p class="quoteLabel col s9">Hospedaje (Cancún - Los Cabos)</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s3" name="package[hospedajeB]">
+								<option value="0" disabled selected>-</option>
+								<% @myNumbers.each do |number|%>
+									<option value="<%= number%>"><%=number%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s6">
+							<p class="quoteLabel col s6">Avion</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s6" name="package[avion]">
+								<option value="0" disabled selected>-</option>
+								<% (0..44).each do |number|%>
+									<option value="<%= @planeIntegers[number]%>"><%="$"+@planeNumbers[number]+" MN"%></option>
+								<% end %>
+							</select>
+					</div>
+					<div class="input-field col s6">
+							<p class="quoteLabel col s6">Transportación terrestre</p>
+							<select id="model100-selector" class="myQuote admins-select browser-default col s6" name="package[terrestre]">
+								<option value="0" disabled selected>-</option>
+								<% (0..19).each do |number|%>
+									<option value="<%= @landIntegers[number]%>"><%="$"+@landNumbers[number]+" MN"%></option>
+								<% end %>
+							</select>
+					</div>
+
 					<div class="col s12">
 						<div class="row">
 							<p class="quoteLabel col s9">Subtotal</p>
@@ -209,6 +303,7 @@
 							</div>
 						</div>
 					</div>
+					<button class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 				</form>
 			</div>
 			<h5>Agregar contacto</h5>
@@ -464,6 +559,37 @@
 				<p class="flow-text">Error fatal</p>
 				<ul>
 					<% @product_errors.each do |error| %>
+						<li><%=error%></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+<% end%>
+<% if @quote_success %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Cotización enviada a ...</p>
+			</div>
+		</div>
+	</div>
+<% end %>
+<% if @quote_errors %>
+	<div id="contact-success-modal" class="modal">
+		<div id="final-header" class="modal-content">
+			<img src="/assets/logo_original.png" class="z-depth-1" width="24px" height="24px">
+			<p class="primera">primera<span class="raiz">Raíz</span></p>
+		</div>
+		<div class="modal-content">
+			<div class="b-container">
+				<p class="flow-text">Error fatal</p>
+				<ul>
+					<% @quote_errors.each do |error| %>
 						<li><%=error%></li>
 					<% end %>
 				</ul>

@@ -94,4 +94,10 @@ class UserMailer < ActionMailer::Base
 		mail(to: user.email, cc: 'roberto@primeraraiz.com', subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
 	end
 
+	def quote_email(contact)
+		@name = contact.first_name
+		@greeting = greeting
+		mail(to: contact.email, cc: 'irma@primeraraiz.com', reply_to: 'contacto@primeraraiz.com', subject: 'Cotización Primera Raíz')
+	end
+
 end

@@ -117,10 +117,27 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/9ZJB7Ykv8CD/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/eLsa1aZb9MZ/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/aCwRuMTeZFN/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/KZPREjtXy8R/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/xrwyjUNwPBW/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/eSEvmd3KkMN/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/FCghnJjjr3L/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/RViv9c2FFzY/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/h6prkC7DXSc/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/URRNaSxp9on/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/K8gYv3973By/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/LG9oKBFU3EG/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/3byyqFc2U25/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/dJ2Q2KHGVvk/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/8pk1asusfBa/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/8pk1asusfBa/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/WA18W7Kcyty/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/tZ1F4PChrBK/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
 }
+
+"BBVA/322665-45"
 
 	thumbURL = "https://cdn-1.matterport.com/apifs/models/SVWJr3KhutQ/images/KvLeJohp3rv/06.08.2017_18.47.43.jpg?t=2-47dfab5d19e6d716afaef296814d58d7a8879dcf-1497652308-1";
 

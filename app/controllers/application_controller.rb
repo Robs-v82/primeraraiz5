@@ -141,6 +141,15 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def remove_quote_message
+		if session[:new_quote]
+			session[:new_quote] = nil
+		end
+		if session[:quote_errors]
+			session[:quote_errors] = nil
+		end
+	end
+
 	def remove_event_destroyed_message
 		if session[:destroyed_event] 
 			session[:destroyed_event] = nil
@@ -202,6 +211,8 @@ class ApplicationController < ActionController::Base
 				{:item=>"alimentos", :amount=>900},
 				{:item=>"hospedajeA", :amount=>1200},
 				{:item=>"hospedajeB", :amount=>1500},
+				{:item=>"avion", :amount=>1},
+				{:item=>"terrestre", :amount=>1}
 			]
 		end
 end
