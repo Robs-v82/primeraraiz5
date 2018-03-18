@@ -1,24 +1,53 @@
-<!DOCTYPE html>
-<html>
 <head>
-	<title></title>
+	<style type="text/css">
+		body {width:600px; background-color:white;}
+		* {font:15px roboto, sans-serif; color:#424242; text-align: justify;}
+		a {font-weight:600; color:#64dd17; text-decoration: none}
+		#company_image {max-height: 60px}
+	</style>
 </head>
-	<body>
-		<div class="logo">
-			<%= image_tag 'logo.png', :width => '32', :height => '32' %>
-			<h5 class="brand">primera<span class="keyword-green">Raíz</span></h5>
-		</div>
-		<div>
-			<h5><%= @greeting%> <%= @name%>,</h5>
-		</div>
-		<br>
-		<p>
-			Envío adjunta la cotización solicitada. En la cotización se mencionan aspectos del servicio que es muy importante tomes en consideración. En caso de contar con tu viso el siguiente paso será que nos proporciones tus datos de facturación y agendar fecha para la sesión fotográfica.
-		</p>
-		<p>
-			Irma Ramírez le dará seguimiento a la presente cotización. Por favor, no dudes en contáctarnos por este medio, o al <a href="tel:5576691210">(044) 55 7669 1210</a>, para cualquier aclaración. 
-		</p>
-		<p>
-		</p>
-	</body>
-</html>
+<body>
+	<p><%= @greeting%> <%= @name%>,</p>
+	<p>Muchas gracias por tu interés en nuestros servicio. Envío adjunta la cotización solicitada. En la cotización se mencionan aspectos del servicio que es muy importante tomes en consideración. En caso de contar con tu visto bueno los siguientes pasos serían que nos proporcionaras tus datos de facturación y agendar fecha para la sesión fotográfica.</p>
+	<p>Irma Ramírez le dará seguimiento a la presente cotización. Por favor, no dudes en contáctarnos por este medio —o al <a href="tel:5576691210">(044) 55 7669 1210</a>— para cualquier aclaración.</p>
+	<p>Saludos cordiales,</p>
+	<br>
+	<div style="height:280px; vertical-align:top">
+		<table id="signature" style="display:inline-block; vertical-align:top">
+			<tbody>
+				<tr>
+					<td style="width:36px;margin:20px;padding:0px 5px 10px !important;vertical-align:top">
+						<img src="https://primeraraiz.com/assets/original_logo.png" class="z-depth-0 valign" height="34px" style="box-shadow: 4px 3px 3px #888888">
+					</td>
+					<td style="width:180pxc;font-size:15px;padding:0px 5px 10px !important">
+						<span style="font-weight:600">
+							Roberto Valladares Piedras
+						</span>
+						<br>
+						Socio Director
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0px 5px 10px !important"></td>
+					<td style="padding:0px 5px 10px !important">
+						
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0px 5px 10px !important"></td>
+					<td style="padding:0px 5px 10px !important">
+						Río Niágara 38, Colonia Cuauhtémoc,
+						<br>
+						Ciudad de México, C.P. 06500.
+					</td>
+				</tr>
+				<tr style="color:#bdbdbd">
+					<td style="padding:10px 5px 10px !important"></td>
+					<td class="valign-wrapper" style="padding:10px 5px 10px !important;">
+						<a class="valign" href="https://primeraraiz.com" style="font-weight:600;color:#bdbdbd;font-size:15px">primeraraiz.com</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
