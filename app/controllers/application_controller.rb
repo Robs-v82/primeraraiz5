@@ -170,6 +170,12 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def number_in_pesos(number)
+		myString = number_with_delimiter(number)
+		myString = "$"+myString+".00 MN"
+		return myString
+	end
+
 
 	private
 

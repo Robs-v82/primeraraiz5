@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
 	end
 
 	def greeting
-		current_time = Time.zone.now.to_i
+		current_time = Time.now.to_i-14400
 		midnight = Time.now.beginning_of_day.to_i
 		noon = Time.now.middle_of_day.to_i
 		five_pm = Time.now.change(:hour => 17 ).to_i
@@ -94,10 +94,13 @@ class UserMailer < ActionMailer::Base
 		mail(to: user.email, cc: 'roberto@primeraraiz.com', subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
 	end
 
-	def quote_email(contact)
+	def quote_email(contact, filename)
 		@name = contact.first_name
 		@greeting = greeting
-		mail(to: contact.email, cc: 'irma@primeraraiz.com', reply_to: 'contacto@primeraraiz.com', subject: 'Cotización Primera Raíz')
+		attachments[filename+".pdf"] = File.read('Quotes/'+filename+'.pdf')
+		mail(to: contact.email, cc: 'irma@primeraraiz.com', reply_to: 'contacto@primeraraiz.com', subject: 'Cotización Primera Raíz: '+filename)
 	end
+
+
 
 end

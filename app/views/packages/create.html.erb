@@ -1,2 +1,257 @@
-<h1>Packages#create</h1>
-<p>Find me in app/views/packages/create.html.erb</p>
+<head>
+	<meta name="@fileName">
+	<style type="text/css">
+		p {
+			margin: 6px 0px;
+		}
+
+		body {width:600px; background-color:white;}
+		* {font: 12px roboto, sans-serif; color:#424242; text-align: justify;}
+		a {font-weight:600; color:#64dd17; text-decoration: none}
+		th {
+			font-weight: 600;
+		}
+		td, th {
+			padding: 1px;
+		}
+		td {
+		}
+		#quote-table tr, #specification-table tr {
+			border: 1px solid #424242;
+		}
+
+		#quote-total td {
+			font-weight: 600 !important;
+			background-color: #eeeeee !important
+		}
+		#quote-table{
+			background-color: #fafafa;
+		}
+		#quote-table th {
+			font-size: 12px !important;
+		}
+		#specification-table {
+			width: 450px;
+			background-color: #eeeeee;
+		}
+		#specification-table td, #specification-table th{
+			font-size: 10px !important;
+			padding: 1px !important;
+		}
+		#tax_message {
+			margin-top: 0;
+		}
+		.quote-highligth {
+			text-decoration: underline;
+		}
+
+		#bank-table {
+			width: 340px;
+		}
+
+		#bank-table td{
+			padding: 1px;
+		}
+
+	</style>
+</head>
+<body>
+	<div style="margin-bottom: 14px">
+		<img src="https://primeraraiz.com/assets/dark_original_logo.png" class="z-depth-0 valign" height="24px" style="display: inline">
+		<div style="display: inline; font-size: 24px; color: #64dd17; margin-left: 2px">primera<span style="font-size: 24px; color: #64dd17">Raíz</span></div>
+	</div>
+	<p style="float:right; margin-top:0; padding-top:0"><%=@dateString%></p>
+	<p>Estimado(a) <%=@contact.first_name%> <%=@contact.name%>,</p>
+	<% if @multiple_models %>
+		<p>En atención a su solicitud hago de su conocimiento la cotización para la realización de <%=@number_of_models%> recorridos
+			<% if @munici %>
+				 virtuales para inmuebles ubicados en <%=@munici%>, <%=@estado%>:
+			<% else %>
+			virtuales:
+			<% end %>
+		</p>
+	<% else %>
+		<p>En atención a su solicitud hago de su conocimiento la cotización para la realización de un tour
+			<% if @munici %>
+				virtual para un inmueble ubicado en <%=@munici%>, <%=@estado%>:
+			<% else %>
+				vitual:
+			<% end %>
+	<% end %>
+	<table id="quote-table" class="z-depth-0" style="width:100% !important; box-shadow: 4px 3px 3px #888888">
+		<thead >
+			<tr style="background-color: #b2ff59">
+				<th style="text-align: center; font-weight: bold">CONCEPTO</th>
+				<th style="text-align: center; font-weight: bold">PRECIO UNITARIO</th>
+				<th style="text-align: center; font-weight: bold">CANTINDAD</th>
+				<th style="text-align: center; font-weight: bold">IMPORTE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if @paquete%>
+				<tr>
+					<% if @multiple_models %>
+						<td>Paquete <%=@number_of_models%> modelos (incluye viaticos)</td>
+					<%else%>
+						<td>Paquete tour virtual (incluye viáticos)</td>	
+					<%end%>
+					<td><%= @paquete%></td>
+					<td>1</td>
+					<td style="text-align: right"><%= @paquete%></td>
+				</tr>
+			<% end %>
+			<% if @tableArr%>
+				<% @tableArr.each do |item|%>
+					<tr>
+						<td><%=item["item"]%></td>
+						<td><%=item["price"]%></td>
+						<td><%=item["quant"]%></td>
+						<td style="text-align: right"><%=item["amount"]%></td>
+					</tr>
+				<% end %>
+			<% end %>
+			<% if @discountLine %>
+				<tr>
+					<td><%=@discountLine["item"]%></td>
+					<td><%=@discountLine["price"]%></td>
+					<td><%=@discountLine["quant"]%></td>
+					<td style="text-align: right; color: #d50000"><%=@discountLine["amount"]%></td>
+				</tr>
+			<% end %>
+			<% if @travelExpenses %>
+				<tr>
+					<td>Transportación y viáticos</td>
+					<td><%= @travelExpenses%></td>
+					<td>1</td>
+					<td style="text-align: right"><%= @travelExpenses%></td>
+				</tr>
+			<% end %>
+			<% @charges.each do |charge|%>
+				<tr>
+					<td><%=charge["item"]%></td>
+					<td></td>
+					<td></td>
+					<td style="text-align: right"><%=charge["amount"]%></td>
+				</tr>
+			<% end %>
+			<% @finalCharges.each do |charge|%>
+				<tr id="quote-total">
+					<td><%=charge["item"]%></td>
+					<td></td>
+					<td></td>
+					<td style="text-align: right"><%=charge["amount"]%></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div style="width:100% !important; display:block">
+		<p id="tax_message" style="float:right; display:block !important; margin-left: 160px"><%=@message%></p>
+		<p style="display:block !important"><span class="quote-highligth">Hospedaje en línea</span>: La presente cotización incluye el hospedaje en línea por un año. Posteriormente el hospedaje tendrá un costo anual de 30 dólares por modelo.
+		</p>
+	</div>
+	<p><span class="quote-highligth">Sesión fotográfica</span>: Cada inmueble deberá estar tal y como aparecerá en el recorrido virtual en el horario acordado y permanecer cerrado al público (ver los tiempos señalados en la tabla de especifícaciones). Es importante que ventanas y domos cuenten con persianas u otros elementos que permitan obstruir la luz solar.</p>
+	<p><span class="quote-highligth">Vistas 360</span>: Cada modelo incluye "vistas 360" de exteriores o áreas comunes (ver tabla de especificaciones).</p>
+	<p>TABLA DE ESPECIFICACIONES</p>	
+	<table id="specification-table" style="box-shadow: 4px 3px 3px #888888">
+		<thead>
+			<tr>
+				<th style="text-align: center">MODELO</th>
+				<th style="text-align: center">DIMENSIONES</th>
+				<th style="text-align: center">SESIÓN FOTOGRÁFICA</th>
+				<th style="text-align: center">VISTAS 360</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Modelo 100</td>
+				<td style="text-align: center">0 a 100m<span>2</span></td>
+				<td style="text-align: center">2 horas</td>
+				<td style="text-align: center">6</td>
+			</tr>
+			<tr>
+				<td>Modelo 200</td>
+				<td style="text-align: center">100 a 200m<span>2</span></td>
+				<td style="text-align: center">3 horas</td>
+				<td style="text-align: center">6</td>
+			</tr>
+			<tr>
+				<td>Modelo 300</td>
+				<td style="text-align: center">200 a 300m<span>2</span></td>
+				<td style="text-align: center">3 horas</td>
+				<td style="text-align: center">8</td>
+			</tr>
+			<tr>
+				<td>Modelo 400</td>
+				<td style="text-align: center">300 a 400m<span>2</span></td>
+				<td style="text-align: center">4 horas</td>
+				<td style="text-align: center">8</td>
+			</tr>
+			<tr>
+				<td>Modelo 500</td>
+				<td style="text-align: center">400 a 500m<span>2</span></td>
+				<td style="text-align: center">4 horas</td>
+				<td style="text-align: center">10</td>
+			</tr>
+			<tr>
+				<td>Modelo 1000</td>
+				<td style="text-align: center">500 a 1000m<span>2</span></td>
+				<td style="text-align: center">8 horas</td>
+				<td style="text-align: center">12</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<p><span class="quote-highligth">Pago</span>: Para la realización de la sesión fotográfica es necesario que se realice transferencia por el 50% del total (<%=@deposit%>) a la siguiente cuenta bancaria (el saldo deberá liquidarse contra entrega).</p>
+	<table id="bank-table">
+		<tbody>
+			<tr>
+				<td>Beneficiario:</td>
+				<td>Roberto Valladares Piedras</td>
+			</tr>
+			<tr>
+				<td>Banco:</td>
+				<td>BBVA Bancomer</td>
+			</tr>
+			<tr>
+				<td>Cuenta:</td>
+				<td>2687707681</td>
+			</tr>
+			<tr>
+				<td>Clabe:</td>
+				<td>012180026877076816</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<p>Atentamente,</p>
+	<table id="signature" style="display:inline-block; vertical-align:top">
+			<tbody>
+				<tr>
+					<td style="width:28px;margin:20px;padding:0px 5px 10px !important;vertical-align:top">
+						<img src="https://primeraraiz.com/assets/dark_original_logo.png" class="z-depth-0 valign" height="26px" style="box-shadow: 4px 3px 3px #888888">
+					</td>
+					<td style="width:180pxc;font-size:12px;padding:0px 5px 0px !important">
+						<span style="font-weight:600">
+							Roberto Valladares Piedras
+						</span>
+						<br>
+						Socio Director
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td style="font-size:12px;padding:0px 5px 0px !important">
+						Río Niágara 38, Colonia Cuauhtémoc,
+						<br>
+						Ciudad de México, C.P. 06500.
+					</td>
+				</tr>
+				<tr style="color:#bdbdbd">
+					<td style="padding:10px 5px 10px !important"></td>
+					<td class="valign-wrapper" style="padding:0px 5px 0px !important;">
+						<a class="valign" href="https://primeraraiz.com" style="font-weight:600;color:#bdbdbd;font-size:15px">primeraraiz.com</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</body>

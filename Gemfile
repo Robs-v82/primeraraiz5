@@ -55,6 +55,12 @@ gem "gabba"
 
 gem 'xml-simple'
 
+gem 'pdfkit'
+
+gem 'wkhtmltopdf-binary', '~> 0.12.3.1'
+
+# gem 'wkhtmltopdf-binary'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
