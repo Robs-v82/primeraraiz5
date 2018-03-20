@@ -130,7 +130,7 @@ class PackagesController < ApplicationController
     html = render_to_string(:layout => "/myQuote", :layout => false)
     puts html
     kit = PDFKit.new(html)
-    session[:kit] = kit.to_file('/var/www/primeraraiz5/Quotes/'+session[:fileName]+'.pdf') 
+    session[:kit] = kit.to_file('/assets/'+session[:fileName]+'.pdf') 
     UserMailer.quote_email(target_contact, session[:fileName]).deliver
   end
 

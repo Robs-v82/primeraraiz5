@@ -97,7 +97,7 @@ class UserMailer < ActionMailer::Base
 	def quote_email(contact, filename)
 		@name = contact.first_name
 		@greeting = greeting
-		attachments[filename+".pdf"] = File.read('/var/www/primeraraiz5/Quotes/'+filename+'.pdf')
+		attachments[filename+".pdf"] = File.read('/assets/'+filename+'.pdf')
 		mail(to: contact.email, cc: 'irma@primeraraiz.com', reply_to: 'contacto@primeraraiz.com', subject: 'Cotización Primera Raíz: '+filename)
 	end
 
