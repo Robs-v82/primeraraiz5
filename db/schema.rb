@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201235343) do
+ActiveRecord::Schema.define(version: 20180321004735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -297,6 +297,10 @@ ActiveRecord::Schema.define(version: 20180201235343) do
     t.float    "descuento"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "docs_file_name"
+    t.string   "docs_content_type"
+    t.integer  "docs_file_size"
+    t.datetime "docs_updated_at"
   end
 
   add_index "packages", ["contact_id"], name: "index_packages_on_contact_id", using: :btree
