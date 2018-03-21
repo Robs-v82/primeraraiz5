@@ -132,8 +132,8 @@ class PackagesController < ApplicationController
     kit = PDFKit.new(html)
     FileUtils.makedirs('Quotes/'+session[:fileName]+'.pdf')
     myFile = kit.to_file('Quotes/'+session[:fileName]+'.pdf')
-    myPackage = Package.last
-    myPackage.update(:docs=>myFile)
+    # myPackage = Package.last
+    # myPackage.update(:docs=>myFile)
     UserMailer.quote_email(target_contact, session[:fileName]).deliver
   end
 
