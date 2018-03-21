@@ -132,9 +132,15 @@ class PackagesController < ApplicationController
     kit = PDFKit.new(html)
     # FileUtils.makedirs('Quotes/'+session[:fileName]+'.pdf')
     # Dir.chdir(Rails.root)
+    unless File.directory?('Quotes/')
+      Dir.mkdir('Quotes/')
+    end
     puts 'XXxx'*100
+    # Tempfile.new([session[:fileName], '.pdf'], location) do |file|
+    #   file.write(kit)
+    # end
     myPackage = Package.last
-    myPackage.update(:docs=>kit.to_file(session[:fileName]+'.pdf'))
+    myPackage.update(:docs=>kit.to_file('Quotes/'+session[:fileName]+'.pdf'))
     # UserMailer.quote_email(target_contact, session[:fileName]).deliver
   end
 
