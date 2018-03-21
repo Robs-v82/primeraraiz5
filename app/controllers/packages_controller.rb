@@ -130,7 +130,8 @@ class PackagesController < ApplicationController
     html = render_to_string(:layout => "/myQuote", :layout => false)
     puts html
     kit = PDFKit.new(html)
-    kit = kit.to_file('https://primeraraiz.com/assets/'+session[:fileName]+'.pdf')
+    FileUtils.makedirs('Quotes/'+session[:fileName]+'.pdf')
+    kit = kit.to_file('Quotes/'+session[:fileName]+'.pdf')
     myPackage = Package.last
     myPackage.update(:docs=>kit)
     myFile = myPackage.docs
