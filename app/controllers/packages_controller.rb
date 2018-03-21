@@ -132,9 +132,9 @@ class PackagesController < ApplicationController
     kit = PDFKit.new(html)
     # FileUtils.makedirs('Quotes/'+session[:fileName]+'.pdf')
     # Dir.chdir(Rails.root)
-    myFile = kit.to_file(session[:fileName]+'.pdf')
+    puts 'XXxx'*100
     myPackage = Package.last
-    myPackage.update(:docs=>myFile)
+    myPackage.update(:docs=>kit.to_file(session[:fileName]+'.pdf'))
     # UserMailer.quote_email(target_contact, session[:fileName]).deliver
   end
 
