@@ -132,6 +132,10 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/8pk1asusfBa/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/WA18W7Kcyty/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/tZ1F4PChrBK/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/wCJtc5k2ewq/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/Y5CPPihiNLB/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/EMWu5yHYXt8/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/9icLjjCWYBe/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save

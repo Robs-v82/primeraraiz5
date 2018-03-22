@@ -130,6 +130,7 @@ class PackagesController < ApplicationController
     html = render_to_string(:layout => "/myQuote", :layout => false)
     puts html
     kit = PDFKit.new(html)
+    myFile = kit.to_file('system/'+session[:fileName]+'.pdf')
     # FileUtils.makedirs('Quotes/'+session[:fileName]+'.pdf')
     # Dir.chdir(Rails.root)
     # unless File.directory?('Quotes/')
