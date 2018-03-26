@@ -127,14 +127,21 @@ class PackagesController < ApplicationController
 
     @total = session[:total]
     # CREATE PDF
-    html = render_to_string(:layout => "/myQuote", :layout => false)
-    puts html
-    kit = PDFKit.new(html)
-    fileName = session[:fileName]+'.pdf'
-    unless File.exist?(File.dirname(fileName))
-      FileUtils.mkdir_p(File.dirname(fileName))
+
+    PDFKit.configure do |config|
+      config.default_options[:load_error_handling] = 'ignore'
     end
-    myFile = kit.to_file('system/'+session[:fileName]+'.pdf')
+
+    html = render_to_string(:layout => "packages", :layout => false)  
+    kit = PDFKit.new(html)
+    myFile = kit.to_file('Quotes/'+session[:fileName]+'.pdf')
+    # respond_to do |format|
+    #   format.pdf
+    #   # format.html
+    #   # format.pdf do
+    #   #   render :pdf { render :text => PDFKit.new( html ).to_pdf }
+    #   # end
+    # end
     # FileUtils.makedirs('Quotes/'+session[:fileName]+'.pdf')
     # Dir.chdir(Rails.root)
     # unless File.directory?('Quotes/')
@@ -146,7 +153,7 @@ class PackagesController < ApplicationController
     # end
     # myPackage = Package.last
     # myPackage.update(:docs=>kit.to_file('Quotes/'+session[:fileName]+'.pdf'))
-    # UserMailer.quote_email(target_contact, session[:fileName]).deliver
+    UserMailer.quote_email(target_contact, session[:fileName]).deliver
   end
 
   def myQuote
