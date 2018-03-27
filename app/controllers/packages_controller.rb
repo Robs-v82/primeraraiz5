@@ -14,9 +14,17 @@ class PackagesController < ApplicationController
 
   def create
     package_info = package_params
+    session[:copies] = nil
+    puts "XX"*100
+    puts package_info[:copies]
+    unless package_info[:copies].nil?
+      session[:copies] = package_info[:copies]
+      package_info.delete("copies")
+    end
     package_info.store("total", session[:total])
     personal_payer = package_info[:taxPayer]
     package_info.delete("taxPayer")
+
     @contact = Contact.find(package_info[:contact_id])
     unless @contact.institution.nil?
       package_name = @contact.institution.name
@@ -36,6 +44,11 @@ class PackagesController < ApplicationController
     end
     target = Package.last.contact_id
     target_contact = Contact.find(target)
+    unless session[:copies].nil?
+      myEmails = target_contact.email + "," + session[:copies]
+    else  
+      myEmails = target_contact.email
+    end
     @dateString = I18n.l(Time.now, :format => "%e de %B de %Y")
     @number_of_models = package_info[:completo100].to_i+package_info[:completo200].to_i+package_info[:completo300].to_i+package_info[:completo400].to_i+package_info[:completo500].to_i+package_info[:completo1000].to_i+package_info[:basico60].to_i+package_info[:basico100].to_i+package_info[:basico60x2].to_i+package_info[:basico60x2].to_i
     @multiple_models = false
@@ -151,9 +164,10 @@ class PackagesController < ApplicationController
     # Tempfile.new([session[:fileName], '.pdf'], location) do |file|
     #   file.write(kit)
     # end
-    # myPackage = Package.last
-    # myPackage.update(:docs=>kit.to_file('Quotes/'+session[:fileName]+'.pdf'))
-    UserMailer.quote_email(target_contact, session[:fileName]).deliver
+    
+    myPackage = Package.last
+    myPackage.update(:docs=>kit.to_file('Quotes/'+session[:fileName]+'.pdf'))
+    UserMailer.quote_email(target_contact, myEmails, session[:fileName]).deliver
   end
 
   def myQuote
@@ -202,7 +216,7 @@ class PackagesController < ApplicationController
   private
 
   def package_params
-    params.require(:package).permit(:completo100, :completo200, :completo300, :completo400, :completo500, :completo1000, :basico60, :basico60x2, :basico100, :toma360, :video, :plano, :hosting, :procesamiento, :alimentos, :hospedajeA, :hospedajeB, :avion, :terrestre, :descuento, :contact_id, :municipality_id, :taxPayer)
+    params.require(:package).permit(:completo100, :completo200, :completo300, :completo400, :completo500, :completo1000, :basico60, :basico60x2, :basico100, :toma360, :video, :plano, :hosting, :procesamiento, :alimentos, :hospedajeA, :hospedajeB, :avion, :terrestre, :descuento, :contact_id, :municipality_id, :taxPayer, :copies)
   end
 
 

@@ -94,11 +94,11 @@ class UserMailer < ActionMailer::Base
 		mail(to: user.email, cc: 'roberto@primeraraiz.com', subject: 'Recordatorio: cita agendada para mañana a las ' + @timeString)
 	end
 
-	def quote_email(contact, filename)
+	def quote_email(contact, emails, filename)
 		@name = contact.first_name
 		@greeting = greeting
 		attachments[filename+".pdf"] = File.read('Quotes/'+filename+'.pdf')
-		mail(to: contact.email, cc: 'irma@primeraraiz.com', reply_to: 'contacto@primeraraiz.com', subject: 'Cotización Primera Raíz: '+filename)
+		mail(to: emails, cc: 'irma@primeraraiz.com', reply_to: 'contacto@primeraraiz.com', subject: 'Cotización Primera Raíz: '+filename)
 	end
 
 
