@@ -135,7 +135,7 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/wCJtc5k2ewq/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/Y5CPPihiNLB/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/EMWu5yHYXt8/thumb";
-	thumbURL = "https://my.matterport.com/api/v1/player/models/9icLjjCWYBe/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/aqLcwSDhtfr/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save

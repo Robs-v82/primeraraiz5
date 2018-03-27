@@ -62,7 +62,7 @@ class PackagesController < ApplicationController
       @munici = municipality.munici
       @estado = State.where(:clave_estado=>myCode).last.estado      
     end
-    inputStrings = ["completo100","completo200","completo300","completo400","completo500","completo1000","basico60","basico60x2","basico100","toma360","video","plano","hosting","procesamiento","alimentos", "hospedajeA", "hospedajeB", "institution_id", "avion", "terrestre"]
+    inputStrings = ["completo100","completo200","completo300","completo400","completo500","completo1000","basico60","basico60x2","basico100","toma360","video","plano","hosting","procesamiento","alimentos", "hospedajeA", "hospedajeB", "avion", "terrestre"]
     packageStrings = ["Modelo 100", "Modelo 200", "Modelo 300", "Modelo 400", "Modelo 500", "Modelo 1000", "Modelo Básico", "Modelo Básico 2X", "Modelo Básico Extra", "Vista 360 adicional", "Video", "Plano esquemático", "Año adicional de hospedaje en línea", "Procesamiento"]
     tableArr = []
     myPrices = generalPrices
