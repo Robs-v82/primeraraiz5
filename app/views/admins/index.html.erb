@@ -88,6 +88,9 @@
 					<div class="input-field col s12">
 						<textarea name="package[copies]" placeholder="Correos en copia"></textarea>
 					</div>
+					<div class="input-field col s12">
+						<textarea name="package[message]" placeholder="Mensaje de inicio"></textarea>
+					</div>
 					<div class="input-field col s12" >
 						<input class="with-gap valign" name="package[taxPayer]" value="true" type="radio" id="tax-payer-radio">
 						<label for="tax-payer-radio" class="valign">Factura como persona física</label>
@@ -434,6 +437,9 @@
 								<option value="<%= institution.id %>"><%= institution.name%></option>
 							<% end %>
 						</select>
+					</div>
+					<div class="col s12">
+						<h6>Destinatario</h6>
 					</div>
 					<button id="product-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 				</form>

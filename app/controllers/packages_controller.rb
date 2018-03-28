@@ -15,11 +15,16 @@ class PackagesController < ApplicationController
   def create
     package_info = package_params
     session[:copies] = nil
-    puts "XX"*100
-    puts package_info[:copies]
+    session[:message] = nil
     unless package_info[:copies].nil?
       session[:copies] = package_info[:copies]
       package_info.delete("copies")
+    end
+    puts "XX"*100
+    puts package_info[:message]
+    unless package_info[:message].nil?
+      session[:message] = package_info[:message]
+      package_info.delete("message")
     end
     package_info.store("total", session[:total])
     personal_payer = package_info[:taxPayer]
@@ -148,26 +153,11 @@ class PackagesController < ApplicationController
     html = render_to_string(:layout => "packages", :layout => false)  
     kit = PDFKit.new(html)
     myFile = kit.to_file('Quotes/'+session[:fileName]+'.pdf')
-    # respond_to do |format|
-    #   format.pdf
-    #   # format.html
-    #   # format.pdf do
-    #   #   render :pdf { render :text => PDFKit.new( html ).to_pdf }
-    #   # end
-    # end
-    # FileUtils.makedirs('Quotes/'+session[:fileName]+'.pdf')
-    # Dir.chdir(Rails.root)
-    # unless File.directory?('Quotes/')
-    #   Dir.mkdir('Quotes/')
-    # end
-    # puts 'XXxx'*100
-    # Tempfile.new([session[:fileName], '.pdf'], location) do |file|
-    #   file.write(kit)
-    # end
     
+    # SEND EMAIl
     myPackage = Package.last
     myPackage.update(:docs=>kit.to_file('Quotes/'+session[:fileName]+'.pdf'))
-    UserMailer.quote_email(target_contact, myEmails, session[:fileName]).deliver
+    UserMailer.quote_email(target_contact, myEmails, session[:fileName], session[:message]).deliver
   end
 
   def myQuote
@@ -216,7 +206,7 @@ class PackagesController < ApplicationController
   private
 
   def package_params
-    params.require(:package).permit(:completo100, :completo200, :completo300, :completo400, :completo500, :completo1000, :basico60, :basico60x2, :basico100, :toma360, :video, :plano, :hosting, :procesamiento, :alimentos, :hospedajeA, :hospedajeB, :avion, :terrestre, :descuento, :contact_id, :municipality_id, :taxPayer, :copies)
+    params.require(:package).permit(:completo100, :completo200, :completo300, :completo400, :completo500, :completo1000, :basico60, :basico60x2, :basico100, :toma360, :video, :plano, :hosting, :procesamiento, :alimentos, :hospedajeA, :hospedajeB, :avion, :terrestre, :descuento, :contact_id, :municipality_id, :taxPayer, :copies, :message)
   end
 
 
