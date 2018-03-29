@@ -7,6 +7,8 @@ class AdminsController < ApplicationController
 
 	def index
 		session[:total] = 0
+		@product_number = session[:product_number] 
+		@quote_target = session[:quote_target_contact]
 		@myStates= State.all
 		@myNumbers = (0..20)
 		@planeNumbers = ["0.00"]

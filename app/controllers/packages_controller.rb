@@ -158,6 +158,7 @@ class PackagesController < ApplicationController
     myPackage = Package.last
     myPackage.update(:docs=>kit.to_file('Quotes/'+session[:fileName]+'.pdf'))
     UserMailer.quote_email(target_contact, myEmails, session[:fileName], session[:message]).deliver
+    session[:quote_target_contact] = target_contact
   end
 
   def myQuote

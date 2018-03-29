@@ -76,10 +76,15 @@ class UserMailer < ActionMailer::Base
 		mail(to: @client.email, cc: 'roberto@primeraraiz.com', subject: 'Ya puedes consultar tu modelo 3D')
 	end
 
-	def ready_email(client)
+	def ready_email(client, product, message)
 		@client = client
+		@product = product
+		@message = message
 		@greeting = greeting
-		mail(to: @client.email, cc: 'roberto@primeraraiz.com', subject: 'Tu tour virtual está disponible')
+		@code = '<iframe width="853" height="480" src="'+product.url+'”  frameborder="0" allowfullscreen></iframe>'
+		myDate = Date.today + 1.year
+		@date = I18n.l(myDate, :format => "%e de %B de %Y")
+		mail(to: @client.email, cc: 'irma@primeraraiz.com', subject: 'Ya puedes conultar el tour virtual de '+@product.name)
 	end
 
 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/packages/getSubtotal' => 'packages#getSubtotal'
   get 'packages/create'
   post 'packages/getClients' => 'packages#getClients'
+  post 'products/getClients' => 'products#getClients'
   get 'events/new'
   get 'events/download_events' => 'events#download_events'
   get 'events/:id' => 'events#destroy'

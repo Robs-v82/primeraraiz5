@@ -103,6 +103,16 @@ class ProductsController < ApplicationController
 
 	def create
 		product_info = product_params
+		puts "XXxx"*200
+		unless product_info[:contact_id].nil?
+			puts product_info[:contact_id]
+			target_contact = Contact.find(product_info[:contact_id])
+			product_info.delete('contact_id')
+		end
+		unless product_info[:message].nil?
+			target_message = product_info[:message]
+			product_info.delete('message')
+		end
 		thumbURL = product_info[:cdn]
 		myString = product_info[:url]+"&lang=es"
 		product_info.delete('url')
@@ -115,16 +125,34 @@ class ProductsController < ApplicationController
 			product.thumb = URI.parse(thumbURL)
 			product.save
 			session[:new_product] = true
+			session[:product_number] = product.id
 		else
 			session[:product_errors] = new_product.errors.full_messages
 		end
+
+		# ENVIAR CORREO
+		if target_contact
+			UserMailer.ready_email(target_contact, product, target_message).deliver
+		end
+
 		redirect_to "/admins"
 	end
+
+	  def getClients
+	  	targetInstitution = getInstitution_params[:institution_id]
+	    targetContacts = Institution.find(targetInstitution).contacts.order(:name)
+	    render json: {clients: targetContacts}
+	  end
 
 	private
 
 	def product_params
-		params.require(:product).permit(:name, :url, :cdn, :institution_id)
+		params.require(:product).permit(:name, :url, :cdn, :institution_id, :contact_id, :message)
 	end
+
+
+	  def getInstitution_params
+	    params.require(:contact).permit(:institution_id)
+	  end
 
 end

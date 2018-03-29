@@ -30,6 +30,23 @@
   			return false
   		})
 
+  		$('#product-institution-selector').change(function() {
+  			$('#product-client-selector').html('')
+  			$('#product-client-selector').removeAttr("disabled")
+  			$.post(
+  				'/products/getClients',
+  				$(this).serialize(),
+  				function(data) {
+  					var clientOptions = "<option value='' disabled selected>Cliente</option>"
+  					for(i=0; i<data.clients.length; i++) {
+  						clientOptions += "<option value='"+data.clients[i].id+"'>"+data.clients[i].first_name+" "+data.clients[i].name+"</option>"
+  					}
+					$('#product-client-selector').append(clientOptions)				
+  				}
+  			)
+  			return false
+  		})
+
   		// CHANGE SUBTOTAL
   		$('.myQuote').change(function() {
   			$.post(
@@ -441,6 +458,22 @@
 					<div class="col s12">
 						<h6>Destinatario</h6>
 					</div>
+					<div class="input-field col s12">
+						<select id="product-institution-selector" class="admins-select browser-default" name="contact[institution_id]">
+							<option value="" selected>Organización</option>
+							<% @institutions.each do |institution|%>
+								<option value="<%= institution.id %>"><%= institution.name%></option>
+							<% end %>
+						</select>
+					</div>
+					<div class="input-field col s12">
+						<select id="product-client-selector" class="admins-select browser-default" disabled name="product[contact_id]">
+							<option value="" disabled selected>Cliente*</option>
+						</select>
+					</div>
+					<div class="input-field col s12">
+						<textarea name="product[message]" placeholder="Mensaje final"></textarea>
+					</div>
 					<button id="product-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 				</form>
 			</div>
@@ -464,19 +497,6 @@
 						<input type"text" name="post[alt]" placeholder="Descripción imagen (keywords)">
 					</div>
 					<button id="blog-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
-				</form>
-			</div>
-			<h5>Notificar modelo</h5>
-			<div class="basic-block row">
-				<form action="/tours/update" method="post">
-					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-					<div class="input-field col s4">
-						<input type="text" name="tour[id]" placeholder="ID">
-					</div>
-					<div class="input-field col s8">
-						<input type="text" name="tour[public_url]" placeholder="url">
-					</div>
-					<button id="client-button" class="light-green accent-4 btn-floating btn-small waves-effect waves-light right valign" type="submit"><i class="material-icons">send</i></button>
 				</form>
 			</div>
 		</div>
@@ -552,7 +572,7 @@
 		</div>
 		<div class="modal-content">
 			<div class="b-container">
-				<p class="flow-text">Modelo agregado</p>
+				<p class="flow-text">Modelo <%=@product_number%> agregado</p>
 			</div>
 		</div>
 	</div>
@@ -583,7 +603,7 @@
 		</div>
 		<div class="modal-content">
 			<div class="b-container">
-				<p class="flow-text">Cotización enviada a ...</p>
+				<p class="flow-text">Cotización enviada a <%=@quote_target%></p>
 			</div>
 		</div>
 	</div>
