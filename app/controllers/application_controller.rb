@@ -212,7 +212,7 @@ class ApplicationController < ActionController::Base
 				{:item=>"toma360", :amount=>150},
 				{:item=>"video", :amount=>900},
 				{:item=>"plano", :amount=>1200},
-				{:item=>"hosting", :amount=>540},
+				{:item=>"hosting", :amount=>500},
 				{:item=>"procesamiento", :amount=>1200},
 				{:item=>"alimentos", :amount=>900},
 				{:item=>"hospedajeA", :amount=>1200},

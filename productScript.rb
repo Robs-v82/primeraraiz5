@@ -136,6 +136,12 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/Y5CPPihiNLB/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/EMWu5yHYXt8/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/aqLcwSDhtfr/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/xDcaHnpbGWB/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/uSUGgPiQTdb/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/tiC9M6r9DYG/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/p555cDNNzNq/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/WahQTRT9ax5/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/HhVziae1jqu/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
@@ -242,3 +248,8 @@ Marbella Provenza,https://my.matterport.com/show/?m=qBv5thJCK1u&lang=es
 Torino Provenza, https://my.matterport.com/show/?m=5RHnshG9aPb&lang=es
 Bernini Provenza, https://my.matterport.com/show/?m=hzNCNivcj6q&lang=es
 Florentino Provenza,https://my.matterport.com/show/?m=jtkgLC7dHRG&lang=es
+
+myNames = []
+(11..19).each{|x| target = Product.find(x); myNames.push(target.name)}
+
+
