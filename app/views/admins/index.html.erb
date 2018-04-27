@@ -22,7 +22,7 @@
   				function(data) {
   					var clientOptions = "<option value='' disabled selected>Cliente</option>"
   					for(i=0; i<data.clients.length; i++) {
-  						clientOptions += "<option value='"+data.clients[i].id+"'>"+data.clients[i].first_name+" "+data.clients[i].name+"</option>"
+  						clientOptions += "<option value='"+data.clients[i].id+"'>"+data.clients[i].first_name+" "+data.clients[i].name+" - "+data.clients[i].email+"</option>"
   					}
 					$('#package-client-selector').append(clientOptions)				
   				}
