@@ -1,4 +1,4 @@
-def score( array )
+def score(array)
   hash = Hash.new(0)
   array.each{|key| hash[key] += 1}
   hash

@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   post 'institutions' => 'institutions#create'
   get 'getInstitution' => 'products#find'
   post 'products' => 'products#create'
+  get '.well-known/pki-validation/godaddy.html' => 'home#godaddy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
