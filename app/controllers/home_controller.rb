@@ -36,5 +36,9 @@ class HomeController < ApplicationController
 
 	def testImage
 	end
+
+	def godaddy
+		render :layout => false
+	end
 	
 end
