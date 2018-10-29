@@ -10,7 +10,7 @@ class AdminsController < ApplicationController
 		@product_number = session[:product_number] 
 		@quote_target = session[:quote_target_contact]
 		@myStates= State.all
-		@myNumbers = (0..20)
+		@myNumbers = (0..30)
 		@planeNumbers = ["0.00"]
 		@planeIntegers = [0]
 		@landNumbers = ["0.00"]

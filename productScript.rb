@@ -142,10 +142,18 @@ urls.each{|x|
 	thumbURL = "https://my.matterport.com/api/v1/player/models/p555cDNNzNq/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/WahQTRT9ax5/thumb";
 	thumbURL = "https://my.matterport.com/api/v1/player/models/HhVziae1jqu/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/FWtstsw9fHA/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/d9EHBNJhDZ9/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/FWtstsw9fHA/thumb";
+	thumbURL = "https://my.matterport.com/api/v1/player/models/W9vHJg6SEDy/thumb";
 	thumbURL = https://my.matterport.com/show/?m=YpuasirHuEN
 	product.thumb = URI.parse(thumbURL);
 	product.save
 }
+
+
+
+
 
 "BBVA/322665-45"
 

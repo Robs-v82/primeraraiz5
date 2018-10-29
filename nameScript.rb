@@ -1,4 +1,4 @@
-target = 1538..2075
+0target = 1538..2075
 contacts = []
 target.each{|x|
 	if Contact.find(x)
