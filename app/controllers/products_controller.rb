@@ -53,6 +53,18 @@ class ProductsController < ApplicationController
 		@target_color = product.institution.color
 	end
 
+	def starlaviga
+		product = Product.find(226)
+		session[:product_id] = product.id
+		@institution = Institution.find(product.institution_id)
+		@name = product.name
+		@myUrl = product.url
+		@product_id = product.id.to_s
+		domain = "https://primeraraiz.com"
+		@thumb = domain+product.thumb.url
+		@target_color = product.institution.color
+	end
+
 	def rinconadalossauces
 		x = params[:id].to_i
 		if x == 1

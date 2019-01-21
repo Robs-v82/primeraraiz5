@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante Version="3.3" NoCertificado="00001000000305663498" Certificado="MIIEcTCCA1mgAwIBAgIUMDAwMDEwMDAwMDAzMDU2NjM0OTgwDQYJKoZIhvcNAQEFBQAwggGKMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJhY2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMR8wHQYJKoZIhvcNAQkBFhBhY29kc0BzYXQuZ29iLm14MSYwJAYDVQQJDB1Bdi4gSGlkYWxnbyA3NywgQ29sLiBHdWVycmVybzEOMAwGA1UEEQwFMDYzMDAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBEaXN0cml0byBGZWRlcmFsMRQwEgYDVQQHDAtDdWF1aHTDqW1vYzEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTUwMwYJKoZIhvcNAQkCDCZSZXNwb25zYWJsZTogQ2xhdWRpYSBDb3ZhcnJ1YmlhcyBPY2hvYTAeFw0xNDEyMTAxNTQwMDVaFw0xODEyMTAxNTQwMDVaMIG9MSAwHgYDVQQDExdBQkMgQUVST0xJTkVBUyBTQSBERSBDVjEgMB4GA1UEKRMXQUJDIEFFUk9MSU5FQVMgU0EgREUgQ1YxIDAeBgNVBAoTF0FCQyBBRVJPTElORUFTIFNBIERFIENWMSUwIwYDVQQtExxBQUUwNTAzMDlGTTAgLyBCRU1MNjIwNTAxMUYyMR4wHAYDVQQFExUgLyBCRU1MNjIwNTAxSERGUlJTMDcxDjAMBgNVBAsTBUNhcmdhMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDh2a4rl4EXT2A1B/D4mxZFrzin0Hak87q32SjvjZkHqMhoEl3CWdCHUsk9hmLtVYi77gH+ILbXBm1DAIX1sLgE2ezWxYEZ8GCZD1Wq5sTQDzJR4E230nMCO0X7dIwGO73QtYm66r7BDXRfhvOfotGh4jpviZNBnAWWeGpWbxWGewIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEAlFIrX90l7kCdm6FRYXA9e8gAE5L/lGDucfBis8LWaDvcXT/UDeCwiyf3jWiNaB7zPsjMXohGxGZyiDnFlrbescGuix4eElqJQAYjXnNFP662Vl0IhlsNDaQvWl8nzbzhay8oqNzM53MNkDtV5ocOY4L6z9G93R1X5xxvbDgQdrt9Qh6WwQ0UzM8PutjWVlueq1REC4vgvNLZETe/6LB4/eZIR4Y8DXNFhAPEXfOPn6cRiis3m5gC7EyxgGIDsbhA3euxmBea4X05t/7CQNNVDShGXvSjaTTtUUu0zTXKxJiKG2d7jVpsVXI8XBM+SEdrg/YaeIMVdOEc2rE/4c0P7w==" Sello="bo+yDkjqAaWuOPrGMcgOwwP0FPTWaLsKXPKq514z0N9S3JqsxEplDjWpRFflEA4couPK4vYgu0id7WpfTkRs45NhmBtNzwHq3ur4kro574bVRyBSPgpDjNfCDTMBwzzyOP/1IC971HXRLLhsDDWywDFzCUpYwbMQJEUh6xhPPSg=" Folio="6985853" Fecha="2018-04-04T00:00:00" FormaPago="04" CondicionesDePago="Contado" SubTotal="12557.96" Moneda="MXN" TipoCambio="1" Total="12972.93" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="06500" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/aerolineas http://www.sat.gob.mx/sitio_internet/cfd/aerolineas/aerolineas.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/3">
+  <cfdi:Emisor Rfc="AAE050309FM0" Nombre="ABC Aerolíneas S.A. de C.V" RegimenFiscal="601" />
+  <cfdi:Receptor Rfc="VAPR820306A97" Nombre="ROBERTO VALLADARES PIEDRAS" UsoCFDI="G03" />
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="Servicio Aereo México D.F.(MEX)-Miami (MIA) IVA Tasa 16%" ValorUnitario="255.38" Importe="255.38">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="255.38" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="40.8600" />
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="Servicio Aereo México D.F.(MEX)-Miami (MIA) IVA Tasa 0%" ValorUnitario="766.15" Importe="766.15">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="766.15" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Importe="0.00" />
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="Servicio Aereo Miami (MIA)-México D.F.(MEX) IVA Tasa 16%" ValorUnitario="2338.17" Importe="2338.17">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="2338.17" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="374.1100" />
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="Servicio Aereo Miami (MIA)-México D.F.(MEX) IVA Tasa 0%" ValorUnitario="7014.52" Importe="7014.52">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="7014.52" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Importe="0.00" />
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( XY-MEX) I. F. de Inmigración y Naturalización" ValorUnitario="127.90" Importe="127.90" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( US-MEX) Impuesto de trasportación" ValorUnitario="334.36" Importe="334.36" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( AY-MIA) Cargo de Seguridad" ValorUnitario="102.32" Importe="102.32" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( DSM-MEX) DSM" ValorUnitario="74.00" Importe="74.00" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( XA-MEX) APHIS" ValorUnitario="72.35" Importe="72.35" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( US-MIA) Impuesto de trasportación" ValorUnitario="334.36" Importe="334.36" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( XF-MIA) PFC" ValorUnitario="82.22" Importe="82.22" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="( YC-MEX) US Customs User Fee" ValorUnitario="103.23" Importe="103.23" />
+    <cfdi:Concepto ClaveProdServ="78111500" NoIdentificacion="TFRQUX" Cantidad="1" ClaveUnidad="E48" Unidad="1" Descripcion="TUA Tarifa Unica de Aeropuerto" ValorUnitario="953.00" Importe="953.00" />
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="414.97">
+    <cfdi:Traslados>
+      <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="414.97" />
+      <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Importe="0" />
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital Version="1.1" UUID="FED5F144-BE9C-4507-821D-D1B71EB61EBA" FechaTimbrado="2018-04-04T07:58:29" RfcProvCertif="BUZ021107UG0" SelloCFD="bo+yDkjqAaWuOPrGMcgOwwP0FPTWaLsKXPKq514z0N9S3JqsxEplDjWpRFflEA4couPK4vYgu0id7WpfTkRs45NhmBtNzwHq3ur4kro574bVRyBSPgpDjNfCDTMBwzzyOP/1IC971HXRLLhsDDWywDFzCUpYwbMQJEUh6xhPPSg=" NoCertificadoSAT="00001000000404347791" SelloSAT="wip3rxt2a+Yvu0mgBYzp5XYh6fhxmG6A1MZ7D/dDGX1MQRyIV5eiSWnz1DzAvFYOy/13VlQxHFEbKpRmp1EHia5KOPlMK/QBrzVBVEz2pYy6C4AAl2xCLqwHQgEzFLbit6B/xH0hHp609ZexBkQiViSMbB3G2Bc4vnJNIVcMbfPnIW4GCWkJRs8QWjVYnPM0RgB0Q2z6/GRHWK8dEKQtetTo1wcQf37mENahDzRdk67WVHM8imLTLDBnBY8/NN7RjunCHFW/5zAI101ysjbd1WzUcXqVs8nRSKT+jxW0BnvoHtSgnns+dqoRPAy4BDkITMiOHp6UDfjNspMd1jYEqw==" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" />
+    <aerolineas:Aerolineas Version="1.0" TUA="953.00" xmlns:aerolineas="http://www.sat.gob.mx/aerolineas">
+      <aerolineas:OtrosCargos TotalCargos="1230.74">
+        <aerolineas:Cargo CodigoCargo="XY-MEX" Importe="127.90" />
+        <aerolineas:Cargo CodigoCargo="US-MEX" Importe="334.36" />
+        <aerolineas:Cargo CodigoCargo="AY-MIA" Importe="102.32" />
+        <aerolineas:Cargo CodigoCargo="DSM-MEX" Importe="74.00" />
+        <aerolineas:Cargo CodigoCargo="XA-MEX" Importe="72.35" />
+        <aerolineas:Cargo CodigoCargo="US-MIA" Importe="334.36" />
+        <aerolineas:Cargo CodigoCargo="XF-MIA" Importe="82.22" />
+        <aerolineas:Cargo CodigoCargo="YC-MEX" Importe="103.23" />
+      </aerolineas:OtrosCargos>
+    </aerolineas:Aerolineas>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

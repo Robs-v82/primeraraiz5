@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante MetodoPago="PUE" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" NoCertificado="00001000000408461920" LugarExpedicion="15620" TipoCambio="1" Moneda="MXN" Certificado="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" TipoDeComprobante="I" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/aerolineas http://www.sat.gob.mx/sitio_internet/cfd/aerolineas/aerolineas.xsd" Serie="AF1" Folio="00111489" FormaPago="04" SubTotal="3052.44" xmlns:aerolineas="http://www.sat.gob.mx/aerolineas" Fecha="2018-08-09T19:23:39" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Sello="epca9A/oexgnYDF6SwmIWOaQyTVrrdJJM1gGDfp0EpV7IXM47QYZpVpwdNu5NM7/q9/MXJgU30h+9orf8A/0LSe8tFOPxZ7W426H3iwE3PDjvLxt8qFWqSM7W0q38D+oJ0jZ6+l9XjQJIY6tHAQYTGb2SwNSkpepdE/EXSGutrKkgw4FoUoiY+2pWoP34CMxUGf2Bw72M+X68p0NIlgxtYvFCN1/L/5I4YQni+TTDqEECyC0kK8RoNDvxWyesuUR9w3ps1UWTdFbkyq0BP0bm1oQ1nX08602NEewMBx8i6DRh6gp31ZYCzGXZuMN/CLGYwD4bGLfXFjjeka5zF1KqQ==" Version="3.3" Total="3381.00">
+<cfdi:Emisor Rfc="TAE870129F98" RegimenFiscal="601" Nombre="TRANSPORTES AEROMAR S.A. DE C.V."/>
+<cfdi:Receptor Rfc="VAPR820306A97" UsoCFDI="G03" Nombre="ROBERTO VALLADARES PIEDRAS"/>
+<cfdi:Conceptos>
+<cfdi:Concepto ValorUnitario="2018.10" Unidad="VIAJE" ClaveProdServ="78111500" NoIdentificacion="TARPAX16" Importe="2018.10" ClaveUnidad="E54" Cantidad="1" Descripcion="TARIFA DEL BOLETO 9422400064222 del pasajero RAMIREZ ONTIVEROS/IRMA MRS comprado el 09-08-2018">
+<cfdi:Impuestos>
+<cfdi:Traslados>
+<cfdi:Traslado Base="2018.10" TipoFactor="Tasa" Importe="322.9" TasaOCuota="0.160000" Impuesto="002"/>
+</cfdi:Traslados>
+</cfdi:Impuestos>
+</cfdi:Concepto>
+<cfdi:Concepto ValorUnitario="999.00" Unidad="NO DISPONIBLE" ClaveProdServ="01010101" NoIdentificacion="TUA" Importe="999.00" ClaveUnidad="XNA" Cantidad="1" Descripcion="TARIFA USO DE AEROPUERTO (TUA)"/>
+<cfdi:Concepto ValorUnitario="35.34" Unidad="UNIDAD DE SERVICIO" ClaveProdServ="78111500" NoIdentificacion="REVPAX" Importe="35.34" ClaveUnidad="E48" Cantidad="1" Descripcion="Revision Equipaje (YR)">
+<cfdi:Impuestos>
+<cfdi:Traslados>
+<cfdi:Traslado Base="35.34" TipoFactor="Tasa" Importe="5.66" TasaOCuota="0.160000" Impuesto="002"/>
+</cfdi:Traslados>
+</cfdi:Impuestos>
+</cfdi:Concepto>
+</cfdi:Conceptos>
+<cfdi:Impuestos TotalImpuestosTrasladados="328.56">
+<cfdi:Traslados>
+<cfdi:Traslado TipoFactor="Tasa" Importe="328.56" TasaOCuota="0.160000" Impuesto="002"/>
+</cfdi:Traslados>
+</cfdi:Impuestos>
+<cfdi:Complemento>
+<aerolineas:Aerolineas TUA="999" Version="1.0"/>
+<tfd:TimbreFiscalDigital RfcProvCertif="SEF100616AD2" SelloSAT="jfXkKNQR4RKFpQEZQPTaYyoQFFxnzwn04V7LxI3cIsOWA8b4hnbqkgufbD2Rhrymv2LHA1Fdd0KvS+iRneqv6Me0isc7pFu3LBy2anLRuo6w5b/gCm/THHNm+H5Z4un7JKUAog1gRfPNP/0pP08PzoFaTFjc3Jbim+jvCHov3SE5v1FMrRSsZkn2uCpU2PCtO4Gdb6uKv5CZNxy0YmsmYMIzxGVH/Sg/mNh2QjBgao98tYbiPHV8APpVdcqAXKxJk5C/QaVMIp0SmxzExhW+N7cRv2m469RqEO9pwnCaUt3mvwr4Jy1q++w0GpQih1MmXa/4QJNH2zctHrYcaqoqaA==" UUID="97600DF2-3553-4A42-A751-21EA5A38F513" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" FechaTimbrado="2018-08-09T19:33:50" Version="1.1" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" NoCertificadoSAT="00001000000405148267" SelloCFD="epca9A/oexgnYDF6SwmIWOaQyTVrrdJJM1gGDfp0EpV7IXM47QYZpVpwdNu5NM7/q9/MXJgU30h+9orf8A/0LSe8tFOPxZ7W426H3iwE3PDjvLxt8qFWqSM7W0q38D+oJ0jZ6+l9XjQJIY6tHAQYTGb2SwNSkpepdE/EXSGutrKkgw4FoUoiY+2pWoP34CMxUGf2Bw72M+X68p0NIlgxtYvFCN1/L/5I4YQni+TTDqEECyC0kK8RoNDvxWyesuUR9w3ps1UWTdFbkyq0BP0bm1oQ1nX08602NEewMBx8i6DRh6gp31ZYCzGXZuMN/CLGYwD4bGLfXFjjeka5zF1KqQ=="/>
+</cfdi:Complemento>
+</cfdi:Comprobante>
