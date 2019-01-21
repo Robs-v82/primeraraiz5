@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   get 'intro/:id' => 'products#intro'
   get 'hairdistrict' => 'products#hairdistrict'
   get 'vistabalbuena' => 'products#vistabalbuena'
-  get 'starlaviga' => 'products#starlaviga'
+  # get 'starlaviga' => 'products#starlaviga'
   get 'rinconadalossauces/:id' => 'products#rinconadalossauces'
   get 'pharos/:id' => 'products#pharos'
   post 'institutions' => 'institutions#create'
