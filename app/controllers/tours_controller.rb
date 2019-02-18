@@ -44,7 +44,7 @@ class ToursController < ApplicationController
 			'https://primeraraiz.com/products/33',
 			'https://primeraraiz.com/products/4',
 			'https://primeraraiz.com/products/2',
-			'https://primeraraiz.com/products/25',
+			'https://primeraraiz.com/products/79',
 			'https://my.matterport.com/show/?m=jNjcQ2Y45gU&lang=es',
 			'https://primeraraiz.com/products/13',
 			'https://primeraraiz.com/products/1',
