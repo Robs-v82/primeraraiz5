@@ -153,7 +153,7 @@ class PackagesController < ApplicationController
     html = render_to_string(:layout => "packages", :layout => false)  
     kit = PDFKit.new(html)
     outFile = File.new('Quotes/'+session[:fileName]+'.pdf','w')
-    myFile = kit.to_file('Quotes/'+session[:fileName]+'.pdf')
+    myFile = kit.to_file(outFile)
     
     # SEND EMAIl
     myPackage = Package.last
