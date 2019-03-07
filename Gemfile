@@ -57,7 +57,6 @@ gem 'xml-simple'
 
 gem 'pdfkit'
 
-gem 'wkhtmltopdf-binary', '~> 0.12.3.1'
 
 # gem 'wkhtmltopdf-binary'
 
