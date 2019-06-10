@@ -50,6 +50,18 @@ class ToursController < ApplicationController
 			'https://primeraraiz.com/products/1',
 			'https://primeraraiz.com/products/17'
 		]
+		@renders = [
+			'/assets/render1.png',
+			'/assets/render5.png',
+			'/assets/render3.png',
+			'/assets/render4.png',
+		]
+		@renders2 = [
+			'/assets/render2.png',
+			'/assets/render6.png',
+			'/assets/render7.png',
+			'/assets/render8.png',
+		]
 	end
 
 	def new
