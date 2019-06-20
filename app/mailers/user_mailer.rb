@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 	
-	default from: "Roberto Valladares Piedras <roberto@primeraraiz.com>"
+	default from: "Irma Ramírez <irma@primeraraiz.com>"
 
 	def number_with_delimiter(number, delimiter=",", separator=".")
 		begin
@@ -84,7 +84,7 @@ class UserMailer < ActionMailer::Base
 		@code = '<iframe width="853" height="480" src="'+product.url+'”  frameborder="0" allowfullscreen></iframe>'
 		myDate = Date.today + 1.year
 		@date = I18n.l(myDate, :format => "%e de %B de %Y")
-		mail(to: @client.email, cc: 'irma@primeraraiz.com', subject: 'Ya puedes conultar el tour virtual de '+@product.name)
+		mail(to: @client.email, cc: 'irma@primeraraiz.com', subject: 'Ya puedes consultar el tour virtual de '+@product.name)
 	end
 
 
