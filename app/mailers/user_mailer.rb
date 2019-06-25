@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 	
-	default from: "Irma Ramírez <irma@primeraraiz.com>"
+	default from: "Irma Ramírez <hola@primeraraiz.com>"
 
 	def number_with_delimiter(number, delimiter=",", separator=".")
 		begin
