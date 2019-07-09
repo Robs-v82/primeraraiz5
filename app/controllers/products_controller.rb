@@ -53,6 +53,14 @@ class ProductsController < ApplicationController
 		@target_color = product.institution.color
 	end
 
+	def StarPlatinoSanAntonio
+		@name = "Star Platino San Antonio"
+		@myUrl = "https://my.matterport.com/show/?m=2xNbRGfbxq9&lang=es"
+		domain = "https://primeraraiz.com"
+		@thumb = "https://primeraraiz.com/assets/san_antonio"
+		@target_color = "#FFFFFF"
+	end
+
 	def starlaviga
 		product = Product.find(226)
 		session[:product_id] = product.id
