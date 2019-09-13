@@ -57,8 +57,6 @@ class ToursController < ApplicationController
 		@renders2 = [
 			'/assets/render2.png',
 			'/assets/render6.png',
-			'/assets/render7.png',
-			'/assets/render8.png',
 		]
 	end
 
