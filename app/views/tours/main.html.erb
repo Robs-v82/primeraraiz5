@@ -169,14 +169,12 @@
 				</div>
 				<ul class="right hide-on-med-and-down">
 					<li><a id="vt-link" href="#demo-section">DEMO</a></li>
-					<li><a id="vt-link" href="#render-section">RENDER</a></li>
 					<li><a id="vt-link" href="#video-section">VIDEO</a></li>
 					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
 					<li><a class="faq-link" href="#FAQ">FAQ</a></li>
 				</ul>
 				<ul id="nav-mobile" class="side-nav blue-grey-text text-darken-3">
 					<li><a id="vt-link" href="#demo-section">DEMO</a></li>
-					<li><a id="vt-link" href="#render-section">RENDER</a></li>
 					<li><a id="vt-link" href="#video-section">VIDEO</a></li>
 					<li><a class="tour-modal-trigger" href="#tour-modal">CONTRATA</a></li>
 					<li><a class="faq-link" href="#FAQ">FAQ</a></li>
@@ -310,19 +308,6 @@
 		<% @portafolio.each do |url| %>
 			<div class='main-section-wrapper col l6 m6 s12'>
 				<iframe width="100%" height="480" src=<%=url%> frameborder="0" allowfullscreen alt="San Miguel de Allende Matterport 3D showcase"></iframe>
-			</div>
-		<% end %>
-	</div>
-	<div id="render-section" class="row">
-		<h4>Renders</h4>
-		<% @renders.each do |url| %>
-			<div class='main-section-wrapper col l6 m6 s12'>
-				<img width="100%" src=<%=url%> frameborder="0">
-			</div>
-		<% end %>
-		<% @renders2.each do |url| %>
-			<div class='main-section-wrapper col l6 m6 s12'>
-				<img width="100%" src=<%=url%> frameborder="0">
 			</div>
 		<% end %>
 	</div>
